@@ -148,14 +148,8 @@
   
   <header class="group fixed inset-x-0 top-0 z-50 transition-all duration-300" id="main-header">
     <div id="header-inner" class="mx-auto flex h-20 w-full items-center justify-between border-b border-gray-100/50 bg-white/95 px-6 backdrop-blur-md transition-all duration-300 lg:px-12">
-      <a class="flex items-center gap-3 group" href="/">
-        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-ink text-sm font-bold text-white shadow-md transition-transform group-hover:scale-105 group-hover:rotate-3">
-          BC
-        </div>
-        <div class="leading-tight">
-          <span class="text-base font-bold text-primary tracking-tight font-display">Bright Education</span>
-          <span class="block text-[10px] text-sage-600 font-semibold uppercase tracking-[0.2em]">Japan Study</span>
-        </div>
+      <a class="flex items-center group" href="/">
+        <img src="<?= APP_URL ?>/assets/images/logo.svg" alt="Bright Education" class="h-10 w-auto transition-transform group-hover:scale-105">
       </a>
       
       <nav class="hidden items-center gap-1 text-[15px] font-medium text-muted md:flex">
@@ -264,9 +258,8 @@
   <div id="mobile-menu" class="fixed inset-0 z-[60] bg-white flex flex-col opacity-0 pointer-events-none transition-all duration-300 translate-y-[-10px] overflow-y-auto">
       <!-- Header row -->
       <div class="flex items-center justify-between px-6 pt-6 pb-4 border-b border-slate-100">
-        <a href="/" class="flex items-center gap-3">
-          <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-ink text-sm font-bold text-white">BC</div>
-          <span class="font-bold text-primary font-display">Bright Education</span>
+        <a href="/" class="flex items-center">
+          <img src="<?= APP_URL ?>/assets/images/logo.svg" alt="Bright Education" class="h-9 w-auto">
         </a>
         <button id="mobile-menu-close" class="h-10 w-10 flex items-center justify-center rounded-full bg-slate-100 text-primary hover:bg-slate-200 transition-colors" aria-label="Close Menu">
             <i class="bi bi-x-lg text-lg"></i>
