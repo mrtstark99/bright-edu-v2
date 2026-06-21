@@ -147,9 +147,10 @@
 <body class="text-ink font-sans antialiased bg-rice selection:bg-sage-200 selection:text-sage-900">
   
   <header class="group fixed inset-x-0 top-0 z-50 transition-all duration-300" id="main-header">
-    <div id="header-inner" class="mx-auto flex h-20 w-full items-center justify-between border-b border-gray-100/50 bg-white/95 px-6 backdrop-blur-md transition-all duration-300 lg:px-12">
-      <a class="flex items-center group" href="/">
-        <img src="<?= APP_URL ?>/assets/images/logo.svg" alt="Bright Education" class="h-10 w-auto transition-transform group-hover:scale-105">
+    <div class="w-full h-20 border-b border-gray-100/50 bg-white/95 backdrop-blur-md transition-all duration-300" id="header-inner">
+    <div class="mx-auto flex h-full max-w-7xl items-center justify-between px-5 lg:px-8">
+      <a class="flex items-center group mr-10" href="/">
+        <img src="<?= APP_URL ?>/assets/images/logo.svg" alt="Bright Education" class="h-14 w-auto transition-transform group-hover:scale-105">
       </a>
       
       <nav class="hidden items-center gap-1 text-[15px] font-medium text-muted md:flex">
@@ -251,6 +252,7 @@
           <i class="bi bi-list text-2xl"></i>
         </button>
       </div>
+    </div>
     </div>
   </header>
 

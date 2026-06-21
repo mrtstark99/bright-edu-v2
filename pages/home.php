@@ -43,9 +43,9 @@ include 'includes/header.php';
 ?>
 
   <main id="hero">
-    <section class="relative overflow-hidden bg-mesh min-h-[90vh] flex items-center pt-24 pb-16">
-      
-      <div class="relative mx-auto max-w-7xl px-5 lg:px-8 w-full">
+    <section class="relative overflow-hidden bg-mesh min-h-[78vh] flex items-start pt-[140px] pb-16">
+
+<div class="relative mx-auto max-w-7xl px-5 lg:px-8 w-full">
         <div class="grid gap-12 lg:gap-8 lg:grid-cols-2 items-center">
           <!-- Left: Content -->
           <div class="space-y-8 z-10">
@@ -329,133 +329,229 @@ include 'includes/header.php';
 
     <section id="process" class="bg-mesh border-t border-slate-100">
       <div class="mx-auto max-w-7xl px-5 lg:px-8 py-20 lg:py-28">
-        <div class="mx-auto mb-20 max-w-2xl text-center">
+
+        <div class="mx-auto mb-14 max-w-2xl text-center reveal">
           <h2 class="text-3xl sm:text-4xl font-bold text-primary font-display">Quy trình 6 bước chuẩn hóa</h2>
           <p class="mt-4 text-lg text-muted">Mỗi bước đều có cố vấn chuyên trách kiểm tra chi tiết, loại bỏ rủi ro giấy tờ.</p>
         </div>
-        
-        <div class="relative mx-auto max-w-4xl">
-          <!-- Central Line -->
-          <div class="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-sage-200 via-sakura-200 to-transparent -translate-x-1/2 hidden sm:block"></div>
-          
-          <div class="space-y-12 sm:space-y-24">
-            
-            <!-- Component OXY Template (I will inline it to avoid PHP complexity) -->
-            <?php
-              function renderTimelineDetails($t1, $t4, $t7, $t10, $explanation) {
-                  return '
-                  <details class="group bg-white rounded-2xl border border-slate-200 shadow-sm transition-all hover:shadow-medium w-full max-w-[300px] mx-auto sm:mx-0">
-                      <summary class="flex items-center justify-between cursor-pointer p-3 sm:p-4 font-bold text-primary text-[14px] list-none outline-none marker:hidden [&::-webkit-details-marker]:hidden">
-                          <div class="flex items-center gap-2.5">
-                              <div class="w-8 h-8 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-sage-500 group-hover:bg-primary group-hover:text-white transition-colors">
-                                  <i class="bi bi-calendar2-week"></i>
-                              </div>
-                              <span>Xem hạn 4 kỳ</span>
-                          </div>
-                          <div class="w-6 h-6 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-open:rotate-180 transition-transform">
-                              <i class="bi bi-chevron-down text-xs"></i>
-                          </div>
-                      </summary>
-                      <div class="p-4 pt-2 border-t border-slate-100 mt-2">
-                          <p class="text-[13px] text-slate-600 mb-4 leading-relaxed">'.$explanation.'</p>
-                          <ul class="space-y-2.5">
-                              <li class="flex items-center justify-between text-[13px]">
-                                  <span class="font-bold text-slate-700 bg-slate-50 px-2 py-1 rounded-md border border-slate-200">Kỳ Tháng 1</span>
-                                  <span class="font-black text-primary font-display whitespace-nowrap">'.$t1.'</span>
-                              </li>
-                              <li class="flex items-center justify-between text-[13px]">
-                                  <span class="font-bold text-sakura-700 bg-sakura-50 px-2 py-1 rounded-md border border-sakura-200">Kỳ Tháng 4</span>
-                                  <span class="font-black text-primary font-display whitespace-nowrap">'.$t4.'</span>
-                              </li>
-                              <li class="flex items-center justify-between text-[13px]">
-                                  <span class="font-bold text-sage-700 bg-sage-50 px-2 py-1 rounded-md border border-sage-200">Kỳ Tháng 7</span>
-                                  <span class="font-black text-primary font-display whitespace-nowrap">'.$t7.'</span>
-                              </li>
-                              <li class="flex items-center justify-between text-[13px]">
-                                  <span class="font-bold text-amber-700 bg-amber-50 px-2 py-1 rounded-md border border-amber-200">Kỳ Tháng 10</span>
-                                  <span class="font-black text-primary font-display whitespace-nowrap">'.$t10.'</span>
-                              </li>
-                          </ul>
-                      </div>
-                  </details>';
-              }
-            ?>
 
-            <!-- Step 1 -->
-            <div class="relative flex flex-col sm:flex-row items-start sm:items-center justify-between group reveal">
-              <div class="sm:w-5/12 sm:text-right order-2 sm:order-1 mt-4 sm:mt-0 ml-16 sm:ml-0 pr-0 sm:pr-12">
-                <h3 class="text-xl font-bold text-primary font-display">Khảo sát & Lên kế hoạch</h3>
-                <p class="mt-3 text-[15px] text-muted">Đánh giá tiếng Nhật, học lực, tài chính. Lựa chọn kỳ nhập học phù hợp và lập lộ trình học tiếng tại VN.</p>
-              </div>
-              <div class="absolute left-0 sm:left-1/2 flex h-14 w-14 items-center justify-center rounded-full bg-white border-[4px] border-slate-200 text-xl font-black text-primary shadow-sm sm:-translate-x-1/2 transition-transform group-hover:scale-110 z-10 font-display">1</div>
-              <div class="sm:w-5/12 order-3 sm:order-3 hidden sm:block">
-                 <?= renderTimelineDetails('Tháng 5', 'Tháng 8', 'Tháng 11', 'Tháng 2', 'Thời điểm lý tưởng để bắt đầu lập kế hoạch tài chính và luyện tiếng Nhật nền tảng trước khi nhập học.') ?>
-              </div>
-            </div>
+        <div class="relative reveal" id="proc-root">
 
-            <!-- Step 2 -->
-            <div class="relative flex flex-col sm:flex-row items-start sm:items-center justify-between group reveal">
-              <div class="sm:w-5/12 order-1 sm:order-1 hidden sm:block">
-                 <?= renderTimelineDetails('Tháng 7', 'Tháng 10', 'Tháng 1', 'Tháng 4', 'Đăng ký nguyện vọng chọn trường Nhật ngữ. Cần đặt cọc giữ chỗ và hoàn thiện bộ hồ sơ cá nhân.') ?>
-              </div>
-              <div class="absolute left-0 sm:left-1/2 flex h-14 w-14 items-center justify-center rounded-full bg-white border-[4px] border-slate-200 text-xl font-black text-primary shadow-sm sm:-translate-x-1/2 transition-transform group-hover:scale-110 z-10 font-display">2</div>
-              <div class="sm:w-5/12 order-2 sm:order-3 mt-4 sm:mt-0 ml-16 sm:ml-0 pl-0 sm:pl-12">
-                <h3 class="text-xl font-bold text-primary font-display">Chọn trường & Đặt cọc</h3>
-                <p class="mt-3 text-[15px] text-muted">Đề xuất 3-5 trường theo tiêu chí. Hỗ trợ đăng ký giữ chỗ và chuẩn bị bộ hồ sơ tiêu chuẩn.</p>
-              </div>
-            </div>
+          <!-- Slider overflow -->
+          <div class="overflow-hidden rounded-3xl" id="proc-overflow">
+            <div class="flex transition-transform duration-500" style="transition-timing-function:cubic-bezier(.4,0,.2,1)" id="proc-track">
 
-            <!-- Step 3 -->
-            <div class="relative flex flex-col sm:flex-row items-start sm:items-center justify-between group reveal">
-              <div class="sm:w-5/12 sm:text-right order-2 sm:order-1 mt-4 sm:mt-0 ml-16 sm:ml-0 pr-0 sm:pr-12">
-                <h3 class="text-xl font-bold text-primary font-display">Xin tư cách lưu trú (COE)</h3>
-                <p class="mt-3 text-[15px] text-muted">Kiểm tra chéo hồ sơ, nộp sang trường, theo dõi phản hồi Cục XNC và luyện phỏng vấn online.</p>
+              <!-- Slide 1 -->
+              <div class="proc-slide shrink-0 bg-white border border-slate-200 shadow-sm rounded-3xl p-8 lg:p-12" style="width:100%">
+                <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-3 mb-5">
+                      <span class="text-[80px] font-black leading-none text-primary/8 font-display select-none -ml-1">01</span>
+                      <div class="h-8 w-px bg-slate-200 mx-1"></div>
+                      <span class="text-xs font-bold text-primary uppercase tracking-widest">Bước 1 / 6</span>
+                    </div>
+                    <h3 class="text-2xl lg:text-3xl font-bold text-primary font-display mb-3">Khảo sát & Lên kế hoạch</h3>
+                    <p class="text-[15px] text-muted leading-relaxed">Đánh giá tiếng Nhật, học lực, tài chính. Lựa chọn kỳ nhập học phù hợp và lập lộ trình học tiếng tại VN.</p>
+                  </div>
+                  <div class="w-full lg:w-64 shrink-0 bg-slate-50 rounded-2xl p-5 border border-slate-100">
+                    <p class="text-[11px] font-bold text-muted uppercase tracking-wider mb-4 flex items-center gap-1.5"><i class="bi bi-calendar2-week text-primary"></i> Thời điểm bắt đầu</p>
+                    <ul class="space-y-3 text-[13px]">
+                      <li class="flex justify-between"><span class="font-medium text-slate-600">Kỳ Tháng 1</span><span class="font-bold text-primary">Tháng 5</span></li>
+                      <li class="flex justify-between"><span class="font-medium text-sakura-700">Kỳ Tháng 4</span><span class="font-bold text-primary">Tháng 8</span></li>
+                      <li class="flex justify-between"><span class="font-medium text-sage-700">Kỳ Tháng 7</span><span class="font-bold text-primary">Tháng 11</span></li>
+                      <li class="flex justify-between"><span class="font-medium text-amber-700">Kỳ Tháng 10</span><span class="font-bold text-primary">Tháng 2</span></li>
+                    </ul>
+                    <p class="text-[11px] text-slate-400 mt-4 leading-relaxed">Thời điểm lý tưởng để bắt đầu lập kế hoạch tài chính và luyện tiếng Nhật nền tảng.</p>
+                  </div>
+                </div>
               </div>
-              <div class="absolute left-0 sm:left-1/2 flex h-14 w-14 items-center justify-center rounded-full bg-white border-[4px] border-slate-200 text-xl font-black text-primary shadow-sm sm:-translate-x-1/2 transition-transform group-hover:scale-110 z-10 font-display">3</div>
-              <div class="sm:w-5/12 order-3 sm:order-3 hidden sm:block">
-                 <?= renderTimelineDetails('Tháng 9', 'Tháng 11', 'Tháng 3', 'Tháng 5', 'Hồ sơ được gửi sang Nhật xin tư cách lưu trú. Thời gian xét duyệt của Cục XNC thường từ 2-3 tháng.') ?>
-              </div>
-            </div>
 
-            <!-- Step 4 -->
-            <div class="relative flex flex-col sm:flex-row items-start sm:items-center justify-between group reveal">
-              <div class="sm:w-5/12 order-1 sm:order-1 hidden sm:block">
-                 <?= renderTimelineDetails('Tháng 12', 'Tháng 3', 'Tháng 6', 'Tháng 9', 'Đã có COE! Nộp hồ sơ xin Visa tại Đại sứ quán Nhật Bản. Kết quả thường có nhanh chóng sau 1-2 tuần.') ?>
+              <!-- Slide 2 -->
+              <div class="proc-slide shrink-0 bg-white border border-slate-200 shadow-sm rounded-3xl p-8 lg:p-12" style="width:100%">
+                <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-3 mb-5">
+                      <span class="text-[80px] font-black leading-none text-primary/8 font-display select-none -ml-1">02</span>
+                      <div class="h-8 w-px bg-slate-200 mx-1"></div>
+                      <span class="text-xs font-bold text-primary uppercase tracking-widest">Bước 2 / 6</span>
+                    </div>
+                    <h3 class="text-2xl lg:text-3xl font-bold text-primary font-display mb-3">Chọn trường & Đặt cọc</h3>
+                    <p class="text-[15px] text-muted leading-relaxed">Đề xuất 3-5 trường theo tiêu chí. Hỗ trợ đăng ký giữ chỗ và chuẩn bị bộ hồ sơ tiêu chuẩn.</p>
+                  </div>
+                  <div class="w-full lg:w-64 shrink-0 bg-slate-50 rounded-2xl p-5 border border-slate-100">
+                    <p class="text-[11px] font-bold text-muted uppercase tracking-wider mb-4 flex items-center gap-1.5"><i class="bi bi-calendar2-week text-primary"></i> Thời điểm bắt đầu</p>
+                    <ul class="space-y-3 text-[13px]">
+                      <li class="flex justify-between"><span class="font-medium text-slate-600">Kỳ Tháng 1</span><span class="font-bold text-primary">Tháng 7</span></li>
+                      <li class="flex justify-between"><span class="font-medium text-sakura-700">Kỳ Tháng 4</span><span class="font-bold text-primary">Tháng 10</span></li>
+                      <li class="flex justify-between"><span class="font-medium text-sage-700">Kỳ Tháng 7</span><span class="font-bold text-primary">Tháng 1</span></li>
+                      <li class="flex justify-between"><span class="font-medium text-amber-700">Kỳ Tháng 10</span><span class="font-bold text-primary">Tháng 4</span></li>
+                    </ul>
+                    <p class="text-[11px] text-slate-400 mt-4 leading-relaxed">Đăng ký nguyện vọng chọn trường Nhật ngữ. Cần đặt cọc giữ chỗ và hoàn thiện bộ hồ sơ cá nhân.</p>
+                  </div>
+                </div>
               </div>
-              <div class="absolute left-0 sm:left-1/2 flex h-14 w-14 items-center justify-center rounded-full bg-white border-[4px] border-slate-200 text-xl font-black text-primary shadow-sm sm:-translate-x-1/2 transition-transform group-hover:scale-110 z-10 font-display">4</div>
-              <div class="sm:w-5/12 order-2 sm:order-3 mt-4 sm:mt-0 ml-16 sm:ml-0 pl-0 sm:pl-12">
-                <h3 class="text-xl font-bold text-primary font-display">Xin Visa du học</h3>
-                <p class="mt-3 text-[15px] text-muted">Chuẩn bị hồ sơ Đại sứ quán, hướng dẫn nộp học phí, lăn tay và nhận kết quả Visa nhanh chóng.</p>
-              </div>
-            </div>
 
-            <!-- Step 5 -->
-            <div class="relative flex flex-col sm:flex-row items-start sm:items-center justify-between group reveal">
-              <div class="sm:w-5/12 sm:text-right order-2 sm:order-1 mt-4 sm:mt-0 ml-16 sm:ml-0 pr-0 sm:pr-12">
-                <h3 class="text-xl font-bold text-primary font-display">Hành trang trước khi bay</h3>
-                <p class="mt-3 text-[15px] text-muted">Tham gia workshop văn hóa, hướng dẫn xếp hành lý, mở thẻ ngân hàng nội địa và đặt vé máy bay.</p>
+              <!-- Slide 3 -->
+              <div class="proc-slide shrink-0 bg-white border border-slate-200 shadow-sm rounded-3xl p-8 lg:p-12" style="width:100%">
+                <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-3 mb-5">
+                      <span class="text-[80px] font-black leading-none text-primary/8 font-display select-none -ml-1">03</span>
+                      <div class="h-8 w-px bg-slate-200 mx-1"></div>
+                      <span class="text-xs font-bold text-primary uppercase tracking-widest">Bước 3 / 6</span>
+                    </div>
+                    <h3 class="text-2xl lg:text-3xl font-bold text-primary font-display mb-3">Xin tư cách lưu trú (COE)</h3>
+                    <p class="text-[15px] text-muted leading-relaxed">Kiểm tra chéo hồ sơ, nộp sang trường, theo dõi phản hồi Cục XNC và luyện phỏng vấn online.</p>
+                  </div>
+                  <div class="w-full lg:w-64 shrink-0 bg-slate-50 rounded-2xl p-5 border border-slate-100">
+                    <p class="text-[11px] font-bold text-muted uppercase tracking-wider mb-4 flex items-center gap-1.5"><i class="bi bi-calendar2-week text-primary"></i> Thời điểm nộp hồ sơ</p>
+                    <ul class="space-y-3 text-[13px]">
+                      <li class="flex justify-between"><span class="font-medium text-slate-600">Kỳ Tháng 1</span><span class="font-bold text-primary">Tháng 9</span></li>
+                      <li class="flex justify-between"><span class="font-medium text-sakura-700">Kỳ Tháng 4</span><span class="font-bold text-primary">Tháng 11</span></li>
+                      <li class="flex justify-between"><span class="font-medium text-sage-700">Kỳ Tháng 7</span><span class="font-bold text-primary">Tháng 3</span></li>
+                      <li class="flex justify-between"><span class="font-medium text-amber-700">Kỳ Tháng 10</span><span class="font-bold text-primary">Tháng 5</span></li>
+                    </ul>
+                    <p class="text-[11px] text-slate-400 mt-4 leading-relaxed">Hồ sơ gửi sang Nhật xin tư cách lưu trú. Cục XNC xét duyệt trong 2-3 tháng.</p>
+                  </div>
+                </div>
               </div>
-              <div class="absolute left-0 sm:left-1/2 flex h-14 w-14 items-center justify-center rounded-full bg-white border-[4px] border-slate-200 text-xl font-black text-primary shadow-sm sm:-translate-x-1/2 transition-transform group-hover:scale-110 z-10 font-display">5</div>
-              <div class="sm:w-5/12 order-3 sm:order-3 hidden sm:block">
-                 <?= renderTimelineDetails('Cuối T12', 'Cuối T3', 'Cuối T6', 'Cuối T9', 'Chủ động đặt vé máy bay sớm, chuẩn bị hành lý và tham gia buổi hướng dẫn văn hóa trước khi xuất cảnh.') ?>
-              </div>
-            </div>
 
-            <!-- Step 6 -->
-            <div class="relative flex flex-col sm:flex-row items-start sm:items-center justify-between group reveal">
-              <div class="sm:w-5/12 order-1 sm:order-1 hidden sm:block">
-                 <?= renderTimelineDetails('Đầu T1', 'Đầu T4', 'Đầu T7', 'Đầu T10', 'Nhập cảnh Nhật Bản. Sẽ có đại diện trường và đối tác đưa đón sân bay, hỗ trợ đăng ký thủ tục nhập cư ban đầu.') ?>
+              <!-- Slide 4 -->
+              <div class="proc-slide shrink-0 bg-white border border-slate-200 shadow-sm rounded-3xl p-8 lg:p-12" style="width:100%">
+                <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-3 mb-5">
+                      <span class="text-[80px] font-black leading-none text-primary/8 font-display select-none -ml-1">04</span>
+                      <div class="h-8 w-px bg-slate-200 mx-1"></div>
+                      <span class="text-xs font-bold text-primary uppercase tracking-widest">Bước 4 / 6</span>
+                    </div>
+                    <h3 class="text-2xl lg:text-3xl font-bold text-primary font-display mb-3">Xin Visa du học</h3>
+                    <p class="text-[15px] text-muted leading-relaxed">Chuẩn bị hồ sơ Đại sứ quán, hướng dẫn nộp học phí, lăn tay và nhận kết quả Visa nhanh chóng.</p>
+                  </div>
+                  <div class="w-full lg:w-64 shrink-0 bg-slate-50 rounded-2xl p-5 border border-slate-100">
+                    <p class="text-[11px] font-bold text-muted uppercase tracking-wider mb-4 flex items-center gap-1.5"><i class="bi bi-calendar2-week text-primary"></i> Thời điểm nộp Visa</p>
+                    <ul class="space-y-3 text-[13px]">
+                      <li class="flex justify-between"><span class="font-medium text-slate-600">Kỳ Tháng 1</span><span class="font-bold text-primary">Tháng 12</span></li>
+                      <li class="flex justify-between"><span class="font-medium text-sakura-700">Kỳ Tháng 4</span><span class="font-bold text-primary">Tháng 3</span></li>
+                      <li class="flex justify-between"><span class="font-medium text-sage-700">Kỳ Tháng 7</span><span class="font-bold text-primary">Tháng 6</span></li>
+                      <li class="flex justify-between"><span class="font-medium text-amber-700">Kỳ Tháng 10</span><span class="font-bold text-primary">Tháng 9</span></li>
+                    </ul>
+                    <p class="text-[11px] text-slate-400 mt-4 leading-relaxed">Đã có COE! Nộp tại Đại sứ quán. Kết quả sau 1-2 tuần.</p>
+                  </div>
+                </div>
               </div>
-              <div class="absolute left-0 sm:left-1/2 flex h-14 w-14 items-center justify-center rounded-full bg-white border-[4px] border-slate-200 text-xl font-black text-primary shadow-sm sm:-translate-x-1/2 transition-transform group-hover:scale-110 z-10 font-display">6</div>
-              <div class="sm:w-5/12 order-2 sm:order-3 mt-4 sm:mt-0 ml-16 sm:ml-0 pl-0 sm:pl-12">
-                <h3 class="text-xl font-bold text-primary font-display">Đón tiếp & Hòa nhập</h3>
-                <p class="mt-3 text-[15px] text-muted">Mentor đón tại sân bay Nhật, đưa về nhà ở, đăng ký cư trú phường và hướng dẫn đi làm thêm.</p>
+
+              <!-- Slide 5 -->
+              <div class="proc-slide shrink-0 bg-white border border-slate-200 shadow-sm rounded-3xl p-8 lg:p-12" style="width:100%">
+                <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-3 mb-5">
+                      <span class="text-[80px] font-black leading-none text-primary/8 font-display select-none -ml-1">05</span>
+                      <div class="h-8 w-px bg-slate-200 mx-1"></div>
+                      <span class="text-xs font-bold text-primary uppercase tracking-widest">Bước 5 / 6</span>
+                    </div>
+                    <h3 class="text-2xl lg:text-3xl font-bold text-primary font-display mb-3">Hành trang trước khi bay</h3>
+                    <p class="text-[15px] text-muted leading-relaxed">Tham gia workshop văn hóa, hướng dẫn xếp hành lý, mở thẻ ngân hàng nội địa và đặt vé máy bay.</p>
+                  </div>
+                  <div class="w-full lg:w-64 shrink-0 bg-slate-50 rounded-2xl p-5 border border-slate-100">
+                    <p class="text-[11px] font-bold text-muted uppercase tracking-wider mb-4 flex items-center gap-1.5"><i class="bi bi-calendar2-week text-primary"></i> Thời điểm chuẩn bị</p>
+                    <ul class="space-y-3 text-[13px]">
+                      <li class="flex justify-between"><span class="font-medium text-slate-600">Kỳ Tháng 1</span><span class="font-bold text-primary">Cuối T12</span></li>
+                      <li class="flex justify-between"><span class="font-medium text-sakura-700">Kỳ Tháng 4</span><span class="font-bold text-primary">Cuối T3</span></li>
+                      <li class="flex justify-between"><span class="font-medium text-sage-700">Kỳ Tháng 7</span><span class="font-bold text-primary">Cuối T6</span></li>
+                      <li class="flex justify-between"><span class="font-medium text-amber-700">Kỳ Tháng 10</span><span class="font-bold text-primary">Cuối T9</span></li>
+                    </ul>
+                    <p class="text-[11px] text-slate-400 mt-4 leading-relaxed">Đặt vé sớm, tham gia buổi hướng dẫn văn hóa trước khi xuất cảnh.</p>
+                  </div>
+                </div>
               </div>
-            </div>
+
+              <!-- Slide 6 -->
+              <div class="proc-slide shrink-0 bg-white border border-slate-200 shadow-sm rounded-3xl p-8 lg:p-12" style="width:100%">
+                <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-3 mb-5">
+                      <span class="text-[80px] font-black leading-none text-primary/8 font-display select-none -ml-1">06</span>
+                      <div class="h-8 w-px bg-slate-200 mx-1"></div>
+                      <span class="text-xs font-bold text-primary uppercase tracking-widest">Bước 6 / 6</span>
+                    </div>
+                    <h3 class="text-2xl lg:text-3xl font-bold text-primary font-display mb-3">Đón tiếp & Hòa nhập</h3>
+                    <p class="text-[15px] text-muted leading-relaxed">Mentor đón tại sân bay Nhật, đưa về nhà ở, đăng ký cư trú phường và hướng dẫn đi làm thêm.</p>
+                  </div>
+                  <div class="w-full lg:w-64 shrink-0 bg-slate-50 rounded-2xl p-5 border border-slate-100">
+                    <p class="text-[11px] font-bold text-muted uppercase tracking-wider mb-4 flex items-center gap-1.5"><i class="bi bi-calendar2-week text-primary"></i> Thời điểm nhập cảnh</p>
+                    <ul class="space-y-3 text-[13px]">
+                      <li class="flex justify-between"><span class="font-medium text-slate-600">Kỳ Tháng 1</span><span class="font-bold text-primary">Đầu T1</span></li>
+                      <li class="flex justify-between"><span class="font-medium text-sakura-700">Kỳ Tháng 4</span><span class="font-bold text-primary">Đầu T4</span></li>
+                      <li class="flex justify-between"><span class="font-medium text-sage-700">Kỳ Tháng 7</span><span class="font-bold text-primary">Đầu T7</span></li>
+                      <li class="flex justify-between"><span class="font-medium text-amber-700">Kỳ Tháng 10</span><span class="font-bold text-primary">Đầu T10</span></li>
+                    </ul>
+                    <p class="text-[11px] text-slate-400 mt-4 leading-relaxed">Đại diện trường và đối tác đưa đón sân bay, hỗ trợ thủ tục nhập cư ban đầu.</p>
+                  </div>
+                </div>
+              </div>
+
+            </div><!-- /track -->
+          </div><!-- /overflow -->
+
+          <!-- Prev / Next arrows -->
+          <button id="proc-prev" aria-label="Bước trước"
+            class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-5 w-11 h-11 rounded-full bg-white border border-slate-200 shadow-md flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-200 disabled:opacity-30 disabled:pointer-events-none">
+            <i class="bi bi-chevron-left"></i>
+          </button>
+          <button id="proc-next" aria-label="Bước tiếp"
+            class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-5 w-11 h-11 rounded-full bg-white border border-slate-200 shadow-md flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-200 disabled:opacity-30 disabled:pointer-events-none">
+            <i class="bi bi-chevron-right"></i>
+          </button>
+
+          <!-- Step dots -->
+          <div class="flex justify-center items-center gap-2 mt-7" id="proc-dots">
+            <?php for ($i = 0; $i < 6; $i++): ?>
+            <button data-idx="<?= $i ?>" aria-label="Bước <?= $i+1 ?>"
+              class="proc-dot h-2 rounded-full transition-all duration-300 <?= $i === 0 ? 'bg-primary' : 'bg-slate-200' ?>"
+              style="width: <?= $i === 0 ? '1.5rem' : '0.5rem' ?>"></button>
+            <?php endfor; ?>
           </div>
-        </div>
+
+        </div><!-- /proc-root -->
       </div>
     </section>
+
+    <script>
+    (function(){
+      const overflow = document.getElementById('proc-overflow');
+      const track    = document.getElementById('proc-track');
+      const dots     = document.querySelectorAll('.proc-dot');
+      const prevBtn  = document.getElementById('proc-prev');
+      const nextBtn  = document.getElementById('proc-next');
+      const TOTAL    = 6;
+      let cur = 0;
+
+      function goTo(idx) {
+        cur = idx;
+        const w = overflow.offsetWidth;
+        track.style.transform = `translateX(${-idx * w}px)`;
+        dots.forEach((d, i) => {
+          const active = i === idx;
+          d.style.width           = active ? '1.5rem' : '0.5rem';
+          d.style.backgroundColor = active ? '' : '#e2e8f0';
+          d.classList.toggle('bg-primary', active);
+          d.classList.toggle('bg-slate-200', !active);
+        });
+        prevBtn.disabled = idx === 0;
+        nextBtn.disabled = idx === TOTAL - 1;
+      }
+
+      prevBtn.addEventListener('click', () => goTo(cur - 1));
+      nextBtn.addEventListener('click', () => goTo(cur + 1));
+      dots.forEach(d => d.addEventListener('click', () => goTo(parseInt(d.dataset.idx))));
+
+      // recalculate on resize
+      window.addEventListener('resize', () => goTo(cur));
+
+      goTo(0);
+    })();
+    </script>
 
     <section id="cost" class="bg-slate-50 py-20 lg:py-28 relative">
       <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-sand-200 to-transparent"></div>
@@ -466,224 +562,220 @@ include 'includes/header.php';
           <p class="mt-4 text-lg text-muted">Hãy tùy chỉnh các lựa chọn dưới đây để xem chi tiết dự toán và chuẩn bị tài chính vững vàng cho lộ trình du học của bạn.</p>
         </div>
 
+        <style>
+          .wiz-panel { display: none; }
+          .wiz-panel.wiz-active { display: grid; animation: wizFade 0.22s ease; }
+          @keyframes wizFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        </style>
+
         <div id="calculator">
-          <div class="flex flex-col lg:flex-row gap-8">
-            <!-- Left Column: Steps -->
-            <div class="w-full lg:w-2/3 space-y-8">
-              
-              <!-- Step 1: Dịch vụ Bright -->
-              <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm reveal">
-                <h4 class="text-lg font-bold text-midnight mb-4 flex items-center gap-3">
-                  <span class="w-8 h-8 rounded-full bg-sage-100 text-sage-600 flex items-center justify-center text-sm">1</span> 
-                  Chọn gói Dịch vụ Bright Education
-                </h4>
-                <div class="grid sm:grid-cols-3 gap-4">
-                  <label class="relative cursor-pointer group">
-                    <input type="radio" name="calc_package" value="15000000" class="peer sr-only">
-                    <div class="p-4 rounded-xl border-2 border-slate-200 peer-checked:border-sage-500 peer-checked:bg-sage-50 transition-all hover:border-sage-300 h-full flex flex-col">
-                      <div class="font-bold text-midnight mb-1">Tiêu Chuẩn</div>
-                      <div class="text-sm text-sage-600 font-semibold mb-2">15.000.000đ</div>
-                      <div class="text-xs text-muted mt-auto">Xử lý hồ sơ cơ bản</div>
-                      <div class="absolute top-4 right-4 text-sage-500 opacity-0 peer-checked:opacity-100 transition-opacity"><i class="bi bi-check-circle-fill"></i></div>
-                    </div>
-                  </label>
-                  <label class="relative cursor-pointer group">
-                    <input type="radio" name="calc_package" value="20000000" class="peer sr-only" checked>
-                    <div class="p-4 rounded-xl border-2 border-slate-200 peer-checked:border-sage-500 peer-checked:bg-sage-50 transition-all hover:border-sage-300 h-full flex flex-col relative overflow-hidden">
-                      <div class="absolute top-0 right-0 bg-amber-400 text-white text-[9px] font-bold uppercase px-2 py-0.5 rounded-bl-lg">Khuyên dùng</div>
-                      <div class="font-bold text-midnight mb-1">An Tâm</div>
-                      <div class="text-sm text-sage-600 font-semibold mb-2">20.000.000đ</div>
-                      <div class="text-xs text-muted mt-auto">Đón sân bay, dẫn đi làm giấy tờ tại Nhật</div>
-                      <div class="absolute top-4 right-4 text-sage-500 opacity-0 peer-checked:opacity-100 transition-opacity"><i class="bi bi-check-circle-fill"></i></div>
-                    </div>
-                  </label>
-                  <label class="relative cursor-pointer group">
-                    <input type="radio" name="calc_package" value="30000000" class="peer sr-only">
-                    <div class="p-4 rounded-xl border-2 border-slate-200 peer-checked:border-sage-500 peer-checked:bg-sage-50 transition-all hover:border-sage-300 h-full flex flex-col">
-                      <div class="font-bold text-midnight mb-1">Trọn Vẹn (VIP)</div>
-                      <div class="text-sm text-sage-600 font-semibold mb-2">30.000.000đ</div>
-                      <div class="text-xs text-muted mt-auto">Cam kết giới thiệu việc làm, đồng hành 24 tháng</div>
-                      <div class="absolute top-4 right-4 text-sage-500 opacity-0 peer-checked:opacity-100 transition-opacity"><i class="bi bi-check-circle-fill"></i></div>
-                    </div>
-                  </label>
-                </div>
-              </div>
+          <div class="flex flex-col lg:flex-row gap-8 items-stretch">
 
-              <!-- Step 2: Khóa học tiếng Nhật tại VN -->
-              <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm reveal">
-                <h4 class="text-lg font-bold text-midnight mb-4 flex items-center gap-3">
-                  <span class="w-8 h-8 rounded-full bg-sage-100 text-sage-600 flex items-center justify-center text-sm">2</span> 
-                  Chương trình học Tiếng Nhật tại Việt Nam
-                </h4>
-                <div class="grid sm:grid-cols-3 gap-4">
-                  <label class="relative cursor-pointer group">
-                    <input type="radio" name="calc_course" value="0" class="peer sr-only">
-                    <div class="p-4 rounded-xl border-2 border-slate-200 peer-checked:border-sage-500 peer-checked:bg-sage-50 transition-all hover:border-sage-300 h-full flex flex-col">
-                      <div class="font-bold text-midnight mb-1">Tự học / Đã có N4</div>
-                      <div class="text-sm text-sage-600 font-semibold mb-2">0đ</div>
-                      <div class="text-xs text-muted mt-auto">Dành cho học sinh đã đủ trình độ</div>
-                      <div class="absolute top-4 right-4 text-sage-500 opacity-0 peer-checked:opacity-100 transition-opacity"><i class="bi bi-check-circle-fill"></i></div>
-                    </div>
-                  </label>
-                  <label class="relative cursor-pointer group">
-                    <input type="radio" name="calc_course" value="10000000" class="peer sr-only" checked>
-                    <div class="p-4 rounded-xl border-2 border-slate-200 peer-checked:border-sage-500 peer-checked:bg-sage-50 transition-all hover:border-sage-300 h-full flex flex-col">
-                      <div class="font-bold text-midnight mb-1">Cơ bản 3 tháng</div>
-                      <div class="text-sm text-sage-600 font-semibold mb-2">10.000.000đ</div>
-                      <div class="text-xs text-muted mt-auto">Chương trình chuẩn N5</div>
-                      <div class="absolute top-4 right-4 text-sage-500 opacity-0 peer-checked:opacity-100 transition-opacity"><i class="bi bi-check-circle-fill"></i></div>
-                    </div>
-                  </label>
-                  <label class="relative cursor-pointer group">
-                    <input type="radio" name="calc_course" value="15000000" class="peer sr-only">
-                    <div class="p-4 rounded-xl border-2 border-slate-200 peer-checked:border-sage-500 peer-checked:bg-sage-50 transition-all hover:border-sage-300 h-full flex flex-col">
-                      <div class="font-bold text-midnight mb-1">Chuyên sâu 6 tháng</div>
-                      <div class="text-sm text-sage-600 font-semibold mb-2">15.000.000đ</div>
-                      <div class="text-xs text-muted mt-auto">Luyện thi JLPT N4</div>
-                      <div class="absolute top-4 right-4 text-sage-500 opacity-0 peer-checked:opacity-100 transition-opacity"><i class="bi bi-check-circle-fill"></i></div>
-                    </div>
-                  </label>
-                </div>
-              </div>
+            <!-- Left: Step Wizard -->
+            <div class="w-full lg:w-2/3 flex">
+              <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm flex flex-col w-full reveal">
 
-              <!-- Step 3: Trường Nhật Ngữ -->
-              <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm reveal">
-                <h4 class="text-lg font-bold text-midnight mb-4 flex items-center gap-3">
-                  <span class="w-8 h-8 rounded-full bg-sage-100 text-sage-600 flex items-center justify-center text-sm">3</span> 
-                  Lựa chọn Trường Nhật Ngữ (Năm đầu tiên)
+                <!-- Progress -->
+                <div class="flex items-center justify-between mb-5">
+                  <span class="text-xs font-bold text-muted uppercase tracking-widest">Bước <span id="wiz-num-label">1</span> / 5</span>
+                  <div class="flex gap-1.5" id="wiz-pips">
+                    <div class="h-1.5 rounded-full transition-all duration-300 bg-primary" style="width:2rem" data-pip="0"></div>
+                    <div class="h-1.5 rounded-full transition-all duration-300 bg-slate-200" style="width:1rem" data-pip="1"></div>
+                    <div class="h-1.5 rounded-full transition-all duration-300 bg-slate-200" style="width:1rem" data-pip="2"></div>
+                    <div class="h-1.5 rounded-full transition-all duration-300 bg-slate-200" style="width:1rem" data-pip="3"></div>
+                    <div class="h-1.5 rounded-full transition-all duration-300 bg-slate-200" style="width:1rem" data-pip="4"></div>
+                  </div>
+                </div>
+
+                <!-- Step heading -->
+                <h4 class="text-lg font-bold text-midnight flex items-center gap-3 mb-1">
+                  <span class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center text-sm font-bold shrink-0" id="wiz-badge">1</span>
+                  <span id="wiz-title-text">Chọn gói Dịch vụ Bright Education</span>
                 </h4>
-                <div class="grid sm:grid-cols-2 gap-4">
-                  <label class="relative cursor-pointer group">
-                    <input type="radio" name="calc_school" value="110000000" class="peer sr-only">
-                    <div class="p-4 rounded-xl border-2 border-slate-200 peer-checked:border-sage-500 peer-checked:bg-sage-50 transition-all hover:border-sage-300 h-full flex flex-col justify-between">
-                      <div>
-                        <div class="font-bold text-midnight">Trường ở tỉnh xa</div>
-                        <div class="text-xs text-muted mt-1">Hokkaido, Ibaraki, Oita... Học phí và sinh hoạt phí đều rất rẻ.</div>
+                <p class="text-sm text-muted mb-5 pl-11" style="min-height:18px" id="wiz-subtitle"></p>
+
+                <!-- Panels -->
+                <div class="flex-1" id="wiz-panels">
+
+                  <!-- Panel 0: Gói dịch vụ -->
+                  <div class="wiz-panel wiz-active gap-4 sm:grid-cols-3" data-panel="0">
+                    <label class="cursor-pointer">
+                      <input type="radio" name="calc_package" value="15000000" class="peer sr-only">
+                      <div class="p-4 rounded-xl border-2 border-slate-200 peer-checked:border-primary peer-checked:bg-primary/5 transition-all hover:border-primary/30 h-full flex flex-col">
+                        <div class="font-bold text-midnight mb-1">Tiêu Chuẩn</div>
+                        <div class="text-sm text-primary font-semibold mb-2">15.000.000đ</div>
+                        <div class="text-xs text-muted mt-auto">Xử lý hồ sơ cơ bản</div>
                       </div>
-                      <div class="text-sm text-sage-600 font-bold mt-3">~ 110 Triệu VNĐ</div>
-                    </div>
-                  </label>
-                  <label class="relative cursor-pointer group">
-                    <input type="radio" name="calc_school" value="125000000" class="peer sr-only">
-                    <div class="p-4 rounded-xl border-2 border-slate-200 peer-checked:border-sage-500 peer-checked:bg-sage-50 transition-all hover:border-sage-300 h-full flex flex-col justify-between">
-                      <div>
-                        <div class="font-bold text-midnight">Thành phố cỡ trung</div>
-                        <div class="text-xs text-muted mt-1">Fukuoka, Chiba, Saitama... Dễ tìm việc làm, chi phí vừa phải.</div>
+                    </label>
+                    <label class="cursor-pointer relative">
+                      <input type="radio" name="calc_package" value="20000000" class="peer sr-only" checked>
+                      <div class="p-4 rounded-xl border-2 border-slate-200 peer-checked:border-primary peer-checked:bg-primary/5 transition-all hover:border-primary/30 h-full flex flex-col relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-amber-400 text-white text-[9px] font-bold uppercase px-2 py-0.5 rounded-bl-lg">Khuyên dùng</div>
+                        <div class="font-bold text-midnight mb-1">An Tâm</div>
+                        <div class="text-sm text-primary font-semibold mb-2">20.000.000đ</div>
+                        <div class="text-xs text-muted mt-auto">Đón sân bay, dẫn đi làm giấy tờ tại Nhật</div>
                       </div>
-                      <div class="text-sm text-sage-600 font-bold mt-3">~ 125 Triệu VNĐ</div>
-                    </div>
-                  </label>
-                  <label class="relative cursor-pointer group">
-                    <input type="radio" name="calc_school" value="135000000" class="peer sr-only" checked>
-                    <div class="p-4 rounded-xl border-2 border-slate-200 peer-checked:border-sage-500 peer-checked:bg-sage-50 transition-all hover:border-sage-300 h-full flex flex-col justify-between relative overflow-hidden">
-                      <div class="absolute top-0 right-0 bg-amber-400 text-white text-[9px] font-bold uppercase px-2 py-0.5 rounded-bl-lg">Phổ biến</div>
-                      <div>
-                        <div class="font-bold text-midnight pr-12">Ngoại ô Tokyo / Osaka</div>
-                        <div class="text-xs text-muted mt-1">Cách trung tâm 30-40p tàu. Cân bằng tốt giữa chi phí và cơ hội.</div>
+                    </label>
+                    <label class="cursor-pointer">
+                      <input type="radio" name="calc_package" value="30000000" class="peer sr-only">
+                      <div class="p-4 rounded-xl border-2 border-slate-200 peer-checked:border-primary peer-checked:bg-primary/5 transition-all hover:border-primary/30 h-full flex flex-col">
+                        <div class="font-bold text-midnight mb-1">Trọn Vẹn (VIP)</div>
+                        <div class="text-sm text-primary font-semibold mb-2">30.000.000đ</div>
+                        <div class="text-xs text-muted mt-auto">Cam kết giới thiệu việc làm, đồng hành 24 tháng</div>
                       </div>
-                      <div class="text-sm text-sage-600 font-bold mt-3">~ 135 Triệu VNĐ</div>
-                    </div>
-                  </label>
-                  <label class="relative cursor-pointer group">
-                    <input type="radio" name="calc_school" value="145000000" class="peer sr-only">
-                    <div class="p-4 rounded-xl border-2 border-slate-200 peer-checked:border-sage-500 peer-checked:bg-sage-50 transition-all hover:border-sage-300 h-full flex flex-col justify-between">
-                      <div>
-                        <div class="font-bold text-midnight">Trung tâm Tokyo / Osaka</div>
-                        <div class="text-xs text-muted mt-1">Sầm uất, nhiều cơ hội việc làm lương cao nhưng học phí đắt.</div>
+                    </label>
+                  </div>
+
+                  <!-- Panel 1: Khóa học tiếng Nhật -->
+                  <div class="wiz-panel gap-4 sm:grid-cols-3" data-panel="1">
+                    <label class="cursor-pointer">
+                      <input type="radio" name="calc_course" value="0" class="peer sr-only">
+                      <div class="p-4 rounded-xl border-2 border-slate-200 peer-checked:border-primary peer-checked:bg-primary/5 transition-all hover:border-primary/30 h-full flex flex-col">
+                        <div class="font-bold text-midnight mb-1">Tự học / Đã có N4</div>
+                        <div class="text-sm text-primary font-semibold mb-2">0đ</div>
+                        <div class="text-xs text-muted mt-auto">Dành cho học sinh đã đủ trình độ</div>
                       </div>
-                      <div class="text-sm text-sage-600 font-bold mt-3">~ 145 Triệu VNĐ</div>
-                    </div>
-                  </label>
+                    </label>
+                    <label class="cursor-pointer">
+                      <input type="radio" name="calc_course" value="10000000" class="peer sr-only" checked>
+                      <div class="p-4 rounded-xl border-2 border-slate-200 peer-checked:border-primary peer-checked:bg-primary/5 transition-all hover:border-primary/30 h-full flex flex-col">
+                        <div class="font-bold text-midnight mb-1">Cơ bản 3 tháng</div>
+                        <div class="text-sm text-primary font-semibold mb-2">10.000.000đ</div>
+                        <div class="text-xs text-muted mt-auto">Chương trình chuẩn N5</div>
+                      </div>
+                    </label>
+                    <label class="cursor-pointer">
+                      <input type="radio" name="calc_course" value="15000000" class="peer sr-only">
+                      <div class="p-4 rounded-xl border-2 border-slate-200 peer-checked:border-primary peer-checked:bg-primary/5 transition-all hover:border-primary/30 h-full flex flex-col">
+                        <div class="font-bold text-midnight mb-1">Chuyên sâu 6 tháng</div>
+                        <div class="text-sm text-primary font-semibold mb-2">15.000.000đ</div>
+                        <div class="text-xs text-muted mt-auto">Luyện thi JLPT N4</div>
+                      </div>
+                    </label>
+                  </div>
+
+                  <!-- Panel 2: Trường Nhật Ngữ -->
+                  <div class="wiz-panel gap-4 sm:grid-cols-2" data-panel="2">
+                    <label class="cursor-pointer">
+                      <input type="radio" name="calc_school" value="110000000" class="peer sr-only">
+                      <div class="p-4 rounded-xl border-2 border-slate-200 peer-checked:border-primary peer-checked:bg-primary/5 transition-all hover:border-primary/30 h-full flex flex-col justify-between">
+                        <div>
+                          <div class="font-bold text-midnight">Trường ở tỉnh xa</div>
+                          <div class="text-xs text-muted mt-1">Hokkaido, Ibaraki, Oita... Học phí và sinh hoạt phí đều rất rẻ.</div>
+                        </div>
+                        <div class="text-sm text-primary font-bold mt-3">~ 110 Triệu VNĐ</div>
+                      </div>
+                    </label>
+                    <label class="cursor-pointer">
+                      <input type="radio" name="calc_school" value="125000000" class="peer sr-only">
+                      <div class="p-4 rounded-xl border-2 border-slate-200 peer-checked:border-primary peer-checked:bg-primary/5 transition-all hover:border-primary/30 h-full flex flex-col justify-between">
+                        <div>
+                          <div class="font-bold text-midnight">Thành phố cỡ trung</div>
+                          <div class="text-xs text-muted mt-1">Fukuoka, Chiba, Saitama... Dễ tìm việc làm, chi phí vừa phải.</div>
+                        </div>
+                        <div class="text-sm text-primary font-bold mt-3">~ 125 Triệu VNĐ</div>
+                      </div>
+                    </label>
+                    <label class="cursor-pointer relative">
+                      <input type="radio" name="calc_school" value="135000000" class="peer sr-only" checked>
+                      <div class="p-4 rounded-xl border-2 border-slate-200 peer-checked:border-primary peer-checked:bg-primary/5 transition-all hover:border-primary/30 h-full flex flex-col justify-between relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-amber-400 text-white text-[9px] font-bold uppercase px-2 py-0.5 rounded-bl-lg">Phổ biến</div>
+                        <div>
+                          <div class="font-bold text-midnight pr-12">Ngoại ô Tokyo / Osaka</div>
+                          <div class="text-xs text-muted mt-1">Cách trung tâm 30-40p tàu. Cân bằng tốt giữa chi phí và cơ hội.</div>
+                        </div>
+                        <div class="text-sm text-primary font-bold mt-3">~ 135 Triệu VNĐ</div>
+                      </div>
+                    </label>
+                    <label class="cursor-pointer">
+                      <input type="radio" name="calc_school" value="145000000" class="peer sr-only">
+                      <div class="p-4 rounded-xl border-2 border-slate-200 peer-checked:border-primary peer-checked:bg-primary/5 transition-all hover:border-primary/30 h-full flex flex-col justify-between">
+                        <div>
+                          <div class="font-bold text-midnight">Trung tâm Tokyo / Osaka</div>
+                          <div class="text-xs text-muted mt-1">Sầm uất, nhiều cơ hội việc làm lương cao nhưng học phí đắt.</div>
+                        </div>
+                        <div class="text-sm text-primary font-bold mt-3">~ 145 Triệu VNĐ</div>
+                      </div>
+                    </label>
+                  </div>
+
+                  <!-- Panel 3: Sinh hoạt ban đầu -->
+                  <div class="wiz-panel gap-4 sm:grid-cols-3" data-panel="3">
+                    <label class="cursor-pointer">
+                      <input type="radio" name="calc_living" value="30000000" class="peer sr-only">
+                      <div class="p-4 rounded-xl border-2 border-slate-200 peer-checked:border-primary peer-checked:bg-primary/5 transition-all hover:border-primary/30 h-full flex flex-col">
+                        <div class="font-bold text-midnight mb-1">Tiết Kiệm</div>
+                        <div class="text-sm text-primary font-semibold mb-2">~ 30.000.000đ</div>
+                        <div class="text-xs text-muted mt-auto">KTX chung 4 người + 10 Man tiền mặt phòng thân</div>
+                      </div>
+                    </label>
+                    <label class="cursor-pointer">
+                      <input type="radio" name="calc_living" value="45000000" class="peer sr-only" checked>
+                      <div class="p-4 rounded-xl border-2 border-slate-200 peer-checked:border-primary peer-checked:bg-primary/5 transition-all hover:border-primary/30 h-full flex flex-col">
+                        <div class="font-bold text-midnight mb-1">Cơ Bản</div>
+                        <div class="text-sm text-primary font-semibold mb-2">~ 45.000.000đ</div>
+                        <div class="text-xs text-muted mt-auto">KTX tiêu chuẩn 2 người + 12 Man tiền mặt phòng thân</div>
+                      </div>
+                    </label>
+                    <label class="cursor-pointer">
+                      <input type="radio" name="calc_living" value="60000000" class="peer sr-only">
+                      <div class="p-4 rounded-xl border-2 border-slate-200 peer-checked:border-primary peer-checked:bg-primary/5 transition-all hover:border-primary/30 h-full flex flex-col">
+                        <div class="font-bold text-midnight mb-1">Thoải Mái</div>
+                        <div class="text-sm text-primary font-semibold mb-2">~ 60.000.000đ</div>
+                        <div class="text-xs text-muted mt-auto">Thuê phòng riêng + 15 Man tiền mặt phòng thân</div>
+                      </div>
+                    </label>
+                  </div>
+
+                  <!-- Panel 4: Thủ tục khác -->
+                  <div class="wiz-panel gap-4 sm:grid-cols-3" data-panel="4">
+                    <label class="cursor-pointer">
+                      <input type="radio" name="calc_other" value="8650000" class="peer sr-only">
+                      <div class="p-4 rounded-xl border-2 border-slate-200 peer-checked:border-primary peer-checked:bg-primary/5 transition-all hover:border-primary/30 h-full flex flex-col">
+                        <div class="font-bold text-midnight mb-1">Thấp Nhất</div>
+                        <div class="text-sm text-primary font-semibold mb-2">8.650.000đ</div>
+                        <div class="text-xs text-muted mt-auto">Tổng các mức thấp nhất (Săn vé giá rẻ)</div>
+                      </div>
+                    </label>
+                    <label class="cursor-pointer">
+                      <input type="radio" name="calc_other" value="13000000" class="peer sr-only" checked>
+                      <div class="p-4 rounded-xl border-2 border-slate-200 peer-checked:border-primary peer-checked:bg-primary/5 transition-all hover:border-primary/30 h-full flex flex-col">
+                        <div class="font-bold text-midnight mb-1">Trung Bình</div>
+                        <div class="text-sm text-primary font-semibold mb-2">13.000.000đ</div>
+                        <div class="text-xs text-muted mt-auto">Chi tiêu hợp lý, vé máy bay phổ thông</div>
+                      </div>
+                    </label>
+                    <label class="cursor-pointer">
+                      <input type="radio" name="calc_other" value="17000000" class="peer sr-only">
+                      <div class="p-4 rounded-xl border-2 border-slate-200 peer-checked:border-primary peer-checked:bg-primary/5 transition-all hover:border-primary/30 h-full flex flex-col">
+                        <div class="font-bold text-midnight mb-1">Dự Tính An Toàn</div>
+                        <div class="text-sm text-primary font-semibold mb-2">17.000.000đ</div>
+                        <div class="text-xs text-muted mt-auto">Tổng mức cao nhất, bay thẳng giờ đẹp</div>
+                      </div>
+                    </label>
+                  </div>
+
+                </div><!-- /wiz-panels -->
+
+                <!-- Footer nav -->
+                <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between" style="min-height:36px">
+                  <button id="wiz-back" class="text-sm text-muted hover:text-primary transition-colors flex items-center gap-1.5" style="visibility:hidden">
+                    <i class="bi bi-arrow-left text-xs"></i> Quay lại
+                  </button>
+                  <span class="text-sm text-slate-400 italic" id="wiz-hint">Chọn một mục để tiếp tục →</span>
                 </div>
+
               </div>
+            </div><!-- /left -->
 
-              <!-- Step 4: KTX & Tiền mặt -->
-              <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm reveal">
-                <h4 class="text-lg font-bold text-midnight mb-4 flex items-center gap-3">
-                  <span class="w-8 h-8 rounded-full bg-sage-100 text-sage-600 flex items-center justify-center text-sm">4</span> 
-                  Chi phí sinh hoạt ban đầu tại Nhật
-                </h4>
-                <div class="grid sm:grid-cols-3 gap-4">
-                  <label class="relative cursor-pointer group">
-                    <input type="radio" name="calc_living" value="30000000" class="peer sr-only">
-                    <div class="p-4 rounded-xl border-2 border-slate-200 peer-checked:border-sage-500 peer-checked:bg-sage-50 transition-all hover:border-sage-300 h-full flex flex-col">
-                      <div class="font-bold text-midnight mb-1">Tiết Kiệm</div>
-                      <div class="text-sm text-sage-600 font-semibold mb-2">~ 30.000.000đ</div>
-                      <div class="text-xs text-muted mt-auto">KTX chung 4 người + 10 Man tiền mặt phòng thân</div>
-                      <div class="absolute top-4 right-4 text-sage-500 opacity-0 peer-checked:opacity-100 transition-opacity"><i class="bi bi-check-circle-fill"></i></div>
-                    </div>
-                  </label>
-                  <label class="relative cursor-pointer group">
-                    <input type="radio" name="calc_living" value="45000000" class="peer sr-only" checked>
-                    <div class="p-4 rounded-xl border-2 border-slate-200 peer-checked:border-sage-500 peer-checked:bg-sage-50 transition-all hover:border-sage-300 h-full flex flex-col">
-                      <div class="font-bold text-midnight mb-1">Cơ Bản</div>
-                      <div class="text-sm text-sage-600 font-semibold mb-2">~ 45.000.000đ</div>
-                      <div class="text-xs text-muted mt-auto">KTX tiêu chuẩn 2 người + 12 Man tiền mặt phòng thân</div>
-                      <div class="absolute top-4 right-4 text-sage-500 opacity-0 peer-checked:opacity-100 transition-opacity"><i class="bi bi-check-circle-fill"></i></div>
-                    </div>
-                  </label>
-                  <label class="relative cursor-pointer group">
-                    <input type="radio" name="calc_living" value="60000000" class="peer sr-only">
-                    <div class="p-4 rounded-xl border-2 border-slate-200 peer-checked:border-sage-500 peer-checked:bg-sage-50 transition-all hover:border-sage-300 h-full flex flex-col">
-                      <div class="font-bold text-midnight mb-1">Thoải Mái</div>
-                      <div class="text-sm text-sage-600 font-semibold mb-2">~ 60.000.000đ</div>
-                      <div class="text-xs text-muted mt-auto">Thuê phòng riêng + 15 Man tiền mặt phòng thân</div>
-                      <div class="absolute top-4 right-4 text-sage-500 opacity-0 peer-checked:opacity-100 transition-opacity"><i class="bi bi-check-circle-fill"></i></div>
-                    </div>
-                  </label>
-                </div>
-              </div>
-
-              <!-- Step 5: Thủ tục khác -->
-              <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm reveal">
-                <h4 class="text-lg font-bold text-midnight mb-4 flex items-center gap-3">
-                  <span class="w-8 h-8 rounded-full bg-sage-100 text-sage-600 flex items-center justify-center text-sm">5</span> 
-                  Chi phí thủ tục khác tại VN
-                </h4>
-                <p class="text-sm text-muted mb-4">Gồm: Khám lao phổi, Thi JLPT, Hộ chiếu, Vé máy bay</p>
-                <div class="grid sm:grid-cols-3 gap-4">
-                  <label class="relative cursor-pointer group">
-                    <input type="radio" name="calc_other" value="8650000" class="peer sr-only">
-                    <div class="p-4 rounded-xl border-2 border-slate-200 peer-checked:border-sage-500 peer-checked:bg-sage-50 transition-all hover:border-sage-300 h-full flex flex-col">
-                      <div class="font-bold text-midnight mb-1">Thấp Nhất</div>
-                      <div class="text-sm text-sage-600 font-semibold mb-2">8.650.000đ</div>
-                      <div class="text-xs text-muted mt-auto">Tổng các mức thấp nhất (Săn vé giá rẻ)</div>
-                      <div class="absolute top-4 right-4 text-sage-500 opacity-0 peer-checked:opacity-100 transition-opacity"><i class="bi bi-check-circle-fill"></i></div>
-                    </div>
-                  </label>
-                  <label class="relative cursor-pointer group">
-                    <input type="radio" name="calc_other" value="13000000" class="peer sr-only" checked>
-                    <div class="p-4 rounded-xl border-2 border-slate-200 peer-checked:border-sage-500 peer-checked:bg-sage-50 transition-all hover:border-sage-300 h-full flex flex-col">
-                      <div class="font-bold text-midnight mb-1">Trung Bình</div>
-                      <div class="text-sm text-sage-600 font-semibold mb-2">13.000.000đ</div>
-                      <div class="text-xs text-muted mt-auto">Chi tiêu hợp lý, vé máy bay phổ thông</div>
-                      <div class="absolute top-4 right-4 text-sage-500 opacity-0 peer-checked:opacity-100 transition-opacity"><i class="bi bi-check-circle-fill"></i></div>
-                    </div>
-                  </label>
-                  <label class="relative cursor-pointer group">
-                    <input type="radio" name="calc_other" value="17000000" class="peer sr-only">
-                    <div class="p-4 rounded-xl border-2 border-slate-200 peer-checked:border-sage-500 peer-checked:bg-sage-50 transition-all hover:border-sage-300 h-full flex flex-col">
-                      <div class="font-bold text-midnight mb-1">Dự Tính An Toàn</div>
-                      <div class="text-sm text-sage-600 font-semibold mb-2">17.000.000đ</div>
-                      <div class="text-xs text-muted mt-auto">Tổng mức cao nhất, bay thẳng giờ đẹp</div>
-                      <div class="absolute top-4 right-4 text-sage-500 opacity-0 peer-checked:opacity-100 transition-opacity"><i class="bi bi-check-circle-fill"></i></div>
-                    </div>
-                  </label>
-                </div>
-              </div>
-
-            </div>
-
-            <!-- Right Column: Sticky Receipt -->
+            <!-- Right: Sticky Receipt -->
             <div class="w-full lg:w-1/3 reveal reveal-delay-200">
               <div class="sticky top-24 bg-midnight text-white rounded-3xl p-8 shadow-xl border-t-4 border-sage-500 relative overflow-hidden">
                 <div class="absolute -right-16 -top-16 w-32 h-32 bg-white/5 rounded-full blur-2xl"></div>
                 <div class="absolute -left-16 -bottom-16 w-40 h-40 bg-sage-500/10 rounded-full blur-2xl"></div>
-                
                 <h4 class="text-xl font-bold font-display mb-6 border-b border-white/10 pb-4 flex items-center gap-2 relative z-10">
                   <i class="bi bi-receipt text-sage-400"></i> Phiếu Dự Toán
                 </h4>
-                
                 <div class="space-y-4 mb-8 text-[15px] relative z-10">
                   <div class="flex justify-between items-start gap-4">
                     <span class="text-white/70">1. Dịch vụ Bright:</span>
@@ -706,7 +798,6 @@ include 'includes/header.php';
                     <span class="font-semibold text-right" id="summary_other">13.000.000đ</span>
                   </div>
                 </div>
-
                 <div class="border-t border-white/10 pt-6 mt-6 relative z-10">
                   <div class="text-sm text-sage-300 font-bold tracking-widest uppercase mb-1">Tổng Cần Chuẩn Bị</div>
                   <div class="text-4xl font-black text-white font-display tracking-tight break-words">
@@ -714,74 +805,88 @@ include 'includes/header.php';
                   </div>
                   <p class="text-xs text-white/50 mt-3 italic">*Bảng dự toán mang tính tham khảo. Chi phí thực tế phụ thuộc tỷ giá Yên và nhu cầu tiêu dùng.</p>
                 </div>
-
                 <a href="/contact" class="w-full mt-8 block text-center bg-sage-500 hover:bg-sage-400 text-white rounded-xl py-4 font-bold transition-colors shadow-lg relative z-10">
                   Đăng ký tư vấn lộ trình này <i class="bi bi-arrow-right ml-1"></i>
                 </a>
               </div>
             </div>
+
           </div>
         </div>
 
         <script>
           document.addEventListener('DOMContentLoaded', function() {
-            const formatCurrency = (value) => {
-              return new Intl.NumberFormat('vi-VN').format(value) + 'đ';
-            };
 
-            const formatCurrencyNoSuffix = (value) => {
-              return new Intl.NumberFormat('vi-VN').format(value);
-            };
+            const STEPS = [
+              { title: 'Chọn gói Dịch vụ Bright Education',          sub: '',                                                              name: 'calc_package' },
+              { title: 'Chương trình học Tiếng Nhật tại Việt Nam',    sub: '',                                                              name: 'calc_course'  },
+              { title: 'Lựa chọn Trường Nhật Ngữ (Năm đầu tiên)',    sub: '',                                                              name: 'calc_school'  },
+              { title: 'Chi phí sinh hoạt ban đầu tại Nhật',          sub: '',                                                              name: 'calc_living'  },
+              { title: 'Chi phí thủ tục khác tại VN',                 sub: 'Gồm: Khám lao phổi, Thi JLPT, Hộ chiếu, Vé máy bay',         name: 'calc_other'   },
+            ];
 
-            const updateSummary = () => {
-              let total = 0;
-              
-              const packageVal = parseInt(document.querySelector('input[name="calc_package"]:checked').value);
-              const courseVal = parseInt(document.querySelector('input[name="calc_course"]:checked').value);
-              const schoolVal = parseInt(document.querySelector('input[name="calc_school"]:checked').value);
-              const livingVal = parseInt(document.querySelector('input[name="calc_living"]:checked').value);
-              const otherVal = parseInt(document.querySelector('input[name="calc_other"]:checked').value);
+            let currentStep = 0;
 
-              document.getElementById('summary_package').textContent = formatCurrency(packageVal);
-              document.getElementById('summary_course').textContent = formatCurrency(courseVal);
-              document.getElementById('summary_school').textContent = formatCurrency(schoolVal);
-              document.getElementById('summary_living').textContent = formatCurrency(livingVal);
-              document.getElementById('summary_other').textContent = formatCurrency(otherVal);
+            const fmt   = v => new Intl.NumberFormat('vi-VN').format(v) + 'đ';
+            const fmtNS = v => new Intl.NumberFormat('vi-VN').format(v);
 
-              total = packageVal + courseVal + schoolVal + livingVal + otherVal;
-              
-              const totalEl = document.getElementById('summary_total');
-              const currentText = totalEl.textContent.replace(/\./g, '');
-              const currentTotal = parseInt(currentText) || 0;
-              
-              animateValue(totalEl, currentTotal, total, 400);
-            };
-
-            function animateValue(obj, start, end, duration) {
-              let startTimestamp = null;
-              const step = (timestamp) => {
-                if (!startTimestamp) startTimestamp = timestamp;
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                const easeProgress = 1 - Math.pow(1 - progress, 3); // easeOutCubic
-                obj.innerHTML = formatCurrencyNoSuffix(Math.floor(easeProgress * (end - start) + start));
-                if (progress < 1) {
-                  window.requestAnimationFrame(step);
-                } else {
-                  obj.innerHTML = formatCurrencyNoSuffix(end);
-                }
-              };
-              window.requestAnimationFrame(step);
+            function updateSummary() {
+              const get = name => { const el = document.querySelector(`input[name="${name}"]:checked`); return el ? parseInt(el.value) : 0; };
+              const vals = STEPS.map(s => get(s.name));
+              const ids  = ['summary_package','summary_course','summary_school','summary_living','summary_other'];
+              vals.forEach((v, i) => document.getElementById(ids[i]).textContent = fmt(v));
+              const total = vals.reduce((a, b) => a + b, 0);
+              const el    = document.getElementById('summary_total');
+              const cur   = parseInt(el.textContent.replace(/\./g, '')) || 0;
+              animateValue(el, cur, total, 400);
             }
 
-            const inputs = document.querySelectorAll('#calculator input[type="radio"]');
-            inputs.forEach(input => {
-              input.addEventListener('change', updateSummary);
+            function animateValue(obj, start, end, dur) {
+              let t0 = null;
+              const tick = ts => {
+                if (!t0) t0 = ts;
+                const p = Math.min((ts - t0) / dur, 1);
+                const e = 1 - Math.pow(1 - p, 3);
+                obj.innerHTML = fmtNS(Math.floor(e * (end - start) + start));
+                if (p < 1) requestAnimationFrame(tick); else obj.innerHTML = fmtNS(end);
+              };
+              requestAnimationFrame(tick);
+            }
+
+            function goToStep(idx) {
+              document.querySelectorAll('.wiz-panel').forEach(p => p.classList.remove('wiz-active'));
+              document.querySelector(`.wiz-panel[data-panel="${idx}"]`).classList.add('wiz-active');
+              currentStep = idx;
+
+              document.getElementById('wiz-num-label').textContent  = idx + 1;
+              document.getElementById('wiz-badge').textContent       = idx + 1;
+              document.getElementById('wiz-title-text').textContent  = STEPS[idx].title;
+              document.getElementById('wiz-subtitle').textContent    = STEPS[idx].sub;
+
+              document.querySelectorAll('[data-pip]').forEach(pip => {
+                const i = parseInt(pip.dataset.pip);
+                pip.style.backgroundColor = i <= idx ? 'var(--color-primary, #0d243e)' : '#e2e8f0';
+                pip.style.width = i === idx ? '2rem' : (i < idx ? '1.5rem' : '1rem');
+              });
+
+              document.getElementById('wiz-back').style.visibility  = idx === 0 ? 'hidden' : 'visible';
+              document.getElementById('wiz-hint').textContent        = idx < 4 ? 'Chọn một mục để tiếp tục →' : 'Đã hoàn thành tất cả các bước ✓';
+            }
+
+            document.querySelectorAll('#calculator input[type="radio"]').forEach(input => {
+              input.addEventListener('change', function() {
+                updateSummary();
+                const panelIdx = parseInt(this.closest('.wiz-panel').dataset.panel);
+                if (panelIdx < 4) setTimeout(() => goToStep(panelIdx + 1), 320);
+              });
             });
 
-            // Init
-            if(document.getElementById('calculator')) {
-                updateSummary();
-            }
+            document.getElementById('wiz-back').addEventListener('click', () => {
+              if (currentStep > 0) goToStep(currentStep - 1);
+            });
+
+            goToStep(0);
+            updateSummary();
           });
         </script>
       </div>
