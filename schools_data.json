@@ -1,0 +1,896 @@
+{
+    "regions": [
+        "CHIBA",
+        "FUKUOKA",
+        "GIFU",
+        "GUNMA",
+        "HIROSHIMA",
+        "HOKKAIDO",
+        "HYOGO",
+        "IBARAKI",
+        "KAGAWA",
+        "KANAGAWA",
+        "KOBE",
+        "KOFU",
+        "KUMAMOTO",
+        "KYOTO",
+        "MIE",
+        "NAGANO",
+        "NAGASAKI",
+        "NAGOYA",
+        "NARA",
+        "OITA",
+        "OKAYAMA",
+        "OKINAWA",
+        "OSAKA",
+        "SAGA",
+        "SAITAMA",
+        "SENDAI",
+        "SHIMANE",
+        "SHIZUOKA",
+        "TOCHIGI",
+        "TOKYO",
+        "TOYAMA",
+        "YOKOHAMA"
+    ],
+    "schools": [
+        {
+            "region": "TOKYO",
+            "name_en": "ARC Tokyo Japanese Language School",
+            "name_jp": "ARC東京日本語学校",
+            "tuition_info": "Khoá dự bị đại học: 840,000 Khoá tiếng Nhật thông thường: 820,000 (Học phí, xét tuyển, nhập học, bảo hiểm, trang thiết bị)"
+        },
+        {
+            "region": "TOKYO",
+            "name_en": "Unitas Japanese Langage School Tokyo School",
+            "name_jp": "ユニタス日本語学校東京校",
+            "tuition_info": "780.000 (Tuyển sinh, nhập học, học phí, bảo hiểm, phí khác)"
+        },
+        {
+            "region": "TOKYO",
+            "name_en": "Waseda Edu Language School",
+            "name_jp": "早稲田EDU日本語学校",
+            "tuition_info": "814.000 (Tuyển sinh, nhập học, học phí, cơ sở, chuyển khoản) Hỗ trợ cho các bạn học sinh trong mùa dịch,mỗi bạn 50,000 yên.Chính vì thế học phí của trường được giảm xuống còn 760,000 yên"
+        },
+        {
+            "region": "TOKYO",
+            "name_en": "Canaan International Education Academy",
+            "name_jp": "カナン国際教育学院",
+            "tuition_info": "760.000 (Tuyển sinh, nhập học, học phí, cơ sở vật chất, tài liệu, bảo hiểm)"
+        },
+        {
+            "region": "TOKYO",
+            "name_en": "Toshin Language School",
+            "name_jp": "東進ランゲージスクール",
+            "tuition_info": "760.000 (Tuyển sinh, nhập học, học phí)"
+        },
+        {
+            "region": "TOKYO",
+            "name_en": "Mitsumine Career Academy",
+            "name_jp": "ミツミネキャリアアカデミー 日本語コース",
+            "tuition_info": "730.000 (Xét tuyển, nhập học, học phí)"
+        },
+        {
+            "region": "TOKYO",
+            "name_en": "SENDAGAYA JAPANESE INSTITUTE",
+            "name_jp": "千駄ヶ谷日本語学校",
+            "tuition_info": "Khoá dự bị đại học: 816,000 Khoá tiếng Nhật thông thường: 776,000 (Học phí, bảo hiểm, nhập học, tuyển khảo, trang thiết bị)"
+        },
+        {
+            "region": "TOKYO",
+            "name_en": "TCJ (Tokyo Central Japanese Language School)",
+            "name_jp": "東京中央日本語学院",
+            "tuition_info": "813.000 (học phí, Phí tuyển khảo, phí nhập học, bảo hiểm, giáo trình)"
+        },
+        {
+            "region": "TOKYO",
+            "name_en": "AOYAMA INTERNATIONAL EDUCATION INSTITUTE",
+            "name_jp": "青山国際教育学院",
+            "tuition_info": "840.000"
+        },
+        {
+            "region": "TOKYO",
+            "name_en": "Kyoshin Language Academy (OLJ Campus)",
+            "name_jp": "京進ランゲージアカデミーOLJ校",
+            "tuition_info": "869.000 (Xét tuyển, nhập học, học phí, thiết bị, hoạt động, thuế)"
+        },
+        {
+            "region": "TOKYO",
+            "name_en": "Fuji International Language Institute",
+            "name_jp": "フジ国際語学院",
+            "tuition_info": "830.000 (Phí tuyển sinh, Phí nhập học, Phí giảng dạy, Phí trang thiết bị)"
+        },
+        {
+            "region": "TOKYO",
+            "name_en": "JCLI Japanese Language School",
+            "name_jp": "JCLI日本語学校",
+            "tuition_info": "816.100"
+        },
+        {
+            "region": "TOKYO",
+            "name_en": "Samu Language School",
+            "name_jp": "サム教育学院",
+            "tuition_info": "739.000"
+        },
+        {
+            "region": "TOKYO",
+            "name_en": "Dynamic Business College (DBC)",
+            "name_jp": "ダイナミックビジネスカレッジ",
+            "tuition_info": "869.000 (Xét tuyển, nhập học, học phí, thiết bị, hoạt động, thuế)"
+        },
+        {
+            "region": "TOKYO",
+            "name_en": "East West Japanese Language Institute",
+            "name_jp": "イーストウエスト日本語学校",
+            "tuition_info": "685.000"
+        },
+        {
+            "region": "TOKYO",
+            "name_en": "ADACHI学園グループ",
+            "name_jp": "",
+            "tuition_info": " "
+        },
+        {
+            "region": "TOKYO",
+            "name_en": "Akamonkai Japanese Language School",
+            "name_jp": "赤門会日本語学校",
+            "tuition_info": "Thường: 810,000 (Tuyển sinh, nhập học, học phí, thiết bị) Dự bị ĐH: 850,000 –  2 năm (Tuyển sinh, nhập học, học phí, thiết bị)"
+        },
+        {
+            "region": "TOKYO",
+            "name_en": "The Kohwa Institute of Japanese Language",
+            "name_jp": "興和日本語学院",
+            "tuition_info": "730.400"
+        },
+        {
+            "region": "TOKYO",
+            "name_en": "Shinwa Foreign Language Academy",
+            "name_jp": "進和外語アカデミー",
+            "tuition_info": "770.000"
+        },
+        {
+            "region": "TOKYO",
+            "name_en": "Tokyo Institute For Japanese Language",
+            "name_jp": "東京日本語研究所",
+            "tuition_info": "780.000"
+        },
+        {
+            "region": "TOKYO",
+            "name_en": "Sanko Japanese Language School Tokyo",
+            "name_jp": "SANKO日本語学校東京",
+            "tuition_info": "740.000 (Nhập học, học phí, csvc, giáo trình, phụ phí khắc)"
+        },
+        {
+            "region": "TOKYO",
+            "name_en": "Tokyo Johoku Japanese Language School",
+            "name_jp": "東京城北日本語学院",
+            "tuition_info": "805,000 (Tuyển sinh, nhập học, học phí, thiết bị, thuế)"
+        },
+        {
+            "region": "TOKYO",
+            "name_en": "Tokyo Waseda Foreign Language School",
+            "name_jp": "東京早稲田外国語学校",
+            "tuition_info": "826.000 (Tuyển sinh, nhập học, học phí, thiết bị)"
+        },
+        {
+            "region": "TOKYO",
+            "name_en": "Tokyo Hirata Japanese Language School",
+            "name_jp": "東京平田日本語学院",
+            "tuition_info": "779.000"
+        },
+        {
+            "region": "TOKYO",
+            "name_en": "Human Academy Japanese Language School Tokyo Campus",
+            "name_jp": "ヒューマンアカデミー日本語学校東京校分校",
+            "tuition_info": "825.000"
+        },
+        {
+            "region": "TOKYO",
+            "name_en": "Academy of Language Arts",
+            "name_jp": "アカデミー・オブ・ランゲージ・アーツ",
+            "tuition_info": "769.000"
+        },
+        {
+            "region": "TOKYO",
+            "name_en": "Edo Cultural Center Japanese Language School",
+            "name_jp": "江戸カルチャーセンター日本語学校",
+            "tuition_info": "770.000"
+        },
+        {
+            "region": "TOKYO",
+            "name_en": "Hotsuma International School Tokyo",
+            "name_jp": "ホツマインターナショナルスクール東京校",
+            "tuition_info": "800,000 (bao gồm phí tuyển sinh, nhập học, tài liệu)"
+        },
+        {
+            "region": "TOKYO",
+            "name_en": "ISB (International School of Business)",
+            "name_jp": "専門学校インターナショナル・スクール オブ ビジネス",
+            "tuition_info": "750.000 ( bao gồm các khoản tiền: hồ sơ 2man, nhập học 8man, tiền học 65man)"
+        },
+        {
+            "region": "TOKYO",
+            "name_en": "Kyoshin Language Academy (Shinjuku Campus)",
+            "name_jp": "京進ランゲージアカデミー新宿校",
+            "tuition_info": "869.000 (Xét tuyển, nhập học, học phí, thiết bị, hoạt động, thuế)"
+        },
+        {
+            "region": "TOKYO",
+            "name_en": "TOKYO SANRITSU ACADEMY",
+            "name_jp": "東京三立学院",
+            "tuition_info": "786.000"
+        },
+        {
+            "region": "TOKYO",
+            "name_en": "TCC Japanese Institute",
+            "name_jp": "TCC日本語学校",
+            "tuition_info": "686.000"
+        },
+        {
+            "region": "TOKYO",
+            "name_en": "TOKYO WORLD JAPANESE LANGUAGE SCHOOL",
+            "name_jp": "東京ワールド日本語学校",
+            "tuition_info": "776.000"
+        },
+        {
+            "region": "TOKYO",
+            "name_en": "An Language School",
+            "name_jp": "",
+            "tuition_info": "Phân viện Narimasu: Từ 756.100 – 763.600 (tùy kỳ) Phân viện Ikebukuro: Từ 822.100 – 829.600 (tùy kỳ) (Bao gồm Phí nhập học, xét tuyển, học phí, giáo trình, ngoại khóa, chi phí khác)"
+        },
+        {
+            "region": "CHIBA",
+            "name_en": "FUTABA College of Foreign Languages",
+            "name_jp": "双葉外語学校",
+            "tuition_info": "679.000 (Tuyển sinh, nhập học, học phí)"
+        },
+        {
+            "region": "CHIBA",
+            "name_en": "Ichikawa Japanese Language Institute",
+            "name_jp": "市川日本語学校",
+            "tuition_info": "720.000 (Tuyển sinh, nhập học, học phí, bảo hiểm, cơ sở vật chất)"
+        },
+        {
+            "region": "CHIBA",
+            "name_en": "Narita Japanese Language School",
+            "name_jp": "成田日本語学校",
+            "tuition_info": "794.000"
+        },
+        {
+            "region": "CHIBA",
+            "name_en": "Asahi International School",
+            "name_jp": "朝日国際学院",
+            "tuition_info": "717.400"
+        },
+        {
+            "region": "CHIBA",
+            "name_en": "3H Japanese Language School",
+            "name_jp": "3 H 日本語学校",
+            "tuition_info": "693.500"
+        },
+        {
+            "region": "CHIBA",
+            "name_en": "Tokyo One Japanese Language School Chiba",
+            "name_jp": "Tokyo One 日本語学校 千葉本校",
+            "tuition_info": "780.000"
+        },
+        {
+            "region": "CHIBA",
+            "name_en": "Tokyo Sakura Academy",
+            "name_jp": "東京さくら学院",
+            "tuition_info": "700.000"
+        },
+        {
+            "region": "SAITAMA",
+            "name_en": "Toua International Language School",
+            "name_jp": "東亜国際外語学院",
+            "tuition_info": "770.000 (Bao gồm phí hồ sơ, nhập học, học phí, trang thiết bị, vật liệu giảng dạy, phí học ngoại khóa, kiểm tra sức khỏe và bảo hiểm)"
+        },
+        {
+            "region": "SAITAMA",
+            "name_en": "Saitama International School",
+            "name_jp": "埼玉国際学園",
+            "tuition_info": "784.000 (Phí xét tuyển, nhập học, học phí, bảo hiểm, cơ sở vật chất, giáo trình)"
+        },
+        {
+            "region": "SAITAMA",
+            "name_en": "Urawa International Education Center",
+            "name_jp": "浦和国際教育センター",
+            "tuition_info": "772.000 (Học phí, Bảo hiểm)"
+        },
+        {
+            "region": "SAITAMA",
+            "name_en": "Ageo International Education Center (AIEC)",
+            "name_jp": "上尾国際教育センター",
+            "tuition_info": "772.000"
+        },
+        {
+            "region": "SAITAMA",
+            "name_en": "Oji International Language Institute",
+            "name_jp": "王子国際語学院",
+            "tuition_info": "730.000 (Tuyển sinh, nhập học, học phí, csvc, giáo trình)"
+        },
+        {
+            "region": "SAITAMA",
+            "name_en": "Yono Gakuin Japanese Language School",
+            "name_jp": "与野学院 日本語学校",
+            "tuition_info": "757.000 (Tuyển sinh, nhập học, học phí, csvc, tài liệu, khám sk)"
+        },
+        {
+            "region": "SAITAMA",
+            "name_en": "Musashi Urawa Japanese Language Institute",
+            "name_jp": "武蔵浦和日本語学院",
+            "tuition_info": "Dự bị ĐH: 880.000 Học tiếng: 820.000 (Xét tuyển, nhập học, học phí, các kinh phí kiểm tra sức khỏe)"
+        },
+        {
+            "region": "YOKOHAMA",
+            "name_en": "Asuka Gakuin Language Institute",
+            "name_jp": "飛鳥学院",
+            "tuition_info": "712.640 (Đăng ký, tuyển sinh, học phí, tài liệu, bảo hiểm)"
+        },
+        {
+            "region": "YOKOHAMA",
+            "name_en": "YDC (Yokohama Design College)",
+            "name_jp": "横浜デザイン学院",
+            "tuition_info": "760.000"
+        },
+        {
+            "region": "YOKOHAMA",
+            "name_en": "Creative Japanese Language School",
+            "name_jp": "クリエイティブ日本語学校",
+            "tuition_info": "811,800 (Tuyển khảo, nhập học, học phí, giáo trình, thiết bị, bảo hiểm)"
+        },
+        {
+            "region": "YOKOHAMA",
+            "name_en": "横浜医療専門学校日本語学科",
+            "name_jp": "Yokohama College of Medical Technologies",
+            "tuition_info": "770.000"
+        },
+        {
+            "region": "YOKOHAMA",
+            "name_en": "REIWA INTERNATIONAL JAPANESE LANGUAGE SCHOOL",
+            "name_jp": "令和国際日本語学院",
+            "tuition_info": "730.000"
+        },
+        {
+            "region": "YOKOHAMA",
+            "name_en": "Yokohama YMCA College, Department of Japanese Language",
+            "name_jp": "横浜YMCA学院専門学校 日本語学科",
+            "tuition_info": "760.000"
+        },
+        {
+            "region": "OSAKA",
+            "name_en": "OBM (Osaka Bio-Medical College)",
+            "name_jp": "大阪バイオメディカル専門学校",
+            "tuition_info": "T4: 735,500 T10: 732,600 (Xét tuyển, nhập học, học phí, phí khác)"
+        },
+        {
+            "region": "OSAKA",
+            "name_en": "EHLE Institute Japanese Language School",
+            "name_jp": "エール学園日本語教育学科",
+            "tuition_info": "845.000 (Tuyển sinh, nhập học, học phí, phụ phí) Các khóa luyện thi đặc biệt HP 910.000 yên"
+        },
+        {
+            "region": "OSAKA",
+            "name_en": "OSAKA TOURISM&amp;BUSINESS JAPANESE LANGUAGE SCHOOL",
+            "name_jp": "大阪観光ビジネス日本語学院",
+            "tuition_info": "783.864 (Tuyển sinh, nhập học, học phí, bảo hiểm, tài liệu, thuế)"
+        },
+        {
+            "region": "OSAKA",
+            "name_en": "Osaka Japanese Language Academy",
+            "name_jp": "大阪日本語アカデミー",
+            "tuition_info": "760.000 (Xét tuyển, nhập học, học phí, tài liệu)"
+        },
+        {
+            "region": "OSAKA",
+            "name_en": "Kyoshin Language Academy Osaka School",
+            "name_jp": "京進ランゲージアカデミー大阪校",
+            "tuition_info": "869.000 (Xét tuyển, nhập học, học phí, thiết bị, hoạt động, thuế)"
+        },
+        {
+            "region": "OSAKA",
+            "name_en": "First Study Japanese Language School",
+            "name_jp": "ファーストスタディ日本語学校",
+            "tuition_info": "Kỳ 4\/2021: Chi phí ban đầu của trường First Study sẽ thay đổi tùy thuộc vào năng lực tiếng Nhật của học sinh tại thời điểm có kết quả lưu trú và đóng HP 6 tháng hay 1 năm, cụ thể như sau: Thanh toán 1 lần – N5\/N4: Học phí 1 năm 952.700 yên – N3: Học phí 1 năm 850.620 yên (Đã bao gồm: Học phí, giáo trình, bảo hiểm, khám sk, xét tuyển, nhập học)"
+        },
+        {
+            "region": "OSAKA",
+            "name_en": "OSAKA MINAMI JAPANESE LANGUAGE SCHOOL",
+            "name_jp": "大阪みなみ日本語学校",
+            "tuition_info": "760.000"
+        },
+        {
+            "region": "OSAKA",
+            "name_en": "Morinomiya (Language School of Morinomiyairyo Gakuen)",
+            "name_jp": "森ノ宮医療学園ランゲージスクール",
+            "tuition_info": "770.000"
+        },
+        {
+            "region": "OSAKA",
+            "name_en": "Hotsuma International School Osaka",
+            "name_jp": "ホツマインターナショナルスクール大阪校",
+            "tuition_info": "800,000 (bao gồm phí tuyển sinh, nhập học, tài liệu)"
+        },
+        {
+            "region": "OSAKA",
+            "name_en": "Heisei Iryo Medical College – Japanese Language Department",
+            "name_jp": "平成医療学園専門学校",
+            "tuition_info": "760.000 (Tuyển sinh, nhập học, học phí, bảo hiểm)"
+        },
+        {
+            "region": "OSAKA",
+            "name_en": "i-Seifu japanese language school",
+            "name_jp": "清風情報工科学院日本語科",
+            "tuition_info": "907.000 (Tuyển sinh, nhập học, học phí, bảo hiểm, phí khác)"
+        },
+        {
+            "region": "KOBE",
+            "name_en": "ILA (Interculture Language Academy)",
+            "name_jp": "国際語学学院",
+            "tuition_info": "792.000"
+        },
+        {
+            "region": "KOBE",
+            "name_en": "Kyoshin Language Academy Kobe School",
+            "name_jp": "京進ランゲージアカデミー神戸校",
+            "tuition_info": "792,000 (Xét tuyển, nhập học, học phí, thiết bị, hoạt động, thuế) – được giảm còn 627,000 (gồm thuế, nếu đóng 1 năm)"
+        },
+        {
+            "region": "HYOGO",
+            "name_en": "Japan Engineering College (JEC)",
+            "name_jp": "日本工科大学校",
+            "tuition_info": "824,000 (nhập học, học phí, thiết bị, bảo hiểm, chi phí khác)"
+        },
+        {
+            "region": "KOBE",
+            "name_en": "Kobe Denshi (Kobe Institute of Computing College of Computing",
+            "name_jp": "Japanese Language Department)",
+            "tuition_info": "750.000"
+        },
+        {
+            "region": "KOBE",
+            "name_en": "Hanshin Institute of Technology",
+            "name_jp": "阪神自動車航空鉄道専門学校",
+            "tuition_info": "822. 000, bao gôm phí TS, nhập học và các phí khác"
+        },
+        {
+            "region": "KOBE",
+            "name_en": "KIJ (Kobe International Japanese Language Academy)",
+            "name_jp": "KIJ語学院",
+            "tuition_info": "755.000 (Tuyến sinh, nhập học, học phí, tài liệu csvc, khám sk, ngoại khóa, bảo hiểm, phí khác)"
+        },
+        {
+            "region": "KOBE",
+            "name_en": "Kobe Toyo Japanese College",
+            "name_jp": "神戸東洋日本語学院",
+            "tuition_info": "765.000"
+        },
+        {
+            "region": "KOBE",
+            "name_en": "Kobe World Academy",
+            "name_jp": "神戸ワールド学院",
+            "tuition_info": "744.000"
+        },
+        {
+            "region": "HYOGO",
+            "name_en": "KILS (Kobe International Language School)",
+            "name_jp": "神戸国際語言学院",
+            "tuition_info": "736.000"
+        },
+        {
+            "region": "NAGOYA",
+            "name_en": "Nissei Japanese Language School",
+            "name_jp": "日生日本語学園 名古屋",
+            "tuition_info": "763.560"
+        },
+        {
+            "region": "NAGOYA",
+            "name_en": "Kyoshin Language Academy Nagoyakita School",
+            "name_jp": "京進ランゲージアカデミー名古屋北校",
+            "tuition_info": "869.000 (Xét tuyển, nhập học, học phí, thiết bị, hoạt động, thuế)"
+        },
+        {
+            "region": "NAGOYA",
+            "name_en": "Okazaki Japanese Language School",
+            "name_jp": "岡崎日本語学校",
+            "tuition_info": "745.000 (Học phí đã bao gồm phí KTX)"
+        },
+        {
+            "region": "NAGOYA",
+            "name_en": "Nagoya YMCA Japanese Language School",
+            "name_jp": "名古屋YMCA日本語学院",
+            "tuition_info": "746.000"
+        },
+        {
+            "region": "NAGOYA",
+            "name_en": "Nagoya Kế Toán (Nagoya Management and Accounting College Japanese Course)",
+            "name_jp": "名古屋経営会計専門学校日本語科",
+            "tuition_info": "790.000 (Tuyển sinh, nhập học, học phí, phí cơ sở vật chất)"
+        },
+        {
+            "region": "NAGOYA",
+            "name_en": "NSA Japanese School",
+            "name_jp": "NSA日本語学校",
+            "tuition_info": "825.000"
+        },
+        {
+            "region": "KYOTO",
+            "name_en": "ARC Academy Kyoto",
+            "name_jp": "ARC京都日本語学校",
+            "tuition_info": "820.000 (Học phí, xét tuyển, nhập học)"
+        },
+        {
+            "region": "KYOTO",
+            "name_en": "Kyoshin Language Academy Kyoto Chou School",
+            "name_jp": "京進ランゲージアカデミー京都中央校",
+            "tuition_info": "869.000 (Xét tuyển, nhập học, học phí, thiết bị, hoạt động, thuế)"
+        },
+        {
+            "region": "KYOTO",
+            "name_en": "JILA Kyoto (Japan International Language Academy)",
+            "name_jp": "日本国際語学アカデミー 京都校",
+            "tuition_info": "745.000"
+        },
+        {
+            "region": "KYOTO",
+            "name_en": "Nihongo Center",
+            "name_jp": "日本語センター",
+            "tuition_info": "792.000"
+        },
+        {
+            "region": "KYOTO",
+            "name_en": "Kyoto Minsai Japanese Language School",
+            "name_jp": "京都民際日本語学校",
+            "tuition_info": "860,100 (Phí tuyển sinh, nhập học, Học phí, trang thiết bị, bảo hiểm tế quốc dân, Chi phí tài liệu, Phí bảo hiểm du học sinh, Chi phí bài thi tiếng Nhật"
+        },
+        {
+            "region": "KYOTO",
+            "name_en": "Katugaku Shoin",
+            "name_jp": "活学書院",
+            "tuition_info": "722.000"
+        },
+        {
+            "region": "FUKUOKA",
+            "name_en": "Kyoshin Language Academy",
+            "name_jp": "京進ランゲージアカデミー福岡校",
+            "tuition_info": "792,000 (Xét tuyển, nhập học, học phí, thiết bị, hoạt động, thuế) – được giảm còn 627,000 (gồm thuế, nếu đóng 1 năm)"
+        },
+        {
+            "region": "FUKUOKA",
+            "name_en": "Japan International Language Academy (JILA)",
+            "name_jp": "日本国際語学アカデミー",
+            "tuition_info": "715.000"
+        },
+        {
+            "region": "FUKUOKA",
+            "name_en": "GAG Japanese Language Institute",
+            "name_jp": "GAG日本語学院",
+            "tuition_info": "760.000"
+        },
+        {
+            "region": "FUKUOKA",
+            "name_en": "Kyushu International Education College",
+            "name_jp": "九州国際教育学院",
+            "tuition_info": "Khoảng 735.300 (Tuyển sinh, nhập học, học phí, bảo hiểm, chuyển tiền, phí khác)"
+        },
+        {
+            "region": "FUKUOKA",
+            "name_en": "FJLS ( Fukuoka Japanese Language School)",
+            "name_jp": "福岡日本学校",
+            "tuition_info": "799.000 (Tuyển sinh, nhập học, học phí, thiết bị, ngoại khóa, khám sk, tài liệu, bảo hiểm, phí khác)"
+        },
+        {
+            "region": "FUKUOKA",
+            "name_en": "Fukuoka YMCA Japanese School",
+            "name_jp": "福岡YMCA日本語学校",
+            "tuition_info": "814.000 (Học phí tăng từ kỳ 10\/2021)"
+        },
+        {
+            "region": "FUKUOKA",
+            "name_en": "Kurume Institute of International Relations",
+            "name_jp": "くるめ国際交流学院",
+            "tuition_info": "794.000"
+        },
+        {
+            "region": "FUKUOKA",
+            "name_en": "Nishinihon International Education Institute",
+            "name_jp": "西日本国際教育学院",
+            "tuition_info": "726.000"
+        },
+        {
+            "region": "GIFU",
+            "name_en": "Hotsuma International School Gifu",
+            "name_jp": "ホツマインターナショナルスクール岐阜校",
+            "tuition_info": "800,000 (bao gồm phí tuyển sinh, nhập học, tài liệu)"
+        },
+        {
+            "region": "GIFU",
+            "name_en": "TOBUCO Vocational College",
+            "name_jp": "ToBuCo専門学校",
+            "tuition_info": "674.000"
+        },
+        {
+            "region": "GIFU",
+            "name_en": "Subaru Language School",
+            "name_jp": "スバル学院本巣校",
+            "tuition_info": "750.000"
+        },
+        {
+            "region": "GUNMA",
+            "name_en": "Fuji Language School",
+            "name_jp": "富士日本語学校",
+            "tuition_info": "815.300 (Tuyển sinh, nhập học, học phí, csvc)"
+        },
+        {
+            "region": "HIROSHIMA",
+            "name_en": "Hiroshima International Business College",
+            "name_jp": "専門学校広島国際ビジネスカレッジ",
+            "tuition_info": "941.500 Tổng học phí và các chi phí khác cho năm đầu bao gồm cả 6 tháng KTX"
+        },
+        {
+            "region": "HIROSHIMA",
+            "name_en": "IGL Medical and Welfare College",
+            "name_jp": "IGL医療福祉専門学校",
+            "tuition_info": "737.200"
+        },
+        {
+            "region": "HIROSHIMA",
+            "name_en": "Anabuki Medical and Welfare College Japanese School",
+            "name_jp": "穴吹医療福祉専門学校日本語学科",
+            "tuition_info": "710.000"
+        },
+        {
+            "region": "HIROSHIMA",
+            "name_en": "Fukuyama International Academy of Languages",
+            "name_jp": "福山国際外語学院",
+            "tuition_info": "721,000 (cả phí thi JLPT 2 đợt\/năm)"
+        },
+        {
+            "region": "HIROSHIMA",
+            "name_en": "Hiroshima YMCA College",
+            "name_jp": "広島YMCA専門学校",
+            "tuition_info": "762.500 (Tuyển sinh, nhập học, học phí, giáo trình, bảo hiểm)"
+        },
+        {
+            "region": "HOKKAIDO",
+            "name_en": "Japan International Language Academy (JILA)",
+            "name_jp": "日本国際語学アカデミー北海道校",
+            "tuition_info": "715.000"
+        },
+        {
+            "region": "HOKKAIDO",
+            "name_en": "Sapporo Language Center",
+            "name_jp": "札幌ランゲージセンター",
+            "tuition_info": "745.600 (Tuyển sinh, nhập học, học phí, tài liêu)"
+        },
+        {
+            "region": "HOKKAIDO",
+            "name_en": "Japanese Language Institute of Sapporo",
+            "name_jp": "札幌国際日本語学院",
+            "tuition_info": "788.700 (Tuyển sinh, nhập học, học phí, hoạt động, cơ sở)"
+        },
+        {
+            "region": "HOKKAIDO",
+            "name_en": "Hokkaido Japanese Language Academy Sapporo Main Campus",
+            "name_jp": "北海道日本語学院　札幌本校",
+            "tuition_info": "765.000"
+        },
+        {
+            "region": "IBARAKI",
+            "name_en": "Oarai International exchange academy",
+            "name_jp": "大洗国際交流アカデミ",
+            "tuition_info": "670.000"
+        },
+        {
+            "region": "IBARAKI",
+            "name_en": "Tsukuba Smile japanese Language School",
+            "name_jp": "日本語学校つくばスマイル",
+            "tuition_info": "620.000"
+        },
+        {
+            "region": "MIE",
+            "name_en": "YOKKAICHI JAPANESE LANGUAGE SCHOOL",
+            "name_jp": "四日市日本語学校",
+            "tuition_info": "760.000"
+        },
+        {
+            "region": "KAGAWA",
+            "name_en": "Anabuki Business College Japanese Course Takamatsu",
+            "name_jp": "専門学校穴吹ビジネスカレッジ",
+            "tuition_info": "710.000"
+        },
+        {
+            "region": "KANAGAWA",
+            "name_en": "Liberty Odawara Japanese Language School",
+            "name_jp": "Liberty 小田原日本語学校",
+            "tuition_info": "799.200"
+        },
+        {
+            "region": "KANAGAWA",
+            "name_en": "Sagami International Academy",
+            "name_jp": "相模国際学院",
+            "tuition_info": "777.600"
+        },
+        {
+            "region": "KANAGAWA",
+            "name_en": "Kawasaki YMCA Global Business College, Department of Japanese Language",
+            "name_jp": "YMCA国際ビジネス専門学校 日本語学科",
+            "tuition_info": "780.000"
+        },
+        {
+            "region": "KANAGAWA",
+            "name_en": "YMCA College of Human Servises, Department of Japanese Language",
+            "name_jp": "YMCA健康福祉専門学校 日本語学科",
+            "tuition_info": "760.000"
+        },
+        {
+            "region": "KOFU",
+            "name_en": "Unitas Japanese Language School Kofu School",
+            "name_jp": "ユニタス日本語学校甲府校",
+            "tuition_info": "680.000 (Tuyển sinh, nhập học, học phí, bảo hiểm, phí khác)"
+        },
+        {
+            "region": "KUMAMOTO",
+            "name_en": "Kumamoto Technical College Japanese Course",
+            "name_jp": "熊本工業専門学校 日本語科",
+            "tuition_info": "646.000"
+        },
+        {
+            "region": "NAGANO",
+            "name_en": "Nagano Heisei Gakuen Japanese Language School",
+            "name_jp": "長野平青学園日本語科",
+            "tuition_info": "700.000"
+        },
+        {
+            "region": "NAGANO",
+            "name_en": "NAGANO INTERNATIONAL CULTURE COLLEGE",
+            "name_jp": "長野国際文化学院",
+            "tuition_info": "698.000"
+        },
+        {
+            "region": "NARA",
+            "name_en": "AIM NARA INTERNATIONAL ACADEMY",
+            "name_jp": "エイム奈良国際アカデミー",
+            "tuition_info": "781.000"
+        },
+        {
+            "region": "NARA",
+            "name_en": "Nara General Business Technical College",
+            "name_jp": "奈良総合ビジネス専門学校",
+            "tuition_info": "770.000"
+        },
+        {
+            "region": "NARA",
+            "name_en": "Yamato One World Japanese School",
+            "name_jp": "大和ワンワールド日本語学校",
+            "tuition_info": "700.000"
+        },
+        {
+            "region": "NAGASAKI",
+            "name_en": "Professional Training College Metro IT Business College",
+            "name_jp": "専門学校メトロITビジネスカレッジ",
+            "tuition_info": "705.000"
+        },
+        {
+            "region": "NAGASAKI",
+            "name_en": "The Nagasaki Institute of Applied Science",
+            "name_jp": "長崎総合科学大学",
+            "tuition_info": "630.000"
+        },
+        {
+            "region": "OITA",
+            "name_en": "Asuka Japanese Language School",
+            "name_jp": "明日香日本語学校",
+            "tuition_info": "760.000"
+        },
+        {
+            "region": "OKAYAMA",
+            "name_en": "Okayama Business College",
+            "name_jp": "専門学校岡山ビジネスカレッジ日本語学科",
+            "tuition_info": "780.000 (Tuyển sinh 2man, nhập học 5man, học phí 68man, bảo hiểm 3 man"
+        },
+        {
+            "region": "OKAYAMA",
+            "name_en": "International Pacific University",
+            "name_jp": "環太平洋大学",
+            "tuition_info": "720.000 (Nhập học, học phí, phí khác)"
+        },
+        {
+            "region": "OKINAWA",
+            "name_en": "JSL Nippon Academy",
+            "name_jp": "JSL日本アカデミー",
+            "tuition_info": "830.000"
+        },
+        {
+            "region": "OKINAWA",
+            "name_en": "ICLC International center of Language &amp; Culture",
+            "name_jp": "国際言語文化センター附属日本語学校",
+            "tuition_info": "774.000"
+        },
+        {
+            "region": "OKINAWA",
+            "name_en": "Japanese Cultural Study Academy",
+            "name_jp": "沖縄JCS学院",
+            "tuition_info": "781.690"
+        },
+        {
+            "region": "SAGA",
+            "name_en": "Human Academy Japanese Language School Saga Campus",
+            "name_jp": "ヒューマンアカデミー日本語学校佐賀校",
+            "tuition_info": "825.000"
+        },
+        {
+            "region": "SAGA",
+            "name_en": "CODO International College",
+            "name_jp": "弘堂国際学園",
+            "tuition_info": " "
+        },
+        {
+            "region": "SENDAI",
+            "name_en": "Sendai International School of Japanese",
+            "name_jp": "仙台国際日本語学校",
+            "tuition_info": "700.000 (Tuyến sinh, nhập học, học phí, bảo hiểm, phí khác)"
+        },
+        {
+            "region": "SENDAI",
+            "name_en": "Tohoku Foreign Language &amp; Tourism College",
+            "name_jp": "東北外語観光専門学校",
+            "tuition_info": "716.000"
+        },
+        {
+            "region": "SHIMANE",
+            "name_en": "Matsue Sogo Business College",
+            "name_jp": "松江総合ビジネスカレッジ専門学校",
+            "tuition_info": "815.000"
+        },
+        {
+            "region": "SHIZUOKA",
+            "name_en": "Hamamatsu Japanese Language College",
+            "name_jp": "浜松日本語学院",
+            "tuition_info": "747.180"
+        },
+        {
+            "region": "TOCHIGI",
+            "name_en": "ATYS INTERNATIONAL ACADEMY",
+            "name_jp": "アティスインターナショナルアカデミー",
+            "tuition_info": "680.000 (Tuyển sinh, nhập học, thiết bị, học phí)"
+        },
+        {
+            "region": "TOCHIGI",
+            "name_en": "St Mary Japanese School",
+            "name_jp": "セントメリー日本語学院",
+            "tuition_info": "696.500"
+        },
+        {
+            "region": "TOCHIGI",
+            "name_en": "TBC Japanese Language School",
+            "name_jp": "ティビィシィ日本語学校",
+            "tuition_info": "695.000"
+        },
+        {
+            "region": "TOYAMA",
+            "name_en": "Toyama College of Business and Information",
+            "name_jp": "富山情報ビジネス専門学校",
+            "tuition_info": "710.000"
+        },
+        {
+            "region": "KOBE",
+            "name_en": "Kasuga",
+            "name_jp": "",
+            "tuition_info": "752000"
+        },
+        {
+            "region": "TOKYO",
+            "name_en": "HỌC VIỆN NGOẠI NGỮ QUỐC TẾ TOKYO",
+            "name_jp": "東京インターナショナル 外語学院",
+            "tuition_info": "775.000 (Tuyển sinh, nhập học, học phí, Phí xây dựng trường)"
+        },
+        {
+            "region": "NAGASAKI",
+            "name_en": "HEISEIKOKUSAI GAKUEN　Nagasaki Medical Child College",
+            "name_jp": "平成国際学園長崎医療こども専門学校",
+            "tuition_info": "735.000 (Tuyển sinh, nhập học, học phí, thiết bị,giáo vụ ngoại khóa)"
+        }
+    ]
+}

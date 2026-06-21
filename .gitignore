@@ -1,0 +1,16 @@
+# Database runtime file (contains user data)
+database/*.db
+database/*.db-shm
+database/*.db-wal
+
+# Uploaded files
+uploads/*
+!uploads/.gitkeep
+
+# Environment / local config overrides
+config/local.php
+.env
+
+# OS
+.DS_Store
+Thumbs.db
