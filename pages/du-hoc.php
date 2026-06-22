@@ -26,7 +26,7 @@ include 'includes/header.php';
 
         <!-- Card 1: Dịch vụ tư vấn -->
         <a href="/services" class="group flex flex-col bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden reveal">
-          <div class="relative bg-gradient-to-br from-primary to-[#1e3f62] p-8 min-h-[160px] flex items-end overflow-hidden">
+          <div class="relative bg-gradient-to-br from-sky-400 to-blue-500 p-8 min-h-[160px] flex items-end overflow-hidden">
             <div class="absolute -top-2 -right-2 text-[90px] leading-none text-white/8 pointer-events-none"><i class="bi bi-briefcase"></i></div>
             <div class="w-13 h-13 w-[52px] h-[52px] rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center">
               <i class="bi bi-briefcase text-2xl text-white"></i>
@@ -46,7 +46,7 @@ include 'includes/header.php';
 
         <!-- Card 2: Quy trình du học -->
         <a href="/process" class="group flex flex-col bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden reveal reveal-delay-100">
-          <div class="relative bg-gradient-to-br from-emerald-700 to-emerald-900 p-8 min-h-[160px] flex items-end overflow-hidden">
+          <div class="relative bg-gradient-to-br from-emerald-400 to-teal-500 p-8 min-h-[160px] flex items-end overflow-hidden">
             <div class="absolute -top-2 -right-2 text-[90px] leading-none text-white/8 pointer-events-none"><i class="bi bi-arrow-right-circle"></i></div>
             <div class="w-[52px] h-[52px] rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center">
               <i class="bi bi-arrow-right-circle text-2xl text-white"></i>
@@ -66,7 +66,7 @@ include 'includes/header.php';
 
         <!-- Card 3: Chuẩn bị hồ sơ -->
         <a href="/documents" class="group flex flex-col bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden reveal reveal-delay-200">
-          <div class="relative bg-gradient-to-br from-amber-500 to-orange-600 p-8 min-h-[160px] flex items-end overflow-hidden">
+          <div class="relative bg-gradient-to-br from-amber-400 to-orange-400 p-8 min-h-[160px] flex items-end overflow-hidden">
             <div class="absolute -top-2 -right-2 text-[90px] leading-none text-white/8 pointer-events-none"><i class="bi bi-file-earmark-text"></i></div>
             <div class="w-[52px] h-[52px] rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center">
               <i class="bi bi-file-earmark-text text-2xl text-white"></i>
@@ -86,7 +86,7 @@ include 'includes/header.php';
 
         <!-- Card 4: Khóa học tiếng Nhật -->
         <a href="/courses" class="group flex flex-col bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden reveal">
-          <div class="relative bg-gradient-to-br from-rose-500 to-pink-700 p-8 min-h-[160px] flex items-end overflow-hidden">
+          <div class="relative bg-gradient-to-br from-fuchsia-400 to-pink-500 p-8 min-h-[160px] flex items-end overflow-hidden">
             <div class="absolute -top-2 -right-2 text-[90px] leading-none text-white/8 pointer-events-none"><i class="bi bi-journal-bookmark"></i></div>
             <div class="w-[52px] h-[52px] rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center">
               <i class="bi bi-journal-bookmark text-2xl text-white"></i>
@@ -106,7 +106,7 @@ include 'includes/header.php';
 
         <!-- Card 5: Trường Nhật Ngữ -->
         <a href="/schools" class="group flex flex-col bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden reveal reveal-delay-100 sm:col-span-2 lg:col-span-1">
-          <div class="relative bg-gradient-to-br from-blue-700 to-blue-900 p-8 min-h-[160px] flex items-end overflow-hidden">
+          <div class="relative bg-gradient-to-br from-indigo-400 to-violet-500 p-8 min-h-[160px] flex items-end overflow-hidden">
             <div class="absolute -top-2 -right-2 text-[90px] leading-none text-white/8 pointer-events-none"><i class="bi bi-building"></i></div>
             <div class="w-[52px] h-[52px] rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center">
               <i class="bi bi-building text-2xl text-white"></i>

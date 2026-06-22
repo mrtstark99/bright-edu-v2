@@ -26,7 +26,7 @@ include 'includes/header.php';
 
         <!-- Card 1: Blog & Cẩm nang -->
         <a href="/blog" class="group flex flex-col bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden reveal">
-          <div class="relative bg-gradient-to-br from-slate-700 to-slate-900 p-10 min-h-[200px] flex items-end overflow-hidden">
+          <div class="relative bg-gradient-to-br from-cyan-400 to-teal-500 p-10 min-h-[200px] flex items-end overflow-hidden">
             <div class="absolute -top-2 -right-2 text-[110px] leading-none text-white/8 pointer-events-none"><i class="bi bi-newspaper"></i></div>
             <div>
               <div class="w-[52px] h-[52px] rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center mb-4">
@@ -53,7 +53,7 @@ include 'includes/header.php';
 
         <!-- Card 2: Về Bright Education -->
         <a href="/about" class="group flex flex-col bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden reveal reveal-delay-100">
-          <div class="relative bg-gradient-to-br from-violet-700 to-violet-900 p-10 min-h-[200px] flex items-end overflow-hidden">
+          <div class="relative bg-gradient-to-br from-violet-400 to-purple-500 p-10 min-h-[200px] flex items-end overflow-hidden">
             <div class="absolute -top-2 -right-2 text-[110px] leading-none text-white/8 pointer-events-none"><i class="bi bi-people"></i></div>
             <div>
               <div class="w-[52px] h-[52px] rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center mb-4">
@@ -79,7 +79,7 @@ include 'includes/header.php';
 
         <!-- Card 3: Cộng đồng -->
         <a href="/groups" class="group flex flex-col bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden reveal">
-          <div class="relative bg-gradient-to-br from-cyan-600 to-cyan-900 p-10 min-h-[200px] flex items-end overflow-hidden">
+          <div class="relative bg-gradient-to-br from-orange-400 to-rose-400 p-10 min-h-[200px] flex items-end overflow-hidden">
             <div class="absolute -top-2 -right-2 text-[110px] leading-none text-white/8 pointer-events-none"><i class="bi bi-people-fill"></i></div>
             <div>
               <div class="w-[52px] h-[52px] rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center mb-4">
@@ -105,7 +105,7 @@ include 'includes/header.php';
 
         <!-- Card 4: Đặt lịch tư vấn -->
         <a href="/consultation" class="group flex flex-col bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden reveal reveal-delay-100">
-          <div class="relative bg-gradient-to-br from-primary to-[#1e3f62] p-10 min-h-[200px] flex items-end overflow-hidden">
+          <div class="relative bg-gradient-to-br from-sky-400 to-blue-500 p-10 min-h-[200px] flex items-end overflow-hidden">
             <div class="absolute -top-2 -right-2 text-[110px] leading-none text-white/8 pointer-events-none"><i class="bi bi-calendar-check"></i></div>
             <div>
               <div class="w-[52px] h-[52px] rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center mb-4">
