@@ -62,7 +62,7 @@
   </script>
   <style>
     html { scroll-behavior: smooth; }
-    body { background-color: #fafafa; }
+    body { background-color: #ffffff; }
     
     /* Typography Utilities */
     h1, h2, h3, h4, h5, h6 { font-family: 'Quicksand', sans-serif; letter-spacing: -0.02em; }
@@ -104,9 +104,6 @@
     /* Soft gradients */
     .bg-mesh {
         background-color: #ffffff;
-        background-image: 
-            radial-gradient(at 0% 0%, #f1f5f9 0px, transparent 50%),
-            radial-gradient(at 100% 0%, #e2e8f0 0px, transparent 50%);
     }
 
     /* Diverse Frames & Animations */

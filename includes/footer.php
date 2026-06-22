@@ -4,14 +4,10 @@
         
         <!-- Column 1: Brand & Info -->
         <div class="space-y-6">
-          <a class="flex items-center gap-3 group" href="/">
-            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-white text-lg font-bold text-primary shadow-md">
-              BC
-            </div>
-            <div class="leading-tight">
-              <span class="text-xl font-bold text-white tracking-tight font-display">Bright Education</span>
-              <span class="block text-[11px] text-primary-200 font-semibold uppercase tracking-[0.2em] mt-0.5">Japan Study</span>
-            </div>
+          <a class="flex items-center group" href="/">
+            <img src="<?= APP_URL ?>/assets/images/logo.svg" alt="Bright Education"
+                 class="h-14 w-auto transition-transform group-hover:scale-105"
+                 style="filter: brightness(0) invert(1);">
           </a>
           <p class="text-primary-100 text-sm leading-relaxed">
             <?php echo getSetting('site_footer_desc', 'Đồng hành cùng hàng ngàn học viên Việt Nam trên con đường chinh phục tri thức và xây dựng sự nghiệp tại Nhật Bản.'); ?>
