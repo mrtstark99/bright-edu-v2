@@ -22,113 +22,51 @@ include 'includes/header.php';
   <!-- Cards -->
   <section class="py-20 bg-white">
     <div class="mx-auto max-w-7xl px-5 lg:px-8">
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
 
-        <!-- Card 1: Blog & Cẩm nang -->
-        <a href="/blog" class="group flex flex-col bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden reveal">
-          <div class="relative bg-gradient-to-br from-cyan-400 to-teal-500 p-10 min-h-[200px] flex items-end overflow-hidden">
-            <div class="absolute -top-2 -right-2 text-[110px] leading-none text-white/8 pointer-events-none"><i class="bi bi-newspaper"></i></div>
-            <div>
-              <div class="w-[52px] h-[52px] rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center mb-4">
-                <i class="bi bi-newspaper text-2xl text-white"></i>
-              </div>
-              <div class="flex flex-wrap gap-2">
-                <span class="text-[11px] font-bold bg-white/15 text-white px-2.5 py-1 rounded-full">Kinh nghiệm</span>
-                <span class="text-[11px] font-bold bg-white/15 text-white px-2.5 py-1 rounded-full">Cẩm nang</span>
-                <span class="text-[11px] font-bold bg-white/15 text-white px-2.5 py-1 rounded-full">Tin tức</span>
-              </div>
-            </div>
-          </div>
-          <div class="p-7 flex flex-col flex-1">
-            <h3 class="text-xl font-bold text-primary font-display mb-3">Blog & Cẩm nang</h3>
-            <p class="text-muted text-[15px] leading-relaxed flex-1">Chia sẻ kinh nghiệm thực tế từ cựu du học sinh, cẩm nang cuộc sống tại Nhật và những cập nhật mới nhất về thủ tục visa, học bổng.</p>
-            <div class="mt-6 pt-5 border-t border-slate-100 flex items-center justify-between">
-              <span class="text-[14px] font-semibold text-primary">Đọc bài viết</span>
-              <div class="w-9 h-9 rounded-full border border-slate-200 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all duration-200">
-                <i class="bi bi-arrow-right text-sm"></i>
-              </div>
-            </div>
-          </div>
-        </a>
+        <!-- Card 1 -->
+        <article class="group rounded-3xl border border-slate-100 bg-white p-6 sm:p-8 shadow-sm transition-all hover:shadow-medium hover:-translate-y-1 flex flex-col reveal">
+          <div class="text-5xl font-black text-slate-100 mb-3 font-display leading-none">01</div>
+          <div class="mb-4"><i class="bi bi-newspaper text-2xl text-primary"></i></div>
+          <h3 class="text-lg font-bold text-primary font-display mb-3">Blog & Cẩm nang</h3>
+          <p class="text-[14px] text-muted leading-relaxed flex-1">Chia sẻ kinh nghiệm thực tế từ cựu du học sinh, cẩm nang cuộc sống tại Nhật và cập nhật thủ tục visa, học bổng mới nhất.</p>
+          <a href="/blog" class="mt-6 pt-5 border-t border-slate-100 inline-flex items-center gap-2 text-[14px] font-semibold text-primary group-hover:gap-3 transition-all">
+            Đọc bài viết <i class="bi bi-arrow-right"></i>
+          </a>
+        </article>
 
-        <!-- Card 2: Về Bright Education -->
-        <a href="/about" class="group flex flex-col bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden reveal reveal-delay-100">
-          <div class="relative bg-gradient-to-br from-violet-400 to-purple-500 p-10 min-h-[200px] flex items-end overflow-hidden">
-            <div class="absolute -top-2 -right-2 text-[110px] leading-none text-white/8 pointer-events-none"><i class="bi bi-people"></i></div>
-            <div>
-              <div class="w-[52px] h-[52px] rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center mb-4">
-                <i class="bi bi-people text-2xl text-white"></i>
-              </div>
-              <div class="flex flex-wrap gap-2">
-                <span class="text-[11px] font-bold bg-white/15 text-white px-2.5 py-1 rounded-full">10+ năm kinh nghiệm</span>
-                <span class="text-[11px] font-bold bg-white/15 text-white px-2.5 py-1 rounded-full">1200+ học viên</span>
-              </div>
-            </div>
-          </div>
-          <div class="p-7 flex flex-col flex-1">
-            <h3 class="text-xl font-bold text-primary font-display mb-3">Về Bright Education</h3>
-            <p class="text-muted text-[15px] leading-relaxed flex-1">Câu chuyện 10 năm hình thành và phát triển, đội ngũ chuyên gia từng học tập và làm việc tại Nhật, và cam kết đồng hành minh bạch.</p>
-            <div class="mt-6 pt-5 border-t border-slate-100 flex items-center justify-between">
-              <span class="text-[14px] font-semibold text-primary">Tìm hiểu thêm</span>
-              <div class="w-9 h-9 rounded-full border border-slate-200 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all duration-200">
-                <i class="bi bi-arrow-right text-sm"></i>
-              </div>
-            </div>
-          </div>
-        </a>
+        <!-- Card 2 -->
+        <article class="group rounded-3xl border border-slate-100 bg-white p-6 sm:p-8 shadow-sm transition-all hover:shadow-medium hover:-translate-y-1 flex flex-col reveal reveal-delay-100">
+          <div class="text-5xl font-black text-slate-100 mb-3 font-display leading-none">02</div>
+          <div class="mb-4"><i class="bi bi-people text-2xl text-primary"></i></div>
+          <h3 class="text-lg font-bold text-primary font-display mb-3">Về Bright Education</h3>
+          <p class="text-[14px] text-muted leading-relaxed flex-1">Câu chuyện 10 năm hình thành, đội ngũ chuyên gia từng học tập và làm việc tại Nhật, cam kết đồng hành minh bạch.</p>
+          <a href="/about" class="mt-6 pt-5 border-t border-slate-100 inline-flex items-center gap-2 text-[14px] font-semibold text-primary group-hover:gap-3 transition-all">
+            Tìm hiểu thêm <i class="bi bi-arrow-right"></i>
+          </a>
+        </article>
 
-        <!-- Card 3: Cộng đồng -->
-        <a href="/groups" class="group flex flex-col bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden reveal">
-          <div class="relative bg-gradient-to-br from-orange-400 to-rose-400 p-10 min-h-[200px] flex items-end overflow-hidden">
-            <div class="absolute -top-2 -right-2 text-[110px] leading-none text-white/8 pointer-events-none"><i class="bi bi-people-fill"></i></div>
-            <div>
-              <div class="w-[52px] h-[52px] rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center mb-4">
-                <i class="bi bi-people-fill text-2xl text-white"></i>
-              </div>
-              <div class="flex flex-wrap gap-2">
-                <span class="text-[11px] font-bold bg-white/15 text-white px-2.5 py-1 rounded-full">Nhóm Zalo</span>
-                <span class="text-[11px] font-bold bg-white/15 text-white px-2.5 py-1 rounded-full">Facebook Group</span>
-              </div>
-            </div>
-          </div>
-          <div class="p-7 flex flex-col flex-1">
-            <h3 class="text-xl font-bold text-primary font-display mb-3">Cộng đồng du học sinh</h3>
-            <p class="text-muted text-[15px] leading-relaxed flex-1">Kết nối với hơn 1200+ học viên đang học tập và sinh sống tại Nhật. Chia sẻ kinh nghiệm, hỏi đáp và hỗ trợ nhau trong cuộc sống xa nhà.</p>
-            <div class="mt-6 pt-5 border-t border-slate-100 flex items-center justify-between">
-              <span class="text-[14px] font-semibold text-primary">Tham gia ngay</span>
-              <div class="w-9 h-9 rounded-full border border-slate-200 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all duration-200">
-                <i class="bi bi-arrow-right text-sm"></i>
-              </div>
-            </div>
-          </div>
-        </a>
+        <!-- Card 3 -->
+        <article class="group rounded-3xl border border-slate-100 bg-white p-6 sm:p-8 shadow-sm transition-all hover:shadow-medium hover:-translate-y-1 flex flex-col reveal reveal-delay-200">
+          <div class="text-5xl font-black text-slate-100 mb-3 font-display leading-none">03</div>
+          <div class="mb-4"><i class="bi bi-people-fill text-2xl text-primary"></i></div>
+          <h3 class="text-lg font-bold text-primary font-display mb-3">Cộng đồng</h3>
+          <p class="text-[14px] text-muted leading-relaxed flex-1">Kết nối với hơn 1200+ học viên đang sinh sống tại Nhật. Chia sẻ kinh nghiệm, hỏi đáp và hỗ trợ nhau trong cuộc sống xa nhà.</p>
+          <a href="/groups" class="mt-6 pt-5 border-t border-slate-100 inline-flex items-center gap-2 text-[14px] font-semibold text-primary group-hover:gap-3 transition-all">
+            Tham gia ngay <i class="bi bi-arrow-right"></i>
+          </a>
+        </article>
 
-        <!-- Card 4: Đặt lịch tư vấn -->
-        <a href="/consultation" class="group flex flex-col bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden reveal reveal-delay-100">
-          <div class="relative bg-gradient-to-br from-sky-400 to-blue-500 p-10 min-h-[200px] flex items-end overflow-hidden">
-            <div class="absolute -top-2 -right-2 text-[110px] leading-none text-white/8 pointer-events-none"><i class="bi bi-calendar-check"></i></div>
-            <div>
-              <div class="w-[52px] h-[52px] rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center mb-4">
-                <i class="bi bi-calendar-check text-2xl text-white"></i>
-              </div>
-              <div class="flex flex-wrap gap-2">
-                <span class="text-[11px] font-bold bg-white/15 text-white px-2.5 py-1 rounded-full">Miễn phí</span>
-                <span class="text-[11px] font-bold bg-white/15 text-white px-2.5 py-1 rounded-full">Tư vấn 1-1</span>
-                <span class="text-[11px] font-bold bg-white/15 text-white px-2.5 py-1 rounded-full">Zoom / offline</span>
-              </div>
-            </div>
-          </div>
-          <div class="p-7 flex flex-col flex-1">
-            <h3 class="text-xl font-bold text-primary font-display mb-3">Đặt lịch tư vấn</h3>
-            <p class="text-muted text-[15px] leading-relaxed flex-1">Đặt lịch tư vấn 1-1 miễn phí với chuyên gia có kinh nghiệm thực tế tại Nhật. Tư vấn qua Zoom hoặc trực tiếp tại văn phòng.</p>
-            <div class="mt-6 pt-5 border-t border-slate-100 flex items-center justify-between">
-              <span class="text-[14px] font-semibold text-primary">Đặt lịch ngay</span>
-              <div class="w-9 h-9 rounded-full border border-slate-200 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all duration-200">
-                <i class="bi bi-arrow-right text-sm"></i>
-              </div>
-            </div>
-          </div>
-        </a>
+        <!-- Card 4 -->
+        <article class="group rounded-3xl border border-slate-100 bg-white p-6 sm:p-8 shadow-sm transition-all hover:shadow-medium hover:-translate-y-1 flex flex-col reveal reveal-delay-300">
+          <div class="text-5xl font-black text-slate-100 mb-3 font-display leading-none">04</div>
+          <div class="mb-4"><i class="bi bi-calendar-check text-2xl text-primary"></i></div>
+          <h3 class="text-lg font-bold text-primary font-display mb-3">Đặt lịch tư vấn</h3>
+          <p class="text-[14px] text-muted leading-relaxed flex-1">Tư vấn 1-1 miễn phí với chuyên gia có kinh nghiệm thực tế tại Nhật. Hình thức Zoom hoặc trực tiếp tại văn phòng.</p>
+          <a href="/consultation" class="mt-6 pt-5 border-t border-slate-100 inline-flex items-center gap-2 text-[14px] font-semibold text-primary group-hover:gap-3 transition-all">
+            Đặt lịch ngay <i class="bi bi-arrow-right"></i>
+          </a>
+        </article>
 
       </div>
     </div>
