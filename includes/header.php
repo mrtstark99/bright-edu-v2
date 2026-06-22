@@ -153,55 +153,8 @@
       <nav class="hidden items-center gap-1 text-[15px] font-medium text-muted md:flex">
         <a class="nav-link" href="/">Trang chủ</a>
 
-        <!-- Du học dropdown -->
-        <div class="nav-dropdown-trigger relative">
-          <button class="nav-link flex items-center gap-1">
-            Du học <i class="bi bi-chevron-down nav-chevron text-[11px] transition-transform duration-200"></i>
-          </button>
-          <div class="nav-dropdown absolute top-full left-1/2 -translate-x-1/2 pt-3 z-50">
-            <div class="bg-white rounded-2xl shadow-hard border border-slate-100 p-2 w-56">
-              <a href="/services" class="dd-link">
-                <i class="bi bi-briefcase text-primary text-sm w-5"></i>
-                <span>Dịch vụ tư vấn</span>
-              </a>
-              <a href="/process" class="dd-link">
-                <i class="bi bi-arrow-right-circle text-primary text-sm w-5"></i>
-                <span>Quy trình du học</span>
-              </a>
-              <a href="/documents" class="dd-link">
-                <i class="bi bi-file-earmark-text text-primary text-sm w-5"></i>
-                <span>Chuẩn bị hồ sơ</span>
-              </a>
-              <a href="/courses" class="dd-link">
-                <i class="bi bi-journal-bookmark text-primary text-sm w-5"></i>
-                <span>Khóa học tiếng Nhật</span>
-              </a>
-              <a href="/schools" class="dd-link">
-                <i class="bi bi-building text-primary text-sm w-5"></i>
-                <span>Trường Nhật Ngữ</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Khám phá dropdown -->
-        <div class="nav-dropdown-trigger relative">
-          <button class="nav-link flex items-center gap-1">
-            Khám phá <i class="bi bi-chevron-down nav-chevron text-[11px] transition-transform duration-200"></i>
-          </button>
-          <div class="nav-dropdown absolute top-full left-1/2 -translate-x-1/2 pt-3 z-50">
-            <div class="bg-white rounded-2xl shadow-hard border border-slate-100 p-2 w-52">
-              <a href="/blog" class="dd-link">
-                <i class="bi bi-newspaper text-primary text-sm w-5"></i>
-                <span>Blog & Cẩm nang</span>
-              </a>
-              <a href="/about" class="dd-link">
-                <i class="bi bi-building text-primary text-sm w-5"></i>
-                <span>Về Bright Education</span>
-              </a>
-            </div>
-          </div>
-        </div>
+        <a class="nav-link" href="/du-hoc">Du học</a>
+        <a class="nav-link" href="/kham-pha">Khám phá</a>
 
         <a class="nav-link" href="/consultation">Đặt lịch</a>
         <a class="nav-link" href="/contact">Liên hệ</a>
@@ -272,7 +225,10 @@
 
         <!-- Du học group -->
         <div>
-          <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400 px-4 pt-4 pb-2">Du học</p>
+          <a class="mobile-link flex items-center gap-3 px-4 py-3 rounded-2xl text-[16px] font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors" href="/du-hoc">
+            <i class="bi bi-mortarboard text-primary w-5 text-center text-sm"></i> Du học
+          </a>
+          <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400 px-4 pt-2 pb-2">— Danh mục</p>
           <a class="mobile-link flex items-center gap-3 px-4 py-3 rounded-2xl text-[16px] font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors" href="/services">
             <i class="bi bi-briefcase text-primary w-5 text-center text-sm"></i> Dịch vụ tư vấn
           </a>
@@ -292,7 +248,10 @@
 
         <!-- Khám phá group -->
         <div>
-          <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400 px-4 pt-4 pb-2">Khám phá</p>
+          <a class="mobile-link flex items-center gap-3 px-4 py-3 rounded-2xl text-[16px] font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors" href="/kham-pha">
+            <i class="bi bi-compass text-primary w-5 text-center text-sm"></i> Khám phá
+          </a>
+          <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400 px-4 pt-2 pb-2">— Danh mục</p>
           <a class="mobile-link flex items-center gap-3 px-4 py-3 rounded-2xl text-[16px] font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors" href="/blog">
             <i class="bi bi-newspaper text-primary w-5 text-center text-sm"></i> Blog & Cẩm nang
           </a>
