@@ -30,7 +30,7 @@ jobs:
           protocol: ftps          # explicit FTPS over port 21
           port: 21
           local-dir: ./
-          server-dir: ./          # web root == FTP root on this host
+          server-dir: public_html/   # Main Domain document root
           # Never overwrite live data/uploads or push VCS/CI noise:
           exclude: |
             **/.git*
