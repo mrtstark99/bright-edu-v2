@@ -5,16 +5,24 @@
 
 session_start();
 
-// Error reporting (set to 0 in production)
+// Detect host/scheme so URLs work on any domain (localhost or production)
+$app_scheme = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+               || (($_SERVER['SERVER_PORT'] ?? null) == 443)) ? 'https' : 'http';
+$app_host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+$is_local = php_sapi_name() === 'cli'
+            || in_array($app_host, ['localhost', 'localhost:4000', '127.0.0.1'], true);
+
+// Error reporting (hidden on production, logged either way)
 error_reporting(E_ALL);
-ini_set('display_errors', 1);
+ini_set('display_errors', $is_local ? '1' : '0');
+ini_set('log_errors', '1');
 
 // Timezone
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 
 // Application settings
 define('APP_NAME', 'Bright Education');
-define('APP_URL', 'http://localhost:4000');
+define('APP_URL', $app_scheme . '://' . $app_host);
 define('APP_ROOT', dirname(dirname(__FILE__)));
 define('UPLOAD_PATH', APP_ROOT . '/uploads/');
 define('UPLOAD_URL', APP_URL . '/uploads/');

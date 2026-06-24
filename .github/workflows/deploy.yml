@@ -1,0 +1,43 @@
+name: Deploy to Tenten
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+concurrency:
+  group: ftp-deploy
+  cancel-in-progress: false
+
+jobs:
+  ftp-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # The FTP host has no public DNS record, so map it to the server IP.
+      # Using the hostname (not the raw IP) keeps the FTPS certificate valid.
+      - name: Map FTP host to IP
+        run: echo "${{ secrets.FTP_IP }} ftp.oih1qyce8l.tenten.vn" | sudo tee -a /etc/hosts
+
+      - name: FTPS deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ftp.oih1qyce8l.tenten.vn
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps          # explicit FTPS over port 21
+          port: 21
+          local-dir: ./
+          server-dir: ./          # web root == FTP root on this host
+          # Never overwrite live data/uploads or push VCS/CI noise:
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            **/README.md
+            database/**
+            uploads/**
+            config/local.php
+            **/.env
