@@ -16,15 +16,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # The FTP host has no public DNS record, so map it to the server IP.
-      # Using the hostname (not the raw IP) keeps the FTPS certificate valid.
-      - name: Map FTP host to IP
-        run: echo "${{ secrets.FTP_IP }} ftp.oih1qyce8l.tenten.vn" | sudo tee -a /etc/hosts
-
       - name: FTPS deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ftp.oih1qyce8l.tenten.vn
+          server: ftp.brighteducation.net
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps          # explicit FTPS over port 21
