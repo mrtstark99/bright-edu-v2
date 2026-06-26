@@ -49,13 +49,16 @@ include 'includes/header.php';
         <div class="grid gap-12 lg:gap-8 lg:grid-cols-2 items-center">
           <!-- Left: Content -->
           <div class="space-y-8 z-10">
-            <div class="reveal">
+            <div class="reveal flex flex-wrap items-center gap-3">
               <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 backdrop-blur-sm px-4 py-1.5 text-xs font-bold text-primary shadow-sm">
                 <span class="relative flex h-2 w-2">
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
                   <span class="relative inline-flex rounded-full h-2 w-2 bg-slate-500"></span>
                 </span>
-                Tư vấn toàn diện • Hơn 10 năm kinh nghiệm
+                Tư vấn lịch khai giảng &amp; xem trước tình trạng số chỗ học
+              </span>
+              <span class="inline-flex items-center gap-1.5 rounded-full bg-red-500 px-3 py-1.5 text-xs font-bold text-white shadow-sm animate-pulse">
+                <i class="bi bi-fire"></i> Còn 67 chỗ
               </span>
             </div>
             <h1 class="reveal reveal-delay-100 text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.1] tracking-tight text-primary font-display">
@@ -212,23 +215,71 @@ include 'includes/header.php';
           <p class="mt-4 text-lg text-muted">Kết hợp thế mạnh môi trường Nhật và mạng lưới cố vấn thực chiến.</p>
         </div>
         
-        <!-- Youthful Leaf Shape Banner -->
-        <div class="rounded-[4rem_1rem_4rem_1rem] sm:rounded-[8rem_2rem_8rem_2rem] overflow-hidden mb-16 shadow-hard reveal relative h-64 md:h-80 w-full group">
-            <img src="/assets/images/whyus_tokyo.png" alt="Tokyo Cityscape" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-110">
-            <div class="absolute inset-0 bg-gradient-to-tr from-primary/95 via-primary/60 to-transparent mix-blend-multiply"></div>
-            
-            <!-- Decorative Elements -->
-            <div class="absolute -top-12 -right-12 w-48 h-48 bg-white/10 rounded-full blur-2xl"></div>
-            <div class="absolute -bottom-12 left-1/4 w-32 h-32 bg-sage-400/20 rounded-full blur-xl"></div>
-            
-            <div class="absolute inset-y-0 left-0 p-8 sm:p-12 lg:p-16 flex flex-col justify-center">
-                <div class="flex items-center gap-3 mb-4">
-                  <span class="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 backdrop-blur text-white shadow-sm"><i class="bi bi-globe-americas"></i></span>
-                  <span class="text-white text-xs font-bold tracking-widest uppercase">Tầm nhìn toàn cầu</span>
+        <!-- Study Abroad Programs -->
+        <div class="mb-16 reveal">
+          <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            <!-- Chương trình 1: Du học Ngôn ngữ -->
+            <a href="/services" class="group relative rounded-3xl overflow-hidden shadow-medium hover:shadow-hard transition-all duration-500 card-hover block aspect-[3/4]">
+              <img src="/assets/images/whyus_tokyo.png" alt="Du học Ngôn ngữ" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-110">
+              <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-6">
+                <span class="inline-block text-[10px] font-bold uppercase tracking-widest text-white/70 mb-2">Phổ biến nhất</span>
+                <h3 class="text-white font-display font-bold text-xl leading-tight mb-2">Du học <br/>Ngôn ngữ</h3>
+                <p class="text-white/70 text-xs leading-relaxed">Trường Nhật ngữ 1-2 năm. Nền tảng vững cho các chương trình tiếp theo.</p>
+                <div class="mt-4 flex items-center gap-2 text-white text-xs font-semibold group-hover:gap-3 transition-all">
+                  Tìm hiểu thêm <i class="bi bi-arrow-right"></i>
                 </div>
-                <h3 class="text-white text-3xl sm:text-4xl lg:text-5xl font-display font-black leading-[1.1] tracking-tight">Kết nối tri thức <br/> <span class="text-sage-200">Không giới hạn</span></h3>
-                <p class="text-primary-50 mt-4 max-w-md hidden sm:block text-[15px] leading-relaxed">Trải nghiệm giáo dục tiên tiến và môi trường sống hiện đại bậc nhất tại Nhật Bản cùng lộ trình cá nhân hóa 100%.</p>
-            </div>
+              </div>
+            </a>
+
+            <!-- Chương trình 2: Du học Đại học -->
+            <a href="/services" class="group relative rounded-3xl overflow-hidden shadow-medium hover:shadow-hard transition-all duration-500 card-hover block aspect-[3/4]">
+              <img src="/assets/images/about_counselor.png" alt="Du học Đại học" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-110">
+              <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent"></div>
+              <div class="absolute top-4 right-4">
+                <span class="inline-block rounded-full bg-amber-400 text-white text-[9px] font-bold uppercase px-3 py-1">Học bổng</span>
+              </div>
+              <div class="absolute bottom-0 left-0 right-0 p-6">
+                <span class="inline-block text-[10px] font-bold uppercase tracking-widest text-white/70 mb-2">Bậc Đại học</span>
+                <h3 class="text-white font-display font-bold text-xl leading-tight mb-2">Du học <br/>Đại học</h3>
+                <p class="text-white/70 text-xs leading-relaxed">Vào thẳng ĐH Nhật hoặc qua trung gian Senmon Gakkou.</p>
+                <div class="mt-4 flex items-center gap-2 text-white text-xs font-semibold group-hover:gap-3 transition-all">
+                  Tìm hiểu thêm <i class="bi bi-arrow-right"></i>
+                </div>
+              </div>
+            </a>
+
+            <!-- Chương trình 3: Du học Nghề -->
+            <a href="/services" class="group relative rounded-3xl overflow-hidden shadow-medium hover:shadow-hard transition-all duration-500 card-hover block aspect-[3/4]">
+              <img src="/assets/images/hero_main.png" alt="Du học Nghề" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-110">
+              <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-6">
+                <span class="inline-block text-[10px] font-bold uppercase tracking-widest text-white/70 mb-2">Kỹ năng nghề</span>
+                <h3 class="text-white font-display font-bold text-xl leading-tight mb-2">Du học <br/>Trường Nghề</h3>
+                <p class="text-white/70 text-xs leading-relaxed">Chuyên môn thực chiến, cơ hội việc làm lương cao tại Nhật.</p>
+                <div class="mt-4 flex items-center gap-2 text-white text-xs font-semibold group-hover:gap-3 transition-all">
+                  Tìm hiểu thêm <i class="bi bi-arrow-right"></i>
+                </div>
+              </div>
+            </a>
+
+            <!-- Chương trình 4: Kỹ năng đặc định -->
+            <a href="/services" class="group relative rounded-3xl overflow-hidden shadow-medium hover:shadow-hard transition-all duration-500 card-hover block aspect-[3/4]">
+              <img src="/assets/images/whyus_tokyo.png" alt="Kỹ năng đặc định" class="absolute inset-0 w-full h-full object-cover object-right transition-transform duration-[4s] group-hover:scale-110">
+              <div class="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/50 to-transparent"></div>
+              <div class="absolute top-4 right-4">
+                <span class="inline-block rounded-full bg-red-500 text-white text-[9px] font-bold uppercase px-3 py-1">Mới 2025</span>
+              </div>
+              <div class="absolute bottom-0 left-0 right-0 p-6">
+                <span class="inline-block text-[10px] font-bold uppercase tracking-widest text-white/70 mb-2">Visa lao động</span>
+                <h3 class="text-white font-display font-bold text-xl leading-tight mb-2">Kỹ năng <br/>Đặc định</h3>
+                <p class="text-white/70 text-xs leading-relaxed">Lộ trình nhanh sang Nhật làm việc có tay nghề (SSW).</p>
+                <div class="mt-4 flex items-center gap-2 text-white text-xs font-semibold group-hover:gap-3 transition-all">
+                  Tìm hiểu thêm <i class="bi bi-arrow-right"></i>
+                </div>
+              </div>
+            </a>
+          </div>
         </div>
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           <article class="group rounded-3xl border border-transparent bg-white p-8 shadow-soft card-hover hover:border-slate-200 reveal">
