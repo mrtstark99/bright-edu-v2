@@ -49,23 +49,11 @@ include 'includes/header.php';
         <div class="grid gap-12 lg:gap-8 lg:grid-cols-2 items-center">
           <!-- Left: Content -->
           <div class="space-y-8 z-10">
-            <div class="reveal flex flex-wrap items-center gap-3">
-              <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 backdrop-blur-sm px-4 py-1.5 text-xs font-bold text-primary shadow-sm">
-                <span class="relative flex h-2 w-2">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-2 w-2 bg-slate-500"></span>
-                </span>
-                Tư vấn lịch khai giảng &amp; xem trước tình trạng số chỗ học
-              </span>
-              <span class="inline-flex items-center gap-1.5 rounded-full bg-red-500 px-3 py-1.5 text-xs font-bold text-white shadow-sm animate-pulse">
-                <i class="bi bi-fire"></i> Còn 67 chỗ
-              </span>
-            </div>
             <h1 class="reveal reveal-delay-100 text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.1] tracking-tight text-primary font-display">
               Du học Nhật Bản trọn vẹn cùng <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-500">Bright Education</span>
             </h1>
             <p class="reveal reveal-delay-200 text-lg text-muted md:text-xl max-w-lg leading-relaxed">
-              Từ định hướng ngành, luyện phỏng vấn, xin visa đến hỗ trợ việc làm thêm. Đã đồng hành cùng 1200+ học viên chinh phục 48 tỉnh thành.
+              Quy trình linh động và minh bạch sẽ giúp các bước chuẩn bị du học của bạn thuận lợi hơn khi đồng hành cùng Bright Education.
             </p>
             <div class="reveal reveal-delay-300 flex flex-wrap items-center gap-4">
               <a class="inline-flex items-center justify-center rounded-2xl bg-primary px-6 py-3.5 text-[15px] font-semibold text-white transition-all hover:bg-ink shadow-medium hover:shadow-hard btn-primary" href="/contact">
@@ -139,7 +127,7 @@ include 'includes/header.php';
               Bright Education <br/> <span class="text-primary text-2xl sm:text-3xl font-medium mt-1 block">Là người đồng hành của bạn</span>
             </h2>
             <p class="text-lg text-muted leading-relaxed reveal reveal-delay-100">
-              Bright Education là đơn vị tư vấn du học Nhật Bản với trụ sở tại Hà Nội và văn phòng hỗ trợ tại Tokyo. Chúng tôi tập trung vào trải nghiệm cá nhân hóa, cập nhật nhanh tiêu chí tuyển sinh của các trường.
+              Bright Education là đơn vị tư vấn du học Nhật Bản với trụ sở tại Hải Phòng và văn phòng hỗ trợ tại Tokyo, cùng nhiều đối tác đào tạo trên nhiều tỉnh thành ở Việt Nam. Chúng tôi tập trung vào trải nghiệm cá nhân hóa, cập nhật nhanh tiêu chí tuyển sinh của các trường.
             </p>
             <div class="grid sm:grid-cols-2 gap-4 pt-4 reveal reveal-delay-200">
               <div class="flex items-start gap-3">
