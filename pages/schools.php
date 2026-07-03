@@ -3,7 +3,7 @@ $page_title = "Danh sách Trường Nhật Ngữ - Bright Education";
 include 'includes/header.php';
 
 // Read data
-$json_data = file_get_contents('scratch/schools_data.json');
+$json_data = file_get_contents(__DIR__ . '/../schools_data.json');
 $data = json_decode($json_data, true);
 $regions = $data['regions'];
 $schools = $data['schools'];
@@ -119,8 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const el = document.createElement('div');
             el.className = 'bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col h-full';
             
-            // Format tuition if empty or weird
-            let tuition = school.tuition_info || 'Liên hệ để biết chi tiết';
+            let websiteHtml = school.website ? `<a href="${school.website}" target="_blank" class="text-sky-600 hover:text-sky-700 underline truncate block"><i class="bi bi-link-45deg"></i> Website trường</a>` : '<span class="text-slate-400 text-sm">Đang cập nhật</span>';
             
             el.innerHTML = `
                 <div class="p-6 pb-5 bg-slate-50/50 border-b border-slate-100 flex-grow">
@@ -134,15 +133,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                     
                     <h3 class="text-lg font-bold text-midnight mb-1 group-hover:text-sage-600 transition-colors leading-snug">
-                        ${school.name_en ? school.name_en : school.name_jp}
+                        ${school.name_en}
                     </h3>
-                    ${school.name_en && school.name_jp && school.name_en !== school.name_jp ? 
-                        `<div class="text-xs text-slate-400 font-medium font-japanese">${school.name_jp}</div>` : ''}
+                    ${school.area ? `<div class="text-sm text-slate-500 mt-2"><i class="bi bi-geo"></i> Khu vực chi tiết: ${school.area}</div>` : ''}
                 </div>
                 
-                <div class="p-6 bg-white shrink-0 border-t border-slate-50">
-                    <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Thông tin học phí</div>
-                    <p class="text-sm text-slate-600 line-clamp-3 leading-relaxed" title="${tuition}">${tuition}</p>
+                <div class="p-6 bg-white shrink-0 border-t border-slate-50 flex items-center justify-between">
+                    <div class="text-sm font-medium">
+                        ${websiteHtml}
+                    </div>
                 </div>
             `;
             grid.appendChild(el);
@@ -165,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (searchTerm) {
             filtered = filtered.filter(s => {
-                const searchStr = `${s.name_en} ${s.name_jp} ${s.region} ${s.tuition_info}`.toLowerCase();
+                const searchStr = `${s.name_en} ${s.area || ''} ${s.region}`.toLowerCase();
                 return searchStr.includes(searchTerm);
             });
         }
