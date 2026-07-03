@@ -8,6 +8,16 @@ $data = json_decode($json_data, true);
 $regions = $data['regions'];
 $schools = $data['schools'];
 
+// Get unique areas for filter
+$areas = [];
+foreach ($schools as $school) {
+    if (!empty($school['area'])) {
+        $areas[$school['area']] = true;
+    }
+}
+$areas = array_keys($areas);
+sort($areas);
+
 // Escape JSON for use in JS
 $schools_json = json_encode($schools, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
 ?>
@@ -50,14 +60,25 @@ $schools_json = json_encode($schools, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QU
                     <input type="text" id="searchInput" placeholder="Tìm kiếm tên trường..." class="w-full pl-11 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-midnight font-medium focus:bg-white focus:border-sage-500 focus:ring-4 focus:ring-sage-500/10 transition-all outline-none">
                 </div>
             </div>
-            <div class="w-full md:w-auto flex items-center gap-4">
-                <span class="text-sm font-bold text-slate-400 uppercase tracking-wider shrink-0">Khu vực:</span>
-                <select id="regionSelect" class="w-full md:w-64 px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-midnight font-medium focus:bg-white focus:border-sage-500 focus:ring-4 focus:ring-sage-500/10 transition-all outline-none appearance-none cursor-pointer">
-                    <option value="">Tất cả khu vực (<?= count($schools) ?> trường)</option>
-                    <?php foreach ($regions as $region): ?>
-                        <option value="<?= htmlspecialchars($region) ?>"><?= htmlspecialchars($region) ?></option>
-                    <?php endforeach; ?>
-                </select>
+            <div class="w-full md:w-auto flex flex-col md:flex-row items-center gap-4">
+                <div class="flex items-center gap-2 w-full md:w-auto">
+                    <span class="text-sm font-bold text-slate-400 uppercase tracking-wider shrink-0">Khu vực:</span>
+                    <select id="regionSelect" class="w-full md:w-48 px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-midnight font-medium focus:bg-white focus:border-sage-500 focus:ring-4 focus:ring-sage-500/10 transition-all outline-none appearance-none cursor-pointer">
+                        <option value="">Tất cả khu vực (<?= count($schools) ?> trường)</option>
+                        <?php foreach ($regions as $region): ?>
+                            <option value="<?= htmlspecialchars($region) ?>"><?= htmlspecialchars($region) ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="flex items-center gap-2 w-full md:w-auto">
+                    <span class="text-sm font-bold text-slate-400 uppercase tracking-wider shrink-0">Thành phố:</span>
+                    <select id="areaSelect" class="w-full md:w-48 px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-midnight font-medium focus:bg-white focus:border-sage-500 focus:ring-4 focus:ring-sage-500/10 transition-all outline-none appearance-none cursor-pointer">
+                        <option value="">Tất cả thành phố</option>
+                        <?php foreach ($areas as $area): ?>
+                            <option value="<?= htmlspecialchars($area) ?>"><?= htmlspecialchars($area) ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
             </div>
         </div>
     </div>
@@ -98,6 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const grid = document.getElementById('schoolsGrid');
     const searchInput = document.getElementById('searchInput');
     const regionSelect = document.getElementById('regionSelect');
+    const areaSelect = document.getElementById('areaSelect');
     const emptyState = document.getElementById('emptyState');
     const activeFilterDisplay = document.getElementById('activeFilterDisplay');
     const activeRegionBadge = document.getElementById('activeRegionBadge');
@@ -135,7 +157,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     <h3 class="text-lg font-bold text-midnight mb-1 group-hover:text-sage-600 transition-colors leading-snug">
                         ${school.name_en}
                     </h3>
-                    ${school.area ? `<div class="text-sm text-slate-500 mt-2"><i class="bi bi-geo"></i> Khu vực chi tiết: ${school.area}</div>` : ''}
+                    ${school.name_jp && school.name_jp !== school.name_en ? `<div class="text-xs text-slate-400 font-medium font-japanese mb-2">${school.name_jp}</div>` : ''}
+                    ${school.area ? `<div class="text-sm text-slate-500 mt-2"><i class="bi bi-geo"></i> Khu vực chi tiết: ${school.area}${school.area_ja && school.area_ja !== school.area ? ` (${school.area_ja})` : ''}</div>` : ''}
                 </div>
                 
                 <div class="p-6 bg-white shrink-0 border-t border-slate-50 flex items-center justify-between">
@@ -151,20 +174,31 @@ document.addEventListener('DOMContentLoaded', function() {
     function applyFilters() {
         const searchTerm = searchInput.value.toLowerCase().trim();
         const region = regionSelect.value;
+        const area = areaSelect.value;
         
         let filtered = schools;
 
         if (region) {
             filtered = filtered.filter(s => s.region === region);
+        }
+        
+        if (area) {
+            filtered = filtered.filter(s => s.area === area);
+        }
+
+        if (region || area) {
             activeFilterDisplay.classList.remove('hidden');
-            activeRegionBadge.innerHTML = `<i class="bi bi-geo-alt-fill"></i> Khu vực: ${region}`;
+            let badgeText = [];
+            if (region) badgeText.push(`Khu vực: ${region}`);
+            if (area) badgeText.push(`Thành phố: ${area}`);
+            activeRegionBadge.innerHTML = `<i class="bi bi-geo-alt-fill"></i> ${badgeText.join(' - ')}`;
         } else {
             activeFilterDisplay.classList.add('hidden');
         }
 
         if (searchTerm) {
             filtered = filtered.filter(s => {
-                const searchStr = `${s.name_en} ${s.area || ''} ${s.region}`.toLowerCase();
+                const searchStr = `${s.name_en} ${s.name_jp || ''} ${s.area || ''} ${s.area_ja || ''} ${s.region}`.toLowerCase();
                 return searchStr.includes(searchTerm);
             });
         }
@@ -174,10 +208,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     searchInput.addEventListener('input', applyFilters);
     regionSelect.addEventListener('change', applyFilters);
+    areaSelect.addEventListener('change', applyFilters);
     
     resetFiltersBtn.addEventListener('click', () => {
         searchInput.value = '';
         regionSelect.value = '';
+        areaSelect.value = '';
         applyFilters();
     });
 
