@@ -44,14 +44,12 @@ include 'includes/header.php';
 
   <main id="hero">
     <section class="relative overflow-hidden pt-[140px] pb-0 bg-slate-50 w-full min-h-[60vh] lg:min-h-[75vh] flex items-end">
-      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-90" style="background-image: url('/assets/images/hero_new_bg.png');"></div>
-      <!-- Premium Gradient Overlay for Text Contrast -->
-      <div class="absolute inset-0 bg-gradient-to-b from-slate-50 via-slate-50/80 to-slate-50/20 lg:bg-gradient-to-r lg:from-slate-50/95 lg:via-slate-50/70 lg:to-transparent"></div>
+      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-100" style="background-image: url('/assets/images/hero_new_bg.png');"></div>
 
 <div class="relative mx-auto max-w-7xl px-5 lg:px-8 w-full z-10">
         <div class="grid gap-12 lg:gap-8 lg:grid-cols-2">
           <!-- Left: Content -->
-          <div class="space-y-12 z-10 self-center pb-12 lg:pb-24">
+          <div class="space-y-10 z-10 self-center my-12 lg:mb-24 bg-white/80 backdrop-blur-md p-8 sm:p-10 rounded-[2rem] shadow-xl border border-white/50">
             <h1 class="reveal reveal-delay-100 text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.1] tracking-tight text-primary font-display">
               Du học Nhật Bản cùng <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-500">Bright Education</span>
             </h1>
