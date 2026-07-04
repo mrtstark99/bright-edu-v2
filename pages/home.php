@@ -44,8 +44,9 @@ include 'includes/header.php';
 
   <main id="hero">
     <section class="relative overflow-hidden pt-[140px] pb-0 bg-slate-50 w-full min-h-[60vh] lg:min-h-[75vh] flex items-end">
+      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60" style="background-image: url('/assets/images/hero_new_bg.png');"></div>
 
-<div class="relative mx-auto max-w-7xl px-5 lg:px-8 w-full">
+<div class="relative mx-auto max-w-7xl px-5 lg:px-8 w-full z-10">
         <div class="grid gap-12 lg:gap-8 lg:grid-cols-2">
           <!-- Left: Content -->
           <div class="space-y-12 z-10 self-center pb-12 lg:pb-24">
@@ -208,9 +209,6 @@ include 'includes/header.php';
             <a href="/services" class="group relative rounded-3xl overflow-hidden shadow-medium hover:shadow-hard transition-all duration-500 card-hover block aspect-[3/4]">
               <img src="/assets/images/program_university.jpg" alt="Du học Đại học" class="absolute inset-0 w-full h-full object-cover object-right transition-transform duration-[4s] group-hover:scale-110">
               <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent"></div>
-              <div class="absolute top-4 right-4">
-                <span class="inline-block rounded-full bg-amber-400 text-white text-[9px] font-bold uppercase px-3 py-1">Học bổng</span>
-              </div>
               <div class="absolute bottom-0 left-0 right-0 p-6">
                 <span class="inline-block text-[10px] font-bold uppercase tracking-widest text-white/70 mb-2">Bậc Đại học</span>
                 <h3 class="text-white font-display font-bold text-xl leading-tight mb-2">Du học Đại học</h3>
@@ -239,9 +237,6 @@ include 'includes/header.php';
             <a href="/services" class="group relative rounded-3xl overflow-hidden shadow-medium hover:shadow-hard transition-all duration-500 card-hover block aspect-[3/4]">
               <img src="/assets/images/program_ssw.jpg" alt="Kỹ năng đặc định" class="absolute inset-0 w-full h-full object-cover object-right transition-transform duration-[4s] group-hover:scale-110">
               <div class="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/50 to-transparent"></div>
-              <div class="absolute top-4 right-4">
-                <span class="inline-block rounded-full bg-red-500 text-white text-[9px] font-bold uppercase px-3 py-1">Mới 2025</span>
-              </div>
               <div class="absolute bottom-0 left-0 right-0 p-6">
                 <span class="inline-block text-[10px] font-bold uppercase tracking-widest text-white/70 mb-2">Visa lao động</span>
                 <h3 class="text-white font-display font-bold text-xl leading-tight mb-2">Kỹ năng Đặc định</h3>
