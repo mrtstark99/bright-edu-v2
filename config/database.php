@@ -156,8 +156,15 @@ class Database {
             CREATE INDEX IF NOT EXISTS idx_lead_act_lead   ON lead_activities(lead_id);
             CREATE INDEX IF NOT EXISTS idx_lead_act_src    ON lead_activities(source_table, source_id);
         ");
-        // Add image column to existing tables if not yet present
         try { $this->conn->exec("ALTER TABLE community_groups ADD COLUMN image TEXT"); } catch (\Exception $e) {}
+
+        // --- Migration for updating email and phone ---
+        $this->conn->exec("UPDATE settings SET setting_value = 'contact@brighteducation.net' WHERE setting_key = 'site_email' AND setting_value = 'japan@brightconnect.vn'");
+        $this->conn->exec("UPDATE settings SET setting_value = '+84 0971044576' WHERE setting_key = 'site_phone' AND setting_value = '0981 456 789'");
+        $stmt = $this->conn->query("SELECT COUNT(*) FROM settings WHERE setting_key = 'site_phone_jp'");
+        if ((int)$stmt->fetchColumn() === 0) {
+            $this->conn->exec("INSERT INTO settings (setting_key, setting_value, setting_type, description) VALUES ('site_phone_jp', '+81 08037316436', 'text', 'Số điện thoại Nhật Bản')");
+        }
     }
 
     public static function getInstance() {
