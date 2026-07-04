@@ -44,7 +44,10 @@ include 'includes/header.php';
 
   <main id="hero">
     <section class="relative overflow-hidden pt-[140px] pb-0 bg-slate-50 w-full min-h-[60vh] lg:min-h-[75vh] flex items-end">
-      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-100" style="background-image: url('/assets/images/hero_bg_sunrise.png');"></div>
+      <!-- Soft blurred decorative blobs -->
+      <div class="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] max-w-[600px] max-h-[600px] bg-primary/10 rounded-full blur-[80px] lg:blur-[120px] pointer-events-none z-0 mix-blend-multiply"></div>
+      <div class="absolute bottom-[-20%] right-[-10%] w-[70vw] h-[70vw] max-w-[700px] max-h-[700px] bg-amber-400/15 rounded-full blur-[100px] lg:blur-[150px] pointer-events-none z-0 mix-blend-multiply"></div>
+      <div class="absolute top-[20%] right-[20%] w-[40vw] h-[40vw] max-w-[400px] max-h-[400px] bg-blue-300/20 rounded-full blur-[80px] lg:blur-[100px] pointer-events-none z-0 mix-blend-multiply"></div>
 
 <div class="relative mx-auto max-w-7xl px-5 lg:px-8 w-full z-10">
         <div class="grid gap-12 lg:gap-8 lg:grid-cols-2">
