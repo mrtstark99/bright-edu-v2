@@ -44,20 +44,18 @@ include 'includes/header.php';
 
   <main id="hero">
     <section class="relative overflow-hidden pt-[140px] pb-0 bg-slate-50 w-full min-h-[60vh] lg:min-h-[75vh] flex items-end">
-      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-80" style="background-image: url('/assets/images/hero_new_bg.png');"></div>
-      <!-- Black overlay for contrast -->
-      <div class="absolute inset-0 bg-black/60 pointer-events-none"></div>
+      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-100" style="background-image: url('/assets/images/hero_new_bg.png');"></div>
 
 <div class="relative mx-auto max-w-7xl px-5 lg:px-8 w-full z-10">
         <div class="grid gap-12 lg:gap-8 lg:grid-cols-2">
           <!-- Left: Content -->
           <div class="relative z-10 self-center my-12 lg:mb-24">
             
-            <div class="space-y-10 relative z-10">
-              <h1 class="reveal reveal-delay-100 text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.1] tracking-tight text-white font-display drop-shadow-lg">
-                Du học Nhật Bản cùng <span class="text-orange-500 text-[1.3em]">Bright Education</span>
+            <div class="space-y-8 relative z-10 bg-white/85 backdrop-blur-2xl p-10 sm:p-12 rounded-[2.5rem] shadow-2xl border border-white/60">
+              <h1 class="reveal reveal-delay-100 text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.2] tracking-tight text-slate-900 font-display">
+                Du học Nhật Bản cùng <span class="block mt-2 text-orange-600 text-[1.15em] drop-shadow-sm">Bright Education</span>
               </h1>
-            <p class="reveal reveal-delay-200 text-lg text-slate-100 md:text-xl max-w-lg leading-relaxed drop-shadow-md">
+            <p class="reveal reveal-delay-200 text-lg text-slate-700 md:text-xl max-w-lg leading-relaxed">
               Quy trình linh động và minh bạch sẽ giúp các bước chuẩn bị du học của bạn thuận lợi hơn khi đồng hành cùng Bright Education.
             </p>
             <div class="reveal reveal-delay-300 flex flex-wrap items-center gap-4">
@@ -79,7 +77,7 @@ include 'includes/header.php';
                <img 
                  src="/assets/images/hero-new.png" 
                  alt="Sinh viên Bright Education" 
-                 class="w-full h-auto object-contain drop-shadow-[0_0_30px_rgba(255,255,255,0.6)]"
+                 class="w-full h-auto object-contain drop-shadow-2xl"
                />
              </div>
              
