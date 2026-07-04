@@ -82,13 +82,12 @@ include 'includes/header.php';
 
           <!-- Right: Image & Floating Badges -->
           <div class="relative z-10 reveal reveal-delay-300 mt-10 lg:mt-0">
-             <div class="relative shape-blob overflow-hidden shadow-hard aspect-[4/5] sm:aspect-square lg:aspect-[4/5] transform transition-transform hover:scale-[1.02] duration-700 max-w-md mx-auto lg:ml-auto lg:mr-0 float-slow">
+             <div class="relative transform transition-transform hover:scale-[1.02] duration-700 max-w-md mx-auto lg:ml-auto lg:mr-0 float-slow">
                <img 
                  src="/assets/images/hero-new.png" 
                  alt="Sinh viên Bright Education" 
-                 class="absolute inset-0 w-full h-full object-cover scale-105"
+                 class="w-full h-auto object-contain drop-shadow-2xl"
                />
-               <div class="absolute inset-0 bg-gradient-to-tr from-primary/20 via-transparent to-primary-800/10 mix-blend-overlay"></div>
              </div>
              
              <!-- Floating Badges -->
