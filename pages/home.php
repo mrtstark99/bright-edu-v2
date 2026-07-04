@@ -44,13 +44,17 @@ include 'includes/header.php';
 
   <main id="hero">
     <section class="relative overflow-hidden pt-[140px] pb-0 bg-slate-50 w-full min-h-[60vh] lg:min-h-[75vh] flex items-end">
-      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-100" style="background-image: url('/assets/images/hero_new_bg.png');"></div>
+      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-90" style="background-image: url('/assets/images/hero_new_bg.png');"></div>
 
 <div class="relative mx-auto max-w-7xl px-5 lg:px-8 w-full z-10">
         <div class="grid gap-12 lg:gap-8 lg:grid-cols-2">
           <!-- Left: Content -->
-          <div class="space-y-10 z-10 self-center my-12 lg:mb-24 bg-white/80 backdrop-blur-md p-8 sm:p-10 rounded-[2rem] shadow-xl border border-white/50">
-            <h1 class="reveal reveal-delay-100 text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.1] tracking-tight text-primary font-display">
+          <div class="relative z-10 self-center my-12 lg:mb-24">
+            <!-- Cloud-like natural fading background -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[160%] bg-white/95 rounded-[100%] blur-[100px] sm:blur-[120px] lg:blur-[150px] -z-10 pointer-events-none"></div>
+            
+            <div class="space-y-10 relative z-10">
+              <h1 class="reveal reveal-delay-100 text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.1] tracking-tight text-primary font-display">
               Du học Nhật Bản cùng <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-500">Bright Education</span>
             </h1>
             <p class="reveal reveal-delay-200 text-lg text-muted md:text-xl max-w-lg leading-relaxed">
@@ -66,6 +70,7 @@ include 'includes/header.php';
             </div>
             
 
+            </div>
           </div>
 
           <!-- Right: Image & Floating Badges -->
