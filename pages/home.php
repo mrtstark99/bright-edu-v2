@@ -308,8 +308,7 @@ include 'includes/header.php';
     <section id="services" class="bg-white py-20 lg:py-28">
       <div class="mx-auto max-w-7xl px-5 lg:px-8">
         <div class="mx-auto mb-16 max-w-2xl text-center">
-          <h2 class="text-3xl sm:text-4xl font-bold text-primary font-display">Dịch vụ tư vấn toàn diện</h2>
-          <p class="mt-4 text-lg text-muted">Chúng tôi quản lý từng bước trong hành trình du học để bạn yên tâm tập trung học tập.</p>
+          <h2 class="text-3xl sm:text-4xl font-bold text-primary font-display">Các Bước Và Quy Trình</h2>
         </div>
         <div class="w-full">
           <!-- Services Grid -->
