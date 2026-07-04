@@ -253,6 +253,11 @@ include 'includes/header.php';
             </a>
           </div>
         </div>
+
+        <div class="mx-auto mt-24 mb-12 max-w-2xl text-center reveal">
+          <h2 class="text-3xl sm:text-4xl font-bold text-primary font-display">Các lợi thế của chúng tôi</h2>
+        </div>
+
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           <article class="group rounded-3xl border border-transparent bg-white p-8 shadow-soft card-hover hover:border-slate-200 reveal">
             <div class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-50 text-primary transition-colors group-hover:bg-sage-600 group-hover:text-white">
