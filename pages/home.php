@@ -137,91 +137,40 @@ include 'includes/header.php';
             </div>
           </div>
 
-          <!-- Right side: Programs Slide Animation -->
-          <div class="relative w-full h-[450px] sm:h-[550px] mt-12 lg:mt-0 reveal overflow-hidden rounded-[2rem] p-4 bg-slate-50/50 border border-slate-100 shadow-inner">
+          <!-- Right side: Impressive Collage Layout -->
+          <div class="relative w-full h-[450px] sm:h-[550px] mt-12 lg:mt-0 reveal">
+            <!-- Main image -->
+            <div class="absolute top-0 right-0 w-[85%] h-[80%] rounded-[2rem] overflow-hidden shadow-hard z-10 group">
+              <img src="/assets/images/about_counselor.png" alt="Tư vấn viên và học viên" class="w-full h-full object-cover transition-transform duration-[3s] group-hover:scale-110">
+              <div class="absolute inset-0 bg-primary/10 mix-blend-overlay"></div>
+            </div>
             
-            <style>
-              .marquee-horizontal {
-                display: flex;
-                width: 100%;
-                height: 100%;
-                animation: scrollHorizontal 16s infinite;
-              }
-              .marquee-horizontal:hover {
-                animation-play-state: paused;
-              }
-              .marquee-item {
-                width: 100%;
-                flex-shrink: 0;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding: 1rem;
-              }
-              @keyframes scrollHorizontal {
-                0%, 15% { transform: translateX(0); }
-                20%, 40% { transform: translateX(-100%); }
-                45%, 65% { transform: translateX(-200%); }
-                70%, 90% { transform: translateX(-300%); }
-                95%, 100% { transform: translateX(-400%); }
-              }
-            </style>
+            <!-- Secondary overlapping block -->
+            <div class="absolute bottom-0 left-0 w-[65%] h-[40%] rounded-[2rem] bg-sage-100 p-6 sm:p-8 flex flex-col justify-center z-20 shadow-medium card-hover border border-white">
+              <h4 class="text-3xl sm:text-4xl font-black text-primary font-display mb-2">2013</h4>
+              <p class="text-sm font-medium text-primary-800 leading-relaxed">Năm thành lập. Hơn 10 năm kinh nghiệm đồng hành cùng giấc mơ Nhật Bản.</p>
+            </div>
+            
+            <!-- Floating Stats Card 1 -->
+            <div class="absolute top-1/4 -translate-y-1/2 -left-4 sm:-left-8 glass rounded-2xl p-4 shadow-hard z-30 flex items-center gap-4 float-slow">
+               <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-white text-primary font-black text-xl shadow-sm">
+                 135
+               </div>
+               <div class="pr-2">
+                 <p class="text-[10px] text-muted font-bold uppercase tracking-wider">Mạng lưới</p>
+                 <p class="text-sm font-bold text-primary">Trường đối tác</p>
+               </div>
+            </div>
 
-            <div class="marquee-horizontal">
-              <!-- Item 1 -->
-              <div class="marquee-item">
-                <div class="bg-white border border-slate-100 p-8 sm:p-12 rounded-3xl shadow-soft w-full hover:shadow-medium transition cursor-pointer text-center">
-                  <div class="flex h-20 w-20 mx-auto items-center justify-center rounded-2xl bg-primary text-white shadow-sm mb-6">
-                    <i class="bi bi-book text-4xl"></i>
-                  </div>
-                  <h3 class="font-bold text-primary text-2xl sm:text-3xl mb-4">Du học Tiếng Nhật</h3>
-                  <p class="text-base sm:text-lg text-muted leading-relaxed">Chương trình nền tảng giúp học viên làm chủ Nhật ngữ và làm quen văn hóa.</p>
-                </div>
-              </div>
-              
-              <!-- Item 2 -->
-              <div class="marquee-item">
-                <div class="bg-white border border-slate-100 p-8 sm:p-12 rounded-3xl shadow-soft w-full hover:shadow-medium transition cursor-pointer text-center">
-                  <div class="flex h-20 w-20 mx-auto items-center justify-center rounded-2xl bg-primary text-white shadow-sm mb-6">
-                    <i class="bi bi-tools text-4xl"></i>
-                  </div>
-                  <h3 class="font-bold text-primary text-2xl sm:text-3xl mb-4">Du học Nghề (Senmon)</h3>
-                  <p class="text-base sm:text-lg text-muted leading-relaxed">Đào tạo kỹ năng thực tế chuyên sâu, tỷ lệ có việc làm sau tốt nghiệp lên đến 98%.</p>
-                </div>
-              </div>
-
-              <!-- Item 3 -->
-              <div class="marquee-item">
-                <div class="bg-white border border-slate-100 p-8 sm:p-12 rounded-3xl shadow-soft w-full hover:shadow-medium transition cursor-pointer text-center">
-                  <div class="flex h-20 w-20 mx-auto items-center justify-center rounded-2xl bg-primary text-white shadow-sm mb-6">
-                    <i class="bi bi-mortarboard text-4xl"></i>
-                  </div>
-                  <h3 class="font-bold text-primary text-2xl sm:text-3xl mb-4">Đại học & Cao đẳng</h3>
-                  <p class="text-base sm:text-lg text-muted leading-relaxed">Mở rộng tri thức và cơ hội học tập tại các trường Đại học hàng đầu Nhật Bản.</p>
-                </div>
-              </div>
-
-              <!-- Item 4 -->
-              <div class="marquee-item">
-                <div class="bg-white border border-slate-100 p-8 sm:p-12 rounded-3xl shadow-soft w-full hover:shadow-medium transition cursor-pointer text-center">
-                  <div class="flex h-20 w-20 mx-auto items-center justify-center rounded-2xl bg-primary text-white shadow-sm mb-6">
-                    <i class="bi bi-building text-4xl"></i>
-                  </div>
-                  <h3 class="font-bold text-primary text-2xl sm:text-3xl mb-4">Chương trình Kỹ sư</h3>
-                  <p class="text-base sm:text-lg text-muted leading-relaxed">Bảo lãnh visa làm việc dài hạn và phát triển sự nghiệp vững chắc tại Nhật Bản.</p>
-                </div>
-              </div>
-
-              <!-- Item 1 Clone (for seamless loop) -->
-              <div class="marquee-item">
-                <div class="bg-white border border-slate-100 p-8 sm:p-12 rounded-3xl shadow-soft w-full hover:shadow-medium transition cursor-pointer text-center">
-                  <div class="flex h-20 w-20 mx-auto items-center justify-center rounded-2xl bg-primary text-white shadow-sm mb-6">
-                    <i class="bi bi-book text-4xl"></i>
-                  </div>
-                  <h3 class="font-bold text-primary text-2xl sm:text-3xl mb-4">Du học Tiếng Nhật</h3>
-                  <p class="text-base sm:text-lg text-muted leading-relaxed">Chương trình nền tảng giúp học viên làm chủ Nhật ngữ và làm quen văn hóa.</p>
-                </div>
-              </div>
+            <!-- Floating Stats Card 2 -->
+            <div class="absolute bottom-[45%] right-0 translate-x-4 sm:translate-x-8 glass rounded-2xl p-4 shadow-hard z-30 flex items-center gap-4 float-slow" style="animation-delay: -3s;">
+               <div class="pr-2 text-right">
+                 <p class="text-[10px] text-muted font-bold uppercase tracking-wider">Việc làm</p>
+                 <p class="text-sm font-bold text-primary">82% Tỷ lệ đỗ</p>
+               </div>
+               <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-primary text-white shadow-sm">
+                 <i class="bi bi-briefcase-fill text-xl"></i>
+               </div>
             </div>
           </div>
           
