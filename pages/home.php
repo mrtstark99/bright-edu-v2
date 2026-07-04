@@ -43,7 +43,7 @@ include 'includes/header.php';
 ?>
 
   <main id="hero">
-    <section class="relative overflow-hidden pt-[160px] pb-0 bg-cover bg-center bg-no-repeat w-full" style="background-image: url('/assets/images/hero-bg.png');">
+    <section class="relative overflow-hidden pt-[180px] pb-0 bg-cover bg-center bg-no-repeat w-full min-h-[80vh] lg:min-h-[95vh] flex items-center" style="background-image: url('/assets/images/hero-bg.png');">
 
 <div class="relative mx-auto max-w-7xl px-5 lg:px-8 w-full">
         <div class="grid gap-16 lg:gap-16 lg:grid-cols-2 items-center">
@@ -64,20 +64,7 @@ include 'includes/header.php';
               </a>
             </div>
             
-            <div class="reveal reveal-delay-400 grid grid-cols-3 gap-6 pt-10 border-t border-slate-200/60 mt-12">
-              <div>
-                <dt class="text-3xl font-bold text-primary font-display">98.5%</dt>
-                <dd class="text-[11px] font-semibold uppercase tracking-wider text-muted mt-1">Tỷ lệ đỗ COE</dd>
-              </div>
-              <div>
-                <dt class="text-3xl font-bold text-primary font-display">7.4<span class="text-xl">tỷ</span></dt>
-                <dd class="text-[11px] font-semibold uppercase tracking-wider text-muted mt-1">Học bổng đạt</dd>
-              </div>
-              <div>
-                <dt class="text-3xl font-bold text-primary font-display">135+</dt>
-                <dd class="text-[11px] font-semibold uppercase tracking-wider text-muted mt-1">Đối tác trường</dd>
-              </div>
-            </div>
+
           </div>
 
           <!-- Right: Image & Floating Badges -->
