@@ -5,18 +5,17 @@ include 'includes/header.php';
 // Read data
 $json_data = file_get_contents(__DIR__ . '/../schools_data.json');
 $data = json_decode($json_data, true);
-$regions = $data['regions'];
 $schools = $data['schools'];
 
-// Get unique areas for filter
-$areas = [];
+// Extract unique regions for initial dropdown state
+$macroRegions = [];
 foreach ($schools as $school) {
-    if (!empty($school['area'])) {
-        $areas[$school['area']] = true;
+    if (!empty($school['macro_region'])) {
+        $macroRegions[$school['macro_region']] = true;
     }
 }
-$areas = array_keys($areas);
-sort($areas);
+$macroRegions = array_keys($macroRegions);
+sort($macroRegions);
 
 // Escape JSON for use in JS
 $schools_json = json_encode($schools, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
@@ -51,32 +50,33 @@ $schools_json = json_encode($schools, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QU
   <section class="py-12 relative z-20 -mt-8">
     <div class="container mx-auto px-6 lg:px-12">
         <!-- Interactive Filter Panel -->
-        <div class="bg-white rounded-3xl p-6 md:p-8 shadow-xl shadow-slate-200/50 border border-slate-100 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="w-full md:w-auto flex-1">
-                <div class="relative">
-                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400">
-                        <i class="bi bi-search"></i>
-                    </div>
-                    <input type="text" id="searchInput" placeholder="Tìm kiếm tên trường..." class="w-full pl-11 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-midnight font-medium focus:bg-white focus:border-sage-500 focus:ring-4 focus:ring-sage-500/10 transition-all outline-none">
+        <div class="bg-white rounded-3xl p-6 md:p-8 shadow-xl shadow-slate-200/50 border border-slate-100 flex flex-col items-center justify-between gap-6">
+            <div class="w-full relative mb-2">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400">
+                    <i class="bi bi-search"></i>
                 </div>
+                <input type="text" id="searchInput" placeholder="Tìm kiếm tên trường..." class="w-full pl-11 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-midnight font-medium focus:bg-white focus:border-sage-500 focus:ring-4 focus:ring-sage-500/10 transition-all outline-none">
             </div>
-            <div class="w-full md:w-auto flex flex-col md:flex-row items-center gap-4">
-                <div class="flex items-center gap-2 w-full md:w-auto">
-                    <span class="text-sm font-bold text-slate-400 uppercase tracking-wider shrink-0">Khu vực:</span>
-                    <select id="regionSelect" class="w-full md:w-48 px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-midnight font-medium focus:bg-white focus:border-sage-500 focus:ring-4 focus:ring-sage-500/10 transition-all outline-none appearance-none cursor-pointer">
-                        <option value="">Tất cả khu vực (<?= count($schools) ?> trường)</option>
-                        <?php foreach ($regions as $region): ?>
+            <div class="w-full flex flex-col md:flex-row items-center gap-4">
+                <div class="flex flex-col gap-2 w-full md:w-1/3">
+                    <span class="text-sm font-bold text-slate-400 uppercase tracking-wider shrink-0">Vùng:</span>
+                    <select id="macroRegionSelect" class="w-full px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-midnight font-medium focus:bg-white focus:border-sage-500 focus:ring-4 focus:ring-sage-500/10 transition-all outline-none appearance-none cursor-pointer">
+                        <option value="">Tất cả vùng</option>
+                        <?php foreach ($macroRegions as $region): ?>
                             <option value="<?= htmlspecialchars($region) ?>"><?= htmlspecialchars($region) ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
-                <div class="flex items-center gap-2 w-full md:w-auto">
+                <div class="flex flex-col gap-2 w-full md:w-1/3">
+                    <span class="text-sm font-bold text-slate-400 uppercase tracking-wider shrink-0">Tỉnh:</span>
+                    <select id="prefectureSelect" class="w-full px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-midnight font-medium focus:bg-white focus:border-sage-500 focus:ring-4 focus:ring-sage-500/10 transition-all outline-none appearance-none cursor-pointer" disabled>
+                        <option value="">Tất cả tỉnh</option>
+                    </select>
+                </div>
+                <div class="flex flex-col gap-2 w-full md:w-1/3">
                     <span class="text-sm font-bold text-slate-400 uppercase tracking-wider shrink-0">Thành phố:</span>
-                    <select id="areaSelect" class="w-full md:w-48 px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-midnight font-medium focus:bg-white focus:border-sage-500 focus:ring-4 focus:ring-sage-500/10 transition-all outline-none appearance-none cursor-pointer">
+                    <select id="areaSelect" class="w-full px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-midnight font-medium focus:bg-white focus:border-sage-500 focus:ring-4 focus:ring-sage-500/10 transition-all outline-none appearance-none cursor-pointer" disabled>
                         <option value="">Tất cả thành phố</option>
-                        <?php foreach ($areas as $area): ?>
-                            <option value="<?= htmlspecialchars($area) ?>"><?= htmlspecialchars($area) ?></option>
-                        <?php endforeach; ?>
                     </select>
                 </div>
             </div>
@@ -99,6 +99,11 @@ $schools_json = json_encode($schools, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QU
           <!-- Schools will be rendered here by JS -->
       </div>
       
+      <!-- Pagination -->
+      <div id="pagination" class="flex justify-center items-center mt-12 gap-2 hidden">
+          <!-- Pagination buttons will be rendered here -->
+      </div>
+
       <!-- Empty State -->
       <div id="emptyState" class="hidden text-center py-20">
           <div class="w-24 h-24 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6 text-slate-400 text-4xl">
@@ -116,20 +121,35 @@ $schools_json = json_encode($schools, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QU
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const schools = <?= $schools_json ?>;
+    
+    // Check if Seiko exists from our manual rename previously (if it got overwritten by recrawl)
+    schools.forEach(s => {
+        if (s.name_en === "Naruyuki Japanese School") {
+            s.name_en = "Seiko Japanese School";
+        }
+    });
+
     const grid = document.getElementById('schoolsGrid');
+    const paginationContainer = document.getElementById('pagination');
     const searchInput = document.getElementById('searchInput');
-    const regionSelect = document.getElementById('regionSelect');
+    const macroRegionSelect = document.getElementById('macroRegionSelect');
+    const prefectureSelect = document.getElementById('prefectureSelect');
     const areaSelect = document.getElementById('areaSelect');
     const emptyState = document.getElementById('emptyState');
     const activeFilterDisplay = document.getElementById('activeFilterDisplay');
     const activeRegionBadge = document.getElementById('activeRegionBadge');
     const resetFiltersBtn = document.getElementById('resetFilters');
 
-    function renderSchools(filteredSchools) {
+    let currentFilteredSchools = schools;
+    let currentPage = 1;
+    const itemsPerPage = 20;
+
+    function renderSchools(schoolsToRender) {
         grid.innerHTML = '';
         
-        if (filteredSchools.length === 0) {
+        if (schoolsToRender.length === 0) {
             grid.classList.add('hidden');
+            paginationContainer.classList.add('hidden');
             emptyState.classList.remove('hidden');
             return;
         }
@@ -137,7 +157,12 @@ document.addEventListener('DOMContentLoaded', function() {
         grid.classList.remove('hidden');
         emptyState.classList.add('hidden');
 
-        filteredSchools.forEach(school => {
+        // Pagination slicing
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const paginatedSchools = schoolsToRender.slice(startIndex, endIndex);
+
+        paginatedSchools.forEach(school => {
             const el = document.createElement('div');
             el.className = 'bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col h-full';
             
@@ -147,7 +172,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="p-6 pb-5 bg-slate-50/50 border-b border-slate-100 flex-grow">
                     <div class="flex items-start justify-between gap-4 mb-4">
                         <span class="inline-flex items-center gap-1.5 bg-sky-50 text-sky-600 py-1 px-3 rounded-xl text-xs font-bold uppercase tracking-wider">
-                            <i class="bi bi-geo-alt-fill"></i> ${school.region}
+                            <i class="bi bi-geo-alt-fill"></i> ${school.prefecture}
                         </span>
                         <div class="w-8 h-8 rounded-full bg-slate-200/50 flex items-center justify-center text-slate-400 group-hover:bg-sage-100 group-hover:text-sage-500 transition-colors shrink-0">
                             <i class="bi bi-building"></i>
@@ -169,51 +194,156 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
             grid.appendChild(el);
         });
+        
+        renderPagination(schoolsToRender.length);
     }
+    
+    function renderPagination(totalItems) {
+        const totalPages = Math.ceil(totalItems / itemsPerPage);
+        paginationContainer.innerHTML = '';
+        
+        if (totalPages <= 1) {
+            paginationContainer.classList.add('hidden');
+            return;
+        }
+        
+        paginationContainer.classList.remove('hidden');
+        
+        // Prev button
+        const prevBtn = document.createElement('button');
+        prevBtn.className = \`px-4 py-2 rounded-xl text-sm font-medium transition-colors \${currentPage === 1 ? 'bg-slate-100 text-slate-400 cursor-not-allowed' : 'bg-white border border-slate-200 text-midnight hover:bg-slate-50'}\`;
+        prevBtn.innerHTML = '<i class="bi bi-chevron-left"></i> Trước';
+        prevBtn.disabled = currentPage === 1;
+        prevBtn.addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                renderSchools(currentFilteredSchools);
+                window.scrollTo({ top: grid.offsetTop - 100, behavior: 'smooth' });
+            }
+        });
+        paginationContainer.appendChild(prevBtn);
+        
+        // Page numbers
+        let startPage = Math.max(1, currentPage - 2);
+        let endPage = Math.min(totalPages, startPage + 4);
+        
+        if (endPage - startPage < 4) {
+            startPage = Math.max(1, endPage - 4);
+        }
+        
+        for (let i = startPage; i <= endPage; i++) {
+            const pageBtn = document.createElement('button');
+            pageBtn.className = \`w-10 h-10 rounded-xl text-sm font-medium transition-colors \${i === currentPage ? 'bg-sage-500 text-white shadow-md' : 'bg-white border border-slate-200 text-midnight hover:bg-slate-50'}\`;
+            pageBtn.innerText = i;
+            pageBtn.addEventListener('click', () => {
+                currentPage = i;
+                renderSchools(currentFilteredSchools);
+                window.scrollTo({ top: grid.offsetTop - 100, behavior: 'smooth' });
+            });
+            paginationContainer.appendChild(pageBtn);
+        }
+        
+        // Next button
+        const nextBtn = document.createElement('button');
+        nextBtn.className = \`px-4 py-2 rounded-xl text-sm font-medium transition-colors \${currentPage === totalPages ? 'bg-slate-100 text-slate-400 cursor-not-allowed' : 'bg-white border border-slate-200 text-midnight hover:bg-slate-50'}\`;
+        nextBtn.innerHTML = 'Sau <i class="bi bi-chevron-right"></i>';
+        nextBtn.disabled = currentPage === totalPages;
+        nextBtn.addEventListener('click', () => {
+            if (currentPage < totalPages) {
+                currentPage++;
+                renderSchools(currentFilteredSchools);
+                window.scrollTo({ top: grid.offsetTop - 100, behavior: 'smooth' });
+            }
+        });
+        paginationContainer.appendChild(nextBtn);
+    }
+
+    function populateSelect(selectElement, options, placeholder) {
+        selectElement.innerHTML = \`<option value="">\${placeholder}</option>\`;
+        options.forEach(opt => {
+            if (opt) {
+                const el = document.createElement('option');
+                el.value = opt;
+                el.innerText = opt;
+                selectElement.appendChild(el);
+            }
+        });
+        selectElement.disabled = options.length === 0;
+    }
+
+    macroRegionSelect.addEventListener('change', function() {
+        const selectedMacro = this.value;
+        if (selectedMacro) {
+            const prefs = [...new Set(schools.filter(s => s.macro_region === selectedMacro).map(s => s.prefecture))].sort();
+            populateSelect(prefectureSelect, prefs, "Tất cả tỉnh");
+        } else {
+            populateSelect(prefectureSelect, [], "Tất cả tỉnh");
+        }
+        populateSelect(areaSelect, [], "Tất cả thành phố");
+        applyFilters();
+    });
+
+    prefectureSelect.addEventListener('change', function() {
+        const selectedPref = this.value;
+        const selectedMacro = macroRegionSelect.value;
+        if (selectedPref) {
+            const areas = [...new Set(schools.filter(s => s.prefecture === selectedPref && s.macro_region === selectedMacro).map(s => s.area))].sort();
+            populateSelect(areaSelect, areas, "Tất cả thành phố");
+        } else {
+            populateSelect(areaSelect, [], "Tất cả thành phố");
+        }
+        applyFilters();
+    });
 
     function applyFilters() {
         const searchTerm = searchInput.value.toLowerCase().trim();
-        const region = regionSelect.value;
+        const macro = macroRegionSelect.value;
+        const pref = prefectureSelect.value;
         const area = areaSelect.value;
         
-        let filtered = schools;
+        currentFilteredSchools = schools;
 
-        if (region) {
-            filtered = filtered.filter(s => s.region === region);
+        if (macro) {
+            currentFilteredSchools = currentFilteredSchools.filter(s => s.macro_region === macro);
         }
-        
+        if (pref) {
+            currentFilteredSchools = currentFilteredSchools.filter(s => s.prefecture === pref);
+        }
         if (area) {
-            filtered = filtered.filter(s => s.area === area);
+            currentFilteredSchools = currentFilteredSchools.filter(s => s.area === area);
         }
 
-        if (region || area) {
+        if (macro || pref || area) {
             activeFilterDisplay.classList.remove('hidden');
             let badgeText = [];
-            if (region) badgeText.push(`Khu vực: ${region}`);
-            if (area) badgeText.push(`Thành phố: ${area}`);
-            activeRegionBadge.innerHTML = `<i class="bi bi-geo-alt-fill"></i> ${badgeText.join(' - ')}`;
+            if (macro) badgeText.push(\`Vùng: \${macro}\`);
+            if (pref) badgeText.push(\`Tỉnh: \${pref}\`);
+            if (area) badgeText.push(\`Thành phố: \${area}\`);
+            activeRegionBadge.innerHTML = \`<i class="bi bi-geo-alt-fill"></i> \${badgeText.join(' - ')}\`;
         } else {
             activeFilterDisplay.classList.add('hidden');
         }
 
         if (searchTerm) {
-            filtered = filtered.filter(s => {
-                const searchStr = `${s.name_en} ${s.name_jp || ''} ${s.area || ''} ${s.area_ja || ''} ${s.region}`.toLowerCase();
+            currentFilteredSchools = currentFilteredSchools.filter(s => {
+                const searchStr = \`\${s.name_en} \${s.name_jp || ''} \${s.area || ''} \${s.area_ja || ''} \${s.prefecture} \${s.macro_region}\`.toLowerCase();
                 return searchStr.includes(searchTerm);
             });
         }
 
-        renderSchools(filtered);
+        // Reset to first page on new filter
+        currentPage = 1;
+        renderSchools(currentFilteredSchools);
     }
 
     searchInput.addEventListener('input', applyFilters);
-    regionSelect.addEventListener('change', applyFilters);
     areaSelect.addEventListener('change', applyFilters);
     
     resetFiltersBtn.addEventListener('click', () => {
         searchInput.value = '';
-        regionSelect.value = '';
-        areaSelect.value = '';
+        macroRegionSelect.value = '';
+        populateSelect(prefectureSelect, [], "Tất cả tỉnh");
+        populateSelect(areaSelect, [], "Tất cả thành phố");
         applyFilters();
     });
 
