@@ -44,7 +44,7 @@ include 'includes/header.php';
 
   <main id="hero">
     <section class="relative overflow-hidden pt-[140px] pb-0 bg-slate-50 w-full min-h-[60vh] lg:min-h-[75vh] flex items-end">
-      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-100" style="background-image: url('/assets/images/hero_bg_new2.jpg');"></div>
+      <div class="absolute inset-0 bg-cover bg-bottom bg-no-repeat opacity-100" style="background-image: url('/assets/images/hero_bg_watercolor.png');"></div>
 
 <div class="relative mx-auto max-w-7xl px-5 lg:px-8 w-full z-10">
         <div class="grid gap-12 lg:gap-8 lg:grid-cols-2">
