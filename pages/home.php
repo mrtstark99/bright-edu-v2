@@ -141,104 +141,85 @@ include 'includes/header.php';
           <div class="relative w-full h-[450px] sm:h-[550px] mt-12 lg:mt-0 reveal overflow-hidden rounded-[2rem] p-4 bg-slate-50/50 border border-slate-100 shadow-inner">
             
             <style>
-              .marquee-vertical {
+              .marquee-horizontal {
                 display: flex;
-                flex-direction: column;
-                animation: scrollVertical 15s linear infinite;
+                width: 100%;
+                height: 100%;
+                animation: scrollHorizontal 16s infinite;
               }
-              .marquee-vertical:hover {
+              .marquee-horizontal:hover {
                 animation-play-state: paused;
               }
-              @keyframes scrollVertical {
-                0% { transform: translateY(0); }
-                100% { transform: translateY(calc(-50% - 12px)); } /* Adjust for gap */
+              .marquee-item {
+                width: 100%;
+                flex-shrink: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 1rem;
+              }
+              @keyframes scrollHorizontal {
+                0%, 15% { transform: translateX(0); }
+                20%, 40% { transform: translateX(-100%); }
+                45%, 65% { transform: translateX(-200%); }
+                70%, 90% { transform: translateX(-300%); }
+                95%, 100% { transform: translateX(-400%); }
               }
             </style>
 
-            <!-- Gradient fade at top and bottom for smooth effect -->
-            <div class="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-white to-transparent z-10 pointer-events-none rounded-t-[2rem]"></div>
-            <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white to-transparent z-10 pointer-events-none rounded-b-[2rem]"></div>
-
-            <div class="marquee-vertical gap-6">
-              <!-- Set 1 -->
-              <div class="bg-white border border-slate-100 p-6 rounded-2xl shadow-soft flex items-start gap-4 hover:shadow-medium transition cursor-pointer">
-                <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary text-white shadow-sm">
-                  <i class="bi bi-book text-2xl"></i>
-                </div>
-                <div>
-                  <h3 class="font-bold text-primary text-lg">Du học Tiếng Nhật</h3>
-                  <p class="text-sm text-muted mt-1 leading-relaxed">Chương trình nền tảng giúp học viên làm chủ Nhật ngữ và làm quen văn hóa.</p>
+            <div class="marquee-horizontal">
+              <!-- Item 1 -->
+              <div class="marquee-item">
+                <div class="bg-white border border-slate-100 p-8 sm:p-12 rounded-3xl shadow-soft w-full hover:shadow-medium transition cursor-pointer text-center">
+                  <div class="flex h-20 w-20 mx-auto items-center justify-center rounded-2xl bg-primary text-white shadow-sm mb-6">
+                    <i class="bi bi-book text-4xl"></i>
+                  </div>
+                  <h3 class="font-bold text-primary text-2xl sm:text-3xl mb-4">Du học Tiếng Nhật</h3>
+                  <p class="text-base sm:text-lg text-muted leading-relaxed">Chương trình nền tảng giúp học viên làm chủ Nhật ngữ và làm quen văn hóa.</p>
                 </div>
               </div>
               
-              <div class="bg-white border border-slate-100 p-6 rounded-2xl shadow-soft flex items-start gap-4 hover:shadow-medium transition cursor-pointer">
-                <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary text-white shadow-sm">
-                  <i class="bi bi-tools text-2xl"></i>
-                </div>
-                <div>
-                  <h3 class="font-bold text-primary text-lg">Du học Nghề (Senmon)</h3>
-                  <p class="text-sm text-muted mt-1 leading-relaxed">Đào tạo kỹ năng thực tế chuyên sâu, tỷ lệ có việc làm sau tốt nghiệp lên đến 98%.</p>
-                </div>
-              </div>
-
-              <div class="bg-white border border-slate-100 p-6 rounded-2xl shadow-soft flex items-start gap-4 hover:shadow-medium transition cursor-pointer">
-                <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary text-white shadow-sm">
-                  <i class="bi bi-mortarboard text-2xl"></i>
-                </div>
-                <div>
-                  <h3 class="font-bold text-primary text-lg">Đại học & Cao đẳng</h3>
-                  <p class="text-sm text-muted mt-1 leading-relaxed">Mở rộng tri thức và cơ hội học tập tại các trường Đại học hàng đầu Nhật Bản.</p>
+              <!-- Item 2 -->
+              <div class="marquee-item">
+                <div class="bg-white border border-slate-100 p-8 sm:p-12 rounded-3xl shadow-soft w-full hover:shadow-medium transition cursor-pointer text-center">
+                  <div class="flex h-20 w-20 mx-auto items-center justify-center rounded-2xl bg-primary text-white shadow-sm mb-6">
+                    <i class="bi bi-tools text-4xl"></i>
+                  </div>
+                  <h3 class="font-bold text-primary text-2xl sm:text-3xl mb-4">Du học Nghề (Senmon)</h3>
+                  <p class="text-base sm:text-lg text-muted leading-relaxed">Đào tạo kỹ năng thực tế chuyên sâu, tỷ lệ có việc làm sau tốt nghiệp lên đến 98%.</p>
                 </div>
               </div>
 
-              <div class="bg-white border border-slate-100 p-6 rounded-2xl shadow-soft flex items-start gap-4 hover:shadow-medium transition cursor-pointer">
-                <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary text-white shadow-sm">
-                  <i class="bi bi-building text-2xl"></i>
-                </div>
-                <div>
-                  <h3 class="font-bold text-primary text-lg">Chương trình Kỹ sư</h3>
-                  <p class="text-sm text-muted mt-1 leading-relaxed">Bảo lãnh visa làm việc dài hạn và phát triển sự nghiệp vững chắc tại Nhật Bản.</p>
-                </div>
-              </div>
-
-              <!-- Set 2 (Duplicate for infinite scroll) -->
-              <div class="bg-white border border-slate-100 p-6 rounded-2xl shadow-soft flex items-start gap-4 hover:shadow-medium transition cursor-pointer">
-                <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary text-white shadow-sm">
-                  <i class="bi bi-book text-2xl"></i>
-                </div>
-                <div>
-                  <h3 class="font-bold text-primary text-lg">Du học Tiếng Nhật</h3>
-                  <p class="text-sm text-muted mt-1 leading-relaxed">Chương trình nền tảng giúp học viên làm chủ Nhật ngữ và làm quen văn hóa.</p>
-                </div>
-              </div>
-              
-              <div class="bg-white border border-slate-100 p-6 rounded-2xl shadow-soft flex items-start gap-4 hover:shadow-medium transition cursor-pointer">
-                <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary text-white shadow-sm">
-                  <i class="bi bi-tools text-2xl"></i>
-                </div>
-                <div>
-                  <h3 class="font-bold text-primary text-lg">Du học Nghề (Senmon)</h3>
-                  <p class="text-sm text-muted mt-1 leading-relaxed">Đào tạo kỹ năng thực tế chuyên sâu, tỷ lệ có việc làm sau tốt nghiệp lên đến 98%.</p>
+              <!-- Item 3 -->
+              <div class="marquee-item">
+                <div class="bg-white border border-slate-100 p-8 sm:p-12 rounded-3xl shadow-soft w-full hover:shadow-medium transition cursor-pointer text-center">
+                  <div class="flex h-20 w-20 mx-auto items-center justify-center rounded-2xl bg-primary text-white shadow-sm mb-6">
+                    <i class="bi bi-mortarboard text-4xl"></i>
+                  </div>
+                  <h3 class="font-bold text-primary text-2xl sm:text-3xl mb-4">Đại học & Cao đẳng</h3>
+                  <p class="text-base sm:text-lg text-muted leading-relaxed">Mở rộng tri thức và cơ hội học tập tại các trường Đại học hàng đầu Nhật Bản.</p>
                 </div>
               </div>
 
-              <div class="bg-white border border-slate-100 p-6 rounded-2xl shadow-soft flex items-start gap-4 hover:shadow-medium transition cursor-pointer">
-                <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary text-white shadow-sm">
-                  <i class="bi bi-mortarboard text-2xl"></i>
-                </div>
-                <div>
-                  <h3 class="font-bold text-primary text-lg">Đại học & Cao đẳng</h3>
-                  <p class="text-sm text-muted mt-1 leading-relaxed">Mở rộng tri thức và cơ hội học tập tại các trường Đại học hàng đầu Nhật Bản.</p>
+              <!-- Item 4 -->
+              <div class="marquee-item">
+                <div class="bg-white border border-slate-100 p-8 sm:p-12 rounded-3xl shadow-soft w-full hover:shadow-medium transition cursor-pointer text-center">
+                  <div class="flex h-20 w-20 mx-auto items-center justify-center rounded-2xl bg-primary text-white shadow-sm mb-6">
+                    <i class="bi bi-building text-4xl"></i>
+                  </div>
+                  <h3 class="font-bold text-primary text-2xl sm:text-3xl mb-4">Chương trình Kỹ sư</h3>
+                  <p class="text-base sm:text-lg text-muted leading-relaxed">Bảo lãnh visa làm việc dài hạn và phát triển sự nghiệp vững chắc tại Nhật Bản.</p>
                 </div>
               </div>
 
-              <div class="bg-white border border-slate-100 p-6 rounded-2xl shadow-soft flex items-start gap-4 hover:shadow-medium transition cursor-pointer">
-                <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary text-white shadow-sm">
-                  <i class="bi bi-building text-2xl"></i>
-                </div>
-                <div>
-                  <h3 class="font-bold text-primary text-lg">Chương trình Kỹ sư</h3>
-                  <p class="text-sm text-muted mt-1 leading-relaxed">Bảo lãnh visa làm việc dài hạn và phát triển sự nghiệp vững chắc tại Nhật Bản.</p>
+              <!-- Item 1 Clone (for seamless loop) -->
+              <div class="marquee-item">
+                <div class="bg-white border border-slate-100 p-8 sm:p-12 rounded-3xl shadow-soft w-full hover:shadow-medium transition cursor-pointer text-center">
+                  <div class="flex h-20 w-20 mx-auto items-center justify-center rounded-2xl bg-primary text-white shadow-sm mb-6">
+                    <i class="bi bi-book text-4xl"></i>
+                  </div>
+                  <h3 class="font-bold text-primary text-2xl sm:text-3xl mb-4">Du học Tiếng Nhật</h3>
+                  <p class="text-base sm:text-lg text-muted leading-relaxed">Chương trình nền tảng giúp học viên làm chủ Nhật ngữ và làm quen văn hóa.</p>
                 </div>
               </div>
             </div>
