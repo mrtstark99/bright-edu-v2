@@ -43,12 +43,12 @@ include 'includes/header.php';
 ?>
 
   <main id="hero">
-    <section class="relative overflow-hidden pt-[140px] pb-12 lg:pb-16 bg-cover bg-center bg-no-repeat w-full min-h-[60vh] lg:min-h-[70vh] flex items-center" style="background-image: url('/assets/images/hero-bg.png');">
+    <section class="relative overflow-hidden pt-[140px] pb-0 bg-cover bg-center bg-no-repeat w-full min-h-[60vh] lg:min-h-[75vh] flex items-end" style="background-image: url('/assets/images/hero-bg.png');">
 
 <div class="relative mx-auto max-w-7xl px-5 lg:px-8 w-full">
-        <div class="grid gap-16 lg:gap-16 lg:grid-cols-2 items-center">
+        <div class="grid gap-12 lg:gap-8 lg:grid-cols-2">
           <!-- Left: Content -->
-          <div class="space-y-12 z-10">
+          <div class="space-y-12 z-10 self-center pb-12 lg:pb-24">
             <h1 class="reveal reveal-delay-100 text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.1] tracking-tight text-primary font-display">
               Du học Nhật Bản trọn vẹn cùng <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-500">Bright Education</span>
             </h1>
@@ -68,8 +68,8 @@ include 'includes/header.php';
           </div>
 
           <!-- Right: Image & Floating Badges -->
-          <div class="relative z-10 reveal reveal-delay-300 mt-10 lg:mt-0">
-             <div class="relative transform transition-transform hover:scale-[1.02] duration-700 max-w-md mx-auto lg:ml-auto lg:mr-0">
+          <div class="relative z-10 reveal reveal-delay-300 mt-10 lg:mt-0 self-end">
+             <div class="relative transform transition-transform hover:scale-[1.05] duration-700 w-full max-w-lg lg:max-w-[110%] mx-auto lg:ml-auto lg:-mr-8 scale-110 origin-bottom">
                <img 
                  src="/assets/images/hero-new.png" 
                  alt="Sinh viên Bright Education" 
