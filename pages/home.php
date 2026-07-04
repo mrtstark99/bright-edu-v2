@@ -44,14 +44,14 @@ include 'includes/header.php';
 
   <main id="hero">
     <section class="relative overflow-hidden pt-[140px] pb-0 bg-slate-50 w-full min-h-[60vh] lg:min-h-[75vh] flex items-end">
-      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-100" style="background-image: url('/assets/images/hero_new_bg.png');"></div>
+      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-100" style="background-image: url('/assets/images/hero_bg_new2.jpg');"></div>
 
 <div class="relative mx-auto max-w-7xl px-5 lg:px-8 w-full z-10">
         <div class="grid gap-12 lg:gap-8 lg:grid-cols-2">
           <!-- Left: Content -->
           <div class="relative z-10 self-center my-12 lg:mb-24">
             
-            <div class="space-y-8 relative z-10 bg-white/85 backdrop-blur-2xl p-10 sm:p-12 rounded-[2.5rem] shadow-2xl border border-white/60">
+            <div class="space-y-8 relative z-10">
               <h1 class="reveal reveal-delay-100 text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.2] tracking-tight text-slate-900 font-display">
                 Du học Nhật Bản cùng <span class="block mt-2 text-orange-600 text-[1.15em] drop-shadow-sm">Bright Education</span>
               </h1>
