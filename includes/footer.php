@@ -31,8 +31,10 @@
           <ul class="space-y-3 text-sm text-primary-100">
             <li><a href="/" class="hover:text-white transition-colors flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Trang chủ</a></li>
             <li><a href="/about" class="hover:text-white transition-colors flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Về chúng tôi</a></li>
-            <li><a href="/services" class="hover:text-white transition-colors flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Dịch vụ tư vấn</a></li>
-            <li><a href="/blog" class="hover:text-white transition-colors flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Cẩm nang du học</a></li>
+            <li><a href="/schools" class="hover:text-white transition-colors flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Hệ thống trường</a></li>
+            <li><a href="/kham-pha" class="hover:text-white transition-colors flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Khám phá Nhật Bản</a></li>
+            <li><a href="/blog" class="hover:text-white transition-colors flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Tin tức & Cẩm nang</a></li>
+            <li><a href="/groups" class="hover:text-white transition-colors flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Đội ngũ & Cộng đồng</a></li>
             <li><a href="/contact" class="hover:text-white transition-colors flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Liên hệ</a></li>
           </ul>
         </div>
@@ -41,11 +43,12 @@
         <div>
           <h3 class="text-white font-bold font-display tracking-wide mb-6">Dịch Vụ Của Chúng Tôi</h3>
           <ul class="space-y-3 text-sm text-primary-100">
-            <li><a href="#" class="hover:text-white transition-colors flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Tư vấn chọn trường</a></li>
-            <li><a href="#" class="hover:text-white transition-colors flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Hỗ trợ làm hồ sơ Visa</a></li>
-            <li><a href="#" class="hover:text-white transition-colors flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Đào tạo tiếng Nhật</a></li>
-            <li><a href="#" class="hover:text-white transition-colors flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Tìm kiếm học bổng</a></li>
-            <li><a href="#" class="hover:text-white transition-colors flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Hỗ trợ việc làm tại Nhật</a></li>
+            <li><a href="/services" class="hover:text-white transition-colors flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Tất cả dịch vụ</a></li>
+            <li><a href="/courses" class="hover:text-white transition-colors flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Khóa học tiếng Nhật</a></li>
+            <li><a href="/du-hoc" class="hover:text-white transition-colors flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Thông tin du học</a></li>
+            <li><a href="/process" class="hover:text-white transition-colors flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Quy trình thủ tục</a></li>
+            <li><a href="/documents" class="hover:text-white transition-colors flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Kho tài liệu</a></li>
+            <li><a href="/consultation" class="hover:text-white transition-colors flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Đăng ký tư vấn</a></li>
           </ul>
         </div>
 
