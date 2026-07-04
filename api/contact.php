@@ -58,7 +58,7 @@ try {
     createOrUpdateLead('contact', $contact_id, $name, $email, $phone, $japanese_level, $intake_period);
 
     // Send email notification to admin (optional)
-    $admin_email = getSetting('site_email', 'japan@brightconnect.vn');
+    $admin_email = getSetting('site_email', 'contact@brighteducation.net');
     $subject = "Liên hệ mới từ website - $name";
     $body = "
         <h3>Thông tin liên hệ mới:</h3>

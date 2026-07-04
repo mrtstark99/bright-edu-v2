@@ -352,8 +352,9 @@ INSERT OR IGNORE INTO services (name, slug, description, order_position) VALUES
 INSERT OR IGNORE INTO settings (setting_key, setting_value, setting_type, description) VALUES
 ('site_name',         'Bright Education',           'text',    'Tên website'),
 ('site_slogan',       'Du học Nhật Bản',            'text',    'Slogan website'),
-('site_email',        'japan@brightconnect.vn',     'text',    'Email liên hệ'),
-('site_phone',        '0981 456 789',               'text',    'Số điện thoại'),
+('site_email',        'contact@brighteducation.net',     'text',    'Email liên hệ'),
+('site_phone',        '+84 0971044576',               'text',    'Số điện thoại'),
+('site_phone_jp',     '+81 08037316436',              'text',    'Số điện thoại Nhật Bản'),
 ('site_address',      '207 Quang Trung, Thành Đông, Hải Phòng','text',   'Địa chỉ'),
 ('facebook_url',      'https://facebook.com/brighteducation', 'text', 'Facebook URL'),
 ('youtube_url',       'https://youtube.com/brighteducation',  'text', 'Youtube URL'),

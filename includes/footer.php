@@ -60,13 +60,16 @@
               <i class="bi bi-geo-alt-fill text-white mt-0.5"></i>
               <span><?php echo getSetting('site_address', '207 Quang Trung, Thành Đông, Hải Phòng'); ?></span>
             </li>
-            <li class="flex items-center gap-3">
-              <i class="bi bi-telephone-fill text-white"></i>
-              <a href="tel:<?php echo str_replace(' ', '', getSetting('site_phone', '0981 456 789')); ?>" class="hover:text-white transition-colors"><?php echo getSetting('site_phone', '0981 456 789'); ?></a>
+            <li class="flex items-start gap-3">
+              <i class="bi bi-telephone-fill text-white mt-1"></i>
+              <div class="flex flex-col gap-1">
+                <a href="tel:<?php echo str_replace(' ', '', getSetting('site_phone', '+84 0971044576')); ?>" class="hover:text-white transition-colors">VN: <?php echo getSetting('site_phone', '+84 0971044576'); ?></a>
+                <a href="tel:<?php echo str_replace(' ', '', getSetting('site_phone_jp', '+81 08037316436')); ?>" class="hover:text-white transition-colors">JP: <?php echo getSetting('site_phone_jp', '+81 08037316436'); ?></a>
+              </div>
             </li>
             <li class="flex items-center gap-3">
               <i class="bi bi-envelope-fill text-white"></i>
-              <a href="mailto:<?php echo getSetting('site_email', 'japan@brightconnect.vn'); ?>" class="hover:text-white transition-colors"><?php echo getSetting('site_email', 'japan@brightconnect.vn'); ?></a>
+              <a href="mailto:<?php echo getSetting('site_email', 'contact@brighteducation.net'); ?>" class="hover:text-white transition-colors"><?php echo getSetting('site_email', 'contact@brighteducation.net'); ?></a>
             </li>
             <li class="flex items-center gap-3">
               <i class="bi bi-clock-fill text-white"></i>

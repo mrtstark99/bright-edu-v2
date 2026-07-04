@@ -1061,7 +1061,8 @@ include 'includes/header.php';
                     </div>
                     <div>
                         <p class="text-[12px] text-slate-400 font-semibold uppercase tracking-wider">Hotline</p>
-                        <p class="text-[15px] font-bold text-white mt-0.5"><?php echo getSetting('site_phone', '0981 456 789'); ?></p>
+                        <p class="text-[15px] font-bold text-white mt-0.5">VN: <?php echo getSetting('site_phone', '+84 0971044576'); ?></p>
+                        <p class="text-[15px] font-bold text-white mt-0.5">JP: <?php echo getSetting('site_phone_jp', '+81 08037316436'); ?></p>
                     </div>
                 </div>
                 <div class="flex items-center gap-4 group">
@@ -1070,7 +1071,7 @@ include 'includes/header.php';
                     </div>
                     <div>
                         <p class="text-[12px] text-slate-400 font-semibold uppercase tracking-wider">Email</p>
-                        <p class="text-[15px] font-bold text-white mt-0.5"><?php echo getSetting('site_email', 'japan@brightconnect.vn'); ?></p>
+                        <p class="text-[15px] font-bold text-white mt-0.5"><?php echo getSetting('site_email', 'contact@brighteducation.net'); ?></p>
                     </div>
                 </div>
                 <div class="flex items-center gap-4 group">
@@ -1108,7 +1109,7 @@ include 'includes/header.php';
                     </label>
                     <label class="block">
                     <span class="text-[12px] font-bold text-slate-700">Số điện thoại <span class="text-red-500">*</span></span>
-                    <input class="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 focus:bg-white focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/20 transition-all" name="phone" placeholder="0981 456 789" required />
+                    <input class="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 focus:bg-white focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/20 transition-all" name="phone" placeholder="+84 0971044576" required />
                     </label>
                 </div>
                 

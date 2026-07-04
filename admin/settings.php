@@ -70,10 +70,13 @@ $si = function($key, $default = '') use ($s) {
             <div class="a-card-header"><h2>Thông tin liên hệ</h2></div>
             <div class="a-card-body">
                 <div class="a-field"><label class="a-label">Email</label>
-                    <input type="email" name="site_email" class="a-input" value="<?php echo $si('site_email','japan@brightconnect.vn'); ?>">
+                    <input type="email" name="site_email" class="a-input" value="<?php echo $si('site_email','contact@brighteducation.net'); ?>">
                 </div>
                 <div class="a-field"><label class="a-label">Điện thoại</label>
-                    <input type="text" name="site_phone" class="a-input" value="<?php echo $si('site_phone','0981 456 789'); ?>">
+                    <input type="text" name="site_phone" class="a-input" value="<?php echo $si('site_phone','+84 0971044576'); ?>">
+                </div>
+                <div class="a-field"><label class="a-label">Điện thoại Nhật Bản</label>
+                    <input type="text" name="site_phone_jp" class="a-input" value="<?php echo $si('site_phone_jp','+81 08037316436'); ?>">
                 </div>
                 <div class="a-field"><label class="a-label">Địa chỉ</label>
                     <textarea name="site_address" class="a-input" rows="3"><?php echo $si('site_address','207 Quang Trung, Thành Đông, Hải Phòng'); ?></textarea>

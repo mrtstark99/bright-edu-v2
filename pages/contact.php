@@ -29,7 +29,8 @@ include 'includes/header.php';
               </div>
               <div>
                 <h3 class="text-[11px] font-bold uppercase tracking-wider text-white/60 mb-1">Hotline</h3>
-                <p class="text-[16px] font-semibold text-white"><?php echo getSetting('site_phone', '0981 456 789'); ?></p>
+                <p class="text-[16px] font-semibold text-white">VN: <?php echo getSetting('site_phone', '+84 0971044576'); ?></p>
+                <p class="text-[16px] font-semibold text-white mt-1">JP: <?php echo getSetting('site_phone_jp', '+81 08037316436'); ?></p>
               </div>
             </div>
             
@@ -39,7 +40,7 @@ include 'includes/header.php';
               </div>
               <div>
                 <h3 class="text-[11px] font-bold uppercase tracking-wider text-white/60 mb-1">Email</h3>
-                <p class="text-[16px] font-semibold text-white"><?php echo getSetting('site_email', 'japan@brightconnect.vn'); ?></p>
+                <p class="text-[16px] font-semibold text-white"><?php echo getSetting('site_email', 'contact@brighteducation.net'); ?></p>
               </div>
             </div>
             
