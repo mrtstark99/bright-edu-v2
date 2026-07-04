@@ -196,7 +196,7 @@ include 'includes/header.php';
               <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent"></div>
               <div class="absolute bottom-0 left-0 right-0 p-6">
                 <span class="inline-block text-[10px] font-bold uppercase tracking-widest text-white/70 mb-2">Phổ biến nhất</span>
-                <h3 class="text-white font-display font-bold text-xl leading-tight mb-2">Du học <br/>Ngôn ngữ</h3>
+                <h3 class="text-white font-display font-bold text-xl leading-tight mb-2">Du học Ngôn ngữ</h3>
                 <p class="text-white/70 text-xs leading-relaxed">Trường Nhật ngữ 1-2 năm. Nền tảng vững cho các chương trình tiếp theo.</p>
                 <div class="mt-4 flex items-center gap-2 text-white text-xs font-semibold group-hover:gap-3 transition-all">
                   Tìm hiểu thêm <i class="bi bi-arrow-right"></i>
@@ -213,7 +213,7 @@ include 'includes/header.php';
               </div>
               <div class="absolute bottom-0 left-0 right-0 p-6">
                 <span class="inline-block text-[10px] font-bold uppercase tracking-widest text-white/70 mb-2">Bậc Đại học</span>
-                <h3 class="text-white font-display font-bold text-xl leading-tight mb-2">Du học <br/>Đại học</h3>
+                <h3 class="text-white font-display font-bold text-xl leading-tight mb-2">Du học Đại học</h3>
                 <p class="text-white/70 text-xs leading-relaxed">Vào thẳng ĐH Nhật hoặc qua trung gian Senmon Gakkou.</p>
                 <div class="mt-4 flex items-center gap-2 text-white text-xs font-semibold group-hover:gap-3 transition-all">
                   Tìm hiểu thêm <i class="bi bi-arrow-right"></i>
@@ -227,7 +227,7 @@ include 'includes/header.php';
               <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent"></div>
               <div class="absolute bottom-0 left-0 right-0 p-6">
                 <span class="inline-block text-[10px] font-bold uppercase tracking-widest text-white/70 mb-2">Kỹ năng nghề</span>
-                <h3 class="text-white font-display font-bold text-xl leading-tight mb-2">Du học <br/>Trường Nghề</h3>
+                <h3 class="text-white font-display font-bold text-xl leading-tight mb-2">Du học Trường Nghề</h3>
                 <p class="text-white/70 text-xs leading-relaxed">Chuyên môn thực chiến, cơ hội việc làm lương cao tại Nhật.</p>
                 <div class="mt-4 flex items-center gap-2 text-white text-xs font-semibold group-hover:gap-3 transition-all">
                   Tìm hiểu thêm <i class="bi bi-arrow-right"></i>
@@ -244,7 +244,7 @@ include 'includes/header.php';
               </div>
               <div class="absolute bottom-0 left-0 right-0 p-6">
                 <span class="inline-block text-[10px] font-bold uppercase tracking-widest text-white/70 mb-2">Visa lao động</span>
-                <h3 class="text-white font-display font-bold text-xl leading-tight mb-2">Kỹ năng <br/>Đặc định</h3>
+                <h3 class="text-white font-display font-bold text-xl leading-tight mb-2">Kỹ năng Đặc định</h3>
                 <p class="text-white/70 text-xs leading-relaxed">Lộ trình nhanh sang Nhật làm việc có tay nghề (SSW).</p>
                 <div class="mt-4 flex items-center gap-2 text-white text-xs font-semibold group-hover:gap-3 transition-all">
                   Tìm hiểu thêm <i class="bi bi-arrow-right"></i>
