@@ -44,7 +44,9 @@ include 'includes/header.php';
 
   <main id="hero">
     <section class="relative overflow-hidden pt-[140px] pb-0 bg-slate-50 w-full min-h-[60vh] lg:min-h-[75vh] flex items-end">
-      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40" style="background-image: url('/assets/images/hero_new_bg.png');"></div>
+      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-90" style="background-image: url('/assets/images/hero_new_bg.png');"></div>
+      <!-- Premium Gradient Overlay for Text Contrast -->
+      <div class="absolute inset-0 bg-gradient-to-b from-slate-50 via-slate-50/80 to-slate-50/20 lg:bg-gradient-to-r lg:from-slate-50/95 lg:via-slate-50/70 lg:to-transparent"></div>
 
 <div class="relative mx-auto max-w-7xl px-5 lg:px-8 w-full z-10">
         <div class="grid gap-12 lg:gap-8 lg:grid-cols-2">
