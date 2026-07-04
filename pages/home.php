@@ -192,7 +192,7 @@ include 'includes/header.php';
           <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             <!-- Chương trình 1: Du học Ngôn ngữ -->
             <a href="/services" class="group relative rounded-3xl overflow-hidden shadow-medium hover:shadow-hard transition-all duration-500 card-hover block aspect-[3/4]">
-              <img src="https://t-ueno.jp/images/home/main01_s.jpg" alt="Du học Ngôn ngữ" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-110">
+              <img src="https://t-ueno.jp/images/home/main01_s.jpg" alt="Du học Ngôn ngữ" class="absolute inset-0 w-full h-full object-cover object-right transition-transform duration-[4s] group-hover:scale-110">
               <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent"></div>
               <div class="absolute bottom-0 left-0 right-0 p-6">
                 <span class="inline-block text-[10px] font-bold uppercase tracking-widest text-white/70 mb-2">Phổ biến nhất</span>
@@ -206,7 +206,7 @@ include 'includes/header.php';
 
             <!-- Chương trình 2: Du học Đại học -->
             <a href="/services" class="group relative rounded-3xl overflow-hidden shadow-medium hover:shadow-hard transition-all duration-500 card-hover block aspect-[3/4]">
-              <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/11/b8/fd/45/caption.jpg?w=1200&h=1200&s=1" alt="Du học Đại học" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-110">
+              <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/11/b8/fd/45/caption.jpg?w=1200&h=1200&s=1" alt="Du học Đại học" class="absolute inset-0 w-full h-full object-cover object-right transition-transform duration-[4s] group-hover:scale-110">
               <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent"></div>
               <div class="absolute top-4 right-4">
                 <span class="inline-block rounded-full bg-amber-400 text-white text-[9px] font-bold uppercase px-3 py-1">Học bổng</span>
@@ -223,7 +223,7 @@ include 'includes/header.php';
 
             <!-- Chương trình 3: Du học Nghề -->
             <a href="/services" class="group relative rounded-3xl overflow-hidden shadow-medium hover:shadow-hard transition-all duration-500 card-hover block aspect-[3/4]">
-              <img src="https://storage-production.all-japan.dev/www.tennoji-itkaikei.ac.jp/2026/02/18044120/computer_room_02.jpg" alt="Du học Nghề" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-110">
+              <img src="https://storage-production.all-japan.dev/www.tennoji-itkaikei.ac.jp/2026/02/18044120/computer_room_02.jpg" alt="Du học Nghề" class="absolute inset-0 w-full h-full object-cover object-right transition-transform duration-[4s] group-hover:scale-110">
               <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent"></div>
               <div class="absolute bottom-0 left-0 right-0 p-6">
                 <span class="inline-block text-[10px] font-bold uppercase tracking-widest text-white/70 mb-2">Kỹ năng nghề</span>
