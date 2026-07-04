@@ -55,7 +55,7 @@ include 'includes/header.php';
             
             <div class="space-y-10 relative z-10">
               <h1 class="reveal reveal-delay-100 text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.1] tracking-tight text-white font-display drop-shadow-lg">
-                Du học Nhật Bản cùng <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-200">Bright Education</span>
+                Du học Nhật Bản cùng <span class="text-orange-500 text-[1.3em]">Bright Education</span>
               </h1>
             <p class="reveal reveal-delay-200 text-lg text-slate-100 md:text-xl max-w-lg leading-relaxed drop-shadow-md">
               Quy trình linh động và minh bạch sẽ giúp các bước chuẩn bị du học của bạn thuận lợi hơn khi đồng hành cùng Bright Education.
@@ -79,7 +79,7 @@ include 'includes/header.php';
                <img 
                  src="/assets/images/hero-new.png" 
                  alt="Sinh viên Bright Education" 
-                 class="w-full h-auto object-contain drop-shadow-2xl"
+                 class="w-full h-auto object-contain drop-shadow-[0_0_30px_rgba(255,255,255,0.6)]"
                />
              </div>
              
