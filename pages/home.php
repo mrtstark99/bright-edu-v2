@@ -43,12 +43,12 @@ include 'includes/header.php';
 ?>
 
   <main id="hero">
-    <section class="relative overflow-hidden pt-[140px] pb-0 bg-cover bg-center bg-no-repeat w-full" style="background-image: url('/assets/images/hero-bg.png');">
+    <section class="relative overflow-hidden pt-[160px] pb-0 bg-cover bg-center bg-no-repeat w-full" style="background-image: url('/assets/images/hero-bg.png');">
 
 <div class="relative mx-auto max-w-7xl px-5 lg:px-8 w-full">
-        <div class="grid gap-12 lg:gap-8 lg:grid-cols-2 items-center">
+        <div class="grid gap-16 lg:gap-16 lg:grid-cols-2 items-center">
           <!-- Left: Content -->
-          <div class="space-y-8 z-10">
+          <div class="space-y-12 z-10">
             <h1 class="reveal reveal-delay-100 text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.1] tracking-tight text-primary font-display">
               Du học Nhật Bản trọn vẹn cùng <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-500">Bright Education</span>
             </h1>
@@ -64,7 +64,7 @@ include 'includes/header.php';
               </a>
             </div>
             
-            <div class="reveal reveal-delay-400 grid grid-cols-3 gap-6 pt-8 border-t border-slate-200/60 mt-8">
+            <div class="reveal reveal-delay-400 grid grid-cols-3 gap-6 pt-10 border-t border-slate-200/60 mt-12">
               <div>
                 <dt class="text-3xl font-bold text-primary font-display">98.5%</dt>
                 <dd class="text-[11px] font-semibold uppercase tracking-wider text-muted mt-1">Tỷ lệ đỗ COE</dd>
