@@ -43,7 +43,7 @@ include 'includes/header.php';
 ?>
 
   <main id="hero">
-    <section class="relative overflow-hidden pt-[180px] pb-0 bg-cover bg-center bg-no-repeat w-full min-h-[80vh] lg:min-h-[95vh] flex items-center" style="background-image: url('/assets/images/hero-bg.png');">
+    <section class="relative overflow-hidden pt-[140px] pb-12 lg:pb-16 bg-cover bg-center bg-no-repeat w-full min-h-[60vh] lg:min-h-[70vh] flex items-center" style="background-image: url('/assets/images/hero-bg.png');">
 
 <div class="relative mx-auto max-w-7xl px-5 lg:px-8 w-full">
         <div class="grid gap-16 lg:gap-16 lg:grid-cols-2 items-center">
