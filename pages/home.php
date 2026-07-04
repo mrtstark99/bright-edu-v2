@@ -137,40 +137,110 @@ include 'includes/header.php';
             </div>
           </div>
 
-          <!-- Right side: Impressive Collage Layout -->
-          <div class="relative w-full h-[450px] sm:h-[550px] mt-12 lg:mt-0 reveal">
-            <!-- Main image -->
-            <div class="absolute top-0 right-0 w-[85%] h-[80%] rounded-[2rem] overflow-hidden shadow-hard z-10 group">
-              <img src="/assets/images/about_counselor.png" alt="Tư vấn viên và học viên" class="w-full h-full object-cover transition-transform duration-[3s] group-hover:scale-110">
-              <div class="absolute inset-0 bg-primary/10 mix-blend-overlay"></div>
-            </div>
+          <!-- Right side: Programs Slide Animation -->
+          <div class="relative w-full h-[450px] sm:h-[550px] mt-12 lg:mt-0 reveal overflow-hidden rounded-[2rem] p-4 bg-slate-50/50 border border-slate-100 shadow-inner">
             
-            <!-- Secondary overlapping block -->
-            <div class="absolute bottom-0 left-0 w-[65%] h-[40%] rounded-[2rem] bg-sage-100 p-6 sm:p-8 flex flex-col justify-center z-20 shadow-medium card-hover border border-white">
-              <h4 class="text-3xl sm:text-4xl font-black text-primary font-display mb-2">2013</h4>
-              <p class="text-sm font-medium text-primary-800 leading-relaxed">Năm thành lập. Hơn 10 năm kinh nghiệm đồng hành cùng giấc mơ Nhật Bản.</p>
-            </div>
-            
-            <!-- Floating Stats Card 1 -->
-            <div class="absolute top-1/4 -translate-y-1/2 -left-4 sm:-left-8 glass rounded-2xl p-4 shadow-hard z-30 flex items-center gap-4 float-slow">
-               <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-white text-primary font-black text-xl shadow-sm">
-                 135
-               </div>
-               <div class="pr-2">
-                 <p class="text-[10px] text-muted font-bold uppercase tracking-wider">Mạng lưới</p>
-                 <p class="text-sm font-bold text-primary">Trường đối tác</p>
-               </div>
-            </div>
+            <style>
+              .marquee-vertical {
+                display: flex;
+                flex-direction: column;
+                animation: scrollVertical 15s linear infinite;
+              }
+              .marquee-vertical:hover {
+                animation-play-state: paused;
+              }
+              @keyframes scrollVertical {
+                0% { transform: translateY(0); }
+                100% { transform: translateY(calc(-50% - 12px)); } /* Adjust for gap */
+              }
+            </style>
 
-            <!-- Floating Stats Card 2 -->
-            <div class="absolute bottom-[45%] right-0 translate-x-4 sm:translate-x-8 glass rounded-2xl p-4 shadow-hard z-30 flex items-center gap-4 float-slow" style="animation-delay: -3s;">
-               <div class="pr-2 text-right">
-                 <p class="text-[10px] text-muted font-bold uppercase tracking-wider">Việc làm</p>
-                 <p class="text-sm font-bold text-primary">82% Tỷ lệ đỗ</p>
-               </div>
-               <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-primary text-white shadow-sm">
-                 <i class="bi bi-briefcase-fill text-xl"></i>
-               </div>
+            <!-- Gradient fade at top and bottom for smooth effect -->
+            <div class="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-white to-transparent z-10 pointer-events-none rounded-t-[2rem]"></div>
+            <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white to-transparent z-10 pointer-events-none rounded-b-[2rem]"></div>
+
+            <div class="marquee-vertical gap-6">
+              <!-- Set 1 -->
+              <div class="bg-white border border-slate-100 p-6 rounded-2xl shadow-soft flex items-start gap-4 hover:shadow-medium transition cursor-pointer">
+                <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary text-white shadow-sm">
+                  <i class="bi bi-book text-2xl"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-primary text-lg">Du học Tiếng Nhật</h3>
+                  <p class="text-sm text-muted mt-1 leading-relaxed">Chương trình nền tảng giúp học viên làm chủ Nhật ngữ và làm quen văn hóa.</p>
+                </div>
+              </div>
+              
+              <div class="bg-white border border-slate-100 p-6 rounded-2xl shadow-soft flex items-start gap-4 hover:shadow-medium transition cursor-pointer">
+                <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary text-white shadow-sm">
+                  <i class="bi bi-tools text-2xl"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-primary text-lg">Du học Nghề (Senmon)</h3>
+                  <p class="text-sm text-muted mt-1 leading-relaxed">Đào tạo kỹ năng thực tế chuyên sâu, tỷ lệ có việc làm sau tốt nghiệp lên đến 98%.</p>
+                </div>
+              </div>
+
+              <div class="bg-white border border-slate-100 p-6 rounded-2xl shadow-soft flex items-start gap-4 hover:shadow-medium transition cursor-pointer">
+                <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary text-white shadow-sm">
+                  <i class="bi bi-mortarboard text-2xl"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-primary text-lg">Đại học & Cao đẳng</h3>
+                  <p class="text-sm text-muted mt-1 leading-relaxed">Mở rộng tri thức và cơ hội học tập tại các trường Đại học hàng đầu Nhật Bản.</p>
+                </div>
+              </div>
+
+              <div class="bg-white border border-slate-100 p-6 rounded-2xl shadow-soft flex items-start gap-4 hover:shadow-medium transition cursor-pointer">
+                <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary text-white shadow-sm">
+                  <i class="bi bi-building text-2xl"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-primary text-lg">Chương trình Kỹ sư</h3>
+                  <p class="text-sm text-muted mt-1 leading-relaxed">Bảo lãnh visa làm việc dài hạn và phát triển sự nghiệp vững chắc tại Nhật Bản.</p>
+                </div>
+              </div>
+
+              <!-- Set 2 (Duplicate for infinite scroll) -->
+              <div class="bg-white border border-slate-100 p-6 rounded-2xl shadow-soft flex items-start gap-4 hover:shadow-medium transition cursor-pointer">
+                <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary text-white shadow-sm">
+                  <i class="bi bi-book text-2xl"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-primary text-lg">Du học Tiếng Nhật</h3>
+                  <p class="text-sm text-muted mt-1 leading-relaxed">Chương trình nền tảng giúp học viên làm chủ Nhật ngữ và làm quen văn hóa.</p>
+                </div>
+              </div>
+              
+              <div class="bg-white border border-slate-100 p-6 rounded-2xl shadow-soft flex items-start gap-4 hover:shadow-medium transition cursor-pointer">
+                <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary text-white shadow-sm">
+                  <i class="bi bi-tools text-2xl"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-primary text-lg">Du học Nghề (Senmon)</h3>
+                  <p class="text-sm text-muted mt-1 leading-relaxed">Đào tạo kỹ năng thực tế chuyên sâu, tỷ lệ có việc làm sau tốt nghiệp lên đến 98%.</p>
+                </div>
+              </div>
+
+              <div class="bg-white border border-slate-100 p-6 rounded-2xl shadow-soft flex items-start gap-4 hover:shadow-medium transition cursor-pointer">
+                <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary text-white shadow-sm">
+                  <i class="bi bi-mortarboard text-2xl"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-primary text-lg">Đại học & Cao đẳng</h3>
+                  <p class="text-sm text-muted mt-1 leading-relaxed">Mở rộng tri thức và cơ hội học tập tại các trường Đại học hàng đầu Nhật Bản.</p>
+                </div>
+              </div>
+
+              <div class="bg-white border border-slate-100 p-6 rounded-2xl shadow-soft flex items-start gap-4 hover:shadow-medium transition cursor-pointer">
+                <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary text-white shadow-sm">
+                  <i class="bi bi-building text-2xl"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-primary text-lg">Chương trình Kỹ sư</h3>
+                  <p class="text-sm text-muted mt-1 leading-relaxed">Bảo lãnh visa làm việc dài hạn và phát triển sự nghiệp vững chắc tại Nhật Bản.</p>
+                </div>
+              </div>
             </div>
           </div>
           
