@@ -44,10 +44,45 @@ include 'includes/header.php';
 
   <main id="hero">
     <section class="relative overflow-hidden pt-[140px] pb-0 bg-slate-50 w-full min-h-[60vh] lg:min-h-[75vh] flex items-end">
-      <!-- Soft blurred decorative blobs -->
-      <div class="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] max-w-[600px] max-h-[600px] bg-primary/10 rounded-full blur-[80px] lg:blur-[120px] pointer-events-none z-0 mix-blend-multiply"></div>
-      <div class="absolute bottom-[-20%] right-[-10%] w-[70vw] h-[70vw] max-w-[700px] max-h-[700px] bg-amber-400/15 rounded-full blur-[100px] lg:blur-[150px] pointer-events-none z-0 mix-blend-multiply"></div>
-      <div class="absolute top-[20%] right-[20%] w-[40vw] h-[40vw] max-w-[400px] max-h-[400px] bg-blue-300/20 rounded-full blur-[80px] lg:blur-[100px] pointer-events-none z-0 mix-blend-multiply"></div>
+      <!-- Background Núi Phú Sĩ & Sóng đồi (Vector SVG) -->
+      <div class="absolute top-0 right-0 w-full lg:w-[65%] h-full pointer-events-none z-0" style="mask-image: linear-gradient(to right, transparent 0%, black 20%); -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%);">
+          <div class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-primary-50/50 z-0"></div>
+
+          <!-- Những đám mây trôi lững lờ -->
+          <div class="absolute top-[25%] left-[20%] flex items-end opacity-60 z-0">
+              <div class="w-16 h-6 bg-white rounded-full translate-x-4"></div>
+              <div class="w-24 h-10 bg-white rounded-full z-10"></div>
+              <div class="w-12 h-5 bg-white rounded-full -translate-x-2"></div>
+          </div>
+          <div class="absolute top-[15%] right-[5%] flex items-end opacity-40 z-0 hidden lg:flex">
+              <div class="w-12 h-4 bg-white rounded-full translate-x-2"></div>
+              <div class="w-20 h-8 bg-white rounded-full z-10"></div>
+              <div class="w-10 h-4 bg-white rounded-full -translate-x-2"></div>
+          </div>
+
+          <!-- Mặt Trời Đỏ -->
+          <div class="absolute bottom-[81%] left-[61%] -translate-x-1/2 translate-y-1/2 w-48 h-48 lg:w-64 lg:h-64 bg-red-600 rounded-full opacity-90 shadow-[0_0_80px_20px_rgba(236,32,40,0.4)] blur-[1px] z-0"></div>
+          <div class="absolute bottom-[81%] left-[61%] -translate-x-1/2 translate-y-1/2 w-64 h-64 lg:w-96 lg:h-96 bg-orange-400 rounded-full mix-blend-screen filter blur-[80px] opacity-40 z-0"></div>
+
+          <!-- Ngọn núi chính - Núi Phú Sĩ -->
+          <svg class="absolute bottom-0 right-0 w-full h-[90%] z-10" preserveAspectRatio="none" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+              <path d="M 0,100 Q 29,65 58,10 L 64,10 Q 93,65 122,100 Z" class="text-primary-400" fill="currentColor"/>
+              <path d="M 61,10 L 64,10 Q 93,65 122,100 L 61,100 Q 64,55 61,10 Z" class="text-primary-600" fill="currentColor" opacity="0.4"/>
+              <path d="M 43.5,45 Q 50,25 58,10 L 64,10 Q 72,25 78.5,45 L 74,35 L 70,48 L 66,36 L 61,50 L 56,36 L 52,48 L 48,35 Z" fill="white"/>
+              <path d="M 61,10 L 64,10 Q 72,25 78.5,45 L 74,35 L 70,48 L 66,36 L 61,50 Z" class="text-primary-100" fill="currentColor" opacity="0.8"/>
+          </svg>
+
+          <!-- Đồi tiền cảnh -->
+          <svg class="absolute bottom-0 left-0 w-full h-[30%] text-primary-600 z-20" preserveAspectRatio="none" viewBox="0 0 100 100" fill="currentColor">
+              <path d="M 0,100 Q 20,40 50,70 T 100,60 L 100,100 Z" />
+          </svg>
+          <svg class="absolute bottom-0 right-0 w-full h-[20%] text-primary-800 z-30" preserveAspectRatio="none" viewBox="0 0 100 100" fill="currentColor">
+              <path d="M 100,100 Q 70,20 40,50 T 0,60 L 0,100 Z" />
+          </svg>
+          <svg class="absolute bottom-0 right-0 w-full h-[12%] text-primary-950 z-40" preserveAspectRatio="none" viewBox="0 0 100 100" fill="currentColor">
+              <path d="M 0,100 Q 20,30 50,50 T 100,40 L 100,100 Z" />
+          </svg>
+      </div>
 
 <div class="relative mx-auto max-w-7xl px-5 lg:px-8 w-full z-10">
         <div class="grid gap-12 lg:gap-8 lg:grid-cols-2">
