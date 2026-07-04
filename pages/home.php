@@ -84,7 +84,7 @@ include 'includes/header.php';
           <div class="relative z-10 reveal reveal-delay-300 mt-10 lg:mt-0">
              <div class="relative shape-blob overflow-hidden shadow-hard aspect-[4/5] sm:aspect-square lg:aspect-[4/5] transform transition-transform hover:scale-[1.02] duration-700 max-w-md mx-auto lg:ml-auto lg:mr-0 float-slow">
                <img 
-                 src="/assets/images/hero_main.png" 
+                 src="/assets/images/hero-new.png" 
                  alt="Sinh viên Bright Education" 
                  class="absolute inset-0 w-full h-full object-cover scale-105"
                />
