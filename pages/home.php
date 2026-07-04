@@ -45,8 +45,8 @@ include 'includes/header.php';
   <main id="hero">
     <section class="relative overflow-hidden pt-[140px] pb-0 bg-slate-50 w-full min-h-[60vh] lg:min-h-[75vh] flex items-end">
       <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-80" style="background-image: url('/assets/images/hero_new_bg.png');"></div>
-      <!-- Black overlay with 15% opacity -->
-      <div class="absolute inset-0 bg-black/15 pointer-events-none"></div>
+      <!-- Black overlay for contrast -->
+      <div class="absolute inset-0 bg-black/60 pointer-events-none"></div>
 
 <div class="relative mx-auto max-w-7xl px-5 lg:px-8 w-full z-10">
         <div class="grid gap-12 lg:gap-8 lg:grid-cols-2">
@@ -54,10 +54,10 @@ include 'includes/header.php';
           <div class="relative z-10 self-center my-12 lg:mb-24">
             
             <div class="space-y-10 relative z-10">
-              <h1 class="reveal reveal-delay-100 text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.1] tracking-tight text-primary font-display">
-              Du học Nhật Bản cùng <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-500">Bright Education</span>
-            </h1>
-            <p class="reveal reveal-delay-200 text-lg text-muted md:text-xl max-w-lg leading-relaxed">
+              <h1 class="reveal reveal-delay-100 text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.1] tracking-tight text-white font-display drop-shadow-lg">
+                Du học Nhật Bản cùng <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-200">Bright Education</span>
+              </h1>
+            <p class="reveal reveal-delay-200 text-lg text-slate-100 md:text-xl max-w-lg leading-relaxed drop-shadow-md">
               Quy trình linh động và minh bạch sẽ giúp các bước chuẩn bị du học của bạn thuận lợi hơn khi đồng hành cùng Bright Education.
             </p>
             <div class="reveal reveal-delay-300 flex flex-wrap items-center gap-4">
