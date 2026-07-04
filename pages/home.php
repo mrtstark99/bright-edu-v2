@@ -43,7 +43,7 @@ include 'includes/header.php';
 ?>
 
   <main id="hero">
-    <section class="relative overflow-hidden bg-mesh min-h-[78vh] flex items-start pt-[140px] pb-16">
+    <section class="relative overflow-hidden bg-mesh pt-[140px] pb-0">
 
 <div class="relative mx-auto max-w-7xl px-5 lg:px-8 w-full">
         <div class="grid gap-12 lg:gap-8 lg:grid-cols-2 items-center">
@@ -82,7 +82,7 @@ include 'includes/header.php';
 
           <!-- Right: Image & Floating Badges -->
           <div class="relative z-10 reveal reveal-delay-300 mt-10 lg:mt-0">
-             <div class="relative transform transition-transform hover:scale-[1.02] duration-700 max-w-md mx-auto lg:ml-auto lg:mr-0 float-slow">
+             <div class="relative transform transition-transform hover:scale-[1.02] duration-700 max-w-md mx-auto lg:ml-auto lg:mr-0">
                <img 
                  src="/assets/images/hero-new.png" 
                  alt="Sinh viên Bright Education" 
@@ -91,7 +91,7 @@ include 'includes/header.php';
              </div>
              
              <!-- Floating Badges -->
-             <div class="absolute -left-2 sm:-left-8 bottom-1/4 glass rounded-2xl p-4 shadow-medium flex items-center gap-4 animate-bounce" style="animation-duration: 3s;">
+             <div class="absolute -left-2 sm:-left-8 bottom-1/4 glass rounded-2xl p-4 shadow-medium flex items-center gap-4">
                 <div class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-primary">
                     <i class="bi bi-check-circle-fill text-xl"></i>
                 </div>
@@ -101,7 +101,7 @@ include 'includes/header.php';
                 </div>
              </div>
              
-             <div class="absolute -right-2 sm:-right-8 top-1/4 glass rounded-2xl p-4 shadow-medium flex items-center gap-4 animate-bounce" style="animation-duration: 4s; animation-delay: 1s;">
+             <div class="absolute -right-2 sm:-right-8 top-1/4 glass rounded-2xl p-4 shadow-medium flex items-center gap-4">
                 <div class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-primary">
                     <i class="bi bi-star-fill text-xl"></i>
                 </div>
