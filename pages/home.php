@@ -184,9 +184,7 @@ include 'includes/header.php';
       <div class="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:20px_20px] opacity-30 pointer-events-none"></div>
       <div class="relative">
         <div class="mx-auto mb-12 max-w-2xl text-center">
-          <span class="text-primary font-bold tracking-wider uppercase text-xs mb-3 block">Điểm khác biệt</span>
-          <h2 class="text-3xl sm:text-4xl font-bold text-primary font-display">Vì sao chọn Bright Education?</h2>
-          <p class="mt-4 text-lg text-muted">Kết hợp thế mạnh môi trường Nhật và mạng lưới cố vấn thực chiến.</p>
+          <h2 class="text-3xl sm:text-4xl font-bold text-primary font-display">Các Chương Trình Du Học</h2>
         </div>
         
         <!-- Study Abroad Programs -->
