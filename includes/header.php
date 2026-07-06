@@ -153,8 +153,8 @@
       <nav class="hidden items-center gap-1 text-[15px] font-medium text-muted md:flex">
         <a class="nav-link" href="/">Trang chủ</a>
 
-        <a class="nav-link" href="/du-hoc">Du học</a>
         <a class="nav-link" href="/kham-pha">Khám phá</a>
+        <a class="nav-link" href="/qa">Hỏi đáp</a>
 
         <a class="nav-link" href="/consultation">Đặt lịch</a>
         <a class="nav-link" href="/contact">Liên hệ</a>
@@ -225,10 +225,7 @@
 
         <!-- Du học group -->
         <div>
-          <a class="mobile-link flex items-center gap-3 px-4 py-3 rounded-2xl text-[16px] font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors" href="/du-hoc">
-            <i class="bi bi-mortarboard text-primary w-5 text-center text-sm"></i> Du học
-          </a>
-          <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400 px-4 pt-2 pb-2">— Danh mục</p>
+          <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400 px-4 pt-2 pb-2">— Danh mục Du học</p>
           <a class="mobile-link flex items-center gap-3 px-4 py-3 rounded-2xl text-[16px] font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors" href="/services">
             <i class="bi bi-briefcase text-primary w-5 text-center text-sm"></i> Dịch vụ tư vấn
           </a>
@@ -257,6 +254,9 @@
           </a>
           <a class="mobile-link flex items-center gap-3 px-4 py-3 rounded-2xl text-[16px] font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors" href="/about">
             <i class="bi bi-building text-primary w-5 text-center text-sm"></i> Về Bright Education
+          </a>
+          <a class="mobile-link flex items-center gap-3 px-4 py-3 rounded-2xl text-[16px] font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors" href="/qa">
+            <i class="bi bi-chat-text text-primary w-5 text-center text-sm"></i> Hỏi đáp
           </a>
         </div>
 

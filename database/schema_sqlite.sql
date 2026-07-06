@@ -362,3 +362,41 @@ INSERT OR IGNORE INTO settings (setting_key, setting_value, setting_type, descri
 ('maintenance_mode',  '0',                          'boolean', 'Chế độ bảo trì'),
 ('posts_per_page',    '12',                         'number',  'Số bài viết mỗi trang'),
 ('allow_registration','0',                          'boolean', 'Cho phép đăng ký');
+
+-- ============================================================
+-- Table: qa_questions
+-- ============================================================
+CREATE TABLE IF NOT EXISTS qa_questions (
+    id             INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id        INTEGER,
+    author_name    TEXT NOT NULL,
+    content        TEXT NOT NULL,
+    likes_count    INTEGER NOT NULL DEFAULT 0,
+    status         TEXT NOT NULL DEFAULT 'active' CHECK(status IN ('active','hidden')),
+    created_at     TEXT NOT NULL DEFAULT (datetime('now','localtime')),
+    updated_at     TEXT NOT NULL DEFAULT (datetime('now','localtime')),
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_qa_questions_status ON qa_questions(status);
+CREATE INDEX IF NOT EXISTS idx_qa_questions_created ON qa_questions(created_at);
+
+-- ============================================================
+-- Table: qa_answers
+-- ============================================================
+CREATE TABLE IF NOT EXISTS qa_answers (
+    id             INTEGER PRIMARY KEY AUTOINCREMENT,
+    question_id    INTEGER NOT NULL,
+    user_id        INTEGER,
+    author_name    TEXT NOT NULL,
+    content        TEXT NOT NULL,
+    likes_count    INTEGER NOT NULL DEFAULT 0,
+    status         TEXT NOT NULL DEFAULT 'active' CHECK(status IN ('active','hidden')),
+    created_at     TEXT NOT NULL DEFAULT (datetime('now','localtime')),
+    updated_at     TEXT NOT NULL DEFAULT (datetime('now','localtime')),
+    FOREIGN KEY (question_id) REFERENCES qa_questions(id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_qa_answers_question ON qa_answers(question_id);
+CREATE INDEX IF NOT EXISTS idx_qa_answers_status ON qa_answers(status);
