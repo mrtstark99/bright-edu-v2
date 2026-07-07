@@ -31,12 +31,13 @@ switch ($action) {
         break;
         
     case 'post_question':
-        $author_name = $_POST['author_name'] ?? 'Khách';
-        $content = $_POST['content'] ?? '';
-        $user_id = isLoggedIn() ? $_SESSION['user_id'] : null;
-        if (isLoggedIn() && isset($_SESSION['user_name'])) {
-            $author_name = $_SESSION['user_name'];
+        if (!isLoggedIn()) {
+            echo json_encode(['status' => 'error', 'message' => 'Vui lòng đăng nhập để đặt câu hỏi']);
+            break;
         }
+        $content = $_POST['content'] ?? '';
+        $user_id = $_SESSION['user_id'];
+        $author_name = $_SESSION['user_name'];
         
         if (empty(trim($content))) {
             echo json_encode(['status' => 'error', 'message' => 'Nội dung không được để trống']);
@@ -54,13 +55,15 @@ switch ($action) {
         break;
         
     case 'post_answer':
-        $question_id = $_POST['question_id'] ?? 0;
-        $author_name = $_POST['author_name'] ?? 'Khách';
-        $content = $_POST['content'] ?? '';
-        $user_id = isLoggedIn() ? $_SESSION['user_id'] : null;
-        if (isLoggedIn() && isset($_SESSION['user_name'])) {
-            $author_name = $_SESSION['user_name'];
+        if (!isAdmin()) {
+            echo json_encode(['status' => 'error', 'message' => 'Bạn không có quyền trả lời câu hỏi']);
+            break;
         }
+        $question_id = $_POST['question_id'] ?? 0;
+        $content = $_POST['content'] ?? '';
+        $user_id = $_SESSION['user_id'];
+        // Use a generic name for admin replies or their actual name
+        $author_name = 'Bright Education (Admin)'; 
         
         if (empty(trim($content)) || !$question_id) {
             echo json_encode(['status' => 'error', 'message' => 'Dữ liệu không hợp lệ']);
@@ -79,6 +82,10 @@ switch ($action) {
         break;
         
     case 'like_question':
+        if (!isLoggedIn()) {
+            echo json_encode(['status' => 'error', 'message' => 'Vui lòng đăng nhập để thích']);
+            break;
+        }
         $question_id = $_POST['question_id'] ?? 0;
         $stmt = $db->prepare("UPDATE qa_questions SET likes_count = likes_count + 1 WHERE id = :id");
         $stmt->execute(['id' => $question_id]);
@@ -91,6 +98,10 @@ switch ($action) {
         break;
         
     case 'like_answer':
+        if (!isLoggedIn()) {
+            echo json_encode(['status' => 'error', 'message' => 'Vui lòng đăng nhập để thích']);
+            break;
+        }
         $answer_id = $_POST['answer_id'] ?? 0;
         $stmt = $db->prepare("UPDATE qa_answers SET likes_count = likes_count + 1 WHERE id = :id");
         $stmt->execute(['id' => $answer_id]);

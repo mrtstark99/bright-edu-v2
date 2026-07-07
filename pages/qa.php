@@ -7,28 +7,37 @@ require_once 'includes/header.php';
 
 $is_logged_in = isLoggedIn();
 $current_user_name = $is_logged_in ? $_SESSION['user_name'] ?? 'Thành viên' : '';
+$is_admin = $is_logged_in && (isAdmin() || isEditor());
 ?>
 
 <div class="min-h-screen bg-[#f0f2f5] pt-28 pb-12">
     <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <!-- Post creation box -->
+        <?php if ($is_logged_in): ?>
         <div class="bg-white rounded-xl shadow-sm p-4 mb-6">
             <div class="flex gap-3">
                 <div class="w-10 h-10 rounded-full bg-slate-200 flex-shrink-0 flex items-center justify-center overflow-hidden">
                     <i class="bi bi-person-fill text-slate-400 text-xl"></i>
                 </div>
                 <div class="flex-1">
-                    <?php if (!$is_logged_in): ?>
-                        <input type="text" id="post_author_name" placeholder="Tên của bạn" class="w-full bg-slate-100 rounded-full px-4 py-2 text-[15px] focus:outline-none focus:ring-2 focus:ring-primary/20 mb-3" />
-                    <?php endif; ?>
                     <textarea id="post_content" rows="2" placeholder="Bạn có câu hỏi gì về du học Nhật Bản?" class="w-full bg-slate-100 rounded-xl px-4 py-3 text-[15px] focus:outline-none focus:ring-2 focus:ring-primary/20 resize-none"></textarea>
                 </div>
             </div>
             <div class="border-t border-slate-100 mt-3 pt-3 flex justify-end">
-                <button id="btn_post_question" class="bg-primary text-white font-semibold px-6 py-1.5 rounded-md hover:bg-primary/90 transition-colors">Đăng</button>
+                <button id="btn_post_question" class="bg-primary text-white font-semibold px-6 py-1.5 rounded-md hover:bg-primary/90 transition-colors">Đăng câu hỏi</button>
             </div>
         </div>
+        <?php else: ?>
+        <div class="bg-white rounded-xl shadow-sm p-6 mb-6 text-center">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-4">
+                <i class="bi bi-question-circle text-3xl"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-800 mb-2">Bạn có thắc mắc?</h3>
+            <p class="text-slate-600 mb-5">Vui lòng đăng nhập để gửi câu hỏi của bạn. Chuyên gia của Bright Education sẽ giải đáp sớm nhất!</p>
+            <a href="/login?redirect=/qa" class="inline-block bg-primary text-white font-semibold px-8 py-2.5 rounded-xl hover:bg-primary/90 transition-colors shadow-soft hover:-translate-y-0.5">Đăng nhập ngay</a>
+        </div>
+        <?php endif; ?>
 
         <!-- Feed container -->
         <div id="feed_container" class="space-y-6">
@@ -52,6 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Current user context
     const isLoggedIn = <?= $is_logged_in ? 'true' : 'false' ?>;
+    const isAdmin = <?= $is_admin ? 'true' : 'false' ?>;
     const currentUserName = <?= json_encode($current_user_name) ?>;
 
     // Load feed
@@ -109,9 +119,12 @@ document.addEventListener('DOMContentLoaded', function() {
                         <i class="bi bi-person-fill text-slate-400 text-sm"></i>
                     </div>
                     <div class="flex-1">
-                        <div class="bg-slate-100 rounded-2xl px-3 py-2 inline-block">
-                            <div class="font-semibold text-sm text-slate-800">${escapeHtml(ans.author_name)}</div>
-                            <div class="text-[15px] text-slate-700">${escapeHtml(ans.content)}</div>
+                        <div class="bg-primary/5 border border-primary/10 rounded-2xl px-4 py-3 inline-block relative">
+                            <div class="absolute -top-3 -right-3 bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm flex items-center gap-1">
+                                <i class="bi bi-check-circle-fill"></i> Quản trị viên
+                            </div>
+                            <div class="font-semibold text-sm text-primary mb-1">${escapeHtml(ans.author_name)}</div>
+                            <div class="text-[15px] text-slate-800">${escapeHtml(ans.content)}</div>
                         </div>
                         <div class="text-[12px] text-slate-500 mt-1 ml-2 flex gap-3">
                             <span class="font-semibold cursor-pointer hover:underline text-slate-600 btn-like-answer" data-id="${ans.id}">Thích ${ans.likes_count > 0 ? `(${ans.likes_count})` : ''}</span>
@@ -155,30 +168,33 @@ document.addEventListener('DOMContentLoaded', function() {
                     <button class="flex-1 flex items-center justify-center gap-2 py-2 rounded-md hover:bg-slate-50 text-slate-600 font-semibold text-[15px] transition-colors btn-like-question" data-id="${q.id}">
                         <i class="bi bi-hand-thumbs-up"></i> Thích
                     </button>
+                    ${isAdmin ? `
                     <button class="flex-1 flex items-center justify-center gap-2 py-2 rounded-md hover:bg-slate-50 text-slate-600 font-semibold text-[15px] transition-colors btn-comment-focus">
-                        <i class="bi bi-chat"></i> Bình luận
+                        <i class="bi bi-reply"></i> Trả lời
                     </button>
+                    ` : ''}
                 </div>
 
                 <!-- Comments Area -->
                 <div class="pt-4">
-                    <div class="comments-list mb-4">
+                    <div class="comments-list ${isAdmin ? 'mb-4' : ''}">
                         ${answersHtml}
                     </div>
                     
+                    ${isAdmin ? `
                     <!-- Add comment input -->
                     <div class="flex gap-2">
                         <div class="w-8 h-8 rounded-full bg-slate-200 flex-shrink-0 flex items-center justify-center overflow-hidden">
                             <i class="bi bi-person-fill text-slate-400 text-sm"></i>
                         </div>
                         <div class="flex-1 bg-slate-100 rounded-2xl flex flex-col relative overflow-hidden">
-                            ${!isLoggedIn ? `<input type="text" class="ans_author_name w-full bg-transparent px-3 py-2 text-sm border-b border-slate-200 focus:outline-none" placeholder="Tên của bạn">` : ''}
-                            <input type="text" class="ans_content w-full bg-transparent px-3 py-2 text-[15px] focus:outline-none" placeholder="Viết bình luận..." data-qid="${q.id}">
-                            <button class="btn-post-answer absolute right-2 bottom-1.5 text-primary hover:bg-slate-200 p-1 rounded-full w-7 h-7 flex items-center justify-center transition-colors" data-qid="${q.id}">
+                            <input type="text" class="ans_content w-full bg-transparent px-4 py-2.5 text-[15px] focus:outline-none" placeholder="Viết câu trả lời dưới danh nghĩa quản trị..." data-qid="${q.id}">
+                            <button class="btn-post-answer absolute right-2 bottom-1.5 text-primary hover:bg-slate-200 p-1.5 rounded-full w-8 h-8 flex items-center justify-center transition-colors" data-qid="${q.id}">
                                 <i class="bi bi-send-fill text-sm"></i>
                             </button>
                         </div>
                     </div>
+                    ` : ''}
                 </div>
             </div>
         `;
@@ -210,44 +226,40 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Post Question
-    btnPost.addEventListener('click', () => {
-        const content = postContent.value.trim();
-        const author = postAuthorName ? postAuthorName.value.trim() : currentUserName;
+    if (btnPost) {
+        btnPost.addEventListener('click', () => {
+            const content = postContent.value.trim();
 
-        if (!content) {
-            alert('Vui lòng nhập nội dung');
-            return;
-        }
-        if (!isLoggedIn && !author) {
-            alert('Vui lòng nhập tên của bạn');
-            return;
-        }
-
-        const btnText = btnPost.innerHTML;
-        btnPost.innerHTML = '<i class="bi bi-arrow-repeat animate-spin"></i>';
-        btnPost.disabled = true;
-
-        const params = new URLSearchParams();
-        params.append('action', 'post_question');
-        params.append('content', content);
-        params.append('author_name', author);
-
-        fetch('/api/qa_action', {
-            method: 'POST',
-            body: params
-        })
-        .then(res => res.json())
-        .then(res => {
-            btnPost.innerHTML = btnText;
-            btnPost.disabled = false;
-            if (res.status === 'success') {
-                postContent.value = '';
-                loadFeed(); // Reload feed to show new post
-            } else {
-                alert(res.message);
+            if (!content) {
+                alert('Vui lòng nhập nội dung');
+                return;
             }
+
+            const btnText = btnPost.innerHTML;
+            btnPost.innerHTML = '<i class="bi bi-arrow-repeat animate-spin"></i>';
+            btnPost.disabled = true;
+
+            const params = new URLSearchParams();
+            params.append('action', 'post_question');
+            params.append('content', content);
+
+            fetch('/api/qa_action', {
+                method: 'POST',
+                body: params
+            })
+            .then(res => res.json())
+            .then(res => {
+                btnPost.innerHTML = btnText;
+                btnPost.disabled = false;
+                if (res.status === 'success') {
+                    postContent.value = '';
+                    loadFeed(); // Reload feed to show new post
+                } else {
+                    alert(res.message);
+                }
+            });
         });
-    });
+    }
 
     // Event delegation for feed interactions
     feedContainer.addEventListener('click', (e) => {
@@ -331,24 +343,18 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function postAnswer(card, qid) {
+        if (!isAdmin) return;
+        
         const inputContent = card.querySelector('.ans_content');
-        const inputAuthor = card.querySelector('.ans_author_name');
+        if (!inputContent) return;
         
         const content = inputContent.value.trim();
-        const author = inputAuthor ? inputAuthor.value.trim() : currentUserName;
-
         if (!content) return;
-        if (!isLoggedIn && !author) {
-            alert('Vui lòng nhập tên của bạn để bình luận');
-            if (inputAuthor) inputAuthor.focus();
-            return;
-        }
 
         const params = new URLSearchParams();
         params.append('action', 'post_answer');
         params.append('question_id', qid);
         params.append('content', content);
-        params.append('author_name', author);
 
         fetch('/api/qa_action', {
             method: 'POST',
