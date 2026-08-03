@@ -36,6 +36,17 @@ $stmt = $db->prepare("
 $stmt->execute();
 $consultation_slots = $stmt->fetchAll();
 
+// 4. Lấy 3 trường Nhật ngữ tiêu biểu từ file JSON
+$explore_schools = [];
+$schools_file = APP_ROOT . '/schools_data.json';
+if (file_exists($schools_file)) {
+    $schools_json = file_get_contents($schools_file);
+    $schools_data = json_decode($schools_json, true);
+    if (!empty($schools_data['schools'])) {
+        $explore_schools = array_slice($schools_data['schools'], 0, 3);
+    }
+}
+
 $page_title = 'Khám phá - Bright Education';
 include 'includes/header.php';
 ?>
@@ -101,6 +112,17 @@ include 'includes/header.php';
             </div>
             <h3 class="text-base font-bold text-slate-800 font-display group-hover:text-primary transition-colors">Đặt lịch tư vấn</h3>
             <p class="text-[13px] text-muted leading-relaxed mt-2">Tư vấn 1-1 miễn phí cùng các chuyên gia qua Zoom hoặc trực tiếp tại văn phòng.</p>
+          </button>
+
+          <!-- Tab 5: Trường học -->
+          <button onclick="switchTab('schools')" id="tab-btn-schools" 
+            class="tab-btn w-full text-left group rounded-3xl border border-slate-100 bg-white p-6 shadow-sm transition-all hover:shadow-medium flex flex-col">
+            <div class="flex items-center justify-between w-full mb-3">
+              <div class="text-3xl font-black text-slate-200 font-display leading-none group-hover:text-primary transition-colors">05</div>
+              <div><i class="bi bi-building text-xl text-slate-400 group-hover:text-primary transition-colors"></i></div>
+            </div>
+            <h3 class="text-base font-bold text-slate-800 font-display group-hover:text-primary transition-colors">Danh sách Trường Nhật Ngữ</h3>
+            <p class="text-[13px] text-muted leading-relaxed mt-2">Hệ thống các trường ngôn ngữ uy tín liên kết tuyển sinh cùng Bright Education.</p>
           </button>
 
         </div>
@@ -295,6 +317,48 @@ include 'includes/header.php';
             </div>
           </div>
 
+          <!-- Panel 5: Danh sách trường -->
+          <div id="panel-schools" class="tab-panel space-y-6 flex-1 flex flex-col justify-between hidden">
+            <div class="space-y-6">
+              <div class="border-b border-slate-100 pb-4">
+                <h2 class="text-2xl font-bold text-primary font-display">Trường Nhật Ngữ liên kết tiêu biểu</h2>
+                <p class="text-sm text-muted mt-1">Danh sách một số trường Nhật ngữ chất lượng hàng đầu tại các khu vực của Nhật Bản.</p>
+              </div>
+
+              <?php if (empty($explore_schools)): ?>
+                <div class="text-center py-10 bg-slate-50 rounded-2xl border border-slate-100 text-muted">
+                  <i class="bi bi-building text-3xl block mb-2 text-slate-300"></i>
+                  <p class="text-sm font-medium">Danh sách trường đang được cập nhật.</p>
+                </div>
+              <?php else: ?>
+                <div class="space-y-3.5">
+                  <?php foreach ($explore_schools as $school): ?>
+                    <div class="p-4 rounded-2xl border border-slate-50 hover:border-slate-100 hover:bg-slate-50/30 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                      <div>
+                        <span class="inline-block text-[9px] font-bold text-orange-600 bg-orange-50 px-2.5 py-0.5 rounded-full uppercase tracking-wider mb-1.5"><?= htmlspecialchars($school['prefecture'] ?? 'Nhật Bản') ?></span>
+                        <h4 class="font-bold text-slate-800 text-sm sm:text-base leading-snug"><?= htmlspecialchars($school['name_jp'] ?? $school['name_en']) ?></h4>
+                        <p class="text-[12px] text-muted mt-1.5"><i class="bi bi-geo-alt-fill text-primary mr-1"></i>Khu vực: <?= htmlspecialchars($school['area'] ?? 'Khác') ?> (<?= htmlspecialchars($school['macro_region'] ?? '') ?>)</p>
+                      </div>
+                      <div class="shrink-0">
+                        <?php if (!empty($school['website'])): ?>
+                          <a href="<?= htmlspecialchars($school['website']) ?>" target="_blank" class="inline-flex items-center gap-1 text-[12px] font-semibold text-primary hover:underline">
+                            Website trường <i class="bi bi-box-arrow-up-right text-[10px]"></i>
+                          </a>
+                        <?php endif; ?>
+                      </div>
+                    </div>
+                  <?php endforeach; ?>
+                </div>
+              <?php endif; ?>
+            </div>
+
+            <div class="pt-6 border-t border-slate-100 flex justify-end mt-6">
+              <a href="/schools" class="inline-flex items-center gap-2 bg-primary text-white rounded-2xl px-6 py-3 font-semibold text-[14px] hover:bg-ink transition-colors shadow-sm">
+                Xem tất cả trường <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
         </div>
 
       </div>
@@ -379,7 +443,7 @@ function switchTab(tabName) {
 document.addEventListener('DOMContentLoaded', () => {
   const urlParams = new URLSearchParams(window.location.search);
   const tab = urlParams.get('tab');
-  if (tab && ['blog', 'about', 'community', 'consultation'].includes(tab)) {
+  if (tab && ['blog', 'about', 'community', 'consultation', 'schools'].includes(tab)) {
     switchTab(tab);
   }
 });

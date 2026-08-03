@@ -163,6 +163,7 @@
                 <a href="/explore?tab=about" class="dd-link"><i class="bi bi-people text-primary"></i> Về Bright Education</a>
                 <a href="/explore?tab=community" class="dd-link"><i class="bi bi-people-fill text-primary"></i> Đội ngũ & Cộng đồng</a>
                 <a href="/explore?tab=consultation" class="dd-link"><i class="bi bi-calendar-check text-primary"></i> Đặt lịch tư vấn</a>
+                <a href="/explore?tab=schools" class="dd-link"><i class="bi bi-building text-primary"></i> Danh sách Trường học</a>
             </div>
         </div>
         <a class="nav-link" href="/qa">Hỏi đáp</a>
