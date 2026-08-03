@@ -103,22 +103,11 @@ include 'includes/header.php';
             <p class="text-[13px] text-muted leading-relaxed mt-2">Kết nối với hơn 1200+ học viên đang sinh sống và học tập tại Nhật Bản.</p>
           </button>
 
-          <!-- Tab 4: Tư vấn -->
-          <button onclick="switchTab('consultation')" id="tab-btn-consultation" 
-            class="tab-btn w-full text-left group rounded-3xl border border-slate-100 bg-white p-6 shadow-sm transition-all hover:shadow-medium flex flex-col">
-            <div class="flex items-center justify-between w-full mb-3">
-              <div class="text-3xl font-black text-slate-200 font-display leading-none group-hover:text-primary transition-colors">04</div>
-              <div><i class="bi bi-calendar-check text-xl text-slate-400 group-hover:text-primary transition-colors"></i></div>
-            </div>
-            <h3 class="text-base font-bold text-slate-800 font-display group-hover:text-primary transition-colors">Đặt lịch tư vấn</h3>
-            <p class="text-[13px] text-muted leading-relaxed mt-2">Tư vấn 1-1 miễn phí cùng các chuyên gia qua Zoom hoặc trực tiếp tại văn phòng.</p>
-          </button>
-
-          <!-- Tab 5: Trường học -->
+          <!-- Tab 4: Trường học -->
           <button onclick="switchTab('schools')" id="tab-btn-schools" 
             class="tab-btn w-full text-left group rounded-3xl border border-slate-100 bg-white p-6 shadow-sm transition-all hover:shadow-medium flex flex-col">
             <div class="flex items-center justify-between w-full mb-3">
-              <div class="text-3xl font-black text-slate-200 font-display leading-none group-hover:text-primary transition-colors">05</div>
+              <div class="text-3xl font-black text-slate-200 font-display leading-none group-hover:text-primary transition-colors">04</div>
               <div><i class="bi bi-building text-xl text-slate-400 group-hover:text-primary transition-colors"></i></div>
             </div>
             <h3 class="text-base font-bold text-slate-800 font-display group-hover:text-primary transition-colors">Danh sách Trường Nhật Ngữ</h3>
@@ -170,8 +159,11 @@ include 'includes/header.php';
               <?php endif; ?>
             </div>
 
-            <div class="pt-6 border-t border-slate-100 flex justify-end mt-6">
-              <a href="/blog" class="inline-flex items-center gap-2 bg-primary text-white rounded-2xl px-6 py-3 font-semibold text-[14px] hover:bg-ink transition-colors shadow-sm">
+            <div class="pt-6 border-t border-slate-100 flex justify-end items-center gap-3 mt-6">
+              <a href="/consultation" class="inline-flex items-center gap-2 border border-slate-200 text-slate-600 rounded-2xl px-5 py-2.5 font-semibold text-[14px] hover:bg-slate-50 transition-colors shadow-soft">
+                <i class="bi bi-calendar-check text-slate-400"></i> Đặt lịch tư vấn
+              </a>
+              <a href="/blog" class="inline-flex items-center gap-2 bg-primary text-white rounded-2xl px-5 py-2.5 font-semibold text-[14px] hover:bg-ink transition-colors shadow-sm">
                 Xem tất cả bài viết <i class="bi bi-arrow-right"></i>
               </a>
             </div>
@@ -211,8 +203,11 @@ include 'includes/header.php';
               </div>
             </div>
 
-            <div class="pt-6 border-t border-slate-100 flex justify-end mt-6">
-              <a href="/about" class="inline-flex items-center gap-2 bg-primary text-white rounded-2xl px-6 py-3 font-semibold text-[14px] hover:bg-ink transition-colors shadow-sm">
+            <div class="pt-6 border-t border-slate-100 flex justify-end items-center gap-3 mt-6">
+              <a href="/consultation" class="inline-flex items-center gap-2 border border-slate-200 text-slate-600 rounded-2xl px-5 py-2.5 font-semibold text-[14px] hover:bg-slate-50 transition-colors shadow-soft">
+                <i class="bi bi-calendar-check text-slate-400"></i> Đặt lịch tư vấn
+              </a>
+              <a href="/about" class="inline-flex items-center gap-2 bg-primary text-white rounded-2xl px-5 py-2.5 font-semibold text-[14px] hover:bg-ink transition-colors shadow-sm">
                 Tìm hiểu thêm câu chuyện <i class="bi bi-arrow-right"></i>
               </a>
             </div>
@@ -268,51 +263,12 @@ include 'includes/header.php';
               <?php endif; ?>
             </div>
 
-            <div class="pt-6 border-t border-slate-100 flex justify-end mt-6">
-              <a href="/groups" class="inline-flex items-center gap-2 bg-primary text-white rounded-2xl px-6 py-3 font-semibold text-[14px] hover:bg-ink transition-colors shadow-sm">
-                Tham gia cộng đồng <i class="bi bi-arrow-right"></i>
+            <div class="pt-6 border-t border-slate-100 flex justify-end items-center gap-3 mt-6">
+              <a href="/consultation" class="inline-flex items-center gap-2 border border-slate-200 text-slate-600 rounded-2xl px-5 py-2.5 font-semibold text-[14px] hover:bg-slate-50 transition-colors shadow-soft">
+                <i class="bi bi-calendar-check text-slate-400"></i> Đặt lịch tư vấn
               </a>
-            </div>
-          </div>
-
-          <!-- Panel 4: Đặt lịch tư vấn -->
-          <div id="panel-consultation" class="tab-panel space-y-6 flex-1 flex flex-col justify-between hidden">
-            <div class="space-y-6">
-              <div class="border-b border-slate-100 pb-4">
-                <h2 class="text-2xl font-bold text-primary font-display">Lịch tư vấn nhóm sắp diễn ra</h2>
-                <p class="text-sm text-muted mt-1">Đăng ký tham gia trực tiếp các buổi trao đổi giải đáp thắc mắc qua Zoom hoàn toàn miễn phí.</p>
-              </div>
-
-              <?php if (empty($consultation_slots)): ?>
-                <div class="text-center py-10 bg-slate-50 rounded-2xl border border-slate-100 text-muted">
-                  <i class="bi sm:bi-calendar-x text-3xl block mb-2 text-slate-300"></i>
-                  <p class="text-sm font-semibold">Chưa có buổi tư vấn nhóm nào được lên lịch gần đây</p>
-                  <p class="text-xs text-muted mt-1">Bạn có thể đặt lịch tư vấn 1-1 cá nhân bằng cách nhấn vào nút bên dưới.</p>
-                </div>
-              <?php else: ?>
-                <div class="space-y-3.5">
-                  <?php foreach ($consultation_slots as $slot): ?>
-                    <div class="p-4 rounded-2xl border border-slate-50 hover:border-slate-100 bg-slate-50/30 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                      <div>
-                        <span class="inline-block text-[9px] font-bold text-primary bg-primary-50 px-2 py-0.5 rounded-full uppercase tracking-wider mb-1.5"><?= $slot['type'] === 'group' ? 'Tư vấn nhóm' : 'Tư vấn 1-1' ?></span>
-                        <h4 class="font-bold text-slate-800 text-sm sm:text-base leading-snug"><?= htmlspecialchars($slot['title']) ?></h4>
-                        <div class="flex items-center gap-4 text-[12px] text-muted mt-1.5">
-                          <span><i class="bi bi-calendar-event mr-1 text-primary"></i><?= formatDate($slot['scheduled_date']) ?></span>
-                          <span><i class="bi bi-clock mr-1 text-primary"></i><?= htmlspecialchars($slot['time_start']) ?> - <?= htmlspecialchars($slot['time_end']) ?></span>
-                        </div>
-                      </div>
-                      <div class="shrink-0 text-left sm:text-right">
-                        <span class="inline-block text-[11px] font-bold text-orange-600 bg-orange-50 px-2.5 py-0.5 rounded-full">Còn trống <?= max(0, $slot['max_participants'] - $slot['current_participants']) ?> chỗ</span>
-                      </div>
-                    </div>
-                  <?php endforeach; ?>
-                </div>
-              <?php endif; ?>
-            </div>
-
-            <div class="pt-6 border-t border-slate-100 flex justify-end mt-6">
-              <a href="/consultation" class="inline-flex items-center gap-2 bg-primary text-white rounded-2xl px-6 py-3 font-semibold text-[14px] hover:bg-ink transition-colors shadow-sm">
-                Đặt lịch tư vấn ngay <i class="bi bi-arrow-right"></i>
+              <a href="/groups" class="inline-flex items-center gap-2 bg-primary text-white rounded-2xl px-5 py-2.5 font-semibold text-[14px] hover:bg-ink transition-colors shadow-sm">
+                Tham gia cộng đồng <i class="bi bi-arrow-right"></i>
               </a>
             </div>
           </div>
@@ -352,8 +308,11 @@ include 'includes/header.php';
               <?php endif; ?>
             </div>
 
-            <div class="pt-6 border-t border-slate-100 flex justify-end mt-6">
-              <a href="/schools" class="inline-flex items-center gap-2 bg-primary text-white rounded-2xl px-6 py-3 font-semibold text-[14px] hover:bg-ink transition-colors shadow-sm">
+            <div class="pt-6 border-t border-slate-100 flex justify-end items-center gap-3 mt-6">
+              <a href="/consultation" class="inline-flex items-center gap-2 border border-slate-200 text-slate-600 rounded-2xl px-5 py-2.5 font-semibold text-[14px] hover:bg-slate-50 transition-colors shadow-soft">
+                <i class="bi bi-calendar-check text-slate-400"></i> Đặt lịch tư vấn
+              </a>
+              <a href="/schools" class="inline-flex items-center gap-2 bg-primary text-white rounded-2xl px-5 py-2.5 font-semibold text-[14px] hover:bg-ink transition-colors shadow-sm">
                 Xem tất cả trường <i class="bi bi-arrow-right"></i>
               </a>
             </div>
