@@ -153,7 +153,18 @@
       <nav class="hidden items-center gap-1 text-[15px] font-medium text-muted md:flex">
         <a class="nav-link" href="/">Trang chủ</a>
 
-        <a class="nav-link" href="/kham-pha">Khám phá</a>
+        <div class="relative group nav-dropdown-trigger">
+            <button class="nav-link flex items-center gap-1.5">
+              Khám phá
+              <i class="bi bi-chevron-down text-[10px] nav-chevron transition-transform"></i>
+            </button>
+            <div class="nav-dropdown absolute left-0 top-full mt-2 w-56 rounded-2xl bg-white p-2 shadow-tinted border border-slate-100 z-50">
+                <a href="/explore?tab=blog" class="dd-link"><i class="bi bi-newspaper text-primary"></i> Blog & Cẩm nang</a>
+                <a href="/explore?tab=about" class="dd-link"><i class="bi bi-people text-primary"></i> Về Bright Education</a>
+                <a href="/explore?tab=community" class="dd-link"><i class="bi bi-people-fill text-primary"></i> Đội ngũ & Cộng đồng</a>
+                <a href="/explore?tab=consultation" class="dd-link"><i class="bi bi-calendar-check text-primary"></i> Đặt lịch tư vấn</a>
+            </div>
+        </div>
         <a class="nav-link" href="/qa">Hỏi đáp</a>
 
         <a class="nav-link" href="/consultation">Đặt lịch</a>
@@ -194,6 +205,28 @@
       </style>
       
       <div class="flex items-center gap-3">
+        <?php if (isLoggedIn()): ?>
+            <div class="relative group nav-dropdown-trigger hidden sm:block">
+                <button class="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-primary transition-colors">
+                    <i class="bi bi-person-circle text-lg"></i>
+                    <span><?= htmlspecialchars($_SESSION['user_name'] ?? 'Tài khoản') ?></span>
+                    <i class="bi bi-chevron-down text-xs nav-chevron transition-transform"></i>
+                </button>
+                <div class="nav-dropdown absolute right-0 top-full mt-2 w-48 rounded-2xl bg-white p-2 shadow-tinted border border-slate-100 z-50">
+                    <?php if (isAdmin() || isEditor()): ?>
+                        <a href="/admin" class="dd-link"><i class="bi bi-shield-check text-primary"></i> Quản trị</a>
+                    <?php endif; ?>
+                    <a href="/profile" class="dd-link"><i class="bi bi-person text-primary"></i> Hồ sơ</a>
+                    <a href="/logout" class="dd-link text-red-600 hover:bg-red-50 hover:text-red-700"><i class="bi bi-box-arrow-right"></i> Đăng xuất</a>
+                </div>
+            </div>
+        <?php else: ?>
+            <a href="/login" class="hidden sm:inline-flex items-center text-sm font-semibold text-slate-600 hover:text-primary transition-colors px-2">Đăng nhập</a>
+            <?php if (getSetting('allow_registration', '0') === '1'): ?>
+                <a href="/register" class="hidden sm:inline-flex rounded-full px-4 py-2 text-sm font-semibold text-primary bg-primary-50 hover:bg-primary-100 transition-colors">Đăng ký</a>
+            <?php endif; ?>
+        <?php endif; ?>
+        
         <a class="hidden rounded-full px-5 py-2.5 text-sm font-semibold text-white sm:inline-flex btn-primary" href="/contact">
           Tư vấn miễn phí
         </a>
@@ -245,7 +278,7 @@
 
         <!-- Khám phá group -->
         <div>
-          <a class="mobile-link flex items-center gap-3 px-4 py-3 rounded-2xl text-[16px] font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors" href="/kham-pha">
+          <a class="mobile-link flex items-center gap-3 px-4 py-3 rounded-2xl text-[16px] font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors" href="/explore">
             <i class="bi bi-compass text-primary w-5 text-center text-sm"></i> Khám phá
           </a>
           <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400 px-4 pt-2 pb-2">— Danh mục</p>

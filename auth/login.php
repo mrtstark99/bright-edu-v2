@@ -3,7 +3,11 @@ require_once dirname(__DIR__) . '/config/config.php';
 
 // Redirect if already logged in
 if (isLoggedIn()) {
-    redirect('/admin/dashboard');
+    if (isAdmin() || isEditor()) {
+        redirect('/admin/dashboard');
+    } else {
+        redirect('/');
+    }
 }
 
 $error = '';
@@ -48,8 +52,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     logSecurityEvent('login_success', 'User logged in: ' . $email);
                     
                     // Redirect
-                    $redirect = $_SESSION['redirect_after_login'] ?? '/admin/dashboard';
+                    $redirect = $_SESSION['redirect_after_login'] ?? '';
                     unset($_SESSION['redirect_after_login']);
+                    if (empty($redirect)) {
+                        $redirect = (in_array($user['role'], ['admin', 'editor'])) ? '/admin/dashboard' : '/';
+                    }
                     redirect($redirect);
                 }
             } else {
@@ -185,6 +192,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <button type="submit" class="w-full bg-midnight hover:bg-slate-800 text-white font-semibold py-3.5 px-4 rounded-xl transition-all duration-200 transform hover:-translate-y-0.5 shadow-lg shadow-midnight/20">
                     Đăng nhập hệ thống
                 </button>
+
+                <div class="text-center mt-6">
+                    <span class="text-sm text-slate-500">Chưa có tài khoản?</span>
+                    <a href="/register" class="text-sm font-bold text-sage-600 hover:text-sage-700 ml-1 transition-colors">Đăng ký ngay</a>
+                </div>
             </form>
         </div>
         

@@ -16,7 +16,7 @@ $routes = [
     '' => 'pages/home.php',
     'home' => 'pages/home.php',
     'about' => 'pages/about.php',
-    'kham-pha' => 'pages/kham-pha.php',
+    'explore' => 'pages/explore.php',
     'services' => 'pages/services.php',
     'schools' => 'pages/schools.php',
     'courses' => 'pages/courses.php',
@@ -37,7 +37,8 @@ $routes = [
     'logout' => 'auth/logout.php',
     'forgot-password' => 'auth/forgot-password.php',
     'reset-password' => 'auth/reset-password.php',
-    'qa' => 'pages/qa.php'
+    'qa' => 'pages/qa.php',
+    'profile' => 'pages/profile.php'
 ];
 
 // Admin routes

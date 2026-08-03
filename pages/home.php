@@ -43,17 +43,10 @@ include 'includes/header.php';
 ?>
 
   <main id="hero">
-    <section class="relative overflow-hidden pt-[140px] pb-0 bg-slate-50 w-full min-h-[60vh] lg:min-h-[75vh] flex items-end">
-      <!-- Nửa trái: Sketch Background -->
-      <div class="absolute bottom-0 left-0 w-full lg:w-[55%] pointer-events-none z-0 flex items-end opacity-30 mix-blend-multiply">
-          <picture class="contents">
-              <source srcset="/assets/images/hero_bg.webp" type="image/webp">
-              <img src="/assets/images/hero_bg.png" alt="Sketch Background" class="w-full h-auto object-bottom" style="mask-image: linear-gradient(to right, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%); -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%);">
-          </picture>
-      </div>
-
+    <section class="relative pt-[140px] pb-0 w-full min-h-[60vh] lg:min-h-[75vh] flex items-end" style="background-image: url('/assets/images/sakura_bg.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+      
       <!-- Background Núi Phú Sĩ & Sóng đồi (Vector SVG) -->
-      <div class="absolute top-0 right-0 w-full lg:w-[65%] h-full pointer-events-none z-0 transform scale-[0.8] origin-bottom-right" style="mask-image: linear-gradient(to right, transparent 0%, black 20%); -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%);">
+      <div class="absolute top-0 right-0 w-full lg:w-[65%] h-full pointer-events-none z-0" style="mask-image: linear-gradient(to right, transparent 0%, black 20%); -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%);">
           <div class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-primary-50/50 z-0"></div>
 
           <!-- Những đám mây trôi lững lờ -->
@@ -90,6 +83,14 @@ include 'includes/header.php';
           <svg class="absolute bottom-0 right-0 w-full h-[12%] text-primary-950 z-40" preserveAspectRatio="none" viewBox="0 0 100 100" fill="currentColor">
               <path d="M 0,100 Q 20,30 50,50 T 100,40 L 100,100 Z" />
           </svg>
+      </div>
+
+      <!-- Nửa trái: Sketch Background -->
+      <div class="absolute bottom-0 left-0 w-full lg:w-[55%] pointer-events-none z-0 flex items-end opacity-30 mix-blend-multiply">
+          <picture class="contents">
+              <source srcset="/assets/images/hero_bg.webp" type="image/webp">
+              <img src="/assets/images/hero_bg.png" alt="Sketch Background" class="w-full h-auto object-bottom" style="mask-image: linear-gradient(to right, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%); -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%);">
+          </picture>
       </div>
 
 <div class="relative mx-auto max-w-7xl px-5 lg:px-8 w-full z-10">

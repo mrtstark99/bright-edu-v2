@@ -32,7 +32,7 @@
             <li><a href="/" class="hover:text-white transition-colors flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Trang chủ</a></li>
             <li><a href="/about" class="hover:text-white transition-colors flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Về chúng tôi</a></li>
             <li><a href="/schools" class="hover:text-white transition-colors flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Hệ thống trường</a></li>
-            <li><a href="/kham-pha" class="hover:text-white transition-colors flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Khám phá Nhật Bản</a></li>
+            <li><a href="/explore" class="hover:text-white transition-colors flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Khám phá Nhật Bản</a></li>
             <li><a href="/blog" class="hover:text-white transition-colors flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Tin tức & Cẩm nang</a></li>
             <li><a href="/groups" class="hover:text-white transition-colors flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Đội ngũ & Cộng đồng</a></li>
             <li><a href="/contact" class="hover:text-white transition-colors flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Liên hệ</a></li>
