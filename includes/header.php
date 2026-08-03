@@ -153,19 +153,7 @@
       <nav class="hidden items-center gap-1 text-[15px] font-medium text-muted md:flex">
         <a class="nav-link" href="/">Trang chủ</a>
 
-        <div class="relative group nav-dropdown-trigger">
-            <button class="nav-link flex items-center gap-1.5">
-              Khám phá
-              <i class="bi bi-chevron-down text-[10px] nav-chevron transition-transform"></i>
-            </button>
-            <div class="nav-dropdown absolute left-0 top-full mt-2 w-56 rounded-2xl bg-white p-2 shadow-tinted border border-slate-100 z-50">
-                <a href="/explore?tab=blog" class="dd-link"><i class="bi bi-newspaper text-primary"></i> Blog & Cẩm nang</a>
-                <a href="/explore?tab=about" class="dd-link"><i class="bi bi-people text-primary"></i> Về Bright Education</a>
-                <a href="/explore?tab=community" class="dd-link"><i class="bi bi-people-fill text-primary"></i> Đội ngũ & Cộng đồng</a>
-                <a href="/explore?tab=consultation" class="dd-link"><i class="bi bi-calendar-check text-primary"></i> Đặt lịch tư vấn</a>
-                <a href="/explore?tab=schools" class="dd-link"><i class="bi bi-building text-primary"></i> Danh sách Trường học</a>
-            </div>
-        </div>
+        <a class="nav-link" href="/explore">Khám phá</a>
         <a class="nav-link" href="/qa">Hỏi đáp</a>
 
         <a class="nav-link" href="/consultation">Đặt lịch</a>
