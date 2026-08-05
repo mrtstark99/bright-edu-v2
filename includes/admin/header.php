@@ -351,6 +351,17 @@
             .a-table thead th, .a-table tbody td { padding-left: 12px; padding-right: 12px; }
         }
     </style>
+    <link rel="stylesheet" href="/assets/css/admin.css?v=20260806">
+    <script>
+      (function () {
+        try {
+          var theme = localStorage.getItem('admin-theme');
+          if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
 </head>
 <body>
 
@@ -468,21 +479,28 @@
         </div>
     </div>
 </nav>
+<div id="sidebar-scrim" aria-hidden="true"></div>
 
 <!-- ══ TOPBAR ══ -->
 <div id="admin-topbar">
   <div class="admin-topbar-inner">
-    <button id="sidebar-toggle" class="topbar-btn d-md-none me-1" onclick="document.getElementById('admin-sidebar').classList.toggle('open')">
+    <button id="sidebar-toggle" class="topbar-btn d-md-none me-1" type="button" aria-label="Mở menu" aria-expanded="false">
         <i class="bi bi-list"></i>
     </button>
+    <button id="sidebar-collapse" class="topbar-btn d-none d-md-inline-flex" type="button" aria-label="Thu gọn thanh điều hướng" aria-expanded="true" title="Thu gọn thanh điều hướng">
+        <i class="bi bi-layout-sidebar-inset"></i>
+    </button>
     <div class="topbar-title"><?php echo $page_title ?? 'Dashboard'; ?></div>
-    <a href="/admin/leads" class="topbar-btn" title="Leads mới">
+    <button id="theme-toggle" class="topbar-btn" type="button" aria-label="Đổi giao diện sáng tối" title="Đổi giao diện sáng tối">
+        <i class="bi bi-moon-stars"></i>
+    </button>
+    <a href="/admin/leads" class="topbar-btn d-none d-sm-inline-flex" title="Leads mới">
         <i class="bi bi-person-lines-fill"></i>
     </a>
-    <a href="/admin/contacts" class="topbar-btn" title="Liên hệ mới">
+    <a href="/admin/contacts" class="topbar-btn d-none d-sm-inline-flex" title="Liên hệ mới">
         <i class="bi bi-envelope"></i>
     </a>
-    <a href="/" target="_blank" class="topbar-btn" title="Xem trang web">
+    <a href="/" target="_blank" class="topbar-btn d-none d-sm-inline-flex" title="Xem trang web">
         <i class="bi bi-globe2"></i>
     </a>
   </div>
