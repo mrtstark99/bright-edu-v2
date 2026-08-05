@@ -316,7 +316,7 @@
 
 <!-- ══ SIDEBAR ══ -->
 <nav id="admin-sidebar">
-    <a class="sidebar-logo" href="/admin">
+    <a class="sidebar-logo" href="/admin/dashboard">
         <div class="sidebar-logo-icon">BE</div>
         <div class="sidebar-logo-text">
             <span class="sidebar-logo-name">Bright Admin</span>

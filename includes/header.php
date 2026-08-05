@@ -219,7 +219,7 @@ $gsc_verification = trim((string)getSetting('gsc_verification', ''));
         <a class="nav-link" href="/blog">Blog</a>
         <a class="nav-link" href="/consultation">Tư vấn Zoom</a>
         <?php if (isLoggedIn() && (isAdmin() || isEditor())): ?>
-          <a class="nav-link !text-primary font-semibold" href="/admin">Quản trị</a>
+          <a class="nav-link !text-primary font-semibold" href="/admin/dashboard">Quản trị</a>
         <?php endif; ?>
       </nav>
 
@@ -236,7 +236,7 @@ $gsc_verification = trim((string)getSetting('gsc_verification', ''));
                     <i class="bi bi-chevron-down text-xs nav-chevron transition-transform"></i>
                 </button>
                 <div class="nav-dropdown absolute right-0 top-full mt-2 w-48 rounded-2xl bg-white p-2 shadow-tinted border border-slate-100 z-50">
-                    <a href="/admin" class="dd-link"><i class="bi bi-shield-check text-primary"></i> Quản trị</a>
+                    <a href="/admin/dashboard" class="dd-link"><i class="bi bi-shield-check text-primary"></i> Quản trị</a>
                     <a href="/profile" class="dd-link"><i class="bi bi-person text-primary"></i> Hồ sơ</a>
                     <a href="/logout" class="dd-link text-red-600 hover:bg-red-50 hover:text-red-700"><i class="bi bi-box-arrow-right"></i> Đăng xuất</a>
                 </div>
@@ -368,7 +368,7 @@ $gsc_verification = trim((string)getSetting('gsc_verification', ''));
                 <i class="bi bi-calendar-check text-primary text-base w-5 text-center"></i> Đặt lịch tư vấn Zoom
               </a>
               <?php if (isLoggedIn() && (isAdmin() || isEditor())): ?>
-              <a class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-[14.5px] font-semibold text-emerald-600 bg-emerald-50/50 hover:bg-emerald-50 transition-all" href="/admin">
+              <a class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-[14.5px] font-semibold text-emerald-600 bg-emerald-50/50 hover:bg-emerald-50 transition-all" href="/admin/dashboard">
                 <i class="bi bi-shield-check text-emerald-600 text-base w-5 text-center"></i> Bảng điều khiển Admin
               </a>
               <?php endif; ?>

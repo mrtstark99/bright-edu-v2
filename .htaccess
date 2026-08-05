@@ -9,6 +9,10 @@ RewriteCond %{HTTPS} !=on
 RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
+# /admin is also a physical directory; route its root through the application
+# before the generic "existing directory" exclusion below.
+RewriteRule ^admin/?$ index.php?url=admin [QSA,L]
+
 # Route non-file, non-directory, non-php requests through index.php
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
