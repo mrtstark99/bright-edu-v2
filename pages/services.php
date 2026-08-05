@@ -241,7 +241,7 @@ include 'includes/header.php';
       <div class="bg-white rounded-[2.5rem] p-4 shadow-soft hover:shadow-medium transition-all border border-slate-100 group flex flex-col md:flex-row items-stretch gap-6 reveal">
         <!-- Cột trái: Ảnh nền & Tiêu đề -->
         <div class="w-full md:w-1/3 shrink-0 rounded-[2rem] overflow-hidden relative min-h-[250px] md:min-h-[300px]">
-          <img src="/assets/images/whyus_tokyo.webp" alt="Du học Hệ Đại học Tiếng Anh" class="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700">
+          <img src="/assets/images/whyus_tokyo-optimized.webp" alt="Du học Hệ Đại học Tiếng Anh" class="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" loading="lazy" decoding="async">
           <div class="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/45 to-transparent"></div>
           <div class="absolute bottom-6 left-6 right-6 text-left">
             <div class="w-14 h-14 bg-white/20 backdrop-blur-md text-white rounded-2xl flex items-center justify-center mb-4 border border-white/30 shadow-lg">

@@ -55,7 +55,7 @@
             <article class="relative rounded-3xl border border-slate-100 bg-white p-5 shadow-soft transition-all duration-300 hover:shadow-medium hover:-translate-y-1 reveal reveal-delay-200 flex flex-col justify-between group">
               <div>
                 <div class="w-full h-32 rounded-2xl overflow-hidden mb-4 relative">
-                  <img src="/assets/images/step3_school.webp" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="Chọn trường du học" />
+                  <img src="/assets/images/step3_school-optimized.webp" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="Chọn trường du học" loading="lazy" decoding="async" />
                 </div>
                 <div class="flex items-center gap-3 mb-3">
                   <div class="w-8 h-8 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center shrink-0">

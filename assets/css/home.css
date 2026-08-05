@@ -44,7 +44,7 @@
 .hero-bg-faded::before {
     content: "";
     position: absolute; inset: 0;
-    background-image: url('/assets/images/sakura_bg.webp');
+    background-image: url('/assets/images/sakura_bg-optimized.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
