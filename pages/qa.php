@@ -1,6 +1,6 @@
 <?php
 /**
- * Q&A Page - Optimized Threads Style with Text Background and Full Features
+ * Q&A Page - Optimized Threads Style with Popup Post Creator & Details View Focus
  */
 $page_title = 'Hỏi đáp - Cộng đồng Bright Education';
 require_once 'includes/header.php';
@@ -124,72 +124,25 @@ $is_admin = $is_logged_in && (isAdmin() || isEditor());
                     </div>
                 </div>
 
-                <!-- Create Post Input -->
-                <?php if ($is_logged_in): ?>
-                <div class="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-soft">
-                    <div class="flex gap-4">
-                        <!-- User Avatar -->
-                        <div class="w-12 h-12 rounded-full bg-slate-100 flex-shrink-0 flex items-center justify-center overflow-hidden border border-slate-200 shadow-xs">
-                            <i class="bi bi-person-fill text-slate-400 text-2xl"></i>
+                <!-- One post creation trigger button -->
+                <div class="bg-white p-4.5 rounded-[1.5rem] border border-slate-100 shadow-soft">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-slate-100 flex-shrink-0 flex items-center justify-center overflow-hidden border border-slate-200 shadow-xs">
+                            <i class="bi bi-person-fill text-slate-400 text-xl"></i>
                         </div>
-                        <div class="flex-1">
-                            <div class="font-bold text-[14px] text-slate-900 mb-1"><?= htmlspecialchars($current_user_name) ?></div>
-                            
-                            <!-- Container wrapper for background styles preview -->
-                            <div id="editor_bg_wrapper" class="rounded-2xl transition-all duration-350 p-0">
-                                <textarea id="post_content" rows="3" placeholder="Bạn đang thắc mắc điều gì về du học Nhật Bản?..." class="w-full bg-transparent text-[15px] placeholder-slate-400 focus:outline-none resize-none py-2 px-1 leading-relaxed transition-all duration-300"></textarea>
-                            </div>
-                            
-                            <!-- Color/Background Presets bar -->
-                            <div class="flex items-center gap-2 mt-3 mb-1 select-none">
-                                <span class="text-[10px] font-black uppercase text-slate-400 mr-1">Hình nền:</span>
-                                <button class="w-5 h-5 rounded-full border border-slate-300 bg-white flex items-center justify-center text-[10px] text-slate-400 hover:scale-110 active:scale-95 transition-all btn-bg-preset" data-bg="" title="Mặc định"><i class="bi bi-slash-circle"></i></button>
-                                <button class="w-5 h-5 rounded-full bg-threads-dark hover:scale-110 active:scale-95 transition-all btn-bg-preset" data-bg="bg-threads-dark" title="Tối giản"></button>
-                                <button class="w-5 h-5 rounded-full bg-threads-sunrise hover:scale-110 active:scale-95 transition-all btn-bg-preset" data-bg="bg-threads-sunrise" title="Bình minh"></button>
-                                <button class="w-5 h-5 rounded-full bg-threads-neon hover:scale-110 active:scale-95 transition-all btn-bg-preset" data-bg="bg-threads-neon" title="Neon"></button>
-                                <button class="w-5 h-5 rounded-full bg-threads-ocean hover:scale-110 active:scale-95 transition-all btn-bg-preset" data-bg="bg-threads-ocean" title="Đại dương"></button>
-                                <button class="w-5 h-5 rounded-full bg-threads-sakura hover:scale-110 active:scale-95 transition-all btn-bg-preset" data-bg="bg-threads-sakura" title="Sakura"></button>
-                                <button class="w-5 h-5 rounded-full bg-threads-lavender hover:scale-110 active:scale-95 transition-all btn-bg-preset" data-bg="bg-threads-lavender" title="Lavender"></button>
-                            </div>
-
-                            <!-- Image Preview Area -->
-                            <div id="image_preview_container" class="hidden relative mt-3 rounded-2xl overflow-hidden border border-slate-100 max-h-64 shadow-xs select-none">
-                                <img id="image_preview" src="" class="w-full h-full object-cover">
-                                <button id="btn_remove_image" class="absolute top-3 right-3 bg-black/60 hover:bg-black/85 text-white rounded-full p-1.5 w-8 h-8 flex items-center justify-center transition-colors">
-                                    <i class="bi bi-x-lg text-xs"></i>
-                                </button>
-                            </div>
-
-                            <!-- Options Bar -->
-                            <div class="flex justify-between items-center mt-3 pt-3 border-t border-slate-100">
-                                <div class="flex items-center gap-3.5">
-                                    <button id="btn_trigger_file" class="text-slate-400 hover:text-primary transition-colors p-1" title="Đính kèm ảnh">
-                                        <i class="bi bi-image text-lg"></i>
-                                    </button>
-                                    <input type="file" id="file_input" class="hidden" accept="image/*">
-                                    
-                                    <select id="post_tag" class="bg-slate-50 border border-slate-200 text-[11px] font-bold text-slate-500 rounded-full px-3 py-1 focus:outline-none focus:border-slate-350 transition-colors">
-                                        <option value="">Chọn chủ đề</option>
-                                        <option value="#tuyensinh">#tuyensinh</option>
-                                        <option value="#hocphi">#hocphi</option>
-                                        <option value="#visanhat">#visanhat</option>
-                                        <option value="#vieclam">#vieclam</option>
-                                        <option value="#nhatngu">#nhatngu</option>
-                                        <option value="#cuocsong">#cuocsong</option>
-                                    </select>
-                                </div>
-                                <button id="btn_post_question" class="bg-black text-white font-bold text-xs px-5 py-2.5 rounded-full hover:bg-slate-850 active:scale-95 transition-all shadow-sm">Đăng bài</button>
-                            </div>
-                        </div>
+                        <?php if ($is_logged_in): ?>
+                        <button id="btn_open_post_modal" class="flex-1 bg-slate-50 hover:bg-slate-100/75 border border-slate-200 text-slate-500 rounded-full px-5 py-3 text-left text-xs font-bold flex items-center justify-between transition-colors shadow-xs">
+                            <span>Bạn có thắc mắc gì về du học Nhật Bản? Đăng bài ngay...</span>
+                            <i class="bi bi-pencil-square text-slate-400 text-base"></i>
+                        </button>
+                        <?php else: ?>
+                        <a href="/login?redirect=/qa" class="flex-1 bg-slate-50 hover:bg-slate-100/75 border border-slate-200 text-slate-500 rounded-full px-5 py-3 text-left text-xs font-bold flex items-center justify-between transition-colors shadow-xs">
+                            <span>Đăng nhập để đặt câu hỏi thảo luận...</span>
+                            <i class="bi bi-box-arrow-in-right text-slate-400 text-base"></i>
+                        </a>
+                        <?php endif; ?>
                     </div>
                 </div>
-                <?php else: ?>
-                <div class="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-soft text-center py-8">
-                    <h3 class="text-base font-bold text-primary mb-1">Gửi thắc mắc của bạn</h3>
-                    <p class="text-xs text-slate-500 mb-5">Đăng nhập để đặt câu hỏi và tham gia thảo luận cùng cộng đồng.</p>
-                    <a href="/login?redirect=/qa" class="inline-flex bg-primary text-white font-bold text-xs px-6 py-3 rounded-full hover:bg-slate-800 active:scale-95 transition-all shadow-sm">Đăng nhập ngay</a>
-                </div>
-                <?php endif; ?>
 
                 <!-- Back button to return to list -->
                 <div id="details_back_bar" class="hidden mb-2">
@@ -213,10 +166,92 @@ $is_admin = $is_logged_in && (isAdmin() || isEditor());
     </section>
 </main>
 
+<!-- Popup Modal for Creating a Question -->
+<?php if ($is_logged_in): ?>
+<div id="post_modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden">
+    <!-- Overlay Backdrop -->
+    <div id="post_modal_backdrop" class="absolute inset-0 bg-black/40 backdrop-blur-xs transition-opacity duration-300"></div>
+    
+    <!-- Modal Box -->
+    <div id="post_modal_card" class="bg-white w-full max-w-[540px] rounded-[2rem] p-6 shadow-hard relative z-10 mx-4 transform scale-95 opacity-0 transition-all duration-300">
+        <!-- Close Button top right -->
+        <button id="btn_close_post_modal" class="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-black transition-colors">
+            <i class="bi bi-x-lg text-xs"></i>
+        </button>
+
+        <h3 class="text-base font-black text-slate-900 font-display mb-4 pb-3 border-b border-slate-100">Đặt câu hỏi cộng đồng</h3>
+        
+        <div class="flex gap-4">
+            <!-- User Avatar -->
+            <div class="w-12 h-12 rounded-full bg-slate-100 flex-shrink-0 flex items-center justify-center overflow-hidden border border-slate-200 shadow-xs">
+                <i class="bi bi-person-fill text-slate-400 text-2xl"></i>
+            </div>
+            <div class="flex-1">
+                <div class="font-bold text-[14px] text-slate-900 mb-1"><?= htmlspecialchars($current_user_name) ?></div>
+                
+                <!-- Background wrapper preview -->
+                <div id="editor_bg_wrapper" class="rounded-2xl transition-all duration-350 p-0">
+                    <textarea id="post_content" rows="4" placeholder="Bạn đang thắc mắc điều gì về du học Nhật Bản?..." class="w-full bg-transparent text-[15px] placeholder-slate-400 focus:outline-none resize-none py-2 px-1 leading-relaxed transition-all duration-300"></textarea>
+                </div>
+                
+                <!-- Colors Preset Panel -->
+                <div class="flex items-center gap-2 mt-3 mb-1 select-none">
+                    <span class="text-[10px] font-black uppercase text-slate-400 mr-1">Hình nền:</span>
+                    <button class="w-5 h-5 rounded-full border border-slate-300 bg-white flex items-center justify-center text-[10px] text-slate-400 hover:scale-110 active:scale-95 transition-all btn-bg-preset" data-bg="" title="Mặc định"><i class="bi bi-slash-circle"></i></button>
+                    <button class="w-5 h-5 rounded-full bg-threads-dark hover:scale-110 active:scale-95 transition-all btn-bg-preset" data-bg="bg-threads-dark" title="Tối giản"></button>
+                    <button class="w-5 h-5 rounded-full bg-threads-sunrise hover:scale-110 active:scale-95 transition-all btn-bg-preset" data-bg="bg-threads-sunrise" title="Bình minh"></button>
+                    <button class="w-5 h-5 rounded-full bg-threads-neon hover:scale-110 active:scale-95 transition-all btn-bg-preset" data-bg="bg-threads-neon" title="Neon"></button>
+                    <button class="w-5 h-5 rounded-full bg-threads-ocean hover:scale-110 active:scale-95 transition-all btn-bg-preset" data-bg="bg-threads-ocean" title="Đại dương"></button>
+                    <button class="w-5 h-5 rounded-full bg-threads-sakura hover:scale-110 active:scale-95 transition-all btn-bg-preset" data-bg="bg-threads-sakura" title="Sakura"></button>
+                    <button class="w-5 h-5 rounded-full bg-threads-lavender hover:scale-110 active:scale-95 transition-all btn-bg-preset" data-bg="bg-threads-lavender" title="Lavender"></button>
+                </div>
+
+                <!-- Attachment image preview -->
+                <div id="image_preview_container" class="hidden relative mt-3 rounded-2xl overflow-hidden border border-slate-100 max-h-64 shadow-xs select-none">
+                    <img id="image_preview" src="" class="w-full h-full object-cover">
+                    <button id="btn_remove_image" class="absolute top-3 right-3 bg-black/60 hover:bg-black/85 text-white rounded-full p-1.5 w-8 h-8 flex items-center justify-center transition-colors">
+                        <i class="bi bi-x-lg text-xs"></i>
+                    </button>
+                </div>
+
+                <!-- Actions Footer -->
+                <div class="flex justify-between items-center mt-4 pt-3 border-t border-slate-100">
+                    <div class="flex items-center gap-3.5">
+                        <button id="btn_trigger_file" class="text-slate-400 hover:text-primary transition-colors p-1" title="Đính kèm ảnh">
+                            <i class="bi bi-image text-lg"></i>
+                        </button>
+                        <input type="file" id="file_input" class="hidden" accept="image/*">
+                        
+                        <select id="post_tag" class="bg-slate-50 border border-slate-200 text-[11px] font-bold text-slate-500 rounded-full px-3 py-1 focus:outline-none focus:border-slate-350 transition-colors">
+                            <option value="">Chọn chủ đề</option>
+                            <option value="#tuyensinh">#tuyensinh</option>
+                            <option value="#hocphi">#hocphi</option>
+                            <option value="#visanhat">#visanhat</option>
+                            <option value="#vieclam">#vieclam</option>
+                            <option value="#nhatngu">#nhatngu</option>
+                            <option value="#cuocsong">#cuocsong</option>
+                        </select>
+                    </div>
+                    <button id="btn_post_question" class="bg-primary text-white font-bold text-xs px-6 py-2.5 rounded-full hover:bg-slate-800 active:scale-95 transition-all shadow-sm">Đăng câu hỏi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endif; ?>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const feedContainer = document.getElementById('feed_container');
     const loadingIndicator = document.getElementById('feed_loading');
+    
+    // Modal Post Elements
+    const postModal = document.getElementById('post_modal');
+    const postModalCard = document.getElementById('post_modal_card');
+    const btnOpenPostModal = document.getElementById('btn_open_post_modal');
+    const btnClosePostModal = document.getElementById('btn_close_post_modal');
+    const postModalBackdrop = document.getElementById('post_modal_backdrop');
+    
     const btnPost = document.getElementById('btn_post_question');
     const postContent = document.getElementById('post_content');
     const postTag = document.getElementById('post_tag');
@@ -230,7 +265,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const detailsBackBar = document.getElementById('details_back_bar');
     const btnCloseDetails = document.getElementById('btn_close_details');
 
-    // Authentication & Context
+    // Auth context
     const isLoggedIn = <?= $is_logged_in ? 'true' : 'false' ?>;
     const isAdmin = <?= $is_admin ? 'true' : 'false' ?>;
     const currentUserName = <?= json_encode($current_user_name) ?>;
@@ -240,13 +275,37 @@ document.addEventListener('DOMContentLoaded', function() {
     let viewingQuestionId = null;
     let currentBgStyle = '';
 
-    // Check URL query parameters
+    // Check URL parameters for qid
     const urlParams = new URLSearchParams(window.location.search);
     const qidParam = urlParams.get('qid');
     if (qidParam) {
         viewingQuestionId = parseInt(qidParam);
         detailsBackBar.classList.remove('hidden');
     }
+
+    // Modal popup triggers
+    if (btnOpenPostModal) {
+        btnOpenPostModal.addEventListener('click', () => {
+            postModal.classList.remove('hidden');
+            setTimeout(() => {
+                postModalCard.classList.remove('scale-95', 'opacity-0');
+                postModalCard.classList.add('scale-100', 'opacity-100');
+            }, 50);
+        });
+    }
+
+    function hidePostModal() {
+        if (postModalCard) {
+            postModalCard.classList.remove('scale-100', 'opacity-100');
+            postModalCard.classList.add('scale-95', 'opacity-0');
+        }
+        setTimeout(() => {
+            if (postModal) postModal.classList.add('hidden');
+        }, 200);
+    }
+
+    if (btnClosePostModal) btnClosePostModal.addEventListener('click', hidePostModal);
+    if (postModalBackdrop) postModalBackdrop.addEventListener('click', hidePostModal);
 
     // Load Feed
     function loadFeed() {
@@ -278,7 +337,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Load single question
+    // Load Single Question Details
     function loadSingleQuestion(qid) {
         if (loadingIndicator) loadingIndicator.style.display = 'block';
         
@@ -313,7 +372,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Render single question
     function renderSingleQuestion(q) {
         feedContainer.querySelectorAll('.threads-card').forEach(el => el.remove());
-        const card = createThreadCard(q, true);
+        const card = createThreadCard(q, true); // true = Detailed view with comments/interactions
         feedContainer.appendChild(card);
     }
 
@@ -334,12 +393,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         questions.forEach(q => {
-            const card = createThreadCard(q, false);
+            const card = createThreadCard(q, false); // false = Feed view (No comments, no likes shown)
             feedContainer.appendChild(card);
         });
     }
 
-    // Generate HTML for card (Handles background color for text posts)
+    // Generate HTML for card (Feeds view vs Detailed view logic)
     function createThreadCard(q, isDetailedView = false) {
         const div = document.createElement('div');
         div.className = 'threads-card bg-white p-6 rounded-[2rem] border border-slate-100 shadow-soft relative';
@@ -348,7 +407,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const timeString = formatTime(q.created_at);
         const hasReplies = q.answers && q.answers.length > 0;
 
-        // Image Attachment (only shown if there's no custom bg color)
+        // Image Attachment
         let attachmentHtml = '';
         if (q.image && !q.bg_style) {
             attachmentHtml = `
@@ -358,7 +417,7 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
         }
 
-        // Main Text Content (Modified to support background templates)
+        // Main Text Content
         let contentHtml = '';
         if (q.bg_style) {
             contentHtml = `
@@ -378,41 +437,97 @@ document.addEventListener('DOMContentLoaded', function() {
             tagHtml = `<span class="inline-block text-xs font-bold text-orange-600 hover:underline mr-2 cursor-pointer btn-tag-filter" data-tag="${q.tags}">${q.tags}</span>`;
         }
 
-        // Replies
-        let repliesHtml = '';
-        if (hasReplies) {
-            repliesHtml = q.answers.map(ans => {
-                const isAdminReply = ans.user_role === 'admin' || ans.user_role === 'editor' || ans.author_name.includes('Admin');
-                return `
-                    <!-- Reply Item -->
-                    <div class="flex gap-4 mt-5 pt-4 border-t border-slate-50 relative" data-ans-id="${ans.id}">
-                        <div class="flex justify-center flex-shrink-0 w-12">
-                            <div class="w-9 h-9 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center overflow-hidden shadow-xs">
-                                <i class="bi bi-person-fill text-slate-400 text-xs"></i>
+        // Footer Actions & Comments area (DIFFERENT between Feed view and Detailed View)
+        let footerHtml = '';
+        if (isDetailedView) {
+            // Detailed View: Shows Likes count, Comments list, Like buttons, and comment input box
+            let repliesHtml = '';
+            if (hasReplies) {
+                repliesHtml = q.answers.map(ans => {
+                    const isAdminReply = ans.user_role === 'admin' || ans.user_role === 'editor' || ans.author_name.includes('Admin');
+                    return `
+                        <!-- Reply Item -->
+                        <div class="flex gap-4 mt-5 pt-4 border-t border-slate-50 relative" data-ans-id="${ans.id}">
+                            <div class="flex justify-center flex-shrink-0 w-12">
+                                <div class="w-9 h-9 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center overflow-hidden shadow-xs">
+                                    <i class="bi bi-person-fill text-slate-400 text-xs"></i>
+                                </div>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="font-bold text-[13.5px] text-slate-900">${escapeHtml(ans.author_name)}</span>
+                                    ${isAdminReply ? `<span class="bg-black text-[9px] font-black text-white px-2 py-0.5 rounded-full uppercase tracking-wider scale-90">Admin</span>` : ''}
+                                    <span class="text-[11px] text-slate-400 ml-auto">${formatTime(ans.created_at)}</span>
+                                </div>
+                                <div class="text-[14px] text-slate-700 leading-relaxed">${escapeHtml(ans.content)}</div>
+                                
+                                <div class="flex items-center gap-4 mt-2">
+                                    <button class="action-icon-btn btn-like-answer flex items-center gap-1.5 text-xs" data-id="${ans.id}">
+                                        <i class="bi bi-heart"></i>
+                                        <span class="font-bold text-[11px]">${ans.likes_count > 0 ? `Thích (${ans.likes_count})` : 'Thích'}</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                        <div class="flex-1 min-w-0">
-                            <div class="flex items-center gap-2 mb-1">
-                                <span class="font-bold text-[13.5px] text-slate-900">${escapeHtml(ans.author_name)}</span>
-                                ${isAdminReply ? `<span class="bg-black text-[9px] font-black text-white px-2 py-0.5 rounded-full uppercase tracking-wider scale-90">Admin</span>` : ''}
-                                <span class="text-[11px] text-slate-400 ml-auto">${formatTime(ans.created_at)}</span>
-                            </div>
-                            <div class="text-[14px] text-slate-700 leading-relaxed">${escapeHtml(ans.content)}</div>
-                            
-                            <div class="flex items-center gap-4 mt-2">
-                                <button class="action-icon-btn btn-like-answer flex items-center gap-1.5 text-xs" data-id="${ans.id}">
-                                    <i class="bi bi-heart"></i>
-                                    <span class="font-bold text-[11px]">${ans.likes_count > 0 ? `Thích (${ans.likes_count})` : 'Thích'}</span>
-                                </button>
-                            </div>
+                    `;
+                }).join('');
+            }
+
+            footerHtml = `
+                <!-- Likes / Share buttons -->
+                <div class="flex items-center gap-5 mt-4 text-slate-500 border-b border-slate-50 pb-3">
+                    <button class="action-icon-btn btn-like-question flex items-center gap-1.5 text-sm" data-id="${q.id}">
+                        <i class="bi bi-heart"></i>
+                        <span class="text-[12px] font-bold q-like-count">${q.likes_count || 'Thích'}</span>
+                    </button>
+                    
+                    <button class="action-icon-btn btn-comment-focus flex items-center gap-1.5 text-sm">
+                        <i class="bi bi-chat"></i>
+                        <span class="text-[12px] font-bold">${q.answers ? q.answers.length : 0}</span>
+                    </button>
+                    
+                    <button class="action-icon-btn btn-share-post flex items-center text-sm" data-id="${q.id}">
+                        <i class="bi bi-share"></i>
+                    </button>
+                </div>
+
+                <!-- Nested Replies -->
+                <div class="replies-list">
+                    ${repliesHtml}
+                </div>
+
+                <!-- Inline Reply Input -->
+                ${isLoggedIn ? `
+                <div class="flex gap-4 mt-5 pt-4 border-t border-slate-100 relative z-20">
+                    <div class="flex justify-center flex-shrink-0 w-12">
+                        <div class="w-8 h-8 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center overflow-hidden shadow-xs">
+                            <i class="bi bi-person-fill text-slate-400 text-xs"></i>
                         </div>
                     </div>
-                `;
-            }).join('');
+                    <div class="flex-1 flex gap-2">
+                        <input type="text" class="ans_content flex-1 bg-slate-50 hover:bg-slate-100/75 focus:bg-white border border-slate-100 rounded-full px-4.5 py-2 text-[13px] placeholder-slate-400 focus:outline-none focus:border-slate-350 transition-all" placeholder="Viết phản hồi của bạn..." data-qid="${q.id}">
+                        <button class="btn-post-answer bg-primary text-white hover:bg-slate-800 rounded-full px-5 py-2 text-[11px] font-bold transition-all" data-qid="${q.id}">Gửi</button>
+                    </div>
+                </div>
+                ` : `
+                <div class="text-center py-3 mt-4 bg-slate-50 rounded-2xl border border-slate-100">
+                    <a href="/login?redirect=/qa" class="text-xs font-bold text-slate-500 hover:text-black">Đăng nhập để bình luận cuộc thảo luận này</a>
+                </div>
+                `}
+            `;
+        } else {
+            // Feed list view: Hide likes, comments count, replies. Only show single "Đọc thảo luận" button
+            footerHtml = `
+                <div class="flex justify-end items-center mt-4 pt-3 border-t border-slate-50">
+                    <button class="btn-view-details flex items-center gap-1 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-black font-bold text-[11.5px] px-4.5 py-2 rounded-full transition-colors">
+                        Đọc thảo luận <i class="bi bi-chevron-right text-[10px]"></i>
+                    </button>
+                </div>
+            `;
         }
 
         div.innerHTML = `
-            ${hasReplies ? '<div class="thread-line"></div>' : ''}
+            ${(isDetailedView && hasReplies) ? '<div class="thread-line"></div>' : ''}
             
             <div class="flex gap-4">
                 <!-- Left Avatar -->
@@ -436,45 +551,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     <!-- Content -->
                     ${contentHtml}
                     
-                    <!-- Image attachment -->
+                    <!-- Image -->
                     ${attachmentHtml}
                     
-                    <!-- Buttons -->
-                    <div class="flex items-center gap-5 mt-3 text-slate-500 border-b border-slate-50 pb-3">
-                        <button class="action-icon-btn btn-like-question flex items-center gap-1.5 text-sm" data-id="${q.id}">
-                            <i class="bi bi-heart"></i>
-                            <span class="text-[12px] font-bold q-like-count">${q.likes_count || 'Thích'}</span>
-                        </button>
-                        
-                        <button class="action-icon-btn btn-comment-focus flex items-center gap-1.5 text-sm">
-                            <i class="bi bi-chat"></i>
-                            <span class="text-[12px] font-bold">${q.answers ? q.answers.length : 0}</span>
-                        </button>
-                        
-                        <button class="action-icon-btn btn-share-post flex items-center text-sm" data-id="${q.id}">
-                            <i class="bi bi-share"></i>
-                        </button>
-                    </div>
-
-                    <!-- Replies list -->
-                    <div class="replies-list">
-                        ${repliesHtml}
-                    </div>
-
-                    <!-- Reply box -->
-                    ${isLoggedIn ? `
-                    <div class="flex gap-4 mt-5 pt-4 border-t border-slate-100 relative z-20">
-                        <div class="flex justify-center flex-shrink-0 w-12">
-                            <div class="w-8 h-8 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center overflow-hidden shadow-xs">
-                                <i class="bi bi-person-fill text-slate-400 text-xs"></i>
-                            </div>
-                        </div>
-                        <div class="flex-1 flex gap-2">
-                            <input type="text" class="ans_content flex-1 bg-slate-50 hover:bg-slate-100/75 focus:bg-white border border-slate-100 rounded-full px-4.5 py-2 text-[13px] placeholder-slate-400 focus:outline-none focus:border-slate-350 transition-all" placeholder="Viết phản hồi của bạn..." data-qid="${q.id}">
-                            <button class="btn-post-answer bg-primary text-white hover:bg-slate-800 rounded-full px-5 py-2 text-[11px] font-bold transition-all" data-qid="${q.id}">Gửi</button>
-                        </div>
-                    </div>
-                    ` : ''}
+                    <!-- Footer Block -->
+                    ${footerHtml}
                 </div>
             </div>
         `;
@@ -482,23 +563,20 @@ document.addEventListener('DOMContentLoaded', function() {
         return div;
     }
 
-    // Background preset selection handler
+    // Color presets select handler
     document.querySelectorAll('.btn-bg-preset').forEach(btn => {
         btn.addEventListener('click', function(e) {
             e.preventDefault();
             const bgClass = this.dataset.bg;
             
-            // Remove previous classes
             editorBgWrapper.className = 'rounded-2xl transition-all duration-350 p-0';
             postContent.className = 'w-full bg-transparent text-[15px] placeholder-slate-400 focus:outline-none resize-none py-2 px-1 leading-relaxed transition-all duration-300';
             
             if (bgClass) {
-                // Apply background class to editor wrapper
                 editorBgWrapper.classList.add(bgClass, 'p-6', 'min-h-[160px]', 'flex', 'items-center', 'justify-center', 'text-center');
                 postContent.classList.add('text-white', 'font-extrabold', 'text-base', 'md:text-lg', 'text-center', 'placeholder-white/60');
                 currentBgStyle = bgClass;
                 
-                // Clear selected image if color bg is chosen
                 if (btnRemoveImage) btnRemoveImage.click();
             } else {
                 currentBgStyle = '';
@@ -506,7 +584,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Relative Time Helper
+    // Format Time Helper
     function formatTime(dateString) {
         const date = new Date(dateString.replace(' ', 'T'));
         const now = new Date();
@@ -528,7 +606,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return text.replace(/[&<>"']/g, function(m) { return map[m]; });
     }
 
-    // File input handlers
+    // Photo Attachments handlers
     if (btnTriggerFile && fileInput) {
         btnTriggerFile.addEventListener('click', (e) => {
             e.preventDefault();
@@ -544,7 +622,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     imagePreview.src = e.target.result;
                     imagePreviewContainer.classList.remove('hidden');
                     
-                    // Reset bg color if image is uploaded
                     const defaultBgBtn = document.querySelector('.btn-bg-preset[data-bg=""]');
                     if (defaultBgBtn) defaultBgBtn.click();
                 };
@@ -563,7 +640,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Post Question
+    // Submit Question from modal
     if (btnPost && postContent) {
         btnPost.addEventListener('click', () => {
             const content = postContent.value.trim();
@@ -593,19 +670,17 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(res => res.json())
             .then(res => {
                 btnPost.disabled = false;
-                btnPost.textContent = 'Đăng bài';
+                btnPost.textContent = 'Đăng câu hỏi';
                 if (res.status === 'success') {
                     postContent.value = '';
                     if (postTag) postTag.value = '';
                     
-                    // Reset background styling
                     const defaultBgBtn = document.querySelector('.btn-bg-preset[data-bg=""]');
                     if (defaultBgBtn) defaultBgBtn.click();
-                    
-                    // Clear image
                     if (btnRemoveImage) btnRemoveImage.click();
                     
-                    loadFeed();
+                    hidePostModal(); // Hide modal
+                    loadFeed(); // Reload list
                 } else {
                     alert(res.message);
                 }
@@ -613,12 +688,12 @@ document.addEventListener('DOMContentLoaded', function() {
             .catch(err => {
                 console.error(err);
                 btnPost.disabled = false;
-                btnPost.textContent = 'Đăng bài';
+                btnPost.textContent = 'Đăng câu hỏi';
             });
         });
     }
 
-    // Sidebar & Mobile Tags Click Filter
+    // Sidebar Tag Filters
     document.querySelectorAll('.tag-badge').forEach(btn => {
         btn.addEventListener('click', function(e) {
             e.preventDefault();
@@ -643,7 +718,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Close Details View
+    // Close Details view
     if (btnCloseDetails) {
         btnCloseDetails.addEventListener('click', () => {
             viewingQuestionId = null;
@@ -656,7 +731,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Feed interaction clicks
+    // Click Delegation inside feed area
     feedContainer.addEventListener('click', (e) => {
         if (e.target.closest('.btn-comment-focus')) {
             const card = e.target.closest('.threads-card');
@@ -788,6 +863,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Single post view state
     window.addEventListener('popstate', (e) => {
         if (e.state && e.state.qid) {
             viewingQuestionId = parseInt(e.state.qid);
