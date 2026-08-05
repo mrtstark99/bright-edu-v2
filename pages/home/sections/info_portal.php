@@ -6,9 +6,12 @@
           <h2 class="text-3xl sm:text-4xl font-bold text-primary font-display">Tìm Hiểu Chi Tiết Thủ Tục & Dịch Vụ</h2>
           <p class="mt-4 text-slate-500 text-[15px] max-w-xl mx-auto">Hệ thống thông tin cẩm nang hỗ trợ đắc lực giúp bạn chủ động tìm hiểu và lựa chọn lộ trình phù hợp.</p>
         </div>
-        <div class="relative">
-          <div class="relative overflow-hidden w-full px-4 py-6 -mx-4 -my-6">
-            <div id="portal-slider-track" class="flex transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] gap-6">
+        <div class="relative w-full mb-16 reveal">
+          <div class="relative">
+            <!-- Slider Viewport -->
+            <div class="overflow-hidden w-full rounded-[2rem] p-1">
+              <div id="portal-slider-track" class="flex transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] gap-6">
+
 
             <!-- Card 1: Các chương trình -->
             <article class="group rounded-3xl border border-slate-100 bg-white p-6 shadow-soft transition-all duration-300 hover:shadow-medium hover:-translate-y-1 flex flex-col justify-between shrink-0 w-full md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-72px)/4)] reveal">
@@ -169,18 +172,20 @@
               </a>
             </article>
 
+            </div>
           </div>
-        </div>
 
-        <!-- Prev Button -->
-        <button id="portal-prev-btn" aria-label="Previous slide" class="absolute -left-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white border border-slate-200 text-slate-600 hover:text-primary hover:border-primary/30 flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 disabled:opacity-40 disabled:pointer-events-none md:-left-6 lg:-left-12">
-          <i class="bi bi-chevron-left text-lg"></i>
-        </button>
-        <!-- Next Button -->
-        <button id="portal-next-btn" aria-label="Next slide" class="absolute -right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white border border-slate-200 text-slate-600 hover:text-primary hover:border-primary/30 flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 disabled:opacity-40 disabled:pointer-events-none md:-right-6 lg:-right-12">
-          <i class="bi bi-chevron-right text-lg"></i>
-        </button>
+          <!-- Prev Button -->
+          <button id="portal-prev-btn" aria-label="Previous slide" class="absolute -left-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white border border-slate-200 text-slate-600 hover:text-primary hover:border-primary/30 flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 disabled:opacity-40 disabled:pointer-events-none md:-left-6 lg:-left-12">
+            <i class="bi bi-chevron-left text-lg"></i>
+          </button>
+          <!-- Next Button -->
+          <button id="portal-next-btn" aria-label="Next slide" class="absolute -right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white border border-slate-200 text-slate-600 hover:text-primary hover:border-primary/30 flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 disabled:opacity-40 disabled:pointer-events-none md:-right-6 lg:-right-12">
+            <i class="bi bi-chevron-right text-lg"></i>
+          </button>
+        </div>
       </div>
+
     </div>
   </section>
 
