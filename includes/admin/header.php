@@ -59,7 +59,7 @@
     <style>
         :root {
             --sidebar-w: 232px;
-            --admin-max-w: 1200px;
+            --admin-max-w: 1900px;
             --admin-gutter: 28px;
             --sidebar-bg: #ffffff;
             --sidebar-border: #f1f5f9;
@@ -127,10 +127,10 @@
         .sidebar-link i { font-size: 15px; width: 18px; text-align: center; flex-shrink: 0; }
         .sidebar-link:hover { background: #f8fafc; color: #0d243e; }
         .sidebar-link.active {
-            background: var(--sidebar-accent-bg); color: var(--sidebar-accent);
-            border-left-color: var(--sidebar-accent);
+            background: #f1f5f9; color: #0d243e;
+            border-left-color: transparent; font-weight: 700;
         }
-        .sidebar-link.active i { color: var(--sidebar-accent); }
+        .sidebar-link.active i { color: #0d243e; }
 
         .sidebar-badge {
             margin-left: auto; background: #f43f5e; color: #fff;
