@@ -11,23 +11,67 @@ $db = Database::getInstance();
 
 switch ($action) {
     case 'get_feed':
-        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-        $limit = 10;
+        $page = isset($_POST['page']) ? (int)$_POST['page'] : (isset($_GET['page']) ? (int)$_GET['page'] : 1);
+        $limit = 15;
         $offset = ($page - 1) * $limit;
         
-        $stmt = $db->prepare("SELECT * FROM qa_questions WHERE status = 'active' ORDER BY created_at DESC LIMIT :limit OFFSET :offset");
+        $tag = $_POST['tag'] ?? $_GET['tag'] ?? '';
+        
+        if (!empty($tag)) {
+            $stmt = $db->prepare("SELECT * FROM qa_questions WHERE status = 'active' AND tags LIKE :tag_query ORDER BY created_at DESC LIMIT :limit OFFSET :offset");
+            $stmt->bindValue(':tag_query', '%' . $tag . '%', PDO::PARAM_STR);
+        } else {
+            $stmt = $db->prepare("SELECT * FROM qa_questions WHERE status = 'active' ORDER BY created_at DESC LIMIT :limit OFFSET :offset");
+        }
+        
         $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
         $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
         $stmt->execute();
         $questions = $stmt->fetchAll();
         
         foreach ($questions as &$q) {
-            $ans_stmt = $db->prepare("SELECT * FROM qa_answers WHERE question_id = :qid AND status = 'active' ORDER BY created_at ASC");
+            // Join users to check if answer is by admin
+            $ans_stmt = $db->prepare("
+                SELECT a.*, u.role as user_role 
+                FROM qa_answers a 
+                LEFT JOIN users u ON a.user_id = u.id 
+                WHERE a.question_id = :qid AND a.status = 'active' 
+                ORDER BY a.created_at ASC
+            ");
             $ans_stmt->execute(['qid' => $q['id']]);
             $q['answers'] = $ans_stmt->fetchAll();
         }
         
         echo json_encode(['status' => 'success', 'data' => $questions]);
+        break;
+        
+    case 'get_question':
+        $qid = $_POST['question_id'] ?? $_GET['question_id'] ?? 0;
+        if (!$qid) {
+            echo json_encode(['status' => 'error', 'message' => 'ID câu hỏi không hợp lệ']);
+            break;
+        }
+        
+        $stmt = $db->prepare("SELECT * FROM qa_questions WHERE id = :id AND status = 'active'");
+        $stmt->execute(['id' => $qid]);
+        $q = $stmt->fetch();
+        
+        if (!$q) {
+            echo json_encode(['status' => 'error', 'message' => 'Không tìm thấy câu hỏi']);
+            break;
+        }
+        
+        $ans_stmt = $db->prepare("
+            SELECT a.*, u.role as user_role 
+            FROM qa_answers a 
+            LEFT JOIN users u ON a.user_id = u.id 
+            WHERE a.question_id = :qid AND a.status = 'active' 
+            ORDER BY a.created_at ASC
+        ");
+        $ans_stmt->execute(['qid' => $q['id']]);
+        $q['answers'] = $ans_stmt->fetchAll();
+        
+        echo json_encode(['status' => 'success', 'data' => $q]);
         break;
         
     case 'post_question':
@@ -36,6 +80,7 @@ switch ($action) {
             break;
         }
         $content = $_POST['content'] ?? '';
+        $tags = $_POST['tags'] ?? '';
         $user_id = $_SESSION['user_id'];
         $author_name = $_SESSION['user_name'];
         
@@ -44,29 +89,48 @@ switch ($action) {
             break;
         }
         
-        $stmt = $db->prepare("INSERT INTO qa_questions (user_id, author_name, content) VALUES (:uid, :author, :content)");
+        // Handle image upload
+        $image_path = null;
+        if (isset($_FILES['image']) && $_FILES['image']['error'] == UPLOAD_ERR_OK) {
+            $upload_res = uploadImage($_FILES['image'], 'qa');
+            if ($upload_res['success']) {
+                $image_path = $upload_res['filepath'];
+            } else {
+                echo json_encode(['status' => 'error', 'message' => 'Lỗi tải ảnh: ' . $upload_res['message']]);
+                break;
+            }
+        }
+        
+        $stmt = $db->prepare("INSERT INTO qa_questions (user_id, author_name, content, image, tags) VALUES (:uid, :author, :content, :image, :tags)");
         $stmt->execute([
             'uid' => $user_id,
             'author' => htmlspecialchars($author_name),
-            'content' => htmlspecialchars($content)
+            'content' => htmlspecialchars($content),
+            'image' => $image_path,
+            'tags' => htmlspecialchars($tags)
         ]);
         
         echo json_encode(['status' => 'success', 'id' => $db->lastInsertId()]);
         break;
         
     case 'post_answer':
-        if (!isAdmin()) {
-            echo json_encode(['status' => 'error', 'message' => 'Bạn không có quyền trả lời câu hỏi']);
+        if (!isLoggedIn()) {
+            echo json_encode(['status' => 'error', 'message' => 'Vui lòng đăng nhập để bình luận']);
             break;
         }
         $question_id = $_POST['question_id'] ?? 0;
         $content = $_POST['content'] ?? '';
         $user_id = $_SESSION['user_id'];
-        // Use a generic name for admin replies or their actual name
-        $author_name = 'Bright Education (Admin)'; 
+        
+        // Define display name
+        if (isAdmin() || isEditor()) {
+            $author_name = 'Bright Education (Admin)';
+        } else {
+            $author_name = $_SESSION['user_name'];
+        }
         
         if (empty(trim($content)) || !$question_id) {
-            echo json_encode(['status' => 'error', 'message' => 'Dữ liệu không hợp lệ']);
+            echo json_encode(['status' => 'error', 'message' => 'Nội dung trả lời không được để trống']);
             break;
         }
         
