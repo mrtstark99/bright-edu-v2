@@ -373,6 +373,9 @@
         <a class="sidebar-link <?php echo str_contains($_SERVER['REQUEST_URI'], '/admin/analytics') ? 'active' : ''; ?>" href="/admin/analytics">
             <i class="bi bi-bar-chart-line"></i> Đo lường
         </a>
+        <a class="sidebar-link <?php echo str_contains($_SERVER['REQUEST_URI'], '/admin/seo-strategy') ? 'active' : ''; ?>" href="/admin/seo-strategy">
+            <i class="bi bi-diagram-3"></i> SEO Strategy
+        </a>
 
         <div class="sidebar-divider"></div>
 

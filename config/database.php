@@ -193,6 +193,50 @@ class Database {
                 updated_at TEXT NOT NULL DEFAULT (datetime('now','localtime'))
             );
             CREATE INDEX IF NOT EXISTS idx_analytics_cache_expires ON analytics_cache(expires_at);
+
+            CREATE TABLE IF NOT EXISTS seo_topic_clusters (
+                id             INTEGER PRIMARY KEY AUTOINCREMENT,
+                planning_month TEXT NOT NULL,
+                name           TEXT NOT NULL,
+                pillar_title   TEXT NOT NULL,
+                pillar_url     TEXT,
+                description    TEXT,
+                status         TEXT NOT NULL DEFAULT 'planned'
+                               CHECK(status IN ('planned','in_progress','published')),
+                created_at     TEXT NOT NULL DEFAULT (datetime('now','localtime')),
+                updated_at     TEXT NOT NULL DEFAULT (datetime('now','localtime')),
+                UNIQUE(planning_month, name)
+            );
+            CREATE INDEX IF NOT EXISTS idx_seo_clusters_month ON seo_topic_clusters(planning_month);
+
+            CREATE TABLE IF NOT EXISTS seo_keyword_map (
+                id               INTEGER PRIMARY KEY AUTOINCREMENT,
+                planning_month   TEXT NOT NULL,
+                keyword          TEXT NOT NULL,
+                intent           TEXT NOT NULL
+                                 CHECK(intent IN ('informational','navigational','commercial','transactional')),
+                target_url       TEXT,
+                cluster_id       INTEGER,
+                content_role     TEXT NOT NULL DEFAULT 'satellite'
+                                 CHECK(content_role IN ('pillar','satellite','standalone')),
+                is_long_tail     INTEGER NOT NULL DEFAULT 0,
+                priority         TEXT NOT NULL DEFAULT 'medium'
+                                 CHECK(priority IN ('high','medium','low')),
+                conversion_score INTEGER NOT NULL DEFAULT 0 CHECK(conversion_score BETWEEN 0 AND 100),
+                search_volume    INTEGER NOT NULL DEFAULT 0,
+                difficulty       INTEGER NOT NULL DEFAULT 0 CHECK(difficulty BETWEEN 0 AND 100),
+                status           TEXT NOT NULL DEFAULT 'idea'
+                                 CHECK(status IN ('idea','brief','writing','published')),
+                notes            TEXT,
+                created_at       TEXT NOT NULL DEFAULT (datetime('now','localtime')),
+                updated_at       TEXT NOT NULL DEFAULT (datetime('now','localtime')),
+                FOREIGN KEY (cluster_id) REFERENCES seo_topic_clusters(id) ON DELETE SET NULL,
+                UNIQUE(planning_month, keyword)
+            );
+            CREATE INDEX IF NOT EXISTS idx_seo_keywords_month ON seo_keyword_map(planning_month);
+            CREATE INDEX IF NOT EXISTS idx_seo_keywords_intent ON seo_keyword_map(intent);
+            CREATE INDEX IF NOT EXISTS idx_seo_keywords_url ON seo_keyword_map(target_url);
+            CREATE INDEX IF NOT EXISTS idx_seo_keywords_cluster ON seo_keyword_map(cluster_id);
         ");
         try { $this->conn->exec("ALTER TABLE community_groups ADD COLUMN image TEXT"); } catch (\Exception $e) {}
         try { $this->conn->exec("ALTER TABLE qa_questions ADD COLUMN image TEXT"); } catch (\Exception $e) {}
