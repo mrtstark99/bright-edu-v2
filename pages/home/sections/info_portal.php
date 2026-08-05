@@ -1,171 +1,171 @@
-﻿    <!-- HÃ nh trang du há»c (Portal / Directory) -->
+    <!-- Hành trang du học (Portal / Directory) -->
     <section id="portal" class="py-20 lg:py-28 bg-white relative">
       <div class="mx-auto max-w-7xl px-5 lg:px-8">
         <div class="mx-auto mb-16 max-w-2xl text-center">
-          <span class="text-primary font-bold tracking-wider uppercase text-xs mb-3 block">HÃ nh trang thÃ´ng tin</span>
-          <h2 class="text-3xl sm:text-4xl font-bold text-primary font-display">TÃ¬m Hiá»ƒu Chi Tiáº¿t Thá»§ Tá»¥c & Dá»‹ch Vá»¥</h2>
-          <p class="mt-4 text-slate-500 text-[15px] max-w-xl mx-auto">Há»‡ thá»‘ng thÃ´ng tin cáº©m nang há»— trá»£ Ä‘áº¯c lá»±c giÃºp báº¡n chá»§ Ä‘á»™ng tÃ¬m hiá»ƒu vÃ  lá»±a chá»n lá»™ trÃ¬nh phÃ¹ há»£p.</p>
+          <span class="text-primary font-bold tracking-wider uppercase text-xs mb-3 block">Hành trang thông tin</span>
+          <h2 class="text-3xl sm:text-4xl font-bold text-primary font-display">Tìm Hiểu Chi Tiết Thủ Tục & Dịch Vụ</h2>
+          <p class="mt-4 text-slate-500 text-[15px] max-w-xl mx-auto">Hệ thống thông tin cẩm nang hỗ trợ đắc lực giúp bạn chủ động tìm hiểu và lựa chọn lộ trình phù hợp.</p>
         </div>
         <div class="relative">
           <div class="relative overflow-hidden w-full px-4 py-6 -mx-4 -my-6">
             <div id="portal-slider-track" class="flex transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] gap-6">
 
-            <!-- Card 1: CÃ¡c chÆ°Æ¡ng trÃ¬nh -->
+            <!-- Card 1: Các chương trình -->
             <article class="group rounded-3xl border border-slate-100 bg-white p-6 shadow-soft transition-all duration-300 hover:shadow-medium hover:-translate-y-1 flex flex-col justify-between shrink-0 w-full md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-72px)/4)] reveal">
               <div>
                 <div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-5 shrink-0">
                   <i class="bi bi-briefcase text-xl"></i>
                 </div>
-                <h3 class="text-base font-bold text-slate-800 font-display mb-3">CÃ¡c chÆ°Æ¡ng trÃ¬nh</h3>
+                <h3 class="text-base font-bold text-slate-800 font-display mb-3">Các chương trình</h3>
                 <ul class="space-y-2 text-[13px] text-slate-500 leading-relaxed">
                   <li class="flex items-start gap-2">
                     <i class="bi bi-check2 text-primary shrink-0 mt-0.5"></i>
-                    <span>Du há»c TrÆ°á»ng Nháº­t ngá»¯</span>
+                    <span>Du học Trường Nhật ngữ</span>
                   </li>
                   <li class="flex items-start gap-2">
                     <i class="bi bi-check2 text-primary shrink-0 mt-0.5"></i>
-                    <span>Du há»c TrÆ°á»ng Senmon</span>
+                    <span>Du học Trường Senmon</span>
                   </li>
                   <li class="flex items-start gap-2">
                     <i class="bi bi-check2 text-primary shrink-0 mt-0.5"></i>
-                    <span>Du há»c TrÆ°á»ng Äáº¡i há»c</span>
+                    <span>Du học Trường Đại học</span>
                   </li>
                   <li class="flex items-start gap-2">
                     <i class="bi bi-check2 text-primary shrink-0 mt-0.5"></i>
-                    <span>ChÆ°Æ¡ng trÃ¬nh Há»c bá»•ng</span>
+                    <span>Chương trình Học bổng</span>
                   </li>
                   <li class="flex items-start gap-2">
                     <i class="bi bi-check2 text-primary shrink-0 mt-0.5"></i>
-                    <span>Há»‡ Äáº¡i há»c Tiáº¿ng Anh</span>
+                    <span>Hệ Đại học Tiếng Anh</span>
                   </li>
                 </ul>
               </div>
               <a href="/services" class="mt-6 pt-4 border-t border-slate-100 inline-flex items-center gap-1.5 text-xs font-bold text-primary group-hover:gap-2.5 transition-all">
-                Xem chi tiáº¿t <i class="bi bi-arrow-right"></i>
+                Xem chi tiết <i class="bi bi-arrow-right"></i>
               </a>
             </article>
 
-            <!-- Card 2: Quy trÃ¬nh du há»c -->
+            <!-- Card 2: Quy trình du học -->
             <article class="group rounded-3xl border border-slate-100 bg-white p-6 shadow-soft transition-all duration-300 hover:shadow-medium hover:-translate-y-1 flex flex-col justify-between shrink-0 w-full md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-72px)/4)] reveal reveal-delay-100">
               <div>
                 <div class="w-12 h-12 rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center mb-5 shrink-0">
                   <i class="bi bi-arrow-right-circle text-xl"></i>
                 </div>
-                <h3 class="text-base font-bold text-slate-800 font-display mb-3">Quy trÃ¬nh du há»c</h3>
+                <h3 class="text-base font-bold text-slate-800 font-display mb-3">Quy trình du học</h3>
                 <ul class="space-y-2 text-[13px] text-slate-500 leading-relaxed">
                   <li class="flex items-start gap-2">
                     <i class="bi bi-check2 text-orange-500 shrink-0 mt-0.5"></i>
-                    <span>Äá»‹nh hÆ°á»›ng & Chá»n trÆ°á»ng</span>
+                    <span>Định hướng & Chọn trường</span>
                   </li>
                   <li class="flex items-start gap-2">
                     <i class="bi bi-check2 text-orange-500 shrink-0 mt-0.5"></i>
-                    <span>ÄÃ o táº¡o tiáº¿ng Nháº­t</span>
+                    <span>Đào tạo tiếng Nhật</span>
                   </li>
                   <li class="flex items-start gap-2">
                     <i class="bi bi-check2 text-orange-500 shrink-0 mt-0.5"></i>
-                    <span>Xá»­ lÃ½ há»“ sÆ¡ & COE</span>
+                    <span>Xử lý hồ sơ & COE</span>
                   </li>
                   <li class="flex items-start gap-2">
                     <i class="bi bi-check2 text-orange-500 shrink-0 mt-0.5"></i>
-                    <span>Xin Visa & Xuáº¥t cáº£nh</span>
+                    <span>Xin Visa & Xuất cảnh</span>
                   </li>
                 </ul>
               </div>
               <a href="/process" class="mt-6 pt-4 border-t border-slate-100 inline-flex items-center gap-1.5 text-xs font-bold text-primary group-hover:gap-2.5 transition-all">
-                Xem chi tiáº¿t <i class="bi bi-arrow-right"></i>
+                Xem chi tiết <i class="bi bi-arrow-right"></i>
               </a>
             </article>
 
-            <!-- Card 3: Chuáº©n bá»‹ há»“ sÆ¡ -->
+            <!-- Card 3: Chuẩn bị hồ sơ -->
             <article class="group rounded-3xl border border-slate-100 bg-white p-6 shadow-soft transition-all duration-300 hover:shadow-medium hover:-translate-y-1 flex flex-col justify-between shrink-0 w-full md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-72px)/4)] reveal reveal-delay-200">
               <div>
                 <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-5 shrink-0">
                   <i class="bi bi-file-earmark-text text-xl"></i>
                 </div>
-                <h3 class="text-base font-bold text-slate-800 font-display mb-3">Chuáº©n bá»‹ há»“ sÆ¡</h3>
+                <h3 class="text-base font-bold text-slate-800 font-display mb-3">Chuẩn bị hồ sơ</h3>
                 <ul class="space-y-2 text-[13px] text-slate-500 leading-relaxed">
                   <li class="flex items-start gap-2">
                     <i class="bi bi-check2 text-emerald-500 shrink-0 mt-0.5"></i>
-                    <span>Giáº¥y tá» há»c váº¥n & cÃ¡ nhÃ¢n</span>
+                    <span>Giấy tờ học vấn & cá nhân</span>
                   </li>
                   <li class="flex items-start gap-2">
                     <i class="bi bi-check2 text-emerald-500 shrink-0 mt-0.5"></i>
-                    <span>Há»“ sÆ¡ ngÆ°á»i báº£o lÃ£nh</span>
+                    <span>Hồ sơ người bảo lãnh</span>
                   </li>
                   <li class="flex items-start gap-2">
                     <i class="bi bi-check2 text-emerald-500 shrink-0 mt-0.5"></i>
-                    <span>Chá»©ng minh tÃ i chÃ­nh</span>
+                    <span>Chứng minh tài chính</span>
                   </li>
                   <li class="flex items-start gap-2">
                     <i class="bi bi-check2 text-emerald-500 shrink-0 mt-0.5"></i>
-                    <span>Thá»§ tá»¥c xin COE & Visa</span>
+                    <span>Thủ tục xin COE & Visa</span>
                   </li>
                 </ul>
               </div>
               <a href="/documents" class="mt-6 pt-4 border-t border-slate-100 inline-flex items-center gap-1.5 text-xs font-bold text-primary group-hover:gap-2.5 transition-all">
-                Xem chi tiáº¿t <i class="bi bi-arrow-right"></i>
+                Xem chi tiết <i class="bi bi-arrow-right"></i>
               </a>
             </article>
 
-            <!-- Card 4: KhÃ³a há»c tiáº¿ng Nháº­t -->
+            <!-- Card 4: Khóa học tiếng Nhật -->
             <article class="group rounded-3xl border border-slate-100 bg-white p-6 shadow-soft transition-all duration-300 hover:shadow-medium hover:-translate-y-1 flex flex-col justify-between shrink-0 w-full md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-72px)/4)] reveal reveal-delay-300">
               <div>
                 <div class="w-12 h-12 rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center mb-5 shrink-0">
                   <i class="bi bi-journal-bookmark text-xl"></i>
                 </div>
-                <h3 class="text-base font-bold text-slate-800 font-display mb-3">KhÃ³a há»c tiáº¿ng</h3>
+                <h3 class="text-base font-bold text-slate-800 font-display mb-3">Khóa học tiếng</h3>
                 <ul class="space-y-2 text-[13px] text-slate-500 leading-relaxed">
                   <li class="flex items-start gap-2">
                     <i class="bi bi-check2 text-sky-500 shrink-0 mt-0.5"></i>
-                    <span>Lá»›p N5 - Ná»n táº£ng</span>
+                    <span>Lớp N5 - Nền tảng</span>
                   </li>
                   <li class="flex items-start gap-2">
                     <i class="bi bi-check2 text-sky-500 shrink-0 mt-0.5"></i>
-                    <span>Lá»›p N4 - ChuyÃªn sÃ¢u</span>
+                    <span>Lớp N4 - Chuyên sâu</span>
                   </li>
                   <li class="flex items-start gap-2">
                     <i class="bi bi-check2 text-sky-500 shrink-0 mt-0.5"></i>
-                    <span>KhÃ³a Luyá»‡n phá»ng váº¥n 1-1</span>
+                    <span>Khóa Luyện phỏng vấn 1-1</span>
                   </li>
                   <li class="flex items-start gap-2">
                     <i class="bi bi-check2 text-sky-500 shrink-0 mt-0.5"></i>
-                    <span>GiÃ¡o viÃªn báº£n xá»© Tokyo</span>
+                    <span>Giáo viên bản xứ Tokyo</span>
                   </li>
                 </ul>
               </div>
               <a href="/courses" class="mt-6 pt-4 border-t border-slate-100 inline-flex items-center gap-1.5 text-xs font-bold text-primary group-hover:gap-2.5 transition-all">
-                Xem chi tiáº¿t <i class="bi bi-arrow-right"></i>
+                Xem chi tiết <i class="bi bi-arrow-right"></i>
               </a>
             </article>
 
-            <!-- Card 5: TrÆ°á»ng Nháº­t Ngá»¯ -->
+            <!-- Card 5: Trường Nhật Ngữ -->
             <article class="group rounded-3xl border border-slate-100 bg-white p-6 shadow-soft transition-all duration-300 hover:shadow-medium hover:-translate-y-1 flex flex-col justify-between shrink-0 w-full md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-72px)/4)] reveal reveal-delay-400">
               <div>
                 <div class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-5 shrink-0">
                   <i class="bi bi-building text-xl"></i>
                 </div>
-                <h3 class="text-base font-bold text-slate-800 font-display mb-3">TrÆ°á»ng Nháº­t Ngá»¯</h3>
+                <h3 class="text-base font-bold text-slate-800 font-display mb-3">Trường Nhật Ngữ</h3>
                 <ul class="space-y-2 text-[13px] text-slate-500 leading-relaxed">
                   <li class="flex items-start gap-2">
                     <i class="bi bi-check2 text-indigo-500 shrink-0 mt-0.5"></i>
-                    <span class="font-bold text-slate-800">HÆ¡n 600 trÆ°á»ng nháº­t ngá»¯ trÃªn toÃ n quá»‘c</span>
+                    <span class="font-bold text-slate-800">Hơn 600 trường nhật ngữ trên toàn quốc</span>
                   </li>
                   <li class="flex items-start gap-2">
                     <i class="bi bi-check2 text-indigo-500 shrink-0 mt-0.5"></i>
-                    <span>ThÃ´ng tin há»c phÃ­ chi tiáº¿t</span>
+                    <span>Thông tin học phí chi tiết</span>
                   </li>
                   <li class="flex items-start gap-2">
                     <i class="bi bi-check2 text-indigo-500 shrink-0 mt-0.5"></i>
-                    <span>Vá»‹ trÃ­ Ä‘á»‹a lÃ½ & VÃ¹ng miá»n</span>
+                    <span>Vị trí địa lý & Vùng miền</span>
                   </li>
                   <li class="flex items-start gap-2">
                     <i class="bi bi-check2 text-indigo-500 shrink-0 mt-0.5"></i>
-                    <span>Há»c bá»•ng & KÃ½ tÃºc xÃ¡</span>
+                    <span>Học bổng & Ký túc xá</span>
                   </li>
                 </ul>
               </div>
               <a href="/schools" class="mt-6 pt-4 border-t border-slate-100 inline-flex items-center gap-1.5 text-xs font-bold text-primary group-hover:gap-2.5 transition-all">
-                Xem chi tiáº¿t <i class="bi bi-arrow-right"></i>
+                Xem chi tiết <i class="bi bi-arrow-right"></i>
               </a>
             </article>
 

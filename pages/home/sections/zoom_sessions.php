@@ -1,17 +1,17 @@
-﻿    <!-- Zoom Schedule Section -->
+    <!-- Zoom Schedule Section -->
     <?php if (!empty($zoom_slots)): ?>
     <section id="zoom-schedule" class="bg-slate-50 py-20 lg:py-28 relative">
       <div class="mx-auto max-w-7xl px-5 lg:px-8">
         <div class="mx-auto mb-16 max-w-2xl text-center">
-          <span class="text-orange-600 font-bold tracking-wider uppercase text-xs mb-3 block">TÆ°Æ¡ng tÃ¡c trá»±c tiáº¿p</span>
-          <h2 class="text-3xl sm:text-4xl font-bold text-primary font-display">Lá»‹ch Há»™i Tháº£o & TÆ° Váº¥n Zoom</h2>
-          <p class="mt-4 text-slate-500 text-[15px]">ÄÄƒng kÃ½ tham gia miá»…n phÃ­ cÃ¡c buá»•i chia sáº» thÃ´ng tin trá»±c tuyáº¿n tá»« chuyÃªn gia Bright Education vÃ  cÃ¡c trÆ°á»ng Nháº­t ngá»¯ Ä‘á»‘i tÃ¡c.</p>
+          <span class="text-orange-600 font-bold tracking-wider uppercase text-xs mb-3 block">Tương tác trực tiếp</span>
+          <h2 class="text-3xl sm:text-4xl font-bold text-primary font-display">Lịch Hội Thảo & Tư Vấn Zoom</h2>
+          <p class="mt-4 text-slate-500 text-[15px]">Đăng ký tham gia miễn phí các buổi chia sẻ thông tin trực tuyến từ chuyên gia Bright Education và các trường Nhật ngữ đối tác.</p>
         </div>
 
         <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           <?php foreach ($zoom_slots as $index => $slot): 
             $dateFormatted = date('d/m/Y', strtotime($slot['scheduled_date']));
-            $dayOfWeek = ['Chá»§ Nháº­t','Thá»© Hai','Thá»© Ba','Thá»© TÆ°','Thá»© NÄƒm','Thá»© SÃ¡u','Thá»© Báº£y'][date('w', strtotime($slot['scheduled_date']))];
+            $dayOfWeek = ['Chủ Nhật','Thứ Hai','Thứ Ba','Thứ Tư','Thứ Năm','Thứ Sáu','Thứ Bảy'][date('w', strtotime($slot['scheduled_date']))];
           ?>
           <!-- Event Card -->
           <div class="bg-white rounded-[2rem] p-6 sm:p-8 border border-slate-100 shadow-soft hover:shadow-medium hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between h-full reveal reveal-delay-<?php echo $index * 100; ?>">
@@ -28,22 +28,22 @@
               <div class="border-t border-slate-100 pt-4 mt-4 space-y-2.5 text-[13px] text-muted">
                 <div class="flex items-center gap-2">
                   <i class="bi bi-clock text-orange-600"></i>
-                  <span>Thá»i gian: <?php echo $slot['time_start']; ?> - <?php echo $slot['time_end']; ?></span>
+                  <span>Thời gian: <?php echo $slot['time_start']; ?> - <?php echo $slot['time_end']; ?></span>
                 </div>
                 <div class="flex items-center gap-2">
                   <i class="bi bi-people text-orange-600"></i>
-                  <span>Giá»›i háº¡n: <?php echo $slot['max_participants']; ?> há»c viÃªn</span>
+                  <span>Giới hạn: <?php echo $slot['max_participants']; ?> học viên</span>
                 </div>
                 <?php if ($slot['is_free']): ?>
                 <div class="flex items-center gap-2">
                   <i class="bi bi-gift text-orange-600"></i>
-                  <span class="text-green-600 font-bold">HoÃ n toÃ n miá»…n phÃ­</span>
+                  <span class="text-green-600 font-bold">Hoàn toàn miễn phí</span>
                 </div>
                 <?php endif; ?>
               </div>
             </div>
             <button type="button" class="w-full mt-6 py-3 bg-primary hover:bg-slate-800 text-white rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 zoom-btn" data-title="<?php echo htmlspecialchars($slot['title']); ?>">
-              ÄÄƒng kÃ½ tham gia qua Zoom <i class="bi bi-arrow-right"></i>
+              Đăng ký tham gia qua Zoom <i class="bi bi-arrow-right"></i>
             </button>
           </div>
           <?php endforeach; ?>
@@ -61,7 +61,7 @@
                 const messageTextarea = contactSection.querySelector('textarea[name="message"]');
                 const nameInput = contactSection.querySelector('input[name="name"]');
                 if (messageTextarea) {
-                  messageTextarea.value = `TÃ´i muá»‘n Ä‘Äƒng kÃ½ tham gia buá»•i há»™i tháº£o Zoom trá»±c tuyáº¿n: "${title}".`;
+                  messageTextarea.value = `Tôi muốn đăng ký tham gia buổi hội thảo Zoom trực tuyến: "${title}".`;
                 }
                 contactSection.scrollIntoView({ behavior: 'smooth' });
                 if (nameInput) {

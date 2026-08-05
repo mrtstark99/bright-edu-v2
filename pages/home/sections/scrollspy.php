@@ -1,4 +1,4 @@
-﻿    <!-- Fixed Scroll Spy Navigation on the Right -->
+    <!-- Fixed Scroll Spy Navigation on the Right -->
     <div id="scrollspy-container" class="fixed right-8 top-1/2 -translate-y-1/2 z-50 hidden xl:flex flex-col items-end w-[180px] h-[220px] overflow-hidden select-none pointer-events-none">
       <!-- Active Center Indicator -->
       <div class="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 bg-orange-600/10 border border-orange-500 rounded-full flex items-center justify-center pointer-events-none z-10 shadow-sm">
@@ -8,14 +8,14 @@
       
       <!-- Track -->
       <div id="scrollspy-track" class="flex flex-col items-end gap-6 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] absolute right-6 w-full pointer-events-auto">
-        <a href="#hero" class="scrollspy-item text-right font-display text-slate-400 select-none block hover:text-orange-600 transition-all duration-500 whitespace-nowrap cursor-pointer" data-target="hero">Trang chá»§</a>
-        <a href="#programs" class="scrollspy-item text-right font-display text-slate-400 select-none block hover:text-orange-600 transition-all duration-500 whitespace-nowrap cursor-pointer" data-target="programs">ChÆ°Æ¡ng trÃ¬nh</a>
-        <a href="#services" class="scrollspy-item text-right font-display text-slate-400 select-none block hover:text-orange-600 transition-all duration-500 whitespace-nowrap cursor-pointer" data-target="services">Quy trÃ¬nh</a>
-        <a href="#portal" class="scrollspy-item text-right font-display text-slate-400 select-none block hover:text-orange-600 transition-all duration-500 whitespace-nowrap cursor-pointer" data-target="portal">Thá»§ tá»¥c</a>
-        <a href="#cost" class="scrollspy-item text-right font-display text-slate-400 select-none block hover:text-orange-600 transition-all duration-500 whitespace-nowrap cursor-pointer" data-target="cost">Dá»± toÃ¡n</a>
-        <a href="#blog" class="scrollspy-item text-right font-display text-slate-400 select-none block hover:text-orange-600 transition-all duration-500 whitespace-nowrap cursor-pointer" data-target="blog">Tin tá»©c</a>
-        <a href="#zoom-schedule" class="scrollspy-item text-right font-display text-slate-400 select-none block hover:text-orange-600 transition-all duration-500 whitespace-nowrap cursor-pointer" data-target="zoom-schedule">Lá»‹ch Zoom</a>
-        <a href="#contact" class="scrollspy-item text-right font-display text-slate-400 select-none block hover:text-orange-600 transition-all duration-500 whitespace-nowrap cursor-pointer" data-target="contact">LiÃªn há»‡</a>
+        <a href="#hero" class="scrollspy-item text-right font-display text-slate-400 select-none block hover:text-orange-600 transition-all duration-500 whitespace-nowrap cursor-pointer" data-target="hero">Trang chủ</a>
+        <a href="#programs" class="scrollspy-item text-right font-display text-slate-400 select-none block hover:text-orange-600 transition-all duration-500 whitespace-nowrap cursor-pointer" data-target="programs">Chương trình</a>
+        <a href="#services" class="scrollspy-item text-right font-display text-slate-400 select-none block hover:text-orange-600 transition-all duration-500 whitespace-nowrap cursor-pointer" data-target="services">Quy trình</a>
+        <a href="#portal" class="scrollspy-item text-right font-display text-slate-400 select-none block hover:text-orange-600 transition-all duration-500 whitespace-nowrap cursor-pointer" data-target="portal">Thủ tục</a>
+        <a href="#cost" class="scrollspy-item text-right font-display text-slate-400 select-none block hover:text-orange-600 transition-all duration-500 whitespace-nowrap cursor-pointer" data-target="cost">Dự toán</a>
+        <a href="#blog" class="scrollspy-item text-right font-display text-slate-400 select-none block hover:text-orange-600 transition-all duration-500 whitespace-nowrap cursor-pointer" data-target="blog">Tin tức</a>
+        <a href="#zoom-schedule" class="scrollspy-item text-right font-display text-slate-400 select-none block hover:text-orange-600 transition-all duration-500 whitespace-nowrap cursor-pointer" data-target="zoom-schedule">Lịch Zoom</a>
+        <a href="#contact" class="scrollspy-item text-right font-display text-slate-400 select-none block hover:text-orange-600 transition-all duration-500 whitespace-nowrap cursor-pointer" data-target="contact">Liên hệ</a>
       </div>
     </div>
 

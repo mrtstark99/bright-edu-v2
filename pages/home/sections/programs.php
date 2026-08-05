@@ -1,10 +1,10 @@
-﻿    <!-- CÃ¡c ChÆ°Æ¡ng TrÃ¬nh Du Há»c -->
+    <!-- Các Chương Trình Du Học -->
     <section id="programs" class="bg-white py-20 lg:py-28 relative">
       <div class="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:20px_20px] opacity-30 pointer-events-none"></div>
       <div class="mx-auto max-w-7xl px-5 lg:px-8 relative">
 
         <div class="mx-auto mb-12 max-w-2xl text-center">
-          <h2 class="text-3xl sm:text-4xl font-bold text-primary font-display">CÃ¡c ChÆ°Æ¡ng TrÃ¬nh Du Há»c</h2>
+          <h2 class="text-3xl sm:text-4xl font-bold text-primary font-display">Các Chương Trình Du Học</h2>
         </div>
         <!-- Study Abroad Programs (Slider/Carousel Layout) -->
         <div class="relative w-full mb-16 reveal">
@@ -14,118 +14,118 @@
             <div class="overflow-hidden w-full rounded-[2rem] p-1">
               <div id="prog-slider-track" class="flex transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] gap-6" style="transform: translateX(0px);">
                
-               <!-- Card 1: Du há»c TrÆ°á»ng Nháº­t ngá»¯ -->
+               <!-- Card 1: Du học Trường Nhật ngữ -->
                <article class="flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] group relative bg-white rounded-3xl border border-slate-100 shadow-soft hover:shadow-medium hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between overflow-hidden">
                   <!-- Image Header -->
                   <div class="relative h-[222px] overflow-hidden">
-                    <img src="/assets/images/program_language.jpg" alt="Du há»c TrÆ°á»ng Nháº­t ngá»¯" style="object-position: center -30px;" class="w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-105">
+                    <img src="/assets/images/program_language.jpg" alt="Du học Trường Nhật ngữ" style="object-position: center -30px;" class="w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-105">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
                   </div>
                   <!-- Card Content -->
                   <div class="p-6 flex flex-col flex-1 justify-between">
                     <div>
-                      <h3 class="text-[17px] font-bold text-primary font-display mb-4">Du há»c TrÆ°á»ng Nháº­t ngá»¯</h3>
+                      <h3 class="text-[17px] font-bold text-primary font-display mb-4">Du học Trường Nhật ngữ</h3>
                       <ul class="space-y-2.5 text-[13.5px] text-muted">
-                        <li class="flex items-start gap-2"><i class="bi bi-check-circle-fill text-green-500 mt-0.5 shrink-0"></i> <span>ÄÃ£ tá»‘t nghiá»‡p THPT</span></li>
-                        <li class="flex items-start gap-2"><i class="bi bi-check-circle-fill text-green-500 mt-0.5 shrink-0"></i> <span>Äáº¡t chá»©ng chá»‰ N5 trá»Ÿ lÃªn</span></li>
+                        <li class="flex items-start gap-2"><i class="bi bi-check-circle-fill text-green-500 mt-0.5 shrink-0"></i> <span>Đã tốt nghiệp THPT</span></li>
+                        <li class="flex items-start gap-2"><i class="bi bi-check-circle-fill text-green-500 mt-0.5 shrink-0"></i> <span>Đạt chứng chỉ N5 trở lên</span></li>
                       </ul>
                     </div>
                     <a href="/services/japanese-language-school" class="mt-6 pt-4 border-t border-slate-100 inline-flex items-center gap-2 text-[13.5px] font-semibold text-primary group-hover:gap-3 transition-all">
-                      Xem chi tiáº¿t lá»™ trÃ¬nh <i class="bi bi-arrow-right"></i>
+                      Xem chi tiết lộ trình <i class="bi bi-arrow-right"></i>
                     </a>
                   </div>
                </article>
 
-               <!-- Card 2: Du há»c TrÆ°á»ng Senmon -->
+               <!-- Card 2: Du học Trường Senmon -->
                <article class="flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] group relative bg-white rounded-3xl border border-slate-100 shadow-soft hover:shadow-medium hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between overflow-hidden">
                   <!-- Image Header -->
                   <div class="relative h-[222px] overflow-hidden">
-                    <img src="/assets/images/program_senmon.jpg" alt="Du há»c TrÆ°á»ng Senmon" style="object-position: center -30px;" class="w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-105">
+                    <img src="/assets/images/program_senmon.jpg" alt="Du học Trường Senmon" style="object-position: center -30px;" class="w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-105">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
                   </div>
                   <!-- Card Content -->
                   <div class="p-6 flex flex-col flex-1 justify-between">
                     <div>
-                      <h3 class="text-[17px] font-bold text-primary font-display mb-4">Du há»c TrÆ°á»ng Senmon</h3>
+                      <h3 class="text-[17px] font-bold text-primary font-display mb-4">Du học Trường Senmon</h3>
                       <ul class="space-y-2.5 text-[13.5px] text-muted">
-                        <li class="flex items-start gap-2"><i class="bi bi-check-circle-fill text-green-500 mt-0.5 shrink-0"></i> <span>ÄÃ£ tá»‘t nghiá»‡p THPT</span></li>
-                        <li class="flex items-start gap-2"><i class="bi bi-check-circle-fill text-green-500 mt-0.5 shrink-0"></i> <span>Äáº¡t chá»©ng chá»‰ N3 trá»Ÿ lÃªn</span></li>
+                        <li class="flex items-start gap-2"><i class="bi bi-check-circle-fill text-green-500 mt-0.5 shrink-0"></i> <span>Đã tốt nghiệp THPT</span></li>
+                        <li class="flex items-start gap-2"><i class="bi bi-check-circle-fill text-green-500 mt-0.5 shrink-0"></i> <span>Đạt chứng chỉ N3 trở lên</span></li>
                       </ul>
                     </div>
                     <a href="/services/senmon-vocational-school" class="mt-6 pt-4 border-t border-slate-100 inline-flex items-center gap-2 text-[13.5px] font-semibold text-primary group-hover:gap-3 transition-all">
-                      Xem chi tiáº¿t lá»™ trÃ¬nh <i class="bi bi-arrow-right"></i>
+                      Xem chi tiết lộ trình <i class="bi bi-arrow-right"></i>
                     </a>
                   </div>
                </article>
 
-               <!-- Card 3: Du há»c TrÆ°á»ng Äáº¡i há»c -->
+               <!-- Card 3: Du học Trường Đại học -->
                <article class="flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] group relative bg-white rounded-3xl border border-slate-100 shadow-soft hover:shadow-medium hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between overflow-hidden">
                   <!-- Image Header -->
                   <div class="relative h-[222px] overflow-hidden">
-                    <img src="/assets/images/program_university.jpg" alt="Du há»c TrÆ°á»ng Äáº¡i há»c" style="object-position: center -30px;" class="w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-105">
+                    <img src="/assets/images/program_university.jpg" alt="Du học Trường Đại học" style="object-position: center -30px;" class="w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-105">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
                   </div>
                   <!-- Card Content -->
                   <div class="p-6 flex flex-col flex-1 justify-between">
                     <div>
-                      <h3 class="text-[17px] font-bold text-primary font-display mb-4">Du há»c TrÆ°á»ng Äáº¡i há»c</h3>
+                      <h3 class="text-[17px] font-bold text-primary font-display mb-4">Du học Trường Đại học</h3>
                       <ul class="space-y-2.5 text-[13.5px] text-muted">
-                        <li class="flex items-start gap-2"><i class="bi bi-check-circle-fill text-green-500 mt-0.5 shrink-0"></i> <span>ÄÃ£ tá»‘t nghiá»‡p THPT</span></li>
-                        <li class="flex items-start gap-2"><i class="bi bi-check-circle-fill text-green-500 mt-0.5 shrink-0"></i> <span>Äáº¡t chá»©ng chá»‰ N2 trá»Ÿ lÃªn</span></li>
-                        <li class="flex items-start gap-2"><i class="bi bi-info-circle text-primary mt-0.5 shrink-0"></i> <span>CÃ³ thá»ƒ cáº§n thi EJU (tÃ¹y trÆ°á»ng)</span></li>
-                        <li class="flex items-start gap-2"><i class="bi bi-gift text-emerald-500 mt-0.5 shrink-0"></i> <span>Há»c bá»•ng tá»« khi lÃ m há»“ sÆ¡</span></li>
+                        <li class="flex items-start gap-2"><i class="bi bi-check-circle-fill text-green-500 mt-0.5 shrink-0"></i> <span>Đã tốt nghiệp THPT</span></li>
+                        <li class="flex items-start gap-2"><i class="bi bi-check-circle-fill text-green-500 mt-0.5 shrink-0"></i> <span>Đạt chứng chỉ N2 trở lên</span></li>
+                        <li class="flex items-start gap-2"><i class="bi bi-info-circle text-primary mt-0.5 shrink-0"></i> <span>Có thể cần thi EJU (tùy trường)</span></li>
+                        <li class="flex items-start gap-2"><i class="bi bi-gift text-emerald-500 mt-0.5 shrink-0"></i> <span>Học bổng từ khi làm hồ sơ</span></li>
                       </ul>
                     </div>
                     <a href="/services/university-program" class="mt-6 pt-4 border-t border-slate-100 inline-flex items-center gap-2 text-[13.5px] font-semibold text-primary group-hover:gap-3 transition-all">
-                      Xem chi tiáº¿t lá»™ trÃ¬nh <i class="bi bi-arrow-right"></i>
+                      Xem chi tiết lộ trình <i class="bi bi-arrow-right"></i>
                     </a>
                   </div>
                </article>
 
-               <!-- Card 4: Du há»c Há»c bá»•ng -->
+               <!-- Card 4: Du học Học bổng -->
                <article class="flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] group relative bg-white rounded-3xl border border-slate-100 shadow-soft hover:shadow-medium hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between overflow-hidden">
                   <!-- Image Header -->
                   <div class="relative h-[222px] overflow-hidden">
-                    <img src="/assets/images/program_ssw.jpg" alt="Du há»c ChÆ°Æ¡ng trÃ¬nh Há»c bá»•ng" style="object-position: center -30px;" class="w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-105">
+                    <img src="/assets/images/program_ssw.jpg" alt="Du học Chương trình Học bổng" style="object-position: center -30px;" class="w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-105">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
                   </div>
                   <!-- Card Content -->
                   <div class="p-6 flex flex-col flex-1 justify-between">
                     <div>
-                      <h3 class="text-[17px] font-bold text-primary font-display mb-4">Du há»c Há»c bá»•ng</h3>
-                      <p class="text-xs text-muted mb-3 -mt-2">(Äiá»u dÆ°á»¡ng, bÃ¡o, nhÃ  hÃ ng)</p>
+                      <h3 class="text-[17px] font-bold text-primary font-display mb-4">Du học Học bổng</h3>
+                      <p class="text-xs text-muted mb-3 -mt-2">(Điều dưỡng, báo, nhà hàng)</p>
                       <ul class="space-y-2.5 text-[13.5px] text-muted">
-                        <li class="flex items-start gap-2"><i class="bi bi-check-circle-fill text-green-500 mt-0.5 shrink-0"></i> <span>ÄÃ£ tá»‘t nghiá»‡p THPT</span></li>
-                        <li class="flex items-start gap-2"><i class="bi bi-check-circle-fill text-green-500 mt-0.5 shrink-0"></i> <span>Äáº¡t chá»©ng chá»‰ N5 trá»Ÿ lÃªn</span></li>
-                        <li class="flex items-start gap-2"><i class="bi bi-gift text-emerald-500 mt-0.5 shrink-0"></i> <span>Há»c phÃ­ tá»« tá»• chá»©c liÃªn káº¿t</span></li>
+                        <li class="flex items-start gap-2"><i class="bi bi-check-circle-fill text-green-500 mt-0.5 shrink-0"></i> <span>Đã tốt nghiệp THPT</span></li>
+                        <li class="flex items-start gap-2"><i class="bi bi-check-circle-fill text-green-500 mt-0.5 shrink-0"></i> <span>Đạt chứng chỉ N5 trở lên</span></li>
+                        <li class="flex items-start gap-2"><i class="bi bi-gift text-emerald-500 mt-0.5 shrink-0"></i> <span>Học phí từ tổ chức liên kết</span></li>
                       </ul>
                     </div>
                     <a href="/services/scholarship-program" class="mt-6 pt-4 border-t border-slate-100 inline-flex items-center gap-2 text-[13.5px] font-semibold text-primary group-hover:gap-3 transition-all">
-                      Xem chi tiáº¿t lá»™ trÃ¬nh <i class="bi bi-arrow-right"></i>
+                      Xem chi tiết lộ trình <i class="bi bi-arrow-right"></i>
                     </a>
                   </div>
                </article>
 
-               <!-- Card 5: Du há»c Há»‡ Äáº¡i há»c Tiáº¿ng Anh -->
+               <!-- Card 5: Du học Hệ Đại học Tiếng Anh -->
                <article class="flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] group relative bg-white rounded-3xl border border-slate-100 shadow-soft hover:shadow-medium hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between h-full overflow-hidden">
                   <!-- Image Header -->
                   <div class="relative h-[222px] overflow-hidden">
-                    <img src="/assets/images/whyus_tokyo.png" alt="Du há»c Há»‡ Äáº¡i há»c Tiáº¿ng Anh" style="object-position: center -30px;" class="w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-105">
+                    <img src="/assets/images/whyus_tokyo.png" alt="Du học Hệ Đại học Tiếng Anh" style="object-position: center -30px;" class="w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-105">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
                   </div>
                   <!-- Card Content -->
                   <div class="p-6 flex flex-col flex-1 justify-between">
                     <div>
-                      <h3 class="text-[17px] font-bold text-primary font-display mb-4">Du há»c Há»‡ Äáº¡i há»c Tiáº¿ng Anh</h3>
+                      <h3 class="text-[17px] font-bold text-primary font-display mb-4">Du học Hệ Đại học Tiếng Anh</h3>
                       <ul class="space-y-2.5 text-[13.5px] text-muted">
-                        <li class="flex items-start gap-2"><i class="bi bi-check-circle-fill text-green-500 mt-0.5 shrink-0"></i> <span>ÄÃ£ tá»‘t nghiá»‡p THPT</span></li>
-                        <li class="flex items-start gap-2"><i class="bi bi-check-circle-fill text-green-500 mt-0.5 shrink-0"></i> <span>Chá»©ng chá»‰ tiáº¿ng Anh yÃªu cáº§u</span></li>
-                        <li class="flex items-start gap-2"><i class="bi bi-info-circle text-primary mt-0.5 shrink-0"></i> <span>CÃ³ thá»ƒ cáº§n thi EJU (tÃ¹y trÆ°á»ng)</span></li>
-                        <li class="flex items-start gap-2"><i class="bi bi-gift text-emerald-500 mt-0.5 shrink-0"></i> <span>Há»c bá»•ng khi Ä‘Äƒng kÃ½ há»“ sÆ¡</span></li>
+                        <li class="flex items-start gap-2"><i class="bi bi-check-circle-fill text-green-500 mt-0.5 shrink-0"></i> <span>Đã tốt nghiệp THPT</span></li>
+                        <li class="flex items-start gap-2"><i class="bi bi-check-circle-fill text-green-500 mt-0.5 shrink-0"></i> <span>Chứng chỉ tiếng Anh yêu cầu</span></li>
+                        <li class="flex items-start gap-2"><i class="bi bi-info-circle text-primary mt-0.5 shrink-0"></i> <span>Có thể cần thi EJU (tùy trường)</span></li>
+                        <li class="flex items-start gap-2"><i class="bi bi-gift text-emerald-500 mt-0.5 shrink-0"></i> <span>Học bổng khi đăng ký hồ sơ</span></li>
                       </ul>
                     </div>
                     <a href="/services/english-track-university" class="mt-6 pt-4 border-t border-slate-100 inline-flex items-center gap-2 text-[13.5px] font-semibold text-primary group-hover:gap-3 transition-all">
-                      Xem chi tiáº¿t lá»™ trÃ¬nh <i class="bi bi-arrow-right"></i>
+                      Xem chi tiết lộ trình <i class="bi bi-arrow-right"></i>
                     </a>
                   </div>
                </article>

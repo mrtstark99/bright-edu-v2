@@ -1,9 +1,9 @@
-﻿    <?php if (!empty($latest_posts)): ?>
+    <?php if (!empty($latest_posts)): ?>
     <section id="blog" class="bg-white py-20 lg:py-28 relative">
       <div class="mx-auto max-w-7xl px-5 lg:px-8">
         <div class="mx-auto mb-16 max-w-2xl text-center">
-          <h2 class="text-3xl sm:text-4xl font-bold text-primary font-display">BÃ i viáº¿t má»›i nháº¥t</h2>
-          <p class="mt-4 text-lg text-muted">Cáº­p nháº­t kiáº¿n thá»©c vÃ  kinh nghiá»‡m sá»‘ng táº¡i Nháº­t Báº£n.</p>
+          <h2 class="text-3xl sm:text-4xl font-bold text-primary font-display">Bài viết mới nhất</h2>
+          <p class="mt-4 text-lg text-muted">Cập nhật kiến thức và kinh nghiệm sống tại Nhật Bản.</p>
         </div>
 
         <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -39,7 +39,7 @@
               </p>
               <div class="flex items-center justify-between mt-auto border-t border-slate-100 pt-5">
                 <a href="/blog/<?php echo $post['slug']; ?>" class="text-primary font-bold text-sm flex items-center gap-1 hover:gap-2 transition-all">
-                  Äá»c tiáº¿p <i class="bi bi-arrow-right"></i>
+                  Đọc tiếp <i class="bi bi-arrow-right"></i>
                 </a>
                 <span class="text-[12px] text-slate-400 font-medium"><i class="bi bi-calendar3 mr-1"></i><?php echo date('d/m/Y', strtotime($post['created_at'])); ?></span>
               </div>
@@ -50,7 +50,7 @@
 
         <div class="mt-14 text-center">
           <a href="/blog" class="inline-flex items-center justify-center rounded-2xl border border-slate-200 bg-white px-8 py-3.5 text-[15px] font-bold text-primary transition hover:bg-slate-50 hover:border-slate-300 shadow-sm">
-            Xem táº¥t cáº£ bÃ i viáº¿t <i class="bi bi-arrow-right ml-2 text-primary"></i>
+            Xem tất cả bài viết <i class="bi bi-arrow-right ml-2 text-primary"></i>
           </a>
         </div>
       </div>

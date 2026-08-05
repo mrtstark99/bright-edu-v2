@@ -1,4 +1,4 @@
-﻿    <section id="contact" class="bg-primary relative overflow-hidden">
+    <section id="contact" class="bg-primary relative overflow-hidden">
       <!-- Background decorators -->
       <div class="absolute top-0 right-0 w-96 h-96 bg-slate-500/10 rounded-full mix-blend-screen filter blur-[100px] pointer-events-none"></div>
       <div class="absolute bottom-0 left-0 w-96 h-96 bg-slate-500/10 rounded-full mix-blend-screen filter blur-[100px] pointer-events-none"></div>
@@ -6,10 +6,10 @@
       <div class="mx-auto max-w-7xl px-5 lg:px-8 py-20 lg:py-28 relative z-10">
         <div class="grid gap-12 lg:grid-cols-[1.1fr_1fr] items-center">
           <div class="pr-0 lg:pr-10">
-            <span class="text-primary-300 font-bold tracking-wider uppercase text-xs mb-3 block">Báº¯t Ä‘áº§u hÃ nh trÃ¬nh</span>
-            <h2 class="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-white font-display leading-[1.1]">Äáº·t lá»‹ch tÆ° váº¥n <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-primary-300">du há»c Nháº­t Báº£n</span></h2>
+            <span class="text-primary-300 font-bold tracking-wider uppercase text-xs mb-3 block">Bắt đầu hành trình</span>
+            <h2 class="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-white font-display leading-[1.1]">Đặt lịch tư vấn <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-primary-300">du học Nhật Bản</span></h2>
             <p class="mt-6 text-[17px] text-slate-300 leading-relaxed max-w-lg">
-              ChÃºng tÃ´i sáº½ liÃªn há»‡ trong vÃ²ng 24 giá» Ä‘á»ƒ Ä‘Ã¡nh giÃ¡ há»“ sÆ¡ sÆ¡ bá»™ vÃ  Ä‘á» xuáº¥t lá»™ trÃ¬nh phÃ¹ há»£p vá»›i nÄƒng lá»±c cá»§a báº¡n.
+              Chúng tôi sẽ liên hệ trong vòng 24 giờ để đánh giá hồ sơ sơ bộ và đề xuất lộ trình phù hợp với năng lực của bạn.
             </p>
             
             <div class="mt-10 space-y-5">
@@ -37,18 +37,18 @@
                         <i class="bi bi-geo-alt-fill text-lg"></i>
                     </div>
                     <div>
-                        <p class="text-[12px] text-slate-400 font-semibold uppercase tracking-wider">VÄƒn phÃ²ng</p>
-                        <p class="text-[15px] font-bold text-white mt-0.5"><?php echo getSetting('site_address', '207 Quang Trung, ThÃ nh ÄÃ´ng, Háº£i PhÃ²ng'); ?></p>
+                        <p class="text-[12px] text-slate-400 font-semibold uppercase tracking-wider">Văn phòng</p>
+                        <p class="text-[15px] font-bold text-white mt-0.5"><?php echo getSetting('site_address', '207 Quang Trung, Thành Đông, Hải Phòng'); ?></p>
                     </div>
                 </div>
             </div>
 
             <div class="mt-10 rounded-3xl bg-gradient-to-br from-white/5 to-transparent border border-white/10 p-6 backdrop-blur-md">
-              <h4 class="text-white font-bold mb-2">Lá»‹ch tÆ° váº¥n trá»±c tiáº¿p thÃ¡ng nÃ y:</h4>
+              <h4 class="text-white font-bold mb-2">Lịch tư vấn trực tiếp tháng này:</h4>
               <p class="text-sm text-slate-300 leading-relaxed">
-                <span class="inline-block mr-3"><i class="bi bi-check2 text-primary-300 mr-1"></i>Thá»© 3 & Thá»© 6 (HÃ  Ná»™i)</span>
-                <span class="inline-block mr-3"><i class="bi bi-check2 text-primary-300 mr-1"></i>Thá»© 5 (TP.HCM)</span>
-                <span class="inline-block"><i class="bi bi-camera-video text-primary-300 mr-1"></i>Thá»© 7 (Online qua Zoom)</span>
+                <span class="inline-block mr-3"><i class="bi bi-check2 text-primary-300 mr-1"></i>Thứ 3 & Thứ 6 (Hà Nội)</span>
+                <span class="inline-block mr-3"><i class="bi bi-check2 text-primary-300 mr-1"></i>Thứ 5 (TP.HCM)</span>
+                <span class="inline-block"><i class="bi bi-camera-video text-primary-300 mr-1"></i>Thứ 7 (Online qua Zoom)</span>
               </p>
             </div>
           </div>
@@ -57,16 +57,16 @@
           <div class="relative">
             <form class="space-y-5 rounded-[2rem] bg-white p-8 sm:p-10 text-sm text-primary shadow-2xl reveal" method="POST" action="/api/contact.php">
                 <?php echo csrfField(); ?>
-                <h3 class="text-2xl font-bold text-primary font-display mb-2">Nháº­n tÆ° váº¥n cÃ¡ nhÃ¢n</h3>
-                <p class="text-muted mb-6">Miá»…n phÃ­ â€¢ Báº£o máº­t thÃ´ng tin</p>
+                <h3 class="text-2xl font-bold text-primary font-display mb-2">Nhận tư vấn cá nhân</h3>
+                <p class="text-muted mb-6">Miễn phí • Bảo mật thông tin</p>
                 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <label class="block">
-                    <span class="text-[12px] font-bold text-slate-700">Há» vÃ  tÃªn <span class="text-red-500">*</span></span>
-                    <input class="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 focus:bg-white focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/20 transition-all" name="name" placeholder="Nguyá»…n VÄƒn A" required />
+                    <span class="text-[12px] font-bold text-slate-700">Họ và tên <span class="text-red-500">*</span></span>
+                    <input class="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 focus:bg-white focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/20 transition-all" name="name" placeholder="Nguyễn Văn A" required />
                     </label>
                     <label class="block">
-                    <span class="text-[12px] font-bold text-slate-700">Sá»‘ Ä‘iá»‡n thoáº¡i <span class="text-red-500">*</span></span>
+                    <span class="text-[12px] font-bold text-slate-700">Số điện thoại <span class="text-red-500">*</span></span>
                     <input class="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 focus:bg-white focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/20 transition-all" name="phone" placeholder="+84 0971044576" required />
                     </label>
                 </div>
@@ -78,33 +78,33 @@
                 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <label class="block">
-                    <span class="text-[12px] font-bold text-slate-700">Ká»³ nháº­p há»c</span>
+                    <span class="text-[12px] font-bold text-slate-700">Kỳ nhập học</span>
                     <select class="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 focus:bg-white focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/20 transition-all" name="intake_period">
-                        <option>ThÃ¡ng 4 nÄƒm 2025</option>
-                        <option>ThÃ¡ng 7 nÄƒm 2025</option>
-                        <option>ThÃ¡ng 10 nÄƒm 2025</option>
-                        <option>KhÃ¡c / Äang cÃ¢n nháº¯c</option>
+                        <option>Tháng 4 năm 2025</option>
+                        <option>Tháng 7 năm 2025</option>
+                        <option>Tháng 10 năm 2025</option>
+                        <option>Khác / Đang cân nhắc</option>
                     </select>
                     </label>
                     <label class="block">
-                    <span class="text-[12px] font-bold text-slate-700">TrÃ¬nh Ä‘á»™ tiáº¿ng Nháº­t</span>
+                    <span class="text-[12px] font-bold text-slate-700">Trình độ tiếng Nhật</span>
                     <select class="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 focus:bg-white focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/20 transition-all" name="japanese_level">
-                        <option>ChÆ°a há»c</option>
+                        <option>Chưa học</option>
                         <option>N5</option>
                         <option>N4</option>
                         <option>N3</option>
-                        <option>N2 trá»Ÿ lÃªn</option>
+                        <option>N2 trở lên</option>
                     </select>
                     </label>
                 </div>
                 
                 <label class="block">
-                <span class="text-[12px] font-bold text-slate-700">Ghi chÃº thÃªm</span>
-                <textarea class="mt-2 h-28 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 focus:bg-white focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/20 transition-all resize-none" name="message" placeholder="VÃ­ dá»¥: Má»¥c tiÃªu muá»‘n há»c IT á»Ÿ Tokyo..."></textarea>
+                <span class="text-[12px] font-bold text-slate-700">Ghi chú thêm</span>
+                <textarea class="mt-2 h-28 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 focus:bg-white focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/20 transition-all resize-none" name="message" placeholder="Ví dụ: Mục tiêu muốn học IT ở Tokyo..."></textarea>
                 </label>
                 
                 <button type="submit" class="w-full rounded-xl bg-gradient-to-r from-primary to-primary-800 px-4 py-4 text-[15px] font-bold text-white transition-transform hover:-translate-y-1 hover:shadow-tinted shadow-medium flex justify-center items-center gap-2">
-                    Gá»­i yÃªu cáº§u tÆ° váº¥n <i class="bi bi-send-fill text-white/80"></i>
+                    Gửi yêu cầu tư vấn <i class="bi bi-send-fill text-white/80"></i>
                 </button>
             </form>
           </div>
