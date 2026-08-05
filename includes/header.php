@@ -135,76 +135,125 @@
   </header>
 
   <!-- Mobile Menu Overlay -->
-  <div id="mobile-menu" class="fixed inset-0 z-[60] bg-white flex flex-col opacity-0 pointer-events-none transition-all duration-300 translate-y-[-10px] overflow-y-auto">
+  <div id="mobile-menu" class="fixed inset-0 z-[60] bg-slate-50/98 backdrop-blur-xl flex flex-col opacity-0 pointer-events-none transition-all duration-300 translate-y-[-10px] overflow-y-auto">
       <!-- Header row -->
-      <div class="flex items-center justify-between px-6 pt-6 pb-4 border-b border-slate-100">
+      <div class="flex items-center justify-between px-6 py-4 bg-white/80 backdrop-blur-md sticky top-0 z-10 border-b border-slate-100/80 shadow-soft">
         <a href="/" class="flex items-center">
-          <img src="<?= APP_URL ?>/assets/images/logo.svg" alt="Bright Education" class="h-9 w-auto">
+          <img src="<?= APP_URL ?>/assets/images/logo.svg" alt="Bright Education" class="h-10 w-auto">
         </a>
-        <button id="mobile-menu-close" class="h-10 w-10 flex items-center justify-center rounded-full bg-slate-100 text-primary hover:bg-slate-200 transition-colors" aria-label="Close Menu">
+        <button id="mobile-menu-close" class="h-10 w-10 flex items-center justify-center rounded-full bg-slate-100 text-primary hover:bg-primary hover:text-white transition-all duration-300" aria-label="Close Menu">
             <i class="bi bi-x-lg text-lg"></i>
         </button>
       </div>
 
-      <nav class="flex-1 px-4 py-5 space-y-1">
-        <a class="mobile-link flex items-center gap-3 px-4 py-3 rounded-2xl text-[17px] font-bold text-midnight hover:bg-slate-50 transition-colors" href="/">
-          <i class="bi bi-house-fill text-primary w-5 text-center"></i> Trang chủ
-        </a>
-
-        <!-- Du học group -->
-        <div>
-          <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400 px-4 pt-2 pb-2">— Danh mục Du học</p>
-          <a class="mobile-link flex items-center gap-3 px-4 py-3 rounded-2xl text-[16px] font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors" href="/services">
-            <i class="bi bi-briefcase text-primary w-5 text-center text-sm"></i> Dịch vụ tư vấn
-          </a>
-          <a class="mobile-link flex items-center gap-3 px-4 py-3 rounded-2xl text-[16px] font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors" href="/process">
-            <i class="bi bi-arrow-right-circle text-primary w-5 text-center text-sm"></i> Quy trình du học
-          </a>
-          <a class="mobile-link flex items-center gap-3 px-4 py-3 rounded-2xl text-[16px] font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors" href="/documents">
-            <i class="bi bi-file-earmark-text text-primary w-5 text-center text-sm"></i> Chuẩn bị hồ sơ
-          </a>
-          <a class="mobile-link flex items-center gap-3 px-4 py-3 rounded-2xl text-[16px] font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors" href="/courses">
-            <i class="bi bi-journal-bookmark text-primary w-5 text-center text-sm"></i> Khóa học tiếng Nhật
-          </a>
-          <a class="mobile-link flex items-center gap-3 px-4 py-3 rounded-2xl text-[16px] font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors" href="/schools">
-            <i class="bi bi-building text-primary w-5 text-center text-sm"></i> Trường Nhật Ngữ
-          </a>
-        </div>
-
-        <!-- Danh mục group -->
-        <div>
-          <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400 px-4 pt-2 pb-2">— Danh mục</p>
-          <a class="mobile-link flex items-center gap-3 px-4 py-3 rounded-2xl text-[16px] font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors" href="/blog">
-            <i class="bi bi-newspaper text-primary w-5 text-center text-sm"></i> Blog & Cẩm nang
-          </a>
-          <a class="mobile-link flex items-center gap-3 px-4 py-3 rounded-2xl text-[16px] font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors" href="/about">
-            <i class="bi bi-building text-primary w-5 text-center text-sm"></i> Về Bright Education
-          </a>
-          <a class="mobile-link flex items-center gap-3 px-4 py-3 rounded-2xl text-[16px] font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors" href="/qa">
-            <i class="bi bi-chat-text text-primary w-5 text-center text-sm"></i> Hỏi đáp
-          </a>
-        </div>
-
-        <!-- CTA group -->
-        <div>
-          <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400 px-4 pt-4 pb-2">Liên hệ</p>
-          <a class="mobile-link flex items-center gap-3 px-4 py-3 rounded-2xl text-[16px] font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors" href="/consultation">
-            <i class="bi bi-calendar-check text-primary w-5 text-center text-sm"></i> Đặt lịch tư vấn Zoom
-          </a>
-          <?php if (isLoggedIn() && (isAdmin() || isEditor())): ?>
-          <a class="mobile-link flex items-center gap-3 px-4 py-3 rounded-2xl text-[16px] font-semibold text-primary hover:bg-primary-50 transition-colors" href="/admin">
-            <i class="bi bi-shield-check w-5 text-center text-sm"></i> Quản trị
-          </a>
+      <div class="flex-1 px-5 py-6 space-y-5">
+        <!-- User Profile / Authentication Card -->
+        <div class="bg-white rounded-3xl p-5 border border-slate-100 shadow-soft">
+          <?php if (isLoggedIn()): ?>
+            <div class="flex items-center gap-3.5 mb-4">
+              <div class="h-12 w-12 rounded-2xl bg-primary text-white flex items-center justify-center font-bold text-xl shadow-medium font-display uppercase">
+                <?= mb_substr($_SESSION['user_name'] ?? 'T', 0, 1, 'utf-8') ?>
+              </div>
+              <div>
+                <p class="text-[15px] font-bold text-midnight leading-tight"><?= htmlspecialchars($_SESSION['user_name'] ?? 'Tài khoản') ?></p>
+                <span class="inline-flex items-center px-2 py-0.5 mt-1 rounded-md text-[10px] font-bold uppercase tracking-wider bg-primary-50 text-primary">
+                  <?= htmlspecialchars($_SESSION['role'] ?? 'Học viên') ?>
+                </span>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-2.5">
+              <a href="/profile" class="mobile-link flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-100 text-xs font-bold text-slate-700 transition-all">
+                <i class="bi bi-person text-sm"></i> Hồ sơ
+              </a>
+              <a href="/logout" class="mobile-link flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-red-50 hover:bg-red-100 text-xs font-bold text-red-600 transition-all">
+                <i class="bi bi-box-arrow-right text-sm"></i> Đăng xuất
+              </a>
+            </div>
+          <?php else: ?>
+            <div class="space-y-3">
+              <div class="text-left">
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest leading-none mb-1">Tài khoản</p>
+                <p class="text-[13px] font-medium text-slate-500">Đăng nhập để cập nhật lộ trình du học của riêng bạn</p>
+              </div>
+              <div class="grid grid-cols-2 gap-2.5">
+                <a href="/login" class="mobile-link flex items-center justify-center py-3 px-4 rounded-xl bg-primary-50 text-xs font-bold text-primary hover:bg-primary-100 transition-all text-center">
+                  Đăng nhập
+                </a>
+                <a href="/register" class="mobile-link flex items-center justify-center py-3 px-4 rounded-xl bg-primary text-xs font-bold text-white hover:bg-midnight transition-all text-center">
+                  Đăng ký
+                </a>
+              </div>
+            </div>
           <?php endif; ?>
         </div>
-      </nav>
 
-      <div class="px-4 pb-8 pt-2">
-        <a class="mobile-link flex items-center justify-center gap-2 w-full bg-primary text-white rounded-2xl py-4 text-[16px] font-bold hover:bg-ink transition-colors shadow-medium" href="/consultation">
+        <nav class="space-y-4">
+          <!-- Du học group -->
+          <div class="bg-white rounded-3xl p-4 border border-slate-100 shadow-soft">
+            <p class="text-[10px] font-extrabold uppercase tracking-widest text-slate-400 px-3 pb-3 border-b border-slate-50 mb-2">Du học Nhật Bản</p>
+            <div class="space-y-1">
+              <a class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-[14.5px] font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-all" href="/services">
+                <i class="bi bi-briefcase text-primary text-base w-5 text-center"></i> Dịch vụ tư vấn
+              </a>
+              <a class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-[14.5px] font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-all" href="/process">
+                <i class="bi bi-arrow-right-circle text-primary text-base w-5 text-center"></i> Quy trình du học
+              </a>
+              <a class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-[14.5px] font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-all" href="/documents">
+                <i class="bi bi-file-earmark-text text-primary text-base w-5 text-center"></i> Chuẩn bị hồ sơ
+              </a>
+              <a class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-[14.5px] font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-all" href="/courses">
+                <i class="bi bi-journal-bookmark text-primary text-base w-5 text-center"></i> Khóa học tiếng Nhật
+              </a>
+              <a class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-[14.5px] font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-all" href="/schools">
+                <i class="bi bi-building text-primary text-base w-5 text-center"></i> Trường Nhật Ngữ
+              </a>
+            </div>
+          </div>
+
+          <!-- Danh mục group -->
+          <div class="bg-white rounded-3xl p-4 border border-slate-100 shadow-soft">
+            <p class="text-[10px] font-extrabold uppercase tracking-widest text-slate-400 px-3 pb-3 border-b border-slate-50 mb-2">Khám phá</p>
+            <div class="space-y-1">
+              <a class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-[14.5px] font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-all" href="/">
+                <i class="bi bi-house-fill text-primary text-base w-5 text-center"></i> Trang chủ
+              </a>
+              <a class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-[14.5px] font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-all" href="/blog">
+                <i class="bi bi-newspaper text-primary text-base w-5 text-center"></i> Blog & Cẩm nang
+              </a>
+              <a class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-[14.5px] font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-all" href="/about">
+                <i class="bi bi-info-square text-primary text-base w-5 text-center"></i> Về Bright Education
+              </a>
+              <a class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-[14.5px] font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-all" href="/qa">
+                <i class="bi bi-chat-text text-primary text-base w-5 text-center"></i> Hỏi đáp
+              </a>
+            </div>
+          </div>
+
+          <!-- Liên hệ & Admin group -->
+          <div class="bg-white rounded-3xl p-4 border border-slate-100 shadow-soft">
+            <p class="text-[10px] font-extrabold uppercase tracking-widest text-slate-400 px-3 pb-3 border-b border-slate-50 mb-2">Hỗ trợ & Quản trị</p>
+            <div class="space-y-1">
+              <a class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-[14.5px] font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-all" href="/consultation">
+                <i class="bi bi-calendar-check text-primary text-base w-5 text-center"></i> Đặt lịch tư vấn Zoom
+              </a>
+              <?php if (isLoggedIn() && (isAdmin() || isEditor())): ?>
+              <a class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-[14.5px] font-semibold text-emerald-600 bg-emerald-50/50 hover:bg-emerald-50 transition-all" href="/admin">
+                <i class="bi bi-shield-check text-emerald-600 text-base w-5 text-center"></i> Bảng điều khiển Admin
+              </a>
+              <?php endif; ?>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <!-- Action Footer -->
+      <div class="p-5 bg-white/50 backdrop-blur-md border-t border-slate-100 sticky bottom-0 z-10">
+        <a class="mobile-link flex items-center justify-center gap-2 w-full bg-primary text-white rounded-2xl py-4 text-[15px] font-bold hover:bg-midnight transition-colors shadow-medium" href="/consultation">
           <i class="bi bi-camera-video-fill"></i> Đặt lịch tư vấn miễn phí
         </a>
       </div>
   </div>
+
 
   <script>
     // Header scroll effect (Full width, shrink height, expand on hover)
