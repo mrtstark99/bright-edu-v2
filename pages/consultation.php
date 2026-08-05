@@ -398,6 +398,7 @@ async function submitBooking(formEl, type) {
     const res = await fetch('/api/consultation.php', { method: 'POST', body: data });
     const json = await res.json();
     if (json.success) {
+      window.BrightAnalytics?.leadSuccess(formEl, type === 'group' ? 'group_consultation' : 'individual_consultation');
       document.getElementById('modal-title').textContent = type === 'group' ? 'Đăng ký thành công!' : 'Yêu cầu đã gửi!';
       document.getElementById('modal-msg').textContent = json.message;
       document.getElementById('success-modal').classList.remove('hidden');

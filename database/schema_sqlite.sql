@@ -294,6 +294,18 @@ BEGIN
 END;
 
 -- ============================================================
+-- Table: analytics_cache
+-- ============================================================
+CREATE TABLE IF NOT EXISTS analytics_cache (
+    cache_key  TEXT PRIMARY KEY,
+    payload    TEXT NOT NULL,
+    expires_at TEXT NOT NULL,
+    updated_at TEXT NOT NULL DEFAULT (datetime('now','localtime'))
+);
+
+CREATE INDEX IF NOT EXISTS idx_analytics_cache_expires ON analytics_cache(expires_at);
+
+-- ============================================================
 -- Table: audit_logs
 -- ============================================================
 CREATE TABLE IF NOT EXISTS audit_logs (

@@ -29,8 +29,8 @@ include 'includes/header.php';
               </div>
               <div>
                 <h3 class="text-[11px] font-bold uppercase tracking-wider text-white/60 mb-1">Hotline</h3>
-                <p class="text-[16px] font-semibold text-white">VN: <?php echo getSetting('site_phone', '+84 0971044576'); ?></p>
-                <p class="text-[16px] font-semibold text-white mt-1">JP: <?php echo getSetting('site_phone_jp', '+81 08037316436'); ?></p>
+                <a href="tel:<?php echo preg_replace('/[^+\d]/', '', getSetting('site_phone', '+84 0971044576')); ?>" class="block text-[16px] font-semibold text-white hover:text-sage-200">VN: <?php echo getSetting('site_phone', '+84 0971044576'); ?></a>
+                <a href="tel:<?php echo preg_replace('/[^+\d]/', '', getSetting('site_phone_jp', '+81 08037316436')); ?>" class="block text-[16px] font-semibold text-white mt-1 hover:text-sage-200">JP: <?php echo getSetting('site_phone_jp', '+81 08037316436'); ?></a>
               </div>
             </div>
             
@@ -180,6 +180,7 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
+            window.BrightAnalytics?.leadSuccess(this, 'contact');
             alert('Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi trong vòng 24 giờ.');
             this.reset();
         } else {

@@ -1,6 +1,7 @@
 <?php
 require_once dirname(__DIR__) . '/config/config.php';
 requireAuth();
+require_once APP_ROOT . '/includes/analytics.php';
 
 $db = Database::getInstance();
 
@@ -34,6 +35,14 @@ $stmt = $db->prepare("SELECT * FROM contacts ORDER BY created_at DESC LIMIT 5");
 $stmt->execute();
 $recent_contacts = $stmt->fetchAll();
 
+$analytics_overview = analyticsDashboardData(28);
+$analytics_ga = $analytics_overview['ga']['summary'] ?? [];
+$analytics_gsc = $analytics_overview['gsc']['summary'] ?? [];
+$analytics_events = $analytics_overview['ga']['events'] ?? [];
+$analytics_sessions = (int)round($analytics_ga['sessions'] ?? 0);
+$analytics_leads = (int)($analytics_events['generate_lead'] ?? 0);
+$analytics_conversion_rate = $analytics_sessions > 0 ? ($analytics_leads / $analytics_sessions) * 100 : 0;
+
 $page_title = 'Dashboard';
 include dirname(__DIR__) . '/includes/admin/header.php';
 ?>
@@ -65,6 +74,35 @@ include dirname(__DIR__) . '/includes/admin/header.php';
             <div class="text-2xl font-black text-midnight leading-none mt-0.5"><?php echo $c[1]; ?></div>
         </div>
     </div>
+    <?php endforeach; ?>
+</div>
+
+<!-- SEO & Analytics overview -->
+<div class="flex items-end justify-between gap-4 mb-3 mt-1">
+    <div>
+        <h2 class="text-base font-extrabold text-midnight font-display">SEO & Analytics</h2>
+        <p class="text-xs text-slate-400 mt-0.5">Dữ liệu organic trong 28 ngày gần nhất</p>
+    </div>
+    <a href="/admin/analytics" class="text-xs font-semibold text-sky-600 hover:text-sky-700">Báo cáo đầy đủ →</a>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-5">
+    <?php
+    $analytics_cards = [
+        ['Organic Traffic', $analytics_sessions, 'bi-graph-up-arrow'],
+        ['Impressions', (int)round($analytics_gsc['impressions'] ?? 0), 'bi-eye'],
+        ['CTR', number_format(((float)($analytics_gsc['ctr'] ?? 0)) * 100, 1, ',', '.') . '%', 'bi-cursor'],
+        ['Conversion Rate', number_format($analytics_conversion_rate, 1, ',', '.') . '%', 'bi-bullseye'],
+    ];
+    foreach ($analytics_cards as $card): ?>
+    <a href="/admin/analytics" class="a-card flex items-center gap-4 p-5 hover:-translate-y-0.5 transition-transform">
+        <div class="w-11 h-11 rounded-xl bg-slate-100 text-midnight flex items-center justify-center text-lg flex-shrink-0">
+            <i class="bi <?php echo $card[2]; ?>"></i>
+        </div>
+        <div class="min-w-0">
+            <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider truncate"><?php echo $card[0]; ?></div>
+            <div class="text-xl font-black text-midnight leading-none mt-1"><?php echo is_numeric($card[1]) ? number_format((float)$card[1], 0, ',', '.') : htmlspecialchars((string)$card[1]); ?></div>
+        </div>
+    </a>
     <?php endforeach; ?>
 </div>
 

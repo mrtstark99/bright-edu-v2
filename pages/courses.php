@@ -171,7 +171,7 @@ include 'includes/header.php';
           <a href="/contact" class="bg-white text-sage-600 hover:bg-slate-50 hover:scale-105 rounded-xl px-8 py-4 font-bold transition-all shadow-xl flex items-center gap-2">
             Đăng ký Test miễn phí <i class="bi bi-arrow-right"></i>
           </a>
-          <a href="tel:0912345678" class="bg-white/10 text-white hover:bg-white/20 backdrop-blur-md border border-white/20 rounded-xl px-8 py-4 font-bold transition-all flex items-center gap-2">
+          <a href="tel:<?php echo preg_replace('/[^+\d]/', '', getSetting('site_phone', '+84 0971044576')); ?>" class="bg-white/10 text-white hover:bg-white/20 backdrop-blur-md border border-white/20 rounded-xl px-8 py-4 font-bold transition-all flex items-center gap-2">
             <i class="bi bi-telephone"></i> Hotline tư vấn
           </a>
         </div>

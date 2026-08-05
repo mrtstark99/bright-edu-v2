@@ -684,7 +684,7 @@ include 'includes/header.php';
             </div>
             <h5 class="font-bold text-slate-800 text-sm">Hỗ Trợ Trực Tiếp 24/7</h5>
             <p class="text-xs text-slate-400">Liên hệ trực tiếp với chuyên viên tư vấn của Bright Education.</p>
-            <div class="text-lg font-black text-primary font-display">+84 0971044576</div>
+            <a href="tel:<?php echo preg_replace('/[^+\d]/', '', getSetting('site_phone', '+84 0971044576')); ?>" class="block text-lg font-black text-primary font-display hover:text-sky-700"><?php echo htmlspecialchars(getSetting('site_phone', '+84 0971044576')); ?></a>
           </div>
 
         </div>
@@ -716,6 +716,7 @@ document.getElementById('sidebar-intake-form').addEventListener('submit', functi
     submitBtn.disabled = false;
     submitBtn.innerHTML = originalText;
     if (data.success) {
+      window.BrightAnalytics?.leadSuccess(this, 'service_detail_consultation');
       alert('Cảm ơn bạn! Thông tin đăng ký lộ trình du học đã được gửi thành công. Bright Education sẽ liên hệ lại với bạn sớm nhất có thể.');
       this.reset();
     } else {

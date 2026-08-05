@@ -56,6 +56,7 @@ $admin_routes = [
     'admin/leads'               => 'admin/leads/index.php',
     'admin/leads/view'          => 'admin/leads/view.php',
     'admin/leads/create'        => 'admin/leads/create.php',
+    'admin/analytics'           => 'admin/analytics.php',
     'admin/settings'            => 'admin/settings.php',
     'admin/profile'             => 'admin/profile.php',
 ];

@@ -438,6 +438,7 @@ document.getElementById('services-intake-form').addEventListener('submit', funct
     submitBtn.disabled = false;
     submitBtn.innerHTML = originalText;
     if (data.success) {
+      window.BrightAnalytics?.leadSuccess(this, 'service_consultation');
       alert('Cảm ơn bạn! Thông tin đăng ký lộ trình du học đã được gửi thành công. Bright Education sẽ liên hệ lại với bạn sớm nhất có thể.');
       this.reset();
     } else {

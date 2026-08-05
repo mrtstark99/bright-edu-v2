@@ -122,8 +122,8 @@ include 'includes/header.php';
               <td class="px-4 py-5 sm:px-7 sm:py-6">
                 <div class="space-y-2 text-slate-600">
                   <p><i class="bi bi-envelope mr-2 text-primary"></i><?php echo htmlspecialchars(getSetting('site_email', 'contact@brighteducation.net')); ?></p>
-                  <p><i class="bi bi-telephone mr-2 text-primary"></i>VN: <?php echo htmlspecialchars(getSetting('site_phone', '+84 0971044576')); ?></p>
-                  <p><i class="bi bi-telephone mr-2 text-primary"></i>JP: <?php echo htmlspecialchars(getSetting('site_phone_jp', '+81 08037316436')); ?></p>
+                  <p><i class="bi bi-telephone mr-2 text-primary"></i><a href="tel:<?php echo preg_replace('/[^+\d]/', '', getSetting('site_phone', '+84 0971044576')); ?>" class="hover:text-primary">VN: <?php echo htmlspecialchars(getSetting('site_phone', '+84 0971044576')); ?></a></p>
+                  <p><i class="bi bi-telephone mr-2 text-primary"></i><a href="tel:<?php echo preg_replace('/[^+\d]/', '', getSetting('site_phone_jp', '+81 08037316436')); ?>" class="hover:text-primary">JP: <?php echo htmlspecialchars(getSetting('site_phone_jp', '+81 08037316436')); ?></a></p>
                 </div>
               </td>
             </tr>

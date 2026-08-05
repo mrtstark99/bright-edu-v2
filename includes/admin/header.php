@@ -370,6 +370,9 @@
         <a class="sidebar-link mt-1 <?php echo (str_contains($_SERVER['REQUEST_URI'], '/admin/dashboard') || $_SERVER['REQUEST_URI'] === '/admin') ? 'active' : ''; ?>" href="/admin/dashboard">
             <i class="bi bi-grid-1x2-fill"></i> Dashboard
         </a>
+        <a class="sidebar-link <?php echo str_contains($_SERVER['REQUEST_URI'], '/admin/analytics') ? 'active' : ''; ?>" href="/admin/analytics">
+            <i class="bi bi-bar-chart-line"></i> Đo lường
+        </a>
 
         <div class="sidebar-divider"></div>
 

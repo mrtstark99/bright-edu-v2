@@ -210,5 +210,6 @@
       });
     }
   </script>
+  <script src="/assets/analytics.js?v=<?= filemtime(APP_ROOT . '/assets/analytics.js') ?>" defer></script>
 </body>
 </html>

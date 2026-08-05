@@ -185,6 +185,14 @@ class Database {
             );
             CREATE INDEX IF NOT EXISTS idx_qa_answers_question ON qa_answers(question_id);
             CREATE INDEX IF NOT EXISTS idx_qa_answers_status ON qa_answers(status);
+
+            CREATE TABLE IF NOT EXISTS analytics_cache (
+                cache_key  TEXT PRIMARY KEY,
+                payload    TEXT NOT NULL,
+                expires_at TEXT NOT NULL,
+                updated_at TEXT NOT NULL DEFAULT (datetime('now','localtime'))
+            );
+            CREATE INDEX IF NOT EXISTS idx_analytics_cache_expires ON analytics_cache(expires_at);
         ");
         try { $this->conn->exec("ALTER TABLE community_groups ADD COLUMN image TEXT"); } catch (\Exception $e) {}
         try { $this->conn->exec("ALTER TABLE qa_questions ADD COLUMN image TEXT"); } catch (\Exception $e) {}
