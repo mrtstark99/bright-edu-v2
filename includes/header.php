@@ -12,9 +12,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
   
-  <!-- Font Awesome/Bootstrap Icons if needed -->
+  <!-- Font Awesome/Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/assets/css/components.css">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -62,7 +61,13 @@
       }
     }
   </script>
-  <!-- Page-specific styles are loaded via /assets/css/ -->
+  <!-- Global component styles (after Tailwind to override correctly) -->
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <style>
+    /* Đảm bảo heading dùng Quicksand (override Tailwind reset) */
+    h1, h2, h3, h4, h5, h6 { font-family: 'Quicksand', ui-sans-serif, system-ui, sans-serif !important; }
+    table th, table td { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; }
+  </style>
 </head>
 <body class="text-ink font-sans antialiased bg-rice selection:bg-sage-200 selection:text-sage-900">
   
