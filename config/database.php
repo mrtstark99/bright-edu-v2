@@ -189,6 +189,7 @@ class Database {
         try { $this->conn->exec("ALTER TABLE community_groups ADD COLUMN image TEXT"); } catch (\Exception $e) {}
         try { $this->conn->exec("ALTER TABLE qa_questions ADD COLUMN image TEXT"); } catch (\Exception $e) {}
         try { $this->conn->exec("ALTER TABLE qa_questions ADD COLUMN tags TEXT"); } catch (\Exception $e) {}
+        try { $this->conn->exec("ALTER TABLE qa_questions ADD COLUMN bg_style TEXT"); } catch (\Exception $e) {}
 
         // --- Migration for updating email and phone ---
         $this->conn->exec("UPDATE settings SET setting_value = 'contact@brighteducation.net' WHERE setting_key = 'site_email' AND setting_value = 'japan@brightconnect.vn'");

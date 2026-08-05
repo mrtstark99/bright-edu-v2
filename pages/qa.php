@@ -1,6 +1,6 @@
 <?php
 /**
- * Q&A Page - Optimized Threads Style with Perfect Spacing & Alignments
+ * Q&A Page - Optimized Threads Style with Text Background and Full Features
  */
 $page_title = 'Hỏi đáp - Cộng đồng Bright Education';
 require_once 'includes/header.php';
@@ -17,7 +17,7 @@ $is_admin = $is_logged_in && (isAdmin() || isEditor());
         position: absolute;
         top: 56px;
         bottom: 24px;
-        left: 38px; /* Perfectly aligned with the center of w-12 avatar container (p-6 pad + 24px half) */
+        left: 38px;
         width: 2px;
         background-color: #f1f5f9;
         border-radius: 99px;
@@ -61,10 +61,29 @@ $is_admin = $is_logged_in && (isAdmin() || isEditor());
         color: #ffffff;
         border-color: #0d243e;
     }
+
+    /* Gradient Background Presets */
+    .bg-threads-dark {
+        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    }
+    .bg-threads-sunrise {
+        background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    }
+    .bg-threads-neon {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+    .bg-threads-ocean {
+        background: linear-gradient(135deg, #2af598 0%, #009ad0 100%);
+    }
+    .bg-threads-sakura {
+        background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+    }
+    .bg-threads-lavender {
+        background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+    }
 </style>
 
 <main class="pt-20 bg-slate-50 min-h-screen">
-    <!-- Balanced container matching the rest of the application -->
     <section class="max-w-6xl mx-auto px-5 lg:px-8 mt-12 mb-20">
         
         <div class="grid grid-cols-1 md:grid-cols-[240px_1fr] gap-8 items-start">
@@ -79,28 +98,16 @@ $is_admin = $is_logged_in && (isAdmin() || isEditor());
                     <button class="tag-badge text-left px-3.5 py-2.5 rounded-xl text-[13.5px] font-bold text-slate-600 bg-slate-50 hover:bg-slate-100 border border-transparent transition-all active active-all" data-tag="">
                         <i class="bi bi-grid mr-2 text-xs text-slate-400"></i> Tất cả chủ đề
                     </button>
-                    <button class="tag-badge text-left px-3.5 py-2.5 rounded-xl text-[13.5px] font-bold text-slate-600 bg-white hover:bg-slate-50 border border-slate-100 transition-all" data-tag="#tuyensinh">
-                        #tuyensinh
-                    </button>
-                    <button class="tag-badge text-left px-3.5 py-2.5 rounded-xl text-[13.5px] font-bold text-slate-600 bg-white hover:bg-slate-50 border border-slate-100 transition-all" data-tag="#hocphi">
-                        #hocphi
-                    </button>
-                    <button class="tag-badge text-left px-3.5 py-2.5 rounded-xl text-[13.5px] font-bold text-slate-600 bg-white hover:bg-slate-50 border border-slate-100 transition-all" data-tag="#visanhat">
-                        #visanhat
-                    </button>
-                    <button class="tag-badge text-left px-3.5 py-2.5 rounded-xl text-[13.5px] font-bold text-slate-600 bg-white hover:bg-slate-50 border border-slate-100 transition-all" data-tag="#vieclam">
-                        #vieclam
-                    </button>
-                    <button class="tag-badge text-left px-3.5 py-2.5 rounded-xl text-[13.5px] font-bold text-slate-600 bg-white hover:bg-slate-50 border border-slate-100 transition-all" data-tag="#nhatngu">
-                        #nhatngu
-                    </button>
-                    <button class="tag-badge text-left px-3.5 py-2.5 rounded-xl text-[13.5px] font-bold text-slate-600 bg-white hover:bg-slate-50 border border-slate-100 transition-all" data-tag="#cuocsong">
-                        #cuocsong
-                    </button>
+                    <button class="tag-badge text-left px-3.5 py-2.5 rounded-xl text-[13.5px] font-bold text-slate-600 bg-white hover:bg-slate-50 border border-slate-100 transition-all" data-tag="#tuyensinh">#tuyensinh</button>
+                    <button class="tag-badge text-left px-3.5 py-2.5 rounded-xl text-[13.5px] font-bold text-slate-600 bg-white hover:bg-slate-50 border border-slate-100 transition-all" data-tag="#hocphi">#hocphi</button>
+                    <button class="tag-badge text-left px-3.5 py-2.5 rounded-xl text-[13.5px] font-bold text-slate-600 bg-white hover:bg-slate-50 border border-slate-100 transition-all" data-tag="#visanhat">#visanhat</button>
+                    <button class="tag-badge text-left px-3.5 py-2.5 rounded-xl text-[13.5px] font-bold text-slate-600 bg-white hover:bg-slate-50 border border-slate-100 transition-all" data-tag="#vieclam">#vieclam</button>
+                    <button class="tag-badge text-left px-3.5 py-2.5 rounded-xl text-[13.5px] font-bold text-slate-600 bg-white hover:bg-slate-50 border border-slate-100 transition-all" data-tag="#nhatngu">#nhatngu</button>
+                    <button class="tag-badge text-left px-3.5 py-2.5 rounded-xl text-[13.5px] font-bold text-slate-600 bg-white hover:bg-slate-50 border border-slate-100 transition-all" data-tag="#cuocsong">#cuocsong</button>
                 </div>
             </aside>
 
-            <!-- Right Feed: Core Content area -->
+            <!-- Right Feed: Content area -->
             <div class="max-w-[620px] w-full mx-auto md:mx-0 flex flex-col gap-6">
                 
                 <!-- Title & tag list for mobile -->
@@ -117,7 +124,7 @@ $is_admin = $is_logged_in && (isAdmin() || isEditor());
                     </div>
                 </div>
 
-                <!-- Create Post Input (Aligned properly with card structure) -->
+                <!-- Create Post Input -->
                 <?php if ($is_logged_in): ?>
                 <div class="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-soft">
                     <div class="flex gap-4">
@@ -127,9 +134,25 @@ $is_admin = $is_logged_in && (isAdmin() || isEditor());
                         </div>
                         <div class="flex-1">
                             <div class="font-bold text-[14px] text-slate-900 mb-1"><?= htmlspecialchars($current_user_name) ?></div>
-                            <textarea id="post_content" rows="2" placeholder="Bạn đang thắc mắc điều gì về du học Nhật Bản?..." class="w-full bg-transparent text-[15px] placeholder-slate-400 focus:outline-none resize-none py-1.5 leading-relaxed"></textarea>
                             
-                            <!-- Image Preview area -->
+                            <!-- Container wrapper for background styles preview -->
+                            <div id="editor_bg_wrapper" class="rounded-2xl transition-all duration-350 p-0">
+                                <textarea id="post_content" rows="3" placeholder="Bạn đang thắc mắc điều gì về du học Nhật Bản?..." class="w-full bg-transparent text-[15px] placeholder-slate-400 focus:outline-none resize-none py-2 px-1 leading-relaxed transition-all duration-300"></textarea>
+                            </div>
+                            
+                            <!-- Color/Background Presets bar -->
+                            <div class="flex items-center gap-2 mt-3 mb-1 select-none">
+                                <span class="text-[10px] font-black uppercase text-slate-400 mr-1">Hình nền:</span>
+                                <button class="w-5 h-5 rounded-full border border-slate-300 bg-white flex items-center justify-center text-[10px] text-slate-400 hover:scale-110 active:scale-95 transition-all btn-bg-preset" data-bg="" title="Mặc định"><i class="bi bi-slash-circle"></i></button>
+                                <button class="w-5 h-5 rounded-full bg-threads-dark hover:scale-110 active:scale-95 transition-all btn-bg-preset" data-bg="bg-threads-dark" title="Tối giản"></button>
+                                <button class="w-5 h-5 rounded-full bg-threads-sunrise hover:scale-110 active:scale-95 transition-all btn-bg-preset" data-bg="bg-threads-sunrise" title="Bình minh"></button>
+                                <button class="w-5 h-5 rounded-full bg-threads-neon hover:scale-110 active:scale-95 transition-all btn-bg-preset" data-bg="bg-threads-neon" title="Neon"></button>
+                                <button class="w-5 h-5 rounded-full bg-threads-ocean hover:scale-110 active:scale-95 transition-all btn-bg-preset" data-bg="bg-threads-ocean" title="Đại dương"></button>
+                                <button class="w-5 h-5 rounded-full bg-threads-sakura hover:scale-110 active:scale-95 transition-all btn-bg-preset" data-bg="bg-threads-sakura" title="Sakura"></button>
+                                <button class="w-5 h-5 rounded-full bg-threads-lavender hover:scale-110 active:scale-95 transition-all btn-bg-preset" data-bg="bg-threads-lavender" title="Lavender"></button>
+                            </div>
+
+                            <!-- Image Preview Area -->
                             <div id="image_preview_container" class="hidden relative mt-3 rounded-2xl overflow-hidden border border-slate-100 max-h-64 shadow-xs select-none">
                                 <img id="image_preview" src="" class="w-full h-full object-cover">
                                 <button id="btn_remove_image" class="absolute top-3 right-3 bg-black/60 hover:bg-black/85 text-white rounded-full p-1.5 w-8 h-8 flex items-center justify-center transition-colors">
@@ -140,13 +163,11 @@ $is_admin = $is_logged_in && (isAdmin() || isEditor());
                             <!-- Options Bar -->
                             <div class="flex justify-between items-center mt-3 pt-3 border-t border-slate-100">
                                 <div class="flex items-center gap-3.5">
-                                    <!-- Image upload trigger -->
                                     <button id="btn_trigger_file" class="text-slate-400 hover:text-primary transition-colors p-1" title="Đính kèm ảnh">
                                         <i class="bi bi-image text-lg"></i>
                                     </button>
                                     <input type="file" id="file_input" class="hidden" accept="image/*">
                                     
-                                    <!-- Tag Selector -->
                                     <select id="post_tag" class="bg-slate-50 border border-slate-200 text-[11px] font-bold text-slate-500 rounded-full px-3 py-1 focus:outline-none focus:border-slate-350 transition-colors">
                                         <option value="">Chọn chủ đề</option>
                                         <option value="#tuyensinh">#tuyensinh</option>
@@ -157,7 +178,7 @@ $is_admin = $is_logged_in && (isAdmin() || isEditor());
                                         <option value="#cuocsong">#cuocsong</option>
                                     </select>
                                 </div>
-                                <button id="btn_post_question" class="bg-primary text-white font-bold text-xs px-5 py-2.5 rounded-full hover:bg-slate-800 active:scale-95 transition-all shadow-sm">Đăng bài</button>
+                                <button id="btn_post_question" class="bg-black text-white font-bold text-xs px-5 py-2.5 rounded-full hover:bg-slate-850 active:scale-95 transition-all shadow-sm">Đăng bài</button>
                             </div>
                         </div>
                     </div>
@@ -170,7 +191,7 @@ $is_admin = $is_logged_in && (isAdmin() || isEditor());
                 </div>
                 <?php endif; ?>
 
-                <!-- Back button to return to thread list -->
+                <!-- Back button to return to list -->
                 <div id="details_back_bar" class="hidden mb-2">
                     <button id="btn_close_details" class="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-primary py-2 px-4 bg-white border border-slate-100 rounded-full shadow-soft transition-colors">
                         <i class="bi bi-arrow-left"></i> Quay lại danh sách câu hỏi
@@ -204,11 +225,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const imagePreviewContainer = document.getElementById('image_preview_container');
     const imagePreview = document.getElementById('image_preview');
     const btnRemoveImage = document.getElementById('btn_remove_image');
+    const editorBgWrapper = document.getElementById('editor_bg_wrapper');
     
     const detailsBackBar = document.getElementById('details_back_bar');
     const btnCloseDetails = document.getElementById('btn_close_details');
 
-    // Authentication & Authorization Context
+    // Authentication & Context
     const isLoggedIn = <?= $is_logged_in ? 'true' : 'false' ?>;
     const isAdmin = <?= $is_admin ? 'true' : 'false' ?>;
     const currentUserName = <?= json_encode($current_user_name) ?>;
@@ -216,8 +238,9 @@ document.addEventListener('DOMContentLoaded', function() {
     let selectedTag = '';
     let selectedFile = null;
     let viewingQuestionId = null;
+    let currentBgStyle = '';
 
-    // Check URL queries
+    // Check URL query parameters
     const urlParams = new URLSearchParams(window.location.search);
     const qidParam = urlParams.get('qid');
     if (qidParam) {
@@ -225,7 +248,7 @@ document.addEventListener('DOMContentLoaded', function() {
         detailsBackBar.classList.remove('hidden');
     }
 
-    // Load feed
+    // Load Feed
     function loadFeed() {
         if (viewingQuestionId) {
             loadSingleQuestion(viewingQuestionId);
@@ -316,7 +339,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Generate HTML for card (Optimized padding, margins, alignment)
+    // Generate HTML for card (Handles background color for text posts)
     function createThreadCard(q, isDetailedView = false) {
         const div = document.createElement('div');
         div.className = 'threads-card bg-white p-6 rounded-[2rem] border border-slate-100 shadow-soft relative';
@@ -325,13 +348,27 @@ document.addEventListener('DOMContentLoaded', function() {
         const timeString = formatTime(q.created_at);
         const hasReplies = q.answers && q.answers.length > 0;
 
-        // Image Attachment
+        // Image Attachment (only shown if there's no custom bg color)
         let attachmentHtml = '';
-        if (q.image) {
+        if (q.image && !q.bg_style) {
             attachmentHtml = `
                 <div class="mt-3 rounded-2xl overflow-hidden border border-slate-100 shadow-xs max-h-96">
                     <img src="/uploads/${q.image}" class="w-full object-cover max-h-96" alt="Ảnh đính kèm">
                 </div>
+            `;
+        }
+
+        // Main Text Content (Modified to support background templates)
+        let contentHtml = '';
+        if (q.bg_style) {
+            contentHtml = `
+                <div class="${q.bg_style} text-white font-extrabold text-base md:text-lg flex items-center justify-center text-center p-8 rounded-2xl min-h-[220px] shadow-sm leading-relaxed mb-1 whitespace-pre-wrap cursor-pointer btn-view-details">
+                    <span>${escapeHtml(q.content)}</span>
+                </div>
+            `;
+        } else {
+            contentHtml = `
+                <div class="text-[15px] text-slate-800 leading-relaxed mb-1 whitespace-pre-wrap cursor-pointer btn-view-details">${escapeHtml(q.content)}</div>
             `;
         }
 
@@ -349,13 +386,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 return `
                     <!-- Reply Item -->
                     <div class="flex gap-4 mt-5 pt-4 border-t border-slate-50 relative" data-ans-id="${ans.id}">
-                        <!-- Left: Avatar w-12 matching parent avatar column width for visual alignment -->
                         <div class="flex justify-center flex-shrink-0 w-12">
                             <div class="w-9 h-9 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center overflow-hidden shadow-xs">
                                 <i class="bi bi-person-fill text-slate-400 text-xs"></i>
                             </div>
                         </div>
-                        <!-- Right: Content -->
                         <div class="flex-1 min-w-0">
                             <div class="flex items-center gap-2 mb-1">
                                 <span class="font-bold text-[13.5px] text-slate-900">${escapeHtml(ans.author_name)}</span>
@@ -377,7 +412,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         div.innerHTML = `
-            <!-- Vertical Threading Line linking Main post to Replies -->
             ${hasReplies ? '<div class="thread-line"></div>' : ''}
             
             <div class="flex gap-4">
@@ -399,13 +433,13 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                     </div>
                     
-                    <!-- Content Text -->
-                    <div class="text-[15px] text-slate-800 leading-relaxed mb-1 whitespace-pre-wrap cursor-pointer btn-view-details">${escapeHtml(q.content)}</div>
+                    <!-- Content -->
+                    ${contentHtml}
                     
                     <!-- Image attachment -->
                     ${attachmentHtml}
                     
-                    <!-- Threads Buttons -->
+                    <!-- Buttons -->
                     <div class="flex items-center gap-5 mt-3 text-slate-500 border-b border-slate-50 pb-3">
                         <button class="action-icon-btn btn-like-question flex items-center gap-1.5 text-sm" data-id="${q.id}">
                             <i class="bi bi-heart"></i>
@@ -422,12 +456,12 @@ document.addEventListener('DOMContentLoaded', function() {
                         </button>
                     </div>
 
-                    <!-- Nested comments -->
+                    <!-- Replies list -->
                     <div class="replies-list">
                         ${repliesHtml}
                     </div>
 
-                    <!-- Inline Reply Input for Logged In users -->
+                    <!-- Reply box -->
                     ${isLoggedIn ? `
                     <div class="flex gap-4 mt-5 pt-4 border-t border-slate-100 relative z-20">
                         <div class="flex justify-center flex-shrink-0 w-12">
@@ -448,7 +482,31 @@ document.addEventListener('DOMContentLoaded', function() {
         return div;
     }
 
-    // Relative Time formatting
+    // Background preset selection handler
+    document.querySelectorAll('.btn-bg-preset').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const bgClass = this.dataset.bg;
+            
+            // Remove previous classes
+            editorBgWrapper.className = 'rounded-2xl transition-all duration-350 p-0';
+            postContent.className = 'w-full bg-transparent text-[15px] placeholder-slate-400 focus:outline-none resize-none py-2 px-1 leading-relaxed transition-all duration-300';
+            
+            if (bgClass) {
+                // Apply background class to editor wrapper
+                editorBgWrapper.classList.add(bgClass, 'p-6', 'min-h-[160px]', 'flex', 'items-center', 'justify-center', 'text-center');
+                postContent.classList.add('text-white', 'font-extrabold', 'text-base', 'md:text-lg', 'text-center', 'placeholder-white/60');
+                currentBgStyle = bgClass;
+                
+                // Clear selected image if color bg is chosen
+                if (btnRemoveImage) btnRemoveImage.click();
+            } else {
+                currentBgStyle = '';
+            }
+        });
+    });
+
+    // Relative Time Helper
     function formatTime(dateString) {
         const date = new Date(dateString.replace(' ', 'T'));
         const now = new Date();
@@ -485,6 +543,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 reader.onload = (e) => {
                     imagePreview.src = e.target.result;
                     imagePreviewContainer.classList.remove('hidden');
+                    
+                    // Reset bg color if image is uploaded
+                    const defaultBgBtn = document.querySelector('.btn-bg-preset[data-bg=""]');
+                    if (defaultBgBtn) defaultBgBtn.click();
                 };
                 reader.readAsDataURL(file);
             }
@@ -519,6 +581,7 @@ document.addEventListener('DOMContentLoaded', function() {
             formData.append('action', 'post_question');
             formData.append('content', content);
             formData.append('tags', tagValue);
+            formData.append('bg_style', currentBgStyle);
             if (selectedFile) {
                 formData.append('image', selectedFile);
             }
@@ -534,7 +597,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (res.status === 'success') {
                     postContent.value = '';
                     if (postTag) postTag.value = '';
+                    
+                    // Reset background styling
+                    const defaultBgBtn = document.querySelector('.btn-bg-preset[data-bg=""]');
+                    if (defaultBgBtn) defaultBgBtn.click();
+                    
+                    // Clear image
                     if (btnRemoveImage) btnRemoveImage.click();
+                    
                     loadFeed();
                 } else {
                     alert(res.message);
@@ -555,9 +625,6 @@ document.addEventListener('DOMContentLoaded', function() {
             
             document.querySelectorAll('.tag-badge').forEach(b => {
                 b.classList.remove('active', 'bg-slate-50', 'bg-slate-100', 'bg-primary', 'text-white');
-                if (b.classList.contains('active-all')) {
-                    // Restores tag style
-                }
             });
             
             this.classList.add('active');
@@ -589,7 +656,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Delegate clicks
+    // Feed interaction clicks
     feedContainer.addEventListener('click', (e) => {
         if (e.target.closest('.btn-comment-focus')) {
             const card = e.target.closest('.threads-card');

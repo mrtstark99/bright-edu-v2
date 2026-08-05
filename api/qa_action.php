@@ -101,13 +101,16 @@ switch ($action) {
             }
         }
         
-        $stmt = $db->prepare("INSERT INTO qa_questions (user_id, author_name, content, image, tags) VALUES (:uid, :author, :content, :image, :tags)");
+        $bg_style = $_POST['bg_style'] ?? '';
+        
+        $stmt = $db->prepare("INSERT INTO qa_questions (user_id, author_name, content, image, tags, bg_style) VALUES (:uid, :author, :content, :image, :tags, :bg_style)");
         $stmt->execute([
             'uid' => $user_id,
             'author' => htmlspecialchars($author_name),
             'content' => htmlspecialchars($content),
             'image' => $image_path,
-            'tags' => htmlspecialchars($tags)
+            'tags' => htmlspecialchars($tags),
+            'bg_style' => htmlspecialchars($bg_style)
         ]);
         
         echo json_encode(['status' => 'success', 'id' => $db->lastInsertId()]);
