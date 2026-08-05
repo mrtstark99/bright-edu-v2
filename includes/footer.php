@@ -139,23 +139,15 @@
       </a>
 
       <!-- Xem Fanpage -->
-      <a href="<?php echo getSetting('facebook_url', '#'); ?>" target="_blank" rel="noopener noreferrer" class="fab-btn fanpage-btn" aria-label="Xem Fanpage">
+      <a href="https://www.facebook.com/VnBrightEducation" target="_blank" rel="noopener noreferrer" class="fab-btn fanpage-btn" aria-label="Xem Fanpage">
         <i class="bi bi-facebook text-xl"></i>
         <span class="fab-text">Fanpage</span>
       </a>
 
       <!-- Zalo Chat -->
-      <a href="https://zalo.me/<?php echo str_replace(' ', '', getSetting('zalo_phone', '')); ?>" target="_blank" rel="noopener noreferrer" class="fab-btn zalo-btn" aria-label="Chat Zalo">
+      <a href="https://zalo.me/0971044576" target="_blank" rel="noopener noreferrer" class="fab-btn zalo-btn" aria-label="Chat Zalo">
         <div class="zalo-icon-text">Zalo</div>
         <span class="fab-text">Chat Zalo</span>
-      </a>
-
-      <!-- Messenger Chat Button -->
-      <a href="https://m.me/<?php echo getSetting('messenger_id', '491649064036887'); ?>" target="_blank" rel="noopener noreferrer" class="fab-btn messenger-btn" aria-label="Chat với chúng tôi trên Messenger">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-          <path d="M12 2C6.477 2 2 6.145 2 11.243c0 2.899 1.441 5.478 3.687 7.161V22l3.458-1.898c.923.255 1.901.391 2.855.391 5.523 0 10-4.145 10-9.25S17.523 2 12 2zm.993 12.492l-2.549-2.718-4.974 2.718 5.467-5.803 2.611 2.718 4.912-2.718-5.467 5.803z"/>
-        </svg>
-        <span class="fab-text">Chat ngay</span>
       </a>
     </div>
 
@@ -181,14 +173,25 @@
     revealElements();
     document.addEventListener('scroll', revealElements, { passive: true });
 
-    // FAB Toggle Logic
+    // FAB Toggle Logic with persistence
     const fabTrigger = document.getElementById('fab-trigger');
     const fabList = document.getElementById('fab-list');
 
     if (fabTrigger && fabList) {
+      // Restore state from localStorage
+      const savedFabState = localStorage.getItem('fab_state');
+      if (savedFabState === 'collapsed') {
+        fabTrigger.classList.remove('active');
+        fabList.classList.remove('active');
+      } else if (savedFabState === 'expanded') {
+        fabTrigger.classList.add('active');
+        fabList.classList.add('active');
+      }
+
       fabTrigger.addEventListener('click', () => {
-        fabTrigger.classList.toggle('active');
+        const isNowActive = fabTrigger.classList.toggle('active');
         fabList.classList.toggle('active');
+        localStorage.setItem('fab_state', isNowActive ? 'expanded' : 'collapsed');
       });
     }
   </script>
