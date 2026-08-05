@@ -12,15 +12,25 @@ $db = Database::getInstance();
 switch ($action) {
     case 'get_feed':
         $page = isset($_POST['page']) ? (int)$_POST['page'] : (isset($_GET['page']) ? (int)$_GET['page'] : 1);
-        $limit = 15;
+        if ($page < 1) $page = 1;
+        $limit = 10;
         $offset = ($page - 1) * $limit;
         
         $tag = $_POST['tag'] ?? $_GET['tag'] ?? '';
         
+        // Count total for pagination
         if (!empty($tag)) {
+            $count_stmt = $db->prepare("SELECT COUNT(*) FROM qa_questions WHERE status = 'active' AND tags LIKE :tag_query");
+            $count_stmt->execute(['tag_query' => '%' . $tag . '%']);
+            $total = (int)$count_stmt->fetchColumn();
+            
             $stmt = $db->prepare("SELECT * FROM qa_questions WHERE status = 'active' AND tags LIKE :tag_query ORDER BY created_at DESC LIMIT :limit OFFSET :offset");
             $stmt->bindValue(':tag_query', '%' . $tag . '%', PDO::PARAM_STR);
         } else {
+            $count_stmt = $db->prepare("SELECT COUNT(*) FROM qa_questions WHERE status = 'active'");
+            $count_stmt->execute();
+            $total = (int)$count_stmt->fetchColumn();
+            
             $stmt = $db->prepare("SELECT * FROM qa_questions WHERE status = 'active' ORDER BY created_at DESC LIMIT :limit OFFSET :offset");
         }
         
@@ -42,7 +52,15 @@ switch ($action) {
             $q['answers'] = $ans_stmt->fetchAll();
         }
         
-        echo json_encode(['status' => 'success', 'data' => $questions]);
+        $total_pages = max(1, ceil($total / $limit));
+        
+        echo json_encode([
+            'status' => 'success', 
+            'data' => $questions,
+            'total_pages' => $total_pages,
+            'current_page' => $page,
+            'total_count' => $total
+        ]);
         break;
         
     case 'get_question':
