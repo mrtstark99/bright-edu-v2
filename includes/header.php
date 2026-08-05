@@ -96,6 +96,8 @@
       
       <div class="flex items-center gap-3">
         <?php if (isLoggedIn()): ?>
+            <?php if (isAdmin() || isEditor()): ?>
+            <!-- Admin/Editor: keep dropdown for quick admin panel access -->
             <div class="relative group nav-dropdown-trigger hidden sm:block">
                 <button class="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-primary transition-colors">
                     <i class="bi bi-person-circle text-lg"></i>
@@ -103,13 +105,19 @@
                     <i class="bi bi-chevron-down text-xs nav-chevron transition-transform"></i>
                 </button>
                 <div class="nav-dropdown absolute right-0 top-full mt-2 w-48 rounded-2xl bg-white p-2 shadow-tinted border border-slate-100 z-50">
-                    <?php if (isAdmin() || isEditor()): ?>
-                        <a href="/admin" class="dd-link"><i class="bi bi-shield-check text-primary"></i> Quản trị</a>
-                    <?php endif; ?>
+                    <a href="/admin" class="dd-link"><i class="bi bi-shield-check text-primary"></i> Quản trị</a>
                     <a href="/profile" class="dd-link"><i class="bi bi-person text-primary"></i> Hồ sơ</a>
                     <a href="/logout" class="dd-link text-red-600 hover:bg-red-50 hover:text-red-700"><i class="bi bi-box-arrow-right"></i> Đăng xuất</a>
                 </div>
             </div>
+            <?php else: ?>
+            <!-- Regular user: 1 click goes directly to profile, no popup -->
+            <a href="/profile" class="hidden sm:flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-primary transition-colors">
+                <i class="bi bi-person-circle text-lg"></i>
+                <span><?= htmlspecialchars($_SESSION['user_name'] ?? 'Tài khoản') ?></span>
+            </a>
+            <?php endif; ?>
+
         <?php else: ?>
             <a href="/login" class="hidden sm:inline-flex rounded-full px-4 py-2 text-sm font-semibold text-primary bg-primary-50 hover:bg-primary-100 transition-colors">Đăng nhập</a>
         <?php endif; ?>
