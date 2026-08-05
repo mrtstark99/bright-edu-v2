@@ -351,13 +351,13 @@ include 'includes/header.php';
               $tuition_note = $slug === 'scholarship-program' ? 'Được doanh nghiệp bảo trợ tài trợ 100% học phí & KTX' : 'Học phí 1 năm học tại Nhật (~750.000 JPY) + Ký túc xá (~150.000 JPY) (Lưu ý: Thay đổi tùy theo từng trường)';
               
               $comparison_items = [
-                  ['item' => 'Xử lý hồ sơ & Dịch thuật', 'desc' => 'Dịch thuật công chứng toàn bộ giấy tờ, hoàn thiện hồ sơ gửi trường', 'market' => 10000000, 'bright' => 15000000],
-                  ['item' => 'Chứng thực bằng cấp', 'desc' => 'Xác thực tính hợp lệ bằng cấp theo yêu cầu nhà trường', 'market' => 1500000, 'bright' => 0],
-                  ['item' => 'Hỗ trợ du học sinh', 'desc' => 'Định hướng, làm cầu nối gia đình - trường, hỗ trợ việc làm lâu dài', 'market' => 10000000, 'bright' => 0],
-                  ['item' => 'Chứng minh tài chính', 'desc' => 'Hoàn thiện hồ sơ năng lực tài chính, sổ tiết kiệm liên kết bảo lãnh', 'market' => 6000000, 'bright' => 0],
-                  ['item' => 'Xử lý hồ sơ xin COE', 'desc' => 'Chuẩn bị hồ sơ và dịch thuật nộp Cục XNC Nhật Bản', 'market' => 10000000, 'bright' => 0],
-                  ['item' => 'Chuyển phát hồ sơ sang Nhật', 'desc' => 'Chuyển phát nhanh hồ sơ gốc sang Nhật cho nhà trường', 'market' => 1000000, 'bright' => 0],
-                  ['item' => 'Chi phí xin visa', 'desc' => 'Hoàn thiện tờ khai và thủ tục xin visa tại ĐSQ/LSQ Nhật', 'market' => 1500000, 'bright' => 0]
+                  ['item' => 'Xử lý hồ sơ & Dịch thuật', 'desc' => 'Làm việc trực tiếp với nhà trường; rà soát, dịch thuật giấy tờ và hoàn thiện hồ sơ nhập học; tư vấn điều kiện tuyển sinh, hướng dẫn chuẩn bị bài thi và phỏng vấn đầu vào', 'market' => 10000000, 'bright' => 15000000],
+                  ['item' => 'Chứng thực bằng cấp', 'desc' => 'Thực hiện xác minh, chứng thực bằng cấp và học bạ theo đúng hình thức nhà trường yêu cầu', 'market' => 1500000, 'bright' => 0],
+                  ['item' => 'Hỗ trợ du học sinh', 'desc' => 'Theo dõi tiến độ nhập học, kết nối gia đình với nhà trường và hướng dẫn ổn định học tập, sinh hoạt sau khi sang Nhật', 'market' => 10000000, 'bright' => 0],
+                  ['item' => 'Chứng minh tài chính', 'desc' => 'Tư vấn nguồn bảo lãnh, chuẩn hóa giấy tờ thu nhập và hồ sơ năng lực tài chính theo yêu cầu', 'market' => 6000000, 'bright' => 0],
+                  ['item' => 'Xử lý hồ sơ xin COE', 'desc' => 'Lập biểu mẫu và nội dung giải trình tư cách lưu trú; phối hợp với trường nộp, bổ sung hồ sơ và theo dõi kết quả tại Cục XNC Nhật Bản', 'market' => 10000000, 'bright' => 0],
+                  ['item' => 'Chuyển phát hồ sơ sang Nhật', 'desc' => 'Đóng gói, kiểm tra và chuyển phát bảo đảm các giấy tờ gốc cần nộp cho nhà trường', 'market' => 1000000, 'bright' => 0],
+                  ['item' => 'Chi phí xin visa', 'desc' => 'Khai đơn, sắp xếp bộ hồ sơ và hướng dẫn thủ tục nộp visa tại ĐSQ/LSQ Nhật Bản', 'market' => 1500000, 'bright' => 0]
               ];
           } else {
               // Senmon, University, English-track
@@ -370,13 +370,13 @@ include 'includes/header.php';
                   $tuition_note = 'Học phí 1 năm học tại Nhật (~750.000 JPY) + Ký túc xá (~150.000 JPY) (Lưu ý: Thay đổi tùy theo từng trường)';
                   
                   $comparison_items = [
-                      ['item' => 'Xử lý hồ sơ & Dịch thuật', 'desc' => 'Dịch thuật công chứng toàn bộ giấy tờ, hoàn thiện hồ sơ gửi trường', 'market' => 15000000, 'bright' => 30000000],
-                      ['item' => 'Chứng thực bằng cấp', 'desc' => 'Xác thực tính hợp lệ bằng cấp theo yêu cầu nhà trường', 'market' => 1500000, 'bright' => 0],
-                      ['item' => 'Hỗ trợ chọn trường & Luyện thi', 'desc' => 'Tư vấn chọn ngành hot, luyện phỏng vấn nghề', 'market' => 15000000, 'bright' => 0],
-                      ['item' => 'Chứng minh tài chính', 'desc' => 'Hoàn thiện hồ sơ năng lực tài chính, sổ tiết kiệm liên kết bảo lãnh', 'market' => 6000000, 'bright' => 0],
-                      ['item' => 'Xử lý hồ sơ xin COE', 'desc' => 'Chuẩn bị hồ sơ và dịch thuật nộp Cục XNC Nhật Bản', 'market' => 10000000, 'bright' => 0],
-                      ['item' => 'Chuyển phát hồ sơ sang Nhật', 'desc' => 'Chuyển phát nhanh hồ sơ gốc sang Nhật cho nhà trường', 'market' => 1000000, 'bright' => 0],
-                      ['item' => 'Chi phí xin visa', 'desc' => 'Hoàn thiện tờ khai và thủ tục xin visa tại ĐSQ/LSQ Nhật', 'market' => 1500000, 'bright' => 0]
+                      ['item' => 'Xử lý hồ sơ & Dịch thuật', 'desc' => 'Làm việc trực tiếp với trường Senmon; rà soát, dịch thuật giấy tờ và hoàn thiện hồ sơ nhập học; tư vấn yêu cầu tuyển sinh, hướng dẫn thi và phỏng vấn đầu vào', 'market' => 15000000, 'bright' => 15000000],
+                      ['item' => 'Chứng thực bằng cấp', 'desc' => 'Thực hiện xác minh, chứng thực bằng cấp và học bạ theo đúng hình thức nhà trường yêu cầu', 'market' => 1500000, 'bright' => 0],
+                      ['item' => 'Tư vấn chọn ngành & trường', 'desc' => 'Đánh giá năng lực, sở thích và mục tiêu nghề nghiệp để xây dựng danh sách ngành, trường phù hợp', 'market' => 15000000, 'bright' => 0],
+                      ['item' => 'Chứng minh tài chính', 'desc' => 'Tư vấn nguồn bảo lãnh, chuẩn hóa giấy tờ thu nhập và hồ sơ năng lực tài chính theo yêu cầu', 'market' => 6000000, 'bright' => 0],
+                      ['item' => 'Xử lý hồ sơ xin COE', 'desc' => 'Lập biểu mẫu và nội dung giải trình tư cách lưu trú; phối hợp với trường nộp, bổ sung hồ sơ và theo dõi kết quả tại Cục XNC Nhật Bản', 'market' => 10000000, 'bright' => 15000000],
+                      ['item' => 'Chuyển phát hồ sơ sang Nhật', 'desc' => 'Đóng gói, kiểm tra và chuyển phát bảo đảm các giấy tờ gốc cần nộp cho nhà trường', 'market' => 1000000, 'bright' => 0],
+                      ['item' => 'Chi phí xin visa', 'desc' => 'Khai đơn, sắp xếp bộ hồ sơ và hướng dẫn thủ tục nộp visa tại ĐSQ/LSQ Nhật Bản', 'market' => 1500000, 'bright' => 0]
                   ];
               } elseif ($slug === 'university-program') {
                   $service_fee_market = 60000000;
@@ -385,13 +385,13 @@ include 'includes/header.php';
                   $tuition_note = 'Học phí 1 năm học tại Nhật (~750.000 JPY) + Ký túc xá (~150.000 JPY) (Lưu ý: Thay đổi tùy theo từng trường)';
                   
                   $comparison_items = [
-                      ['item' => 'Xử lý hồ sơ & Dịch thuật', 'desc' => 'Dịch thuật công chứng toàn bộ giấy tờ, hoàn thiện hồ sơ đại học', 'market' => 15000000, 'bright' => 30000000],
-                      ['item' => 'Chứng thực bằng cấp', 'desc' => 'Xác thực tính hợp lệ bằng cấp theo yêu cầu nhà trường', 'market' => 1500000, 'bright' => 0],
-                      ['item' => 'Luyện thi & định hướng EJU', 'desc' => 'Hướng dẫn ôn thi, định hướng phỏng vấn EJU chuyên sâu', 'market' => 25000000, 'bright' => 0],
-                      ['item' => 'Chứng minh tài chính', 'desc' => 'Hoàn thiện hồ sơ năng lực tài chính, sổ tiết kiệm liên kết bảo lãnh', 'market' => 6000000, 'bright' => 0],
-                      ['item' => 'Xử lý hồ sơ xin COE', 'desc' => 'Chuẩn bị hồ sơ và dịch thuật nộp Cục XNC Nhật Bản', 'market' => 10000000, 'bright' => 0],
-                      ['item' => 'Chuyển phát hồ sơ sang Nhật', 'desc' => 'Chuyển phát nhanh hồ sơ gốc sang Nhật cho nhà trường', 'market' => 1000000, 'bright' => 0],
-                      ['item' => 'Chi phí xin visa', 'desc' => 'Hoàn thiện tờ khai và thủ tục xin visa tại ĐSQ/LSQ Nhật', 'market' => 1500000, 'bright' => 0]
+                      ['item' => 'Xử lý hồ sơ & Dịch thuật', 'desc' => 'Làm việc trực tiếp với trường đại học; rà soát, dịch thuật giấy tờ và hoàn thiện hồ sơ nhập học; tư vấn yêu cầu tuyển sinh, hướng dẫn thi EJU và phỏng vấn đầu vào', 'market' => 15000000, 'bright' => 15000000],
+                      ['item' => 'Chứng thực bằng cấp', 'desc' => 'Thực hiện xác minh, chứng thực bằng cấp và học bạ theo đúng hình thức nhà trường yêu cầu', 'market' => 1500000, 'bright' => 0],
+                      ['item' => 'Tư vấn chọn ngành & trường', 'desc' => 'Phân tích học lực, điểm EJU dự kiến, ngân sách và mục tiêu nghề nghiệp để xây dựng danh sách nguyện vọng phù hợp', 'market' => 25000000, 'bright' => 0],
+                      ['item' => 'Chứng minh tài chính', 'desc' => 'Tư vấn nguồn bảo lãnh, chuẩn hóa giấy tờ thu nhập và hồ sơ năng lực tài chính theo yêu cầu', 'market' => 6000000, 'bright' => 0],
+                      ['item' => 'Xử lý hồ sơ xin COE', 'desc' => 'Lập biểu mẫu và nội dung giải trình tư cách lưu trú; phối hợp với trường nộp, bổ sung hồ sơ và theo dõi kết quả tại Cục XNC Nhật Bản', 'market' => 10000000, 'bright' => 15000000],
+                      ['item' => 'Chuyển phát hồ sơ sang Nhật', 'desc' => 'Đóng gói, kiểm tra và chuyển phát bảo đảm các giấy tờ gốc cần nộp cho nhà trường', 'market' => 1000000, 'bright' => 0],
+                      ['item' => 'Chi phí xin visa', 'desc' => 'Khai đơn, sắp xếp bộ hồ sơ và hướng dẫn thủ tục nộp visa tại ĐSQ/LSQ Nhật Bản', 'market' => 1500000, 'bright' => 0]
                   ];
               } elseif ($slug === 'english-track-university') {
                   $service_fee_market = 60000000;
@@ -400,13 +400,13 @@ include 'includes/header.php';
                   $tuition_note = 'Học phí 1 năm học tại Nhật (~750.000 JPY) + Ký túc xá (~150.000 JPY) (Lưu ý: Thay đổi tùy theo từng trường)';
                   
                   $comparison_items = [
-                      ['item' => 'Xử lý hồ sơ & Dịch thuật', 'desc' => 'Dịch thuật công chứng toàn bộ giấy tờ, hoàn thiện hồ sơ tiếng Anh', 'market' => 15000000, 'bright' => 30000000],
-                      ['item' => 'Luyện viết luận & Phỏng vấn', 'desc' => 'Hướng dẫn viết bài luận cá nhân, luyện phỏng vấn tiếng Anh', 'market' => 25000000, 'bright' => 0],
-                      ['item' => 'Chứng thực bằng cấp', 'desc' => 'Xác thực tính hợp lệ bằng cấp theo yêu cầu nhà trường', 'market' => 1500000, 'bright' => 0],
-                      ['item' => 'Chứng minh tài chính', 'desc' => 'Hoàn thiện hồ sơ năng lực tài chính, sổ tiết kiệm liên kết bảo lãnh', 'market' => 6000000, 'bright' => 0],
-                      ['item' => 'Xử lý hồ sơ xin COE', 'desc' => 'Chuẩn bị hồ sơ và dịch thuật nộp Cục XNC Nhật Bản', 'market' => 10000000, 'bright' => 0],
-                      ['item' => 'Chuyển phát hồ sơ sang Nhật', 'desc' => 'Chuyển phát nhanh hồ sơ gốc sang Nhật cho nhà trường', 'market' => 1000000, 'bright' => 0],
-                      ['item' => 'Chi phí xin visa', 'desc' => 'Hoàn thiện tờ khai và thủ tục xin visa tại ĐSQ/LSQ Nhật', 'market' => 1500000, 'bright' => 0]
+                      ['item' => 'Xử lý hồ sơ & Dịch thuật', 'desc' => 'Làm việc trực tiếp với chương trình đại học E-Track; rà soát, dịch thuật giấy tờ và hoàn thiện hồ sơ nhập học; tư vấn yêu cầu tuyển sinh, hướng dẫn bài thi và phỏng vấn đầu vào', 'market' => 15000000, 'bright' => 15000000],
+                      ['item' => 'Hoàn thiện bài luận & hồ sơ học thuật', 'desc' => 'Xây dựng câu chuyện cá nhân, biên tập bài luận, CV và portfolio bằng tiếng Anh theo định hướng của từng trường', 'market' => 25000000, 'bright' => 0],
+                      ['item' => 'Chứng thực bằng cấp', 'desc' => 'Thực hiện xác minh, chứng thực bằng cấp và học bạ theo đúng hình thức nhà trường yêu cầu', 'market' => 1500000, 'bright' => 0],
+                      ['item' => 'Chứng minh tài chính', 'desc' => 'Tư vấn nguồn bảo lãnh, chuẩn hóa giấy tờ thu nhập và hồ sơ năng lực tài chính theo yêu cầu', 'market' => 6000000, 'bright' => 0],
+                      ['item' => 'Xử lý hồ sơ xin COE', 'desc' => 'Lập biểu mẫu và nội dung giải trình tư cách lưu trú; phối hợp với trường nộp, bổ sung hồ sơ và theo dõi kết quả tại Cục XNC Nhật Bản', 'market' => 10000000, 'bright' => 15000000],
+                      ['item' => 'Chuyển phát hồ sơ sang Nhật', 'desc' => 'Đóng gói, kiểm tra và chuyển phát bảo đảm các giấy tờ gốc cần nộp cho nhà trường', 'market' => 1000000, 'bright' => 0],
+                      ['item' => 'Chi phí xin visa', 'desc' => 'Khai đơn, sắp xếp bộ hồ sơ và hướng dẫn thủ tục nộp visa tại ĐSQ/LSQ Nhật Bản', 'market' => 1500000, 'bright' => 0]
                   ];
               }
           }

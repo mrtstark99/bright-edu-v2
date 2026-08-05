@@ -1,4 +1,4 @@
-    <section id="contact" class="bg-primary relative overflow-hidden">
+    <section id="contact" class="home-contact bg-primary relative overflow-hidden">
       <!-- Background decorators -->
       <div class="absolute top-0 right-0 w-96 h-96 bg-slate-500/10 rounded-full mix-blend-screen filter blur-[100px] pointer-events-none"></div>
       <div class="absolute bottom-0 left-0 w-96 h-96 bg-slate-500/10 rounded-full mix-blend-screen filter blur-[100px] pointer-events-none"></div>
@@ -38,7 +38,7 @@
                     </div>
                     <div>
                         <p class="text-[12px] text-slate-400 font-semibold uppercase tracking-wider">Văn phòng</p>
-                        <p class="text-[15px] font-bold text-white mt-0.5"><?php echo getSetting('site_address', '207 Quang Trung, Thành Đông, Hải Phòng'); ?></p>
+                        <p class="text-[15px] font-bold text-white mt-0.5"><?php echo getSetting('site_address', 'Số 45 ngõ 207 Quang Trung, Phường Thành Đông, TP Hải Phòng, Việt Nam'); ?></p>
                     </div>
                 </div>
             </div>
@@ -80,9 +80,9 @@
                     <label class="block">
                     <span class="text-[12px] font-bold text-slate-700">Kỳ nhập học</span>
                     <select class="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 focus:bg-white focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/20 transition-all" name="intake_period">
-                        <option>Tháng 4 năm 2025</option>
-                        <option>Tháng 7 năm 2025</option>
-                        <option>Tháng 10 năm 2025</option>
+                        <option>Tháng 10 năm 2026</option>
+                        <option>Tháng 4 năm 2027</option>
+                        <option>Tháng 7 năm 2027</option>
                         <option>Khác / Đang cân nhắc</option>
                     </select>
                     </label>

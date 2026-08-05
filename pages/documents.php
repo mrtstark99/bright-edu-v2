@@ -3,25 +3,24 @@ $page_title = 'Danh mục Hồ sơ du học | Bright Education';
 include 'includes/header.php';
 ?>
 
-<main class="bg-slate-50 min-h-screen">
+<main class="pt-20 bg-slate-50 min-h-screen">
   <!-- Hero Section -->
-  <section class="relative bg-midnight pt-32 pb-40 overflow-hidden">
-    <div class="absolute inset-0 bg-[radial-gradient(#ffffff15_1px,transparent_1px)] [background-size:20px_20px] opacity-30"></div>
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-primary/30 rounded-full blur-[120px] mix-blend-screen pointer-events-none"></div>
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 text-center reveal">
-      <span class="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-sage-300 text-xs font-bold tracking-widest uppercase mb-6 backdrop-blur-md">Documentation</span>
-      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white font-display tracking-tight mb-6">
-        Danh Mục <span class="text-sage-300">Hồ Sơ Cần Chuẩn Bị</span>
-      </h1>
-      <p class="text-lg text-white/80 max-w-2xl mx-auto leading-relaxed">
-        Một bộ hồ sơ đầy đủ, minh bạch và chính xác là chìa khóa quan trọng nhất để xin thành công Tư cách lưu trú (COE) và Visa du học Nhật Bản.
-      </p>
+  <section class="relative overflow-hidden bg-primary py-14 sm:py-16 lg:py-20">
+    <div class="absolute -right-24 -top-32 h-80 w-80 rounded-full bg-white/[.06]"></div>
+    <div class="absolute -bottom-24 -left-16 h-56 w-56 rounded-full bg-primary-400/10"></div>
+    <div class="relative mx-auto max-w-7xl px-5 lg:px-8">
+      <p class="text-[11px] font-extrabold uppercase tracking-[.2em] text-primary-300">Documentation</p>
+      <h1 class="mt-3 text-4xl font-black tracking-tight text-white font-display sm:text-5xl">Hồ sơ du học cần chuẩn bị</h1>
+      <nav class="mt-6 flex items-center gap-2 text-xs font-semibold text-white/65" aria-label="Breadcrumb">
+        <a href="/" class="transition hover:text-white">Trang chủ</a>
+        <i class="bi bi-chevron-right text-[10px]"></i>
+        <span class="text-white">Chuẩn bị hồ sơ</span>
+      </nav>
     </div>
   </section>
 
   <!-- Document Lists Section -->
-  <section class="py-20 relative z-20 -mt-24">
+  <section class="py-14 sm:py-20 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       
       <!-- Important Note -->

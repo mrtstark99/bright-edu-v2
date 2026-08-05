@@ -84,7 +84,9 @@
         <a class="nav-link" href="/qa">Hỏi đáp</a>
 
         <a class="nav-link" href="/services">Dịch vụ</a>
-        <a class="nav-link" href="/contact">Liên hệ</a>
+        <a class="nav-link" href="/courses">Khóa học</a>
+        <a class="nav-link" href="/blog">Blog</a>
+        <a class="nav-link" href="/consultation">Tư vấn Zoom</a>
         <?php if (isLoggedIn() && (isAdmin() || isEditor())): ?>
           <a class="nav-link !text-primary font-semibold" href="/admin">Quản trị</a>
         <?php endif; ?>
@@ -180,9 +182,6 @@
           <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400 px-4 pt-4 pb-2">Liên hệ</p>
           <a class="mobile-link flex items-center gap-3 px-4 py-3 rounded-2xl text-[16px] font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors" href="/consultation">
             <i class="bi bi-calendar-check text-primary w-5 text-center text-sm"></i> Đặt lịch tư vấn Zoom
-          </a>
-          <a class="mobile-link flex items-center gap-3 px-4 py-3 rounded-2xl text-[16px] font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors" href="/contact">
-            <i class="bi bi-envelope text-primary w-5 text-center text-sm"></i> Liên hệ
           </a>
           <?php if (isLoggedIn() && (isAdmin() || isEditor())): ?>
           <a class="mobile-link flex items-center gap-3 px-4 py-3 rounded-2xl text-[16px] font-semibold text-primary hover:bg-primary-50 transition-colors" href="/admin">

@@ -1,7 +1,8 @@
     <?php if (!empty($latest_posts)): ?>
-    <section id="blog" class="bg-white py-20 lg:py-28 relative">
+    <section id="blog" class="home-section home-blog bg-white py-20 lg:py-28 relative">
       <div class="mx-auto max-w-7xl px-5 lg:px-8">
-        <div class="mx-auto mb-16 max-w-2xl text-center">
+        <div class="home-section-heading mx-auto mb-16 max-w-2xl text-center">
+          <span class="home-kicker">05 — Góc kiến thức</span>
           <h2 class="text-3xl sm:text-4xl font-bold text-primary font-display">Bài viết mới nhất</h2>
           <p class="mt-4 text-lg text-muted">Cập nhật kiến thức và kinh nghiệm sống tại Nhật Bản.</p>
         </div>

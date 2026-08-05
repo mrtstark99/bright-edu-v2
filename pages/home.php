@@ -1887,7 +1887,7 @@ include 'includes/header.php';
                     </div>
                     <div>
                         <p class="text-[12px] text-slate-400 font-semibold uppercase tracking-wider">Văn phòng</p>
-                        <p class="text-[15px] font-bold text-white mt-0.5"><?php echo getSetting('site_address', '207 Quang Trung, Thành Đông, Hải Phòng'); ?></p>
+                        <p class="text-[15px] font-bold text-white mt-0.5"><?php echo getSetting('site_address', 'Số 45 ngõ 207 Quang Trung, Phường Thành Đông, TP Hải Phòng, Việt Nam'); ?></p>
                     </div>
                 </div>
             </div>

@@ -5,35 +5,17 @@ include 'includes/header.php';
 
 <main class="pt-20">
   <!-- Hero Section -->
-  <section class="relative bg-midnight overflow-hidden py-24 sm:py-32">
-    <!-- Background Effects -->
-    <div class="absolute inset-0 z-0">
-      <div class="absolute -top-24 -right-24 w-96 h-96 bg-sage-500/20 rounded-full blur-3xl mix-blend-screen"></div>
-      <div class="absolute bottom-0 -left-24 w-72 h-72 bg-sky-500/20 rounded-full blur-3xl mix-blend-screen"></div>
-      <div class="absolute inset-0 bg-[url('/assets/images/pattern-grid.svg')] opacity-5"></div>
-    </div>
-    
-    <div class="container mx-auto px-6 lg:px-12 relative z-10">
-      <div class="max-w-3xl">
-        <span class="inline-flex items-center justify-center bg-white/10 text-sage-300 backdrop-blur-md px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide uppercase mb-6 border border-white/10">
-          Chương Trình Đào Tạo
-        </span>
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white font-display leading-tight mb-6">
-          Nền tảng ngôn ngữ<br>
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-sage-300 to-sky-300">vững chắc cho tương lai</span>
-        </h1>
-        <p class="text-lg text-slate-300 mb-10 max-w-2xl leading-relaxed">
-          Tại Bright Education, chúng tôi không chỉ dạy tiếng Nhật. Chúng tôi trang bị cho bạn chìa khóa để tự tin bước ra thế giới, hòa nhập văn hóa và sẵn sàng cho hành trình du học thành công.
-        </p>
-        <div class="flex flex-wrap gap-4">
-          <a href="#khoa-hoc" class="bg-sage-500 hover:bg-sage-400 text-white rounded-xl px-8 py-3.5 font-bold transition-all shadow-lg hover:shadow-sage-500/30 flex items-center gap-2">
-            Xem các khóa học <i class="bi bi-arrow-down"></i>
-          </a>
-          <a href="/contact" class="bg-white/10 hover:bg-white/20 text-white backdrop-blur-md border border-white/10 rounded-xl px-8 py-3.5 font-bold transition-all flex items-center gap-2">
-            Đăng ký test đầu vào miễn phí
-          </a>
-        </div>
-      </div>
+  <section class="relative overflow-hidden bg-primary py-14 sm:py-16 lg:py-20">
+    <div class="absolute -right-24 -top-32 h-80 w-80 rounded-full bg-white/[.06]"></div>
+    <div class="absolute -bottom-24 -left-16 h-56 w-56 rounded-full bg-primary-400/10"></div>
+    <div class="relative mx-auto max-w-7xl px-5 lg:px-8">
+      <p class="text-[11px] font-extrabold uppercase tracking-[.2em] text-primary-300">Japanese language courses</p>
+      <h1 class="mt-3 text-4xl font-black tracking-tight text-white font-display sm:text-5xl">Khóa học tiếng Nhật</h1>
+      <nav class="mt-6 flex items-center gap-2 text-xs font-semibold text-white/65" aria-label="Breadcrumb">
+        <a href="/" class="transition hover:text-white">Trang chủ</a>
+        <i class="bi bi-chevron-right text-[10px]"></i>
+        <span class="text-white">Khóa học tiếng Nhật</span>
+      </nav>
     </div>
   </section>
 
@@ -172,134 +154,6 @@ include 'includes/header.php';
 
       </div>
 
-      <!-- Các khóa học ngắn hạn -->
-      <div class="mt-20 pt-16 border-t border-slate-200 relative z-10">
-        <div class="text-center mb-12">
-          <h3 class="text-2xl font-bold text-midnight font-display mb-3">Các Chuyên Đề Ngắn Hạn</h3>
-          <p class="text-muted">Dành cho các bạn đã có nền tảng tiếng Nhật, cần chuẩn bị kỹ năng đặc thù.</p>
-        </div>
-        
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <!-- Short Course 1 -->
-          <div class="bg-white rounded-2xl p-6 border border-slate-200 hover:border-sky-300 hover:shadow-soft transition-all group">
-            <div class="w-10 h-10 rounded-xl bg-sky-50 text-sky-500 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-              <i class="bi bi-person-badge text-xl"></i>
-            </div>
-            <h4 class="font-bold text-midnight mb-2 line-clamp-2 min-h-[48px]">Luyện phỏng vấn trường Senmon</h4>
-            <div class="text-sky-600 font-black mb-3">1.500.000 VNĐ</div>
-            <p class="text-sm text-muted mb-4 line-clamp-2">Kỹ năng trả lời tự tin, đúng trọng tâm ngành học.</p>
-            <a href="/contact" class="text-sm font-bold text-sky-500 hover:text-sky-600 flex items-center gap-1">Đăng ký <i class="bi bi-arrow-right"></i></a>
-          </div>
-
-          <!-- Short Course 2 -->
-          <div class="bg-white rounded-2xl p-6 border border-slate-200 hover:border-sage-300 hover:shadow-soft transition-all group">
-            <div class="w-10 h-10 rounded-xl bg-sage-50 text-sage-500 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-              <i class="bi bi-bank text-xl"></i>
-            </div>
-            <h4 class="font-bold text-midnight mb-2 line-clamp-2 min-h-[48px]">Luyện phỏng vấn Đại học (Dai)</h4>
-            <div class="text-sage-600 font-black mb-3">2.000.000 VNĐ</div>
-            <p class="text-sm text-muted mb-4 line-clamp-2">Luyện tập mock-interview với các câu hỏi học thuật khó.</p>
-            <a href="/contact" class="text-sm font-bold text-sage-500 hover:text-sage-600 flex items-center gap-1">Đăng ký <i class="bi bi-arrow-right"></i></a>
-          </div>
-
-          <!-- Short Course 3 -->
-          <div class="bg-white rounded-2xl p-6 border border-slate-200 hover:border-sakura-300 hover:shadow-soft transition-all group">
-            <div class="w-10 h-10 rounded-xl bg-sakura-50 text-sakura-500 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-              <i class="bi bi-pencil-square text-xl"></i>
-            </div>
-            <h4 class="font-bold text-midnight mb-2 line-clamp-2 min-h-[48px]">Cách viết Lý do du học & Entry Sheet</h4>
-            <div class="text-sakura-600 font-black mb-3">1.000.000 VNĐ</div>
-            <p class="text-sm text-muted mb-4 line-clamp-2">Hướng dẫn viết hồ sơ và lý do du học thuyết phục.</p>
-            <a href="/contact" class="text-sm font-bold text-sakura-500 hover:text-sakura-600 flex items-center gap-1">Đăng ký <i class="bi bi-arrow-right"></i></a>
-          </div>
-
-          <!-- Short Course 4 -->
-          <div class="bg-white rounded-2xl p-6 border border-slate-200 hover:border-amber-300 hover:shadow-soft transition-all group">
-            <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-500 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-              <i class="bi bi-briefcase text-xl"></i>
-            </div>
-            <h4 class="font-bold text-midnight mb-2 line-clamp-2 min-h-[48px]">Phỏng vấn xin việc (Arubaito)</h4>
-            <div class="text-amber-600 font-black mb-3">1.000.000 VNĐ</div>
-            <p class="text-sm text-muted mb-4 line-clamp-2">Cách gọi điện thoại, chuẩn bị CV và phỏng vấn làm thêm.</p>
-            <a href="/contact" class="text-sm font-bold text-amber-500 hover:text-amber-600 flex items-center gap-1">Đăng ký <i class="bi bi-arrow-right"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Đội ngũ giáo viên (Giả định) -->
-  <section class="py-24 bg-white relative overflow-hidden">
-    <div class="container mx-auto px-6 lg:px-12 relative z-10">
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-        <div class="max-w-2xl">
-          <h2 class="text-3xl sm:text-4xl font-black text-midnight font-display mb-4">Đội ngũ Sensei Tâm huyết</h2>
-          <p class="text-muted text-lg">Giáo viên tại Bright Education đều có chứng chỉ N2/N1 và kỹ năng sư phạm xuất sắc.</p>
-        </div>
-      </div>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Sensei 1 -->
-        <div class="group relative rounded-3xl overflow-hidden aspect-[3/4]">
-          <div class="absolute inset-0 bg-slate-200">
-            <!-- Placeholder for image, use abstract shape for now -->
-            <div class="w-full h-full bg-sage-100 flex items-center justify-center">
-              <i class="bi bi-person-fill text-sage-300 text-6xl"></i>
-            </div>
-          </div>
-          <div class="absolute inset-0 bg-gradient-to-t from-midnight/90 via-midnight/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
-          <div class="absolute bottom-0 left-0 w-full p-6 translate-y-4 group-hover:translate-y-0 transition-transform">
-            <div class="bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-white text-xs inline-block mb-3 border border-white/20">Trưởng khoa Tiếng Nhật</div>
-            <h4 class="text-xl font-bold text-white mb-1">Cô Nguyễn Minh Anh</h4>
-            <p class="text-sage-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity delay-100">JLPT N1 - 5 năm kinh nghiệm giảng dạy</p>
-          </div>
-        </div>
-
-        <!-- Sensei 2 -->
-        <div class="group relative rounded-3xl overflow-hidden aspect-[3/4]">
-          <div class="absolute inset-0 bg-slate-200">
-            <div class="w-full h-full bg-sky-100 flex items-center justify-center">
-              <i class="bi bi-person-fill text-sky-300 text-6xl"></i>
-            </div>
-          </div>
-          <div class="absolute inset-0 bg-gradient-to-t from-midnight/90 via-midnight/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
-          <div class="absolute bottom-0 left-0 w-full p-6 translate-y-4 group-hover:translate-y-0 transition-transform">
-            <div class="bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-white text-xs inline-block mb-3 border border-white/20">Giáo viên Bản xứ</div>
-            <h4 class="text-xl font-bold text-white mb-1">Thầy Tanaka Sho</h4>
-            <p class="text-sky-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity delay-100">Chuyên luyện giao tiếp & Phỏng vấn</p>
-          </div>
-        </div>
-
-        <!-- Sensei 3 -->
-        <div class="group relative rounded-3xl overflow-hidden aspect-[3/4]">
-          <div class="absolute inset-0 bg-slate-200">
-            <div class="w-full h-full bg-sakura-100 flex items-center justify-center">
-              <i class="bi bi-person-fill text-sakura-300 text-6xl"></i>
-            </div>
-          </div>
-          <div class="absolute inset-0 bg-gradient-to-t from-midnight/90 via-midnight/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
-          <div class="absolute bottom-0 left-0 w-full p-6 translate-y-4 group-hover:translate-y-0 transition-transform">
-            <div class="bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-white text-xs inline-block mb-3 border border-white/20">Giáo viên Tiếng Nhật</div>
-            <h4 class="text-xl font-bold text-white mb-1">Cô Trần Thu Hà</h4>
-            <p class="text-sakura-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity delay-100">JLPT N2 - Chuyên gia luyện thi chữ Hán</p>
-          </div>
-        </div>
-
-        <!-- Sensei 4 -->
-        <div class="group relative rounded-3xl overflow-hidden aspect-[3/4]">
-          <div class="absolute inset-0 bg-slate-200">
-            <div class="w-full h-full bg-amber-100 flex items-center justify-center">
-              <i class="bi bi-person-fill text-amber-300 text-6xl"></i>
-            </div>
-          </div>
-          <div class="absolute inset-0 bg-gradient-to-t from-midnight/90 via-midnight/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
-          <div class="absolute bottom-0 left-0 w-full p-6 translate-y-4 group-hover:translate-y-0 transition-transform">
-            <div class="bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-white text-xs inline-block mb-3 border border-white/20">Giáo viên Tiếng Nhật</div>
-            <h4 class="text-xl font-bold text-white mb-1">Thầy Lê Hoàng</h4>
-            <p class="text-amber-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity delay-100">JLPT N2 - Năng động, truyền cảm hứng</p>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 

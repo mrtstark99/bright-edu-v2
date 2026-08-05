@@ -2,7 +2,7 @@
 /**
  * Q&A Page - Optimized Threads Style with Popup Post Creator & Details View Focus
  */
-$page_title = 'Hỏi đáp - Cộng đồng Bright Education';
+$page_title = 'Góc chia sẻ kiến thức du học - Bright Education';
 require_once 'includes/header.php';
 
 $is_logged_in = isLoggedIn();
@@ -12,54 +12,160 @@ $is_admin = $is_logged_in && (isAdmin() || isEditor());
 
 <!-- Premium Minimalist Threads Style CSS -->
 <style>
-    /* Thread connection line perfectly centered with the avatars */
-    .thread-line {
-        position: absolute;
-        top: 56px;
-        bottom: 24px;
-        left: 38px;
-        width: 2px;
-        background-color: #f1f5f9;
-        border-radius: 99px;
-        z-index: 10;
-    }
+    /* Font is already set via Tailwind config (Inter / Quicksand) in header.php */
+
     .threads-card {
-        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        position: relative;
+        cursor: pointer;
     }
     .threads-card:hover {
-        border-color: #e2e8f0;
-        box-shadow: 0 10px 30px -10px rgba(13, 36, 62, 0.06);
+        transform: translateY(-2px);
+        box-shadow: 0 12px 32px -4px rgba(1, 53, 103, 0.08);
     }
-    .action-icon-btn {
-        color: #94a3b8;
-        transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-    .action-icon-btn:hover {
-        color: #0d243e;
-        transform: scale(1.1);
-    }
-    .action-icon-btn.liked {
-        color: #ef4444 !important;
-        animation: heartBeat 0.3s ease;
-    }
-    @keyframes heartBeat {
-        0% { transform: scale(1); }
-        35% { transform: scale(1.25); }
-        70% { transform: scale(0.9); }
-        100% { transform: scale(1); }
+    .threads-card.active {
+        border-color: #0d243e !important;
+        box-shadow: 0 12px 32px -4px rgba(1, 53, 103, 0.08) !important;
     }
     .tag-badge {
         transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .tag-badge:hover {
-        background-color: #0d243e;
-        color: #ffffff;
-        border-color: #0d243e;
+        background-color: #f1f5f9;
+        color: #0d243e;
+        transform: translateY(-1px);
     }
     .tag-badge.active {
-        background-color: #0d243e;
-        color: #ffffff;
-        border-color: #0d243e;
+        background: #0d243e !important;
+        color: #ffffff !important;
+        border-color: #0d243e !important;
+        box-shadow: 0 4px 12px rgba(13, 36, 62, 0.15) !important;
+    }
+
+    /* Instagram-style Left Sidebar Menu */
+    .insta-menu-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        align-self: flex-start;
+        padding: 8px 12px;
+        font-size: 13.5px;
+        font-weight: 600;
+        color: #475569;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        background: transparent;
+        cursor: pointer;
+        border: none;
+    }
+    .insta-menu-btn:hover {
+        color: #0f172a;
+        transform: translateX(4px);
+    }
+    .insta-menu-btn.active {
+        background-color: transparent !important;
+        color: #0d243e !important;
+        font-weight: 700 !important;
+        border-bottom: 2px solid #0d243e !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        padding-bottom: 4px !important;
+    }
+
+    /* Sticky details panel with custom scrollbar */
+    .details-panel-sticky {
+        position: sticky;
+        top: 90px;
+        max-height: calc(100vh - 110px);
+        overflow-y: auto;
+    }
+    .details-panel-sticky::-webkit-scrollbar {
+        width: 6px;
+    }
+    .details-panel-sticky::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    .details-panel-sticky::-webkit-scrollbar-thumb {
+        background-color: #cbd5e1;
+        border-radius: 99px;
+    }
+
+    /* Skeleton Loading Animations */
+    .skeleton-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 9999px;
+        background: #e2e8f0;
+    }
+    .skeleton-line {
+        height: 12px;
+        background: #e2e8f0;
+        border-radius: 4px;
+    }
+    .skeleton-line.short { width: 35%; }
+    .skeleton-line.medium { width: 65%; }
+    .skeleton-line.long { width: 100%; }
+    
+    .skeleton-card {
+        background: #ffffff;
+        border: 1px solid #f1f5f9;
+        border-radius: 1rem;
+        padding: 1.25rem;
+        display: flex;
+        gap: 1rem;
+        position: relative;
+        animation: pulse 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: .4; }
+    }
+
+    /* Social actions bar */
+    .social-action-btn {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: #64748b;
+        font-size: 13px;
+        font-weight: 600;
+        padding: 8px 15px;
+        border-radius: 99px;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .social-action-btn:hover {
+        background-color: #f1f5f9;
+        color: #0f172a;
+    }
+    .social-action-btn.liked {
+        color: #ef4444;
+    }
+    .social-action-btn.liked:hover {
+        background-color: #fef2f2;
+    }
+    .social-action-btn.comment-btn:hover {
+        color: #3b82f6;
+        background-color: #eff6ff;
+    }
+    .social-action-btn.share-btn:hover {
+        color: #10b981;
+        background-color: #ecfdf5;
+    }
+    .social-action-btn i {
+        font-size: 15px;
+        transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .social-action-btn:hover i {
+        transform: scale(1.15);
+    }
+    .social-action-btn.liked i {
+        animation: heartBeat 0.35s ease-in-out;
+    }
+
+    @keyframes heartBeat {
+        0% { transform: scale(1); }
+        35% { transform: scale(1.3); }
+        70% { transform: scale(0.85); }
+        100% { transform: scale(1); }
     }
 
     /* Gradient Background Presets */
@@ -84,93 +190,172 @@ $is_admin = $is_logged_in && (isAdmin() || isEditor());
 </style>
 
 <main class="pt-20 bg-slate-50 min-h-screen">
-    <section class="max-w-6xl mx-auto px-5 lg:px-8 mt-12 mb-20">
-        
-        <div class="grid grid-cols-1 md:grid-cols-[240px_1fr] gap-8 items-start">
-            
-            <!-- Left Sidebar: Category tags list -->
-            <aside class="sticky top-28 bg-white p-6 rounded-[2rem] border border-slate-100 shadow-soft hidden md:block">
-                <div class="flex items-center gap-2 mb-4 pb-3 border-b border-slate-100">
-                    <div class="w-2.5 h-2.5 rounded-full bg-orange-500 animate-pulse"></div>
-                    <h3 class="text-[11px] font-black uppercase tracking-wider text-slate-400">Chủ đề thảo luận</h3>
-                </div>
-                <div class="flex flex-col gap-1.5" id="sidebar_tags_list">
-                    <button class="tag-badge text-left px-3.5 py-2.5 rounded-xl text-[13.5px] font-bold text-slate-600 bg-slate-50 hover:bg-slate-100 border border-transparent transition-all active active-all" data-tag="">
-                        <i class="bi bi-grid mr-2 text-xs text-slate-400"></i> Tất cả chủ đề
-                    </button>
-                    <button class="tag-badge text-left px-3.5 py-2.5 rounded-xl text-[13.5px] font-bold text-slate-600 bg-white hover:bg-slate-50 border border-slate-100 transition-all" data-tag="#tuyensinh">#tuyensinh</button>
-                    <button class="tag-badge text-left px-3.5 py-2.5 rounded-xl text-[13.5px] font-bold text-slate-600 bg-white hover:bg-slate-50 border border-slate-100 transition-all" data-tag="#hocphi">#hocphi</button>
-                    <button class="tag-badge text-left px-3.5 py-2.5 rounded-xl text-[13.5px] font-bold text-slate-600 bg-white hover:bg-slate-50 border border-slate-100 transition-all" data-tag="#visanhat">#visanhat</button>
-                    <button class="tag-badge text-left px-3.5 py-2.5 rounded-xl text-[13.5px] font-bold text-slate-600 bg-white hover:bg-slate-50 border border-slate-100 transition-all" data-tag="#vieclam">#vieclam</button>
-                    <button class="tag-badge text-left px-3.5 py-2.5 rounded-xl text-[13.5px] font-bold text-slate-600 bg-white hover:bg-slate-50 border border-slate-100 transition-all" data-tag="#nhatngu">#nhatngu</button>
-                    <button class="tag-badge text-left px-3.5 py-2.5 rounded-xl text-[13.5px] font-bold text-slate-600 bg-white hover:bg-slate-50 border border-slate-100 transition-all" data-tag="#cuocsong">#cuocsong</button>
-                </div>
-            </aside>
-
-            <!-- Right Feed: Content area -->
-            <div class="max-w-[620px] w-full mx-auto md:mx-0 flex flex-col gap-6">
-                
-                <!-- Title & tag list for mobile -->
-                <div class="md:hidden">
-                    <h2 class="text-xl font-black text-primary font-display mb-3">Hỏi đáp Cộng đồng</h2>
-                    <div class="flex gap-2 overflow-x-auto pb-3 select-none scrollbar-hide" id="mobile_tags_list">
-                        <button class="tag-badge shrink-0 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-600 bg-white border border-slate-200 active active-all" data-tag="">Tất cả</button>
-                        <button class="tag-badge shrink-0 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-600 bg-white border border-slate-200" data-tag="#tuyensinh">#tuyensinh</button>
-                        <button class="tag-badge shrink-0 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-600 bg-white border border-slate-200" data-tag="#hocphi">#hocphi</button>
-                        <button class="tag-badge shrink-0 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-600 bg-white border border-slate-200" data-tag="#visanhat">#visanhat</button>
-                        <button class="tag-badge shrink-0 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-600 bg-white border border-slate-200" data-tag="#vieclam">#vieclam</button>
-                        <button class="tag-badge shrink-0 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-600 bg-white border border-slate-200" data-tag="#nhatngu">#nhatngu</button>
-                        <button class="tag-badge shrink-0 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-600 bg-white border border-slate-200" data-tag="#cuocsong">#cuocsong</button>
-                    </div>
-                </div>
-
-                <!-- One post creation trigger button -->
-                <div class="bg-white p-4.5 rounded-[1.5rem] border border-slate-100 shadow-soft">
-                    <div class="flex items-center gap-4">
-                        <div class="w-10 h-10 rounded-full bg-slate-100 flex-shrink-0 flex items-center justify-center overflow-hidden border border-slate-200 shadow-xs">
-                            <i class="bi bi-person-fill text-slate-400 text-xl"></i>
-                        </div>
-                        <?php if ($is_logged_in): ?>
-                        <button id="btn_open_post_modal" class="flex-1 bg-slate-50 hover:bg-slate-100/75 border border-slate-200 text-slate-500 rounded-full px-5 py-3 text-left text-xs font-bold flex items-center justify-between transition-colors shadow-xs">
-                            <span>Bạn có thắc mắc gì về du học Nhật Bản? Đăng bài ngay...</span>
-                            <i class="bi bi-pencil-square text-slate-400 text-base"></i>
-                        </button>
-                        <?php else: ?>
-                        <a href="/login?redirect=/qa" class="flex-1 bg-slate-50 hover:bg-slate-100/75 border border-slate-200 text-slate-500 rounded-full px-5 py-3 text-left text-xs font-bold flex items-center justify-between transition-colors shadow-xs">
-                            <span>Đăng nhập để đặt câu hỏi thảo luận...</span>
-                            <i class="bi bi-box-arrow-in-right text-slate-400 text-base"></i>
-                        </a>
-                        <?php endif; ?>
-                    </div>
-                </div>
-
-                <!-- Back button to return to list -->
-                <div id="details_back_bar" class="hidden mb-2">
-                    <button id="btn_close_details" class="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-primary py-2 px-4 bg-white border border-slate-100 rounded-full shadow-soft transition-colors">
-                        <i class="bi bi-arrow-left"></i> Quay lại danh sách câu hỏi
-                    </button>
-                </div>
-
-                <!-- Feed Thread Cards -->
-                <div id="feed_container" class="flex flex-col gap-4">
-                    <!-- Loading Spinner -->
-                    <div id="feed_loading" class="text-center py-16 bg-white rounded-[2rem] border border-slate-100 shadow-soft">
-                        <i class="bi bi-arrow-repeat text-3xl text-primary/30 animate-spin inline-block"></i>
-                        <p class="text-slate-400 mt-3 text-xs font-semibold">Đang tải các thảo luận...</p>
-                    </div>
-                </div>
-
-            </div>
+    <!-- Fixed Left Sidebar (Instagram Style Menu) - hugging left viewport margin -->
+    <aside class="fixed left-6 top-28 bottom-0 w-[200px] z-30 pt-8 hidden min-[1600px]:flex flex-col gap-6">
+        <div>
+            <h2 class="text-xs font-black uppercase tracking-wider text-slate-400 mb-4 px-4 font-display">Danh mục chủ đề</h2>
+            <nav class="flex flex-col gap-1">
+                <button class="tag-badge insta-menu-btn active active-all" data-tag="">
+                    <i class="bi bi-grid text-lg"></i>
+                    <span>Tất cả chủ đề</span>
+                </button>
+                <button class="tag-badge insta-menu-btn" data-tag="#tuyensinh">
+                    <i class="bi bi-mortarboard text-lg text-orange-500"></i>
+                    <span>#tuyensinh</span>
+                </button>
+                <button class="tag-badge insta-menu-btn" data-tag="#hocphi">
+                    <i class="bi bi-wallet2 text-lg text-emerald-500"></i>
+                    <span>#hocphi</span>
+                </button>
+                <button class="tag-badge insta-menu-btn" data-tag="#visanhat">
+                    <i class="bi bi-passport text-lg text-blue-550"></i>
+                    <span>#visanhat</span>
+                </button>
+                <button class="tag-badge insta-menu-btn" data-tag="#vieclam">
+                    <i class="bi bi-briefcase text-lg text-amber-500"></i>
+                    <span>#vieclam</span>
+                </button>
+                <button class="tag-badge insta-menu-btn" data-tag="#nhatngu">
+                    <i class="bi bi-translate text-lg text-indigo-500"></i>
+                    <span>#nhatngu</span>
+                </button>
+                <button class="tag-badge insta-menu-btn" data-tag="#cuocsong">
+                    <i class="bi bi-heart-pulse text-lg text-rose-500"></i>
+                    <span>#cuocsong</span>
+                </button>
+            </nav>
         </div>
+    </aside>
 
-    </section>
+    <!-- Main Content Section - Centered to match header navigation container -->
+    <div class="w-full">
+        <section class="max-w-7xl mx-auto px-5 sm:px-8 py-8 pb-12">
+            
+            <!-- Header Page Title -->
+            <div class="mb-8 pb-5 border-b border-slate-200/60">
+                <h1 class="text-2xl md:text-3xl font-bold text-slate-900 font-display tracking-tight">Hỏi đáp & Chia sẻ Kiến thức</h1>
+                <p class="text-xs md:text-sm text-slate-550 mt-1">Nơi thảo luận, trao đổi kinh nghiệm và chia sẻ kiến thức du học Nhật Bản.</p>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-6 lg:gap-8 items-start">
+                
+                <!-- Middle Feed Column (List of posts) -->
+                <div id="feed_column" class="w-full md:w-[400px] lg:w-[420px] shrink-0 flex flex-col gap-5">
+                    
+                    <!-- Mobile top tags filter - Hidden on Desktop -->
+                    <div class="min-[1600px]:hidden">
+                        <div class="flex gap-1.5 overflow-x-auto pb-3 scrollbar-hide select-none">
+                            <button class="tag-badge px-3.5 py-2 shrink-0 rounded-full text-xs font-bold bg-white text-slate-650 border border-slate-200 hover:bg-slate-50 active active-all transition-all" data-tag="">
+                                Tất cả
+                            </button>
+                            <button class="tag-badge px-3.5 py-2 shrink-0 rounded-full text-xs font-bold bg-white text-slate-650 border border-slate-200 hover:bg-slate-50 transition-all" data-tag="#tuyensinh">
+                                #tuyensinh
+                            </button>
+                            <button class="tag-badge px-3.5 py-2 shrink-0 rounded-full text-xs font-bold bg-white text-slate-650 border border-slate-200 hover:bg-slate-50 transition-all" data-tag="#hocphi">
+                                #hocphi
+                            </button>
+                            <button class="tag-badge px-3.5 py-2 shrink-0 rounded-full text-xs font-bold bg-white text-slate-650 border border-slate-200 hover:bg-slate-50 transition-all" data-tag="#visanhat">
+                                #visanhat
+                            </button>
+                            <button class="tag-badge px-3.5 py-2 shrink-0 rounded-full text-xs font-bold bg-white text-slate-650 border border-slate-200 hover:bg-slate-50 transition-all" data-tag="#vieclam">
+                                #vieclam
+                            </button>
+                            <button class="tag-badge px-3.5 py-2 shrink-0 rounded-full text-xs font-bold bg-white text-slate-650 border border-slate-200 hover:bg-slate-50 transition-all" data-tag="#nhatngu">
+                                #nhatngu
+                            </button>
+                            <button class="tag-badge px-3.5 py-2 shrink-0 rounded-full text-xs font-bold bg-white text-slate-650 border border-slate-200 hover:bg-slate-50 transition-all" data-tag="#cuocsong">
+                                #cuocsong
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Login invitation for non-logged-in users -->
+                    <?php if (!$is_logged_in): ?>
+                    <div class="bg-white p-6 border border-slate-100/80 rounded-2xl shadow-soft text-center">
+                        <div class="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center mx-auto mb-3">
+                            <i class="bi bi-people text-primary text-base"></i>
+                        </div>
+                        <h4 class="font-bold text-sm text-slate-900 mb-1 font-display">Tham gia thảo luận</h4>
+                        <p class="text-xs text-slate-555 leading-relaxed mb-4">Đăng nhập để đặt câu hỏi và phản hồi chia sẻ cùng Bright Education.</p>
+                        <div class="flex gap-2 justify-center">
+                            <a href="/login?redirect=/qa" class="px-5 py-2.5 bg-primary text-white rounded-full text-xs font-bold hover:bg-slate-800 transition-all shadow-sm">
+                                Đăng nhập
+                            </a>
+                            <a href="/register?redirect=/qa" class="px-5 py-2.5 border border-slate-200 text-slate-650 rounded-full text-xs font-bold hover:bg-slate-50 transition-all">
+                                Đăng ký
+                            </a>
+                        </div>
+                    </div>
+                    <?php endif; ?>
+
+                    <!-- One post creation trigger button (Only for Admin/Editor) -->
+                    <?php if ($is_admin): ?>
+                    <div class="bg-white p-5 border border-slate-100/80 rounded-2xl shadow-soft">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-primary text-white font-extrabold flex items-center justify-center border border-white uppercase text-sm select-none flex-shrink-0 shadow-xs">
+                                <span><?= mb_substr($current_user_name, 0, 1, 'UTF-8') ?></span>
+                            </div>
+                            <button id="btn_open_post_modal" class="flex-1 bg-slate-50 hover:bg-slate-100/75 text-slate-500 rounded-full px-5 py-3 text-left text-[13px] font-medium flex items-center justify-between transition-all duration-200 focus:outline-none">
+                                <span>Đăng bài chia sẻ kiến thức mới...</span>
+                                <i class="bi bi-pencil-square text-slate-400 text-base"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="flex items-center justify-between mt-4 pt-3 border-t border-slate-100">
+                            <button onclick="document.getElementById('btn_open_post_modal').click(); document.getElementById('btn_trigger_file').click();" class="flex items-center gap-2 px-3 py-1.5 hover:bg-slate-50 rounded-xl transition-colors text-xs font-semibold text-slate-500">
+                                <i class="bi bi-image text-emerald-550 text-base"></i>
+                                <span>Đính kèm ảnh</span>
+                            </button>
+                            <button onclick="document.getElementById('btn_open_post_modal').click(); document.getElementById('post_tag').focus();" class="flex items-center gap-2 px-3 py-1.5 hover:bg-slate-50 rounded-xl transition-colors text-xs font-semibold text-slate-500">
+                                <i class="bi bi-tags text-orange-550 text-base"></i>
+                                <span>Chọn chủ đề</span>
+                            </button>
+                        </div>
+                    </div>
+                    <?php endif; ?>
+
+                    <!-- Feed Cards -->
+                    <div id="feed_container" class="flex flex-col gap-4">
+                        <!-- Loading Spinner -->
+                        <div id="feed_loading" class="text-center py-16 bg-white rounded-2xl border border-slate-100/80 shadow-soft">
+                            <i class="bi bi-arrow-repeat text-3xl text-primary/30 animate-spin inline-block"></i>
+                            <p class="text-slate-400 mt-3 text-xs font-semibold">Đang tải danh sách bài viết...</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right Details Column (Detailed Content of selected post) -->
+                <div id="details_column" class="details-panel-sticky flex-1 w-full hidden md:block">
+                    <!-- Back button to return to list (Visible on mobile/tablet only when viewing details) -->
+                    <div id="details_back_bar" class="hidden mb-4">
+                        <button id="btn_close_details" class="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-primary py-2.5 px-4.5 bg-white border border-slate-200 rounded-full shadow-soft transition-colors">
+                            <i class="bi bi-arrow-left"></i> Quay lại danh sách bài viết
+                        </button>
+                    </div>
+
+                    <!-- Single Post Detailed View Container -->
+                    <div id="details_container" class="w-full">
+                         <!-- Empty state / Selected post details -->
+                         <div class="bg-white rounded-2xl border border-slate-100/80 shadow-soft p-8 flex flex-col items-center justify-center text-center py-24 text-slate-400 select-none">
+                             <div class="w-16 h-16 rounded-full bg-slate-50 flex items-center justify-center mb-4">
+                                 <i class="bi bi-chat-left-text text-2xl text-slate-350"></i>
+                             </div>
+                             <p class="text-xs font-semibold text-slate-500">Chọn một bài viết ở danh sách bên trái để xem nội dung chi tiết và bình luận.</p>
+                         </div>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+    </div>
 </main>
 
 <!-- Popup Modal for Creating a Question -->
 <?php if ($is_logged_in): ?>
 <div id="post_modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden">
     <!-- Overlay Backdrop -->
-    <div id="post_modal_backdrop" class="absolute inset-0 bg-black/40 backdrop-blur-xs transition-opacity duration-300"></div>
+    <div id="post_modal_backdrop" class="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300"></div>
     
     <!-- Modal Box -->
     <div id="post_modal_card" class="bg-white w-full max-w-[540px] rounded-[2rem] p-6 shadow-hard relative z-10 mx-4 transform scale-95 opacity-0 transition-all duration-300">
@@ -179,19 +364,19 @@ $is_admin = $is_logged_in && (isAdmin() || isEditor());
             <i class="bi bi-x-lg text-xs"></i>
         </button>
 
-        <h3 class="text-base font-black text-slate-900 font-display mb-4 pb-3 border-b border-slate-100">Đặt câu hỏi cộng đồng</h3>
+        <h3 class="text-base font-black text-slate-900 font-display mb-4 pb-3 border-b border-slate-100">Chia sẻ kiến thức du học</h3>
         
         <div class="flex gap-4">
             <!-- User Avatar -->
-            <div class="w-12 h-12 rounded-full bg-slate-100 flex-shrink-0 flex items-center justify-center overflow-hidden border border-slate-200 shadow-xs">
-                <i class="bi bi-person-fill text-slate-400 text-2xl"></i>
+            <div class="w-12 h-12 rounded-full bg-primary-600 text-white font-extrabold flex items-center justify-center shadow-xs border border-white uppercase text-base select-none flex-shrink-0">
+                <span><?= mb_substr($current_user_name, 0, 1, 'UTF-8') ?></span>
             </div>
             <div class="flex-1">
                 <div class="font-bold text-[14px] text-slate-900 mb-1"><?= htmlspecialchars($current_user_name) ?></div>
                 
                 <!-- Background wrapper preview -->
                 <div id="editor_bg_wrapper" class="rounded-2xl transition-all duration-350 p-0">
-                    <textarea id="post_content" rows="4" placeholder="Bạn đang thắc mắc điều gì về du học Nhật Bản?..." class="w-full bg-transparent text-[15px] placeholder-slate-400 focus:outline-none resize-none py-2 px-1 leading-relaxed transition-all duration-300"></textarea>
+                    <textarea id="post_content" rows="4" placeholder="Viết nội dung chia sẻ kiến thức du học Nhật Bản..." class="w-full bg-transparent text-[15px] placeholder-slate-400 focus:outline-none resize-none py-2 px-1 leading-relaxed transition-all duration-300"></textarea>
                 </div>
                 
                 <!-- Colors Preset Panel -->
@@ -232,7 +417,7 @@ $is_admin = $is_logged_in && (isAdmin() || isEditor());
                             <option value="#cuocsong">#cuocsong</option>
                         </select>
                     </div>
-                    <button id="btn_post_question" class="bg-primary text-white font-bold text-xs px-6 py-2.5 rounded-full hover:bg-slate-800 active:scale-95 transition-all shadow-sm">Đăng câu hỏi</button>
+                    <button id="btn_post_question" class="bg-primary text-white font-bold text-xs px-6 py-2.5 rounded-full hover:bg-slate-800 active:scale-95 transition-all shadow-sm">Đăng bài viết</button>
                 </div>
             </div>
         </div>
@@ -280,7 +465,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const qidParam = urlParams.get('qid');
     if (qidParam) {
         viewingQuestionId = parseInt(qidParam);
-        detailsBackBar.classList.remove('hidden');
     }
 
     // Modal popup triggers
@@ -306,15 +490,114 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (btnClosePostModal) btnClosePostModal.addEventListener('click', hidePostModal);
     if (postModalBackdrop) postModalBackdrop.addEventListener('click', hidePostModal);
+    function getAvatarHtml(name, size = 12) {
+        if (!name) name = 'Thành viên';
+        const initial = name.trim().charAt(0).toUpperCase();
+        
+        let hash = 0;
+        for (let i = 0; i < name.length; i++) {
+            hash = name.charCodeAt(i) + ((hash << 5) - hash);
+        }
+        
+        const colors = [
+            { bg: '#eff6ff', text: '#1e40af' }, // blue
+            { bg: '#ecfdf5', text: '#065f46' }, // emerald
+            { bg: '#f5f3ff', text: '#5b21b6' }, // violet
+            { bg: '#fdf2f8', text: '#9d174d' }, // pink
+            { bg: '#fffbeb', text: '#92400e' }, // amber
+            { bg: '#f0fdfa', text: '#115e59' }, // teal
+            { bg: '#fff1f2', text: '#9f1239' }, // rose
+            { bg: '#f0f9ff', text: '#075985' }  // sky
+        ];
+        const color = colors[Math.abs(hash) % colors.length];
+        
+        let sizeClasses = 'w-12 h-12 text-base';
+        if (size === 10) sizeClasses = 'w-10 h-10 text-sm';
+        if (size === 9) sizeClasses = 'w-9 h-9 text-xs';
+        if (size === 8) sizeClasses = 'w-8 h-8 text-[10px]';
+        if (size === 12) sizeClasses = 'w-11 h-11 text-base'; // Align w-11 or similar
+
+        return `<div class="${sizeClasses} rounded-full font-bold flex items-center justify-center uppercase select-none flex-shrink-0" style="background-color: ${color.bg}; color: ${color.text}; border: 1px solid rgba(0,0,0,0.03);">
+            <span>${initial}</span>
+        </div>`;
+    }
+
+    // Skeleton screen builder
+    function getSkeletonHtml() {
+        let html = '';
+        for (let i = 0; i < 3; i++) {
+            html += `
+            <div class="skeleton-card bg-white border border-slate-100/80 rounded-2xl p-5">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="skeleton-avatar w-10 h-10 rounded-full"></div>
+                    <div class="flex-1 space-y-1.5">
+                        <div class="skeleton-line short" style="height:10px"></div>
+                        <div class="skeleton-line" style="width:25%;height:8px"></div>
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <div class="skeleton-line long"></div>
+                    <div class="skeleton-line medium"></div>
+                </div>
+                <div class="flex justify-between items-center pt-3.5 mt-4 border-t border-slate-100">
+                    <div class="flex gap-4">
+                        <div class="skeleton-line w-12"></div>
+                        <div class="skeleton-line w-12"></div>
+                    </div>
+                    <div class="skeleton-line w-20"></div>
+                </div>
+            </div>
+            `;
+        }
+        return html;
+    }
+
+    function showSkeletonLoader() {
+        feedContainer.innerHTML = getSkeletonHtml();
+    }
+
+    // Custom styled pill tag
+    function getStyledTagHtml(tag) {
+        if (!tag) return '';
+        const cleanTag = tag.trim().toLowerCase();
+        const mapping = {
+            '#tuyensinh': 'bg-orange-50/80 text-orange-600 border border-orange-100/50',
+            '#hocphi': 'bg-emerald-50/80 text-emerald-600 border border-emerald-100/50',
+            '#visanhat': 'bg-blue-50/80 text-blue-600 border border-blue-100/50',
+            '#vieclam': 'bg-amber-50/80 text-amber-600 border border-amber-100/50',
+            '#nhatngu': 'bg-indigo-50/80 text-indigo-600 border border-indigo-100/50',
+            '#cuocsong': 'bg-rose-50/80 text-rose-600 border border-rose-100/50'
+        };
+        const classes = mapping[cleanTag] || 'bg-slate-100 text-slate-600 border border-slate-200/50';
+        return `<span class="inline-block text-[11px] font-bold px-2.5 py-0.5 rounded-full ${classes} hover:scale-102 hover:shadow-xs transition-all cursor-pointer btn-tag-filter" data-tag="${tag}">${tag}</span>`;
+    }
+
+    // Get verified / Admin role badge
+    function getRoleBadge(name) {
+        if (!name) return '';
+        const cleanName = name.toLowerCase();
+        if (cleanName.includes('admin') || cleanName.includes('editor') || cleanName.includes('bright education')) {
+            return `<span class="inline-flex items-center gap-0.5 bg-primary text-[9px] font-black text-white px-2 py-0.5 rounded-full uppercase tracking-wider">
+                <i class="bi bi-patch-check-fill text-[9px]"></i> Admin
+            </span>`;
+        }
+        return '';
+    }
+
+    // Highlight active card helper
+    function highlightActiveCard(qid) {
+        document.querySelectorAll('#feed_container .threads-card').forEach(card => {
+            if (parseInt(card.dataset.id) === parseInt(qid)) {
+                card.classList.add('active');
+            } else {
+                card.classList.remove('active');
+            }
+        });
+    }
 
     // Load Feed
     function loadFeed() {
-        if (viewingQuestionId) {
-            loadSingleQuestion(viewingQuestionId);
-            return;
-        }
-
-        if (loadingIndicator) loadingIndicator.style.display = 'block';
+        showSkeletonLoader();
         
         let url = '/api/qa_action?action=get_feed';
         if (selectedTag) {
@@ -324,22 +607,43 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch(url)
         .then(res => res.json())
         .then(res => {
-            if (loadingIndicator) loadingIndicator.style.display = 'none';
             if (res.status === 'success') {
                 renderFeed(res.data);
+                
+                const isDesktop = window.innerWidth >= 768;
+                if (viewingQuestionId) {
+                    selectPost(viewingQuestionId, false);
+                } else if (isDesktop && res.data.length > 0) {
+                    // Auto select first post on desktop if none selected
+                    selectPost(res.data[0].id, false);
+                } else if (isDesktop) {
+                    showEmptyDetails();
+                }
             } else {
                 console.error('Lỗi khi tải dữ liệu');
             }
         })
         .catch(err => {
             console.error(err);
-            if (loadingIndicator) loadingIndicator.style.display = 'none';
+            feedContainer.innerHTML = `
+                <div class="text-center py-16 bg-white rounded-[2rem] border border-slate-100 shadow-soft">
+                    <p class="text-red-500 font-semibold">Đã xảy ra lỗi khi tải luồng thảo luận. Vui lòng thử lại sau.</p>
+                </div>
+            `;
         });
     }
 
     // Load Single Question Details
-    function loadSingleQuestion(qid) {
-        if (loadingIndicator) loadingIndicator.style.display = 'block';
+    function loadSingleQuestion(qid, showSkeleton = true) {
+        const detailsContainer = document.getElementById('details_container');
+        if (showSkeleton) {
+            detailsContainer.innerHTML = `
+                <div class="text-center py-20 bg-white">
+                    <i class="bi bi-arrow-repeat text-3xl text-primary/30 animate-spin inline-block"></i>
+                    <p class="text-slate-400 mt-3 text-xs font-semibold">Đang tải nội dung chi tiết...</p>
+                </div>
+            `;
+        }
         
         const params = new URLSearchParams();
         params.append('action', 'get_question');
@@ -351,49 +655,86 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(res => res.json())
         .then(res => {
-            if (loadingIndicator) loadingIndicator.style.display = 'none';
             if (res.status === 'success') {
                 renderSingleQuestion(res.data);
+                highlightActiveCard(qid);
             } else {
-                feedContainer.innerHTML = `
-                    <div class="text-center text-slate-400 py-16 bg-white rounded-[2rem] border border-slate-100 shadow-soft">
-                        <i class="bi bi-exclamation-triangle text-4xl text-slate-300 mb-3 block"></i>
-                        <span class="text-xs font-bold text-slate-500">Câu hỏi không tồn tại hoặc đã bị gỡ bỏ.</span>
+                detailsContainer.innerHTML = `
+                    <div class="text-center text-slate-400 py-16 bg-white select-none">
+                        <i class="bi bi-exclamation-triangle text-4xl text-slate-350 mb-3 block"></i>
+                        <span class="text-xs font-bold text-slate-500">Bài viết không tồn tại hoặc đã bị gỡ bỏ.</span>
                     </div>
                 `;
             }
         })
         .catch(err => {
             console.error(err);
-            if (loadingIndicator) loadingIndicator.style.display = 'none';
         });
     }
 
-    // Render single question
+    // Render single question into details panel
     function renderSingleQuestion(q) {
-        feedContainer.querySelectorAll('.threads-card').forEach(el => el.remove());
-        const card = createThreadCard(q, true); // true = Detailed view with comments/interactions
-        feedContainer.appendChild(card);
+        const detailsContainer = document.getElementById('details_container');
+        detailsContainer.innerHTML = '';
+        const card = createThreadCard(q, true); // true = Detailed view with comments
+        detailsContainer.appendChild(card);
+    }
+
+    function showEmptyDetails() {
+        const detailsContainer = document.getElementById('details_container');
+        detailsContainer.innerHTML = `
+             <div class="bg-white rounded-2xl border border-slate-100/80 shadow-soft p-8 flex flex-col items-center justify-center text-center py-24 text-slate-400 select-none">
+                 <div class="w-16 h-16 rounded-full bg-slate-50 flex items-center justify-center mb-4">
+                     <i class="bi bi-chat-left-text text-2xl text-slate-350"></i>
+                 </div>
+                 <p class="text-xs font-semibold text-slate-500">Chọn một bài viết ở danh sách bên trái để xem nội dung chi tiết và bình luận.</p>
+             </div>
+        `;
+    }
+
+    // Select Post controller (Handles desktop split vs mobile view)
+    function selectPost(qid, updateUrlState = true) {
+        viewingQuestionId = qid;
+        
+        if (updateUrlState) {
+            const newUrl = window.location.origin + window.location.pathname + '?qid=' + qid;
+            window.history.pushState({ qid: qid }, '', newUrl);
+        }
+
+        const isDesktop = window.innerWidth >= 768;
+        if (!isDesktop) {
+            // Hide feed and show details on mobile
+            document.getElementById('feed_column').classList.add('hidden');
+            const detailsCol = document.getElementById('details_column');
+            detailsCol.classList.remove('hidden');
+            detailsCol.classList.add('block');
+            detailsBackBar.classList.remove('hidden');
+        } else {
+            // Keep both visible on desktop
+            document.getElementById('feed_column').classList.remove('hidden');
+            document.getElementById('details_column').classList.remove('hidden');
+            detailsBackBar.classList.add('hidden');
+        }
+
+        loadSingleQuestion(qid);
     }
 
     // Render feed
     function renderFeed(questions) {
-        feedContainer.querySelectorAll('.threads-card').forEach(el => el.remove());
-        const emptyState = feedContainer.querySelector('.empty-state');
-        if (emptyState) emptyState.remove();
+        feedContainer.innerHTML = '';
         
         if (questions.length === 0) {
             feedContainer.insertAdjacentHTML('beforeend', `
-                <div class="empty-state text-center text-slate-400 py-16 bg-white rounded-[2rem] border border-slate-100 shadow-soft">
-                    <i class="bi bi-chat-left-text text-4xl text-slate-200 mb-3 block"></i>
-                    <span class="text-xs font-bold text-slate-500">Chưa có thắc mắc nào ở chủ đề này.</span>
+                <div class="empty-state text-center text-slate-400 py-16 bg-white rounded-2xl border border-slate-100 shadow-soft">
+                    <i class="bi bi-chat-left-text text-4xl text-slate-200 mb-3 block text-primary/10"></i>
+                    <span class="text-xs font-bold text-slate-500">Chưa có bài viết nào ở danh sách này.</span>
                 </div>
             `);
             return;
         }
 
         questions.forEach(q => {
-            const card = createThreadCard(q, false); // false = Feed view (No comments, no likes shown)
+            const card = createThreadCard(q, false); // false = Feed list view
             feedContainer.appendChild(card);
         });
     }
@@ -401,7 +742,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Generate HTML for card (Feeds view vs Detailed view logic)
     function createThreadCard(q, isDetailedView = false) {
         const div = document.createElement('div');
-        div.className = 'threads-card bg-white p-6 rounded-[2rem] border border-slate-100 shadow-soft relative';
+        div.className = isDetailedView 
+            ? 'detailed-card bg-white rounded-2xl border border-slate-100 shadow-soft p-6 relative mb-6' 
+            : 'threads-card bg-white rounded-2xl border border-slate-100/80 shadow-soft p-5 relative';
         div.dataset.id = q.id;
 
         const timeString = formatTime(q.created_at);
@@ -411,8 +754,8 @@ document.addEventListener('DOMContentLoaded', function() {
         let attachmentHtml = '';
         if (q.image && !q.bg_style) {
             attachmentHtml = `
-                <div class="mt-3 rounded-2xl overflow-hidden border border-slate-100 shadow-xs max-h-96">
-                    <img src="/uploads/${q.image}" class="w-full object-cover max-h-96" alt="Ảnh đính kèm">
+                <div class="mt-4 rounded-2xl overflow-hidden border border-slate-100 shadow-xs max-h-96 hover:shadow-md transition-shadow duration-300">
+                    <img src="/uploads/${q.image}" class="w-full object-cover max-h-96 transition-transform hover:scale-[1.005] duration-300" alt="Ảnh đính kèm">
                 </div>
             `;
         }
@@ -421,53 +764,56 @@ document.addEventListener('DOMContentLoaded', function() {
         let contentHtml = '';
         if (q.bg_style) {
             contentHtml = `
-                <div class="${q.bg_style} text-white font-extrabold text-base md:text-lg flex items-center justify-center text-center p-8 rounded-2xl min-h-[220px] shadow-sm leading-relaxed mb-1 whitespace-pre-wrap cursor-pointer btn-view-details">
+                <div class="${q.bg_style} text-white font-extrabold text-base md:text-lg flex items-center justify-center text-center p-8 rounded-2xl min-h-[220px] shadow-sm leading-relaxed mb-1 whitespace-pre-wrap transition-transform hover:scale-[1.005] duration-200">
                     <span>${escapeHtml(q.content)}</span>
                 </div>
             `;
         } else {
             contentHtml = `
-                <div class="text-[15px] text-slate-800 leading-relaxed mb-1 whitespace-pre-wrap cursor-pointer btn-view-details">${escapeHtml(q.content)}</div>
+                <div class="text-[15px] text-slate-800 leading-relaxed mb-1 whitespace-pre-wrap">${escapeHtml(q.content)}</div>
             `;
         }
 
         // Tag
         let tagHtml = '';
         if (q.tags) {
-            tagHtml = `<span class="inline-block text-xs font-bold text-orange-600 hover:underline mr-2 cursor-pointer btn-tag-filter" data-tag="${q.tags}">${q.tags}</span>`;
+            tagHtml = getStyledTagHtml(q.tags);
         }
 
-        // Footer Actions & Comments area (DIFFERENT between Feed view and Detailed View)
+        // Footer Actions & Comments area
         let footerHtml = '';
         if (isDetailedView) {
-            // Detailed View: Shows Likes count, Comments list, Like buttons, and comment input box
             let repliesHtml = '';
             if (hasReplies) {
                 repliesHtml = q.answers.map(ans => {
                     const isAdminReply = ans.user_role === 'admin' || ans.user_role === 'editor' || ans.author_name.includes('Admin');
+                    const replyAvatar = getAvatarHtml(ans.author_name, 9);
                     return `
                         <!-- Reply Item -->
-                        <div class="flex gap-4 mt-5 pt-4 border-t border-slate-50 relative" data-ans-id="${ans.id}">
-                            <div class="flex justify-center flex-shrink-0 w-12">
-                                <div class="w-9 h-9 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center overflow-hidden shadow-xs">
-                                    <i class="bi bi-person-fill text-slate-400 text-xs"></i>
-                                </div>
-                            </div>
-                            <div class="flex-1 min-w-0">
-                                <div class="flex items-center gap-2 mb-1">
-                                    <span class="font-bold text-[13.5px] text-slate-900">${escapeHtml(ans.author_name)}</span>
-                                    ${isAdminReply ? `<span class="bg-black text-[9px] font-black text-white px-2 py-0.5 rounded-full uppercase tracking-wider scale-90">Admin</span>` : ''}
-                                    <span class="text-[11px] text-slate-400 ml-auto">${formatTime(ans.created_at)}</span>
-                                </div>
-                                <div class="text-[14px] text-slate-700 leading-relaxed">${escapeHtml(ans.content)}</div>
-                                
-                                <div class="flex items-center gap-4 mt-2">
-                                    <button class="action-icon-btn btn-like-answer flex items-center gap-1.5 text-xs" data-id="${ans.id}">
-                                        <i class="bi bi-heart"></i>
-                                        <span class="font-bold text-[11px]">${ans.likes_count > 0 ? `Thích (${ans.likes_count})` : 'Thích'}</span>
-                                    </button>
-                                </div>
-                            </div>
+                        <div class="mt-5 pt-4 border-t border-slate-50 relative z-10" data-ans-id="${ans.id}">
+                             <!-- Top Row -->
+                             <div class="flex items-center gap-2.5 mb-2.5">
+                                 ${replyAvatar}
+                                 <div class="flex-1 min-w-0">
+                                     <div class="flex items-center gap-2 flex-wrap">
+                                         <span class="font-bold text-[13px] text-slate-900 leading-none">${escapeHtml(ans.author_name)}</span>
+                                         ${isAdminReply ? `<span class="bg-slate-900 text-[8.5px] font-black text-white px-2 py-0.5 rounded-full uppercase tracking-wider scale-90 flex items-center gap-0.5"><i class="bi bi-shield-check text-orange-400"></i> Admin</span>` : ''}
+                                     </div>
+                                     <span class="text-[10px] text-slate-400 font-medium mt-0.5 block">${formatTime(ans.created_at)}</span>
+                                 </div>
+                             </div>
+                             
+                             <!-- Content & Actions (Full width) -->
+                             <div class="w-full pl-1">
+                                 <div class="text-[13.5px] text-slate-700 leading-relaxed">${escapeHtml(ans.content)}</div>
+                                 
+                                 <div class="flex items-center gap-4 mt-2">
+                                     <button class="action-icon-btn btn-like-answer flex items-center gap-1.5 text-xs text-slate-400 hover:text-red-500 transition-colors" data-id="${ans.id}">
+                                         <i class="bi bi-heart"></i>
+                                         <span class="font-bold text-[11px]">${ans.likes_count > 0 ? `Thích (${ans.likes_count})` : 'Thích'}</span>
+                                     </button>
+                                 </div>
+                             </div>
                         </div>
                     `;
                 }).join('');
@@ -475,88 +821,82 @@ document.addEventListener('DOMContentLoaded', function() {
 
             footerHtml = `
                 <!-- Likes / Share buttons -->
-                <div class="flex items-center gap-5 mt-4 text-slate-500 border-b border-slate-50 pb-3">
-                    <button class="action-icon-btn btn-like-question flex items-center gap-1.5 text-sm" data-id="${q.id}">
-                        <i class="bi bi-heart"></i>
-                        <span class="text-[12px] font-bold q-like-count">${q.likes_count || 'Thích'}</span>
-                    </button>
-                    
-                    <button class="action-icon-btn btn-comment-focus flex items-center gap-1.5 text-sm">
-                        <i class="bi bi-chat"></i>
-                        <span class="text-[12px] font-bold">${q.answers ? q.answers.length : 0}</span>
-                    </button>
-                    
-                    <button class="action-icon-btn btn-share-post flex items-center text-sm" data-id="${q.id}">
-                        <i class="bi bi-share"></i>
-                    </button>
+                <div class="flex items-center justify-between mt-4 text-slate-500 border-b border-slate-50 pb-3">
+                     <div class="flex items-center gap-2">
+                         <button class="social-action-btn btn-like-question" data-id="${q.id}">
+                             <i class="bi bi-heart"></i>
+                             <span class="q-like-count">${q.likes_count || '0'} Thích</span>
+                         </button>
+                         
+                         <button class="social-action-btn comment-btn btn-comment-focus">
+                             <i class="bi bi-chat"></i>
+                             <span>${q.answers ? q.answers.length : 0} Phản hồi</span>
+                         </button>
+                     </div>
+                     
+                     <button class="social-action-btn share-btn btn-share-post" data-id="${q.id}" title="Chia sẻ liên kết">
+                         <i class="bi bi-share"></i>
+                         <span>Chia sẻ</span>
+                     </button>
                 </div>
 
                 <!-- Nested Replies -->
-                <div class="replies-list">
+                <div class="replies-list relative">
                     ${repliesHtml}
                 </div>
 
                 <!-- Inline Reply Input -->
                 ${isLoggedIn ? `
-                <div class="flex gap-4 mt-5 pt-4 border-t border-slate-100 relative z-20">
-                    <div class="flex justify-center flex-shrink-0 w-12">
-                        <div class="w-8 h-8 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center overflow-hidden shadow-xs">
-                            <i class="bi bi-person-fill text-slate-400 text-xs"></i>
-                        </div>
-                    </div>
+                <div class="flex items-center gap-3 mt-5 pt-4 border-t border-slate-100 relative z-20">
+                    ${getAvatarHtml(currentUserName, 9)}
                     <div class="flex-1 flex gap-2">
-                        <input type="text" class="ans_content flex-1 bg-slate-50 hover:bg-slate-100/75 focus:bg-white border border-slate-100 rounded-full px-4.5 py-2 text-[13px] placeholder-slate-400 focus:outline-none focus:border-slate-350 transition-all" placeholder="Viết phản hồi của bạn..." data-qid="${q.id}">
-                        <button class="btn-post-answer bg-primary text-white hover:bg-slate-800 rounded-full px-5 py-2 text-[11px] font-bold transition-all" data-qid="${q.id}">Gửi</button>
+                        <input type="text" class="ans_content flex-1 bg-slate-50 hover:bg-slate-100/75 focus:bg-white border border-slate-200/60 rounded-full px-4.5 py-2 text-[13px] placeholder-slate-400 focus:outline-none focus:border-slate-350 transition-all shadow-xs" placeholder="Viết phản hồi của bạn..." data-qid="${q.id}">
+                        <button class="btn-post-answer bg-primary text-white hover:bg-slate-800 rounded-full px-5 py-2 text-[11px] font-bold transition-all shadow-sm" data-qid="${q.id}">Gửi</button>
                     </div>
                 </div>
                 ` : `
-                <div class="text-center py-3 mt-4 bg-slate-50 rounded-2xl border border-slate-100">
-                    <a href="/login?redirect=/qa" class="text-xs font-bold text-slate-500 hover:text-black">Đăng nhập để bình luận cuộc thảo luận này</a>
+                <div class="text-center py-4 mt-5 bg-slate-50 rounded-2xl border border-slate-100">
+                    <span class="text-xs font-semibold text-slate-500">Bạn cần <a href="/login?redirect=/qa" class="text-primary hover:underline font-bold">đăng nhập</a> hoặc <a href="/register?redirect=/qa" class="text-primary hover:underline font-bold">tạo tài khoản</a> để bình luận bài viết.</span>
                 </div>
                 `}
             `;
         } else {
-            // Feed list view: Hide likes, comments count, replies. Only show single "Đọc thảo luận" button
+            const answersCount = q.answers ? q.answers.length : 0;
             footerHtml = `
-                <div class="flex justify-end items-center mt-4 pt-3 border-t border-slate-50">
-                    <button class="btn-view-details flex items-center gap-1 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-black font-bold text-[11.5px] px-4.5 py-2 rounded-full transition-colors">
-                        Đọc thảo luận <i class="bi bi-chevron-right text-[10px]"></i>
+                <div class="flex justify-between items-center mt-4 pt-3.5 border-t border-slate-100/60">
+                    <div class="flex items-center gap-4 text-xs font-bold text-slate-400 select-none">
+                        <span class="flex items-center gap-1.5 hover:text-red-500 transition-colors cursor-pointer"><i class="bi bi-heart"></i> ${q.likes_count || 0}</span>
+                        <span class="flex items-center gap-1.5 hover:text-primary transition-colors cursor-pointer"><i class="bi bi-chat"></i> ${answersCount}</span>
+                    </div>
+                    <button class="btn-view-details flex items-center gap-1 text-primary hover:text-primary-700 font-bold text-[12.5px] group transition-colors cursor-pointer">
+                        <span>Xem chi tiết</span>
+                        <i class="bi bi-arrow-right text-[13px] transition-transform group-hover:translate-x-1 duration-200"></i>
                     </button>
                 </div>
             `;
         }
 
         div.innerHTML = `
-            ${(isDetailedView && hasReplies) ? '<div class="thread-line"></div>' : ''}
-            
-            <div class="flex gap-4">
-                <!-- Left Avatar -->
-                <div class="flex flex-col items-center flex-shrink-0 w-12">
-                    <div class="w-12 h-12 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center overflow-hidden shadow-xs">
-                        <i class="bi bi-person-fill text-slate-400 text-2xl"></i>
-                    </div>
-                </div>
-                
-                <!-- Right Body -->
+            <!-- Top Row: Author Avatar, Name, Time, Tag -->
+            <div class="flex items-center gap-3 mb-3.5">
+                ${getAvatarHtml(q.author_name, 10)}
                 <div class="flex-1 min-w-0">
-                    <!-- Title & Time -->
-                    <div class="flex items-center justify-between mb-1.5">
-                        <span class="font-bold text-[14.5px] text-slate-900 hover:underline cursor-pointer btn-view-details">${escapeHtml(q.author_name)}</span>
-                        <div class="flex items-center gap-1">
-                            ${tagHtml}
-                            <span class="text-[12px] text-slate-400">${timeString}</span>
-                        </div>
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <span class="font-bold text-[14px] text-slate-900 leading-none">${escapeHtml(q.author_name)}</span>
+                        ${getRoleBadge(q.author_name)}
                     </div>
-                    
-                    <!-- Content -->
-                    ${contentHtml}
-                    
-                    <!-- Image -->
-                    ${attachmentHtml}
-                    
-                    <!-- Footer Block -->
-                    ${footerHtml}
+                    <span class="text-[11px] text-slate-400 font-medium mt-0.5 block">${timeString}</span>
                 </div>
+                <div class="flex-shrink-0">
+                    ${tagHtml}
+                </div>
+            </div>
+            
+            <!-- Content & Image & Footer (Full Width, No Indent) -->
+            <div class="w-full">
+                ${contentHtml}
+                ${attachmentHtml}
+                ${footerHtml}
             </div>
         `;
 
@@ -572,6 +912,10 @@ document.addEventListener('DOMContentLoaded', function() {
             editorBgWrapper.className = 'rounded-2xl transition-all duration-350 p-0';
             postContent.className = 'w-full bg-transparent text-[15px] placeholder-slate-400 focus:outline-none resize-none py-2 px-1 leading-relaxed transition-all duration-300';
             
+            // Toggle active ring styling
+            document.querySelectorAll('.btn-bg-preset').forEach(b => b.classList.remove('ring-2', 'ring-primary', 'ring-offset-1'));
+            this.classList.add('ring-2', 'ring-primary', 'ring-offset-1');
+
             if (bgClass) {
                 editorBgWrapper.classList.add(bgClass, 'p-6', 'min-h-[160px]', 'flex', 'items-center', 'justify-center', 'text-center');
                 postContent.classList.add('text-white', 'font-extrabold', 'text-base', 'md:text-lg', 'text-center', 'placeholder-white/60');
@@ -600,6 +944,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return date.toLocaleDateString('vi-VN', { day: 'numeric', month: 'short' });
     }
 
+    // Escape HTML string
     function escapeHtml(text) {
         if (!text) return '';
         const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
@@ -647,12 +992,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const tagValue = postTag ? postTag.value : '';
 
             if (!content) {
-                alert('Vui lòng nhập nội dung thắc mắc');
+                alert('Vui lòng nhập nội dung chia sẻ');
                 return;
             }
 
             btnPost.disabled = true;
-            btnPost.textContent = 'Đang đăng...';
+            btnPost.textContent = 'Đang chia sẻ...';
 
             const formData = new FormData();
             formData.append('action', 'post_question');
@@ -670,7 +1015,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(res => res.json())
             .then(res => {
                 btnPost.disabled = false;
-                btnPost.textContent = 'Đăng câu hỏi';
+                btnPost.textContent = 'Đăng bài viết';
                 if (res.status === 'success') {
                     postContent.value = '';
                     if (postTag) postTag.value = '';
@@ -680,7 +1025,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (btnRemoveImage) btnRemoveImage.click();
                     
                     hidePostModal(); // Hide modal
-                    loadFeed(); // Reload list
+                    
+                    // Reload feed, select the newly added post
+                    fetch('/api/qa_action?action=get_feed')
+                    .then(r => r.json())
+                    .then(feedRes => {
+                        if (feedRes.status === 'success') {
+                            renderFeed(feedRes.data);
+                            if (feedRes.data.length > 0) {
+                                selectPost(feedRes.data[0].id, true);
+                            }
+                        }
+                    });
                 } else {
                     alert(res.message);
                 }
@@ -688,7 +1044,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .catch(err => {
                 console.error(err);
                 btnPost.disabled = false;
-                btnPost.textContent = 'Đăng câu hỏi';
+                btnPost.textContent = 'Đăng bài viết';
             });
         });
     }
@@ -709,7 +1065,6 @@ document.addEventListener('DOMContentLoaded', function() {
             
             selectedTag = this.dataset.tag;
             viewingQuestionId = null;
-            detailsBackBar.classList.add('hidden');
             
             const cleanUrl = window.location.origin + window.location.pathname;
             window.history.pushState({}, '', cleanUrl);
@@ -718,126 +1073,148 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Close Details view
+    // Close Details view (Mobile only back trigger)
     if (btnCloseDetails) {
         btnCloseDetails.addEventListener('click', () => {
             viewingQuestionId = null;
+            
+            // Show feed, hide details on mobile
+            document.getElementById('feed_column').classList.remove('hidden');
+            document.getElementById('details_column').classList.add('hidden');
             detailsBackBar.classList.add('hidden');
             
             const cleanUrl = window.location.origin + window.location.pathname;
             window.history.pushState({}, '', cleanUrl);
-
-            loadFeed();
         });
     }
 
-    // Click Delegation inside feed area
+    // Selection Click delegation in feed area
     feedContainer.addEventListener('click', (e) => {
-        if (e.target.closest('.btn-comment-focus')) {
-            const card = e.target.closest('.threads-card');
-            const input = card.querySelector('.ans_content');
-            if (input) input.focus();
-        }
+        const card = e.target.closest('.threads-card');
+        if (!card) return;
 
-        if (e.target.closest('.btn-view-details')) {
-            const card = e.target.closest('.threads-card');
-            const qid = card.dataset.id;
-            viewingQuestionId = parseInt(qid);
-            detailsBackBar.classList.remove('hidden');
-
-            const newUrl = window.location.origin + window.location.pathname + '?qid=' + qid;
-            window.history.pushState({ qid: qid }, '', newUrl);
-            
-            loadFeed();
-        }
-
-        if (e.target.closest('.btn-tag-filter')) {
-            const tagBtn = e.target.closest('.btn-tag-filter');
-            const tag = tagBtn.dataset.tag;
-            
-            const matchedBadge = Array.from(document.querySelectorAll('.tag-badge')).find(b => b.dataset.tag === tag);
-            if (matchedBadge) {
-                matchedBadge.click();
-            } else {
-                selectedTag = tag;
-                loadFeed();
+        // Skip selection if clicked inside inline actions/tags
+        if (e.target.closest('.btn-tag-filter') || e.target.closest('.action-icon-btn') || e.target.closest('.social-action-btn') || e.target.closest('a')) {
+            // Handle tag click to filter
+            if (e.target.closest('.btn-tag-filter')) {
+                const tagBtn = e.target.closest('.btn-tag-filter');
+                const tag = tagBtn.dataset.tag;
+                
+                const matchedBadge = Array.from(document.querySelectorAll('.tag-badge')).find(b => b.dataset.tag === tag);
+                if (matchedBadge) {
+                    matchedBadge.click();
+                } else {
+                    selectedTag = tag;
+                    loadFeed();
+                }
             }
+            return;
         }
 
-        if (e.target.closest('.btn-share-post')) {
-            const btn = e.target.closest('.btn-share-post');
-            const qid = btn.dataset.id;
-            const shareUrl = window.location.origin + window.location.pathname + '?qid=' + qid;
-            
-            navigator.clipboard.writeText(shareUrl).then(() => {
-                const tooltip = document.createElement('div');
-                tooltip.className = 'fixed bottom-10 left-1/2 transform -translate-x-1/2 bg-primary text-white text-xs font-bold px-4 py-2.5 rounded-full shadow-lg z-50 animate-bounce';
-                tooltip.textContent = 'Đã sao chép liên kết câu hỏi này!';
-                document.body.appendChild(tooltip);
-                setTimeout(() => tooltip.remove(), 2500);
-            }).catch(err => {
-                alert('Không thể sao chép liên kết: ' + err);
-            });
+        const qid = card.dataset.id;
+        if (qid) {
+            selectPost(parseInt(qid), true);
         }
+    });
 
-        if (e.target.closest('.btn-like-question')) {
-            const btn = e.target.closest('.btn-like-question');
-            const qid = btn.dataset.id;
-            
-            const params = new URLSearchParams();
-            params.append('action', 'like_question');
-            params.append('question_id', qid);
+    // Event delegation inside details column
+    const detailsCol = document.getElementById('details_column');
+    if (detailsCol) {
+        detailsCol.addEventListener('click', (e) => {
+            if (e.target.closest('.btn-comment-focus')) {
+                const input = detailsCol.querySelector('.ans_content');
+                if (input) input.focus();
+            }
 
-            fetch('/api/qa_action', { method: 'POST', body: params })
-            .then(res => res.json())
-            .then(res => {
-                if (res.status === 'success') {
-                    const countEl = btn.querySelector('.q-like-count');
-                    if (countEl) {
-                        countEl.textContent = res.likes;
+            if (e.target.closest('.btn-share-post')) {
+                const btn = e.target.closest('.btn-share-post');
+                const qid = btn.dataset.id;
+                const shareUrl = window.location.origin + window.location.pathname + '?qid=' + qid;
+                
+                navigator.clipboard.writeText(shareUrl).then(() => {
+                    const tooltip = document.createElement('div');
+                    tooltip.className = 'fixed bottom-10 left-1/2 transform -translate-x-1/2 bg-primary text-white text-xs font-bold px-4 py-2.5 rounded-full shadow-lg z-50 animate-bounce';
+                    tooltip.textContent = 'Đã sao chép liên kết chia sẻ!';
+                    document.body.appendChild(tooltip);
+                    setTimeout(() => tooltip.remove(), 2500);
+                }).catch(err => {
+                    alert('Không thể sao chép liên kết: ' + err);
+                });
+            }
+
+            if (e.target.closest('.btn-like-question')) {
+                const btn = e.target.closest('.btn-like-question');
+                const qid = btn.dataset.id;
+                
+                const params = new URLSearchParams();
+                params.append('action', 'like_question');
+                params.append('question_id', qid);
+
+                fetch('/api/qa_action', { method: 'POST', body: params })
+                .then(res => res.json())
+                .then(res => {
+                    if (res.status === 'success') {
+                        // Refresh details view locally
+                        loadSingleQuestion(qid, false);
+                        // Refresh feed list counts in background
+                        syncFeedListSilent();
                     }
-                    btn.classList.add('liked');
-                    btn.querySelector('i').className = 'bi bi-heart-fill';
+                });
+            }
+
+            if (e.target.closest('.btn-like-answer')) {
+                const btn = e.target.closest('.btn-like-answer');
+                const ansId = btn.dataset.id;
+                
+                const params = new URLSearchParams();
+                params.append('action', 'like_answer');
+                params.append('answer_id', ansId);
+
+                fetch('/api/qa_action', { method: 'POST', body: params })
+                .then(res => res.json())
+                .then(res => {
+                    if (res.status === 'success') {
+                        if (viewingQuestionId) {
+                            loadSingleQuestion(viewingQuestionId, false);
+                        }
+                    }
+                });
+            }
+
+            if (e.target.closest('.btn-post-answer')) {
+                const btn = e.target.closest('.btn-post-answer');
+                const qid = btn.dataset.qid;
+                postAnswer(detailsCol, qid);
+            }
+        });
+
+        detailsCol.addEventListener('keypress', (e) => {
+            if (e.target.classList.contains('ans_content') && e.key === 'Enter') {
+                const qid = e.target.dataset.qid;
+                postAnswer(detailsCol, qid);
+            }
+        });
+    }
+
+    function syncFeedListSilent() {
+        let url = '/api/qa_action?action=get_feed';
+        if (selectedTag) {
+            url += '&tag=' + encodeURIComponent(selectedTag);
+        }
+        fetch(url)
+        .then(res => res.json())
+        .then(res => {
+            if (res.status === 'success') {
+                renderFeed(res.data);
+                if (viewingQuestionId) {
+                    highlightActiveCard(viewingQuestionId);
                 }
-            });
-        }
+            }
+        });
+    }
 
-        if (e.target.closest('.btn-like-answer')) {
-            const btn = e.target.closest('.btn-like-answer');
-            const ansId = btn.dataset.id;
-            
-            const params = new URLSearchParams();
-            params.append('action', 'like_answer');
-            params.append('answer_id', ansId);
-
-            fetch('/api/qa_action', { method: 'POST', body: params })
-            .then(res => res.json())
-            .then(res => {
-                if (res.status === 'success') {
-                    btn.innerHTML = `<i class="bi bi-heart-fill text-red-500"></i> <span class="font-bold text-[11px]">(${res.likes})</span>`;
-                    btn.classList.add('liked');
-                }
-            });
-        }
-
-        if (e.target.closest('.btn-post-answer')) {
-            const btn = e.target.closest('.btn-post-answer');
-            const qid = btn.dataset.qid;
-            const card = btn.closest('.threads-card');
-            postAnswer(card, qid);
-        }
-    });
-
-    feedContainer.addEventListener('keypress', (e) => {
-        if (e.target.classList.contains('ans_content') && e.key === 'Enter') {
-            const qid = e.target.dataset.qid;
-            const card = e.target.closest('.threads-card');
-            postAnswer(card, qid);
-        }
-    });
-
-    function postAnswer(card, qid) {
-        const inputContent = card.querySelector('.ans_content');
+    function postAnswer(container, qid) {
+        const inputContent = container.querySelector('.ans_content');
         if (!inputContent) return;
         
         const content = inputContent.value.trim();
@@ -856,7 +1233,10 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(res => {
             if (res.status === 'success') {
                 inputContent.value = '';
-                loadFeed();
+                // Refresh detailed content
+                loadSingleQuestion(qid, false);
+                // Sync feed count in background
+                syncFeedListSilent();
             } else {
                 alert(res.message);
             }
@@ -866,13 +1246,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // Single post view state
     window.addEventListener('popstate', (e) => {
         if (e.state && e.state.qid) {
-            viewingQuestionId = parseInt(e.state.qid);
-            detailsBackBar.classList.remove('hidden');
+            selectPost(parseInt(e.state.qid), false);
         } else {
             viewingQuestionId = null;
-            detailsBackBar.classList.add('hidden');
+            const isDesktop = window.innerWidth >= 768;
+            if (!isDesktop) {
+                document.getElementById('feed_column').classList.remove('hidden');
+                document.getElementById('details_column').classList.add('hidden');
+                detailsBackBar.classList.add('hidden');
+            } else {
+                loadFeed();
+            }
         }
-        loadFeed();
     });
 
     loadFeed();

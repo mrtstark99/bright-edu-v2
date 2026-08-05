@@ -58,7 +58,7 @@
           <ul class="space-y-4 text-sm text-primary-100">
             <li class="flex items-start gap-3">
               <i class="bi bi-geo-alt-fill text-white mt-0.5"></i>
-              <span><?php echo getSetting('site_address', '207 Quang Trung, Thành Đông, Hải Phòng'); ?></span>
+              <span><?php echo getSetting('site_address', 'Số 45 ngõ 207 Quang Trung, Phường Thành Đông, TP Hải Phòng, Việt Nam'); ?></span>
             </li>
             <li class="flex items-start gap-3">
               <i class="bi bi-telephone-fill text-white mt-1"></i>

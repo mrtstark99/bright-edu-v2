@@ -3,27 +3,24 @@ $page_title = 'Quy trình du học | Bright Education';
 include 'includes/header.php';
 ?>
 
-<main class="bg-slate-50 min-h-screen">
+<main class="pt-20 bg-slate-50 min-h-screen">
   <!-- Hero Section -->
-  <section class="relative bg-midnight pt-32 pb-40 overflow-hidden">
-    <!-- Geometric Background elements -->
-    <div class="absolute inset-0 bg-[radial-gradient(#ffffff15_1px,transparent_1px)] [background-size:20px_20px] opacity-30"></div>
-    <div class="absolute top-0 right-0 -translate-y-12 translate-x-1/3 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[120px] mix-blend-screen pointer-events-none"></div>
-    <div class="absolute bottom-0 left-0 translate-y-1/3 -translate-x-1/3 w-[600px] h-[600px] bg-sage-500/20 rounded-full blur-[100px] mix-blend-screen pointer-events-none"></div>
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 text-center reveal">
-      <span class="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-sage-300 text-xs font-bold tracking-widest uppercase mb-6 backdrop-blur-md">Roadmap</span>
-      <h1 class="text-4xl md:text-6xl font-bold text-white font-display tracking-tight mb-6">
-        Lộ Trình Du Học <span class="text-sage-300">Trọn Vẹn</span>
-      </h1>
-      <p class="text-lg text-white/80 max-w-2xl mx-auto leading-relaxed">
-        Hành trình đến Nhật Bản của bạn sẽ không còn là một ẩn số. Tại Bright Education, chúng tôi chuẩn hóa mọi bước đi để đảm bảo sự an tâm tuyệt đối từ ngày đầu tiên cho đến khi bạn hoàn toàn vững vàng tại xứ sở hoa anh đào.
-      </p>
+  <section class="relative overflow-hidden bg-primary py-14 sm:py-16 lg:py-20">
+    <div class="absolute -right-24 -top-32 h-80 w-80 rounded-full bg-white/[.06]"></div>
+    <div class="absolute -bottom-24 -left-16 h-56 w-56 rounded-full bg-primary-400/10"></div>
+    <div class="relative mx-auto max-w-7xl px-5 lg:px-8">
+      <p class="text-[11px] font-extrabold uppercase tracking-[.2em] text-primary-300">Study abroad roadmap</p>
+      <h1 class="mt-3 text-4xl font-black tracking-tight text-white font-display sm:text-5xl">Quy trình du học Nhật Bản</h1>
+      <nav class="mt-6 flex items-center gap-2 text-xs font-semibold text-white/65" aria-label="Breadcrumb">
+        <a href="/" class="transition hover:text-white">Trang chủ</a>
+        <i class="bi bi-chevron-right text-[10px]"></i>
+        <span class="text-white">Quy trình du học</span>
+      </nav>
     </div>
   </section>
 
   <!-- Process Timeline Section -->
-  <section class="py-24 relative z-20 -mt-20">
+  <section class="py-16 sm:py-24 relative">
     <div class="max-w-5xl mx-auto px-4 sm:px-6">
       
       <!-- Timeline Container -->

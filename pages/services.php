@@ -15,7 +15,7 @@ include 'includes/header.php';
           <i class="bi bi-compass"></i> Dịch vụ chuyên nghiệp
         </span>
         <h1 class="text-4xl lg:text-5xl font-black leading-[1.15] mb-6 text-primary font-display">
-          Lộ Trình Tối Ưu <br class="hidden lg:block"> <span class="text-orange-600 drop-shadow-sm">Định Cư Nhật Bản</span>
+          Tối ưu chi phí, <br class="hidden lg:block"> <span class="text-orange-600 drop-shadow-sm">quy trình linh động</span>
         </h1>
         <p class="text-lg text-slate-600 mb-8 font-medium leading-relaxed max-w-xl mx-auto lg:mx-0">
           Các gói dịch vụ chuyên nghiệp, minh bạch và tiết kiệm chi phí giúp bạn hoàn thành mọi thủ tục đi Nhật một cách nhanh chóng và an tâm tuyệt đối.
@@ -28,7 +28,7 @@ include 'includes/header.php';
       <!-- Right Image -->
       <div class="w-full lg:w-1/2 relative mt-8 lg:mt-0">
         <div class="absolute -inset-4 bg-primary-50 rounded-[3rem] -z-10 transform rotate-2"></div>
-        <img src="/assets/images/about_counselor.png" alt="Dịch vụ Bright Education" class="w-full h-[350px] lg:h-[450px] object-cover rounded-[2.5rem] shadow-hard">
+        <img src="https://ik.imagekit.io/tvlk/blog/2025/02/Qf5ZVqSj-image.jpeg" alt="Dịch vụ Bright Education" class="w-full h-[350px] lg:h-[450px] object-cover rounded-[2.5rem] shadow-hard">
       </div>
     </div>
   </section>
@@ -78,7 +78,7 @@ include 'includes/header.php';
         <div class="w-full md:w-1/4 border-t md:border-t-0 md:border-l border-slate-100 pt-6 md:pt-0 pl-0 md:pl-8 pr-4 text-center flex flex-col justify-center">
           <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-3">Phí Dịch Vụ Trọn Gói</p>
           <div class="flex items-center justify-center gap-1 mb-8">
-            <span class="text-4xl lg:text-5xl font-black text-orange-600">15.000.000</span>
+            <span class="text-3xl lg:text-4xl font-black text-orange-600">15.000.000</span>
             <span class="text-slate-500 font-bold text-sm">VNĐ</span>
           </div>
           <a href="/services/japanese-language-school" class="block w-full py-4 bg-primary text-white font-bold text-center rounded-2xl hover:bg-slate-800 transition-colors duration-300 shadow-md hover:-translate-y-1">
@@ -128,7 +128,7 @@ include 'includes/header.php';
         <div class="w-full md:w-1/4 border-t md:border-t-0 md:border-l border-slate-100 pt-6 md:pt-0 pl-0 md:pl-8 pr-4 text-center flex flex-col justify-center">
           <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-3">Phí Dịch Vụ Trọn Gói</p>
           <div class="flex items-center justify-center gap-1 mb-8">
-            <span class="text-4xl lg:text-5xl font-black text-orange-600">30.000.000</span>
+            <span class="text-3xl lg:text-4xl font-black text-orange-600">30.000.000</span>
             <span class="text-slate-500 font-bold text-sm">VNĐ</span>
           </div>
           <a href="/services/senmon-vocational-school" class="block w-full py-4 bg-primary text-white font-bold text-center rounded-2xl hover:bg-slate-800 transition-colors duration-300 shadow-md hover:-translate-y-1">
@@ -178,7 +178,7 @@ include 'includes/header.php';
         <div class="w-full md:w-1/4 border-t md:border-t-0 md:border-l border-slate-100 pt-6 md:pt-0 pl-0 md:pl-8 pr-4 text-center flex flex-col justify-center">
           <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-3">Phí Dịch Vụ Trọn Gói</p>
           <div class="flex items-center justify-center gap-1 mb-8">
-            <span class="text-4xl lg:text-5xl font-black text-orange-600">30.000.000</span>
+            <span class="text-3xl lg:text-4xl font-black text-orange-600">30.000.000</span>
             <span class="text-slate-500 font-bold text-sm">VNĐ</span>
           </div>
           <a href="/services/university-program" class="block w-full py-4 bg-primary text-white font-bold text-center rounded-2xl hover:bg-slate-800 transition-colors duration-300 shadow-md hover:-translate-y-1">
@@ -228,7 +228,7 @@ include 'includes/header.php';
         <div class="w-full md:w-1/4 border-t md:border-t-0 md:border-l border-slate-100 pt-6 md:pt-0 pl-0 md:pl-8 pr-4 text-center flex flex-col justify-center">
           <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-3">Phí Dịch Vụ Trọn Gói</p>
           <div class="flex items-center justify-center gap-1 mb-8">
-            <span class="text-4xl lg:text-5xl font-black text-orange-600">15.000.000</span>
+            <span class="text-3xl lg:text-4xl font-black text-orange-600">15.000.000</span>
             <span class="text-slate-500 font-bold text-sm">VNĐ</span>
           </div>
           <a href="/services/scholarship-program" class="block w-full py-4 bg-primary text-white font-bold text-center rounded-2xl hover:bg-slate-800 transition-colors duration-300 shadow-md hover:-translate-y-1">
@@ -278,7 +278,7 @@ include 'includes/header.php';
         <div class="w-full md:w-1/4 border-t md:border-t-0 md:border-l border-slate-100 pt-6 md:pt-0 pl-0 md:pl-8 pr-4 text-center flex flex-col justify-center">
           <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-3">Phí Dịch Vụ Trọn Gói</p>
           <div class="flex items-center justify-center gap-1 mb-8">
-            <span class="text-4xl lg:text-5xl font-black text-orange-600">30.000.000</span>
+            <span class="text-3xl lg:text-4xl font-black text-orange-600">30.000.000</span>
             <span class="text-slate-500 font-bold text-sm">VNĐ</span>
           </div>
           <a href="/services/english-track-university" class="block w-full py-4 bg-primary text-white font-bold text-center rounded-2xl hover:bg-slate-800 transition-colors duration-300 shadow-md hover:-translate-y-1">

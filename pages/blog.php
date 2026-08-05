@@ -52,19 +52,8 @@ include 'includes/header.php';
 ?>
 
 <main class="pt-20">
-  <!-- Page Header -->
-  <section class="bg-primary pt-20 pb-24 relative overflow-hidden">
-    <div class="absolute inset-0 bg-[radial-gradient(#ffffff20_1px,transparent_1px)] [background-size:20px_20px] opacity-30"></div>
-    <div class="absolute -right-20 -top-20 w-80 h-80 bg-white/5 rounded-full mix-blend-screen blur-[80px] pointer-events-none"></div>
-    
-    <div class="mx-auto max-w-7xl px-4 sm:px-5 relative z-10 text-center reveal">
-      <h1 class="text-4xl md:text-[3.5rem] font-bold text-white font-display mb-6 tracking-tight">Cẩm nang Du học</h1>
-      <p class="text-lg text-white/80 max-w-2xl mx-auto leading-relaxed">Khám phá văn hóa, cập nhật tin tức và chia sẻ kinh nghiệm sống thực tế tại Nhật Bản từ cộng đồng Bright Education.</p>
-    </div>
-  </section>
-
   <!-- Content Section -->
-  <section class="py-12 sm:py-16 bg-slate-50 relative reveal -mt-10 rounded-t-[2.5rem] shadow-[0_-10px_40px_rgba(0,0,0,0.05)] z-20 min-h-[50vh]">
+  <section class="py-12 sm:py-16 bg-slate-50 relative reveal min-h-[50vh]">
     <div class="mx-auto max-w-7xl px-4 sm:px-5">
       
       <!-- Filters -->

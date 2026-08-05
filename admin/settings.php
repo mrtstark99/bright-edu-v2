@@ -79,7 +79,7 @@ $si = function($key, $default = '') use ($s) {
                     <input type="text" name="site_phone_jp" class="a-input" value="<?php echo $si('site_phone_jp','+81 08037316436'); ?>">
                 </div>
                 <div class="a-field"><label class="a-label">Địa chỉ</label>
-                    <textarea name="site_address" class="a-input" rows="3"><?php echo $si('site_address','207 Quang Trung, Thành Đông, Hải Phòng'); ?></textarea>
+                    <textarea name="site_address" class="a-input" rows="3"><?php echo $si('site_address','Số 45 ngõ 207 Quang Trung, Phường Thành Đông, TP Hải Phòng, Việt Nam'); ?></textarea>
                 </div>
                 <div class="a-field"><label class="a-label">Facebook Page URL</label>
                     <input type="text" name="facebook_url" class="a-input" value="<?php echo $si('facebook_url'); ?>">

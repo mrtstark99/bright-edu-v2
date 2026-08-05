@@ -1,8 +1,8 @@
     <!-- Hành trang du học (Portal / Directory) -->
-    <section id="portal" class="py-20 lg:py-28 bg-white relative">
+    <section id="portal" class="home-section home-portal py-20 lg:py-28 bg-white relative">
       <div class="mx-auto max-w-7xl px-5 lg:px-8">
-        <div class="mx-auto mb-16 max-w-2xl text-center">
-          <span class="text-primary font-bold tracking-wider uppercase text-xs mb-3 block">Hành trang thông tin</span>
+        <div class="home-section-heading mx-auto mb-16 max-w-2xl text-center">
+          <span class="home-kicker">03 — Hành trang thông tin</span>
           <h2 class="text-3xl sm:text-4xl font-bold text-primary font-display">Tìm Hiểu Chi Tiết Thủ Tục & Dịch Vụ</h2>
           <p class="mt-4 text-slate-500 text-[15px] max-w-xl mx-auto">Hệ thống thông tin cẩm nang hỗ trợ đắc lực giúp bạn chủ động tìm hiểu và lựa chọn lộ trình phù hợp.</p>
         </div>

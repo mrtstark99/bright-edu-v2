@@ -1,10 +1,12 @@
     <!-- Các Chương Trình Du Học -->
-    <section id="programs" class="bg-white py-20 lg:py-28 relative">
+    <section id="programs" class="home-section home-programs bg-white py-20 lg:py-28 relative">
       <div class="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:20px_20px] opacity-30 pointer-events-none"></div>
       <div class="mx-auto max-w-7xl px-5 lg:px-8 relative">
 
-        <div class="mx-auto mb-12 max-w-2xl text-center">
+        <div class="home-section-heading mx-auto mb-12 max-w-2xl text-center">
+          <span class="home-kicker">01 — Chọn lộ trình</span>
           <h2 class="text-3xl sm:text-4xl font-bold text-primary font-display">Các Chương Trình Du Học</h2>
+          <p>So sánh các hướng đi phổ biến và chọn chương trình phù hợp với năng lực, ngân sách và mục tiêu nghề nghiệp của bạn.</p>
         </div>
         <!-- Study Abroad Programs (Slider/Carousel Layout) -->
         <div class="relative w-full mb-16 reveal">

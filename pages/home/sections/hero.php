@@ -1,5 +1,5 @@
   <link rel="stylesheet" href="/assets/css/home.css">
-  <section class="hero-bg-faded relative pt-[140px] pb-24 lg:pb-32 w-full min-h-[70vh] lg:min-h-[85vh] flex items-center overflow-hidden">
+  <section class="home-hero hero-bg-faded relative pt-[140px] pb-24 lg:pb-32 w-full min-h-[70vh] lg:min-h-[85vh] flex items-center overflow-hidden">
     
     <!-- Background SVG curves for premium layered look -->
     <div class="absolute inset-0 z-0 opacity-15 pointer-events-none">
@@ -14,18 +14,18 @@
         <!-- Left: Content -->
         <div class="relative z-10 self-center">
           <div class="space-y-6 relative z-10 text-left">
-            <span class="text-orange-600 font-bold tracking-wider uppercase text-xs mb-3 block">Chắp cánh tương lai</span>
-            <h1 class="reveal text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.2] tracking-tight text-slate-900 font-display">
-              Du học Nhật Bản cùng <span class="block mt-2 text-orange-600 text-[1.15em] drop-shadow-sm">Bright Education</span>
+            <span class="home-eyebrow font-bold tracking-wider uppercase text-xs mb-3 block">Chắp cánh tương lai</span>
+            <h1 class="reveal text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.2] tracking-tight text-white font-display">
+              Du học Nhật Bản cùng <span class="block mt-2 text-primary-300 text-[1.15em] drop-shadow-sm">Bright Education</span>
             </h1>
-            <p class="reveal text-base sm:text-lg text-slate-600 max-w-lg leading-relaxed font-medium">
+            <p class="reveal text-base sm:text-lg text-slate-300 max-w-lg leading-relaxed font-medium">
               Quy trình linh động và minh bạch sẽ giúp các bước chuẩn bị du học của bạn thuận lợi hơn khi đồng hành cùng Bright Education.
             </p>
             <div class="reveal flex flex-wrap items-center gap-4 pt-4">
-              <a class="inline-flex items-center justify-center rounded-2xl bg-primary px-6 py-3.5 text-[15px] font-semibold text-white transition-all hover:bg-ink shadow-medium hover:shadow-hard btn-primary" href="/contact">
+              <a class="home-hero-primary inline-flex items-center justify-center rounded-2xl px-6 py-3.5 text-[15px] font-semibold text-primary transition-all shadow-medium" href="/consultation">
                 Đặt lịch tư vấn miễn phí <i class="bi bi-arrow-right ml-2"></i>
               </a>
-              <a class="inline-flex items-center justify-center rounded-2xl bg-white border border-slate-200 px-6 py-3.5 text-[15px] font-semibold text-primary transition hover:bg-slate-50 hover:border-slate-300 shadow-soft" href="/services">
+              <a class="home-hero-secondary inline-flex items-center justify-center rounded-2xl px-6 py-3.5 text-[15px] font-semibold text-white transition" href="/services">
                 Xem quy trình <i class="bi bi-play-circle ml-2 text-primary"></i>
               </a>
             </div>

@@ -22,22 +22,22 @@ include 'includes/header.php';
 <main class="pt-20 bg-slate-50 min-h-screen">
 
   <!-- Hero -->
-  <section class="bg-primary text-white py-16 lg:py-20">
-    <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center reveal">
-      <div class="inline-flex items-center gap-2 bg-white/10 text-white/90 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6 border border-white/20">
-        <i class="bi bi-camera-video-fill text-sm"></i> Tư vấn qua Zoom · Hoàn toàn miễn phí
-      </div>
-      <h1 class="text-4xl lg:text-5xl font-bold font-display mb-4 leading-tight">
-        Đặt lịch tư vấn<br/>du học Nhật Bản
-      </h1>
-      <p class="text-primary-100 text-lg max-w-2xl mx-auto leading-relaxed">
-        Gặp trực tiếp chuyên viên tư vấn qua Zoom. Chúng tôi tổ chức <strong class="text-white">buổi tư vấn nhóm miễn phí</strong> mỗi tuần và nhận lịch hẹn <strong class="text-white">1-1 cá nhân</strong> theo yêu cầu.
-      </p>
+  <section class="relative overflow-hidden bg-primary py-14 sm:py-16 lg:py-20">
+    <div class="absolute -right-24 -top-32 h-80 w-80 rounded-full bg-white/[.06]"></div>
+    <div class="absolute -bottom-24 -left-16 h-56 w-56 rounded-full bg-primary-400/10"></div>
+    <div class="relative mx-auto max-w-7xl px-5 lg:px-8">
+      <p class="text-[11px] font-extrabold uppercase tracking-[.2em] text-primary-300">Online consultation</p>
+      <h1 class="mt-3 text-4xl font-black tracking-tight text-white font-display sm:text-5xl">Tư vấn du học Nhật Bản</h1>
+      <nav class="mt-6 flex items-center gap-2 text-xs font-semibold text-white/65" aria-label="Breadcrumb">
+        <a href="/" class="transition hover:text-white">Trang chủ</a>
+        <i class="bi bi-chevron-right text-[10px]"></i>
+        <span class="text-white">Tư vấn Zoom</span>
+      </nav>
     </div>
   </section>
 
   <!-- Two Options Banner -->
-  <section class="max-w-7xl mx-auto px-6 lg:px-12 -mt-8 mb-12">
+  <section class="max-w-7xl mx-auto px-5 lg:px-8 mt-10 sm:mt-14 mb-12">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 reveal">
 
       <!-- Group -->

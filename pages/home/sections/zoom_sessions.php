@@ -1,9 +1,9 @@
     <!-- Zoom Schedule Section -->
     <?php if (!empty($zoom_slots)): ?>
-    <section id="zoom-schedule" class="bg-slate-50 py-20 lg:py-28 relative">
+    <section id="zoom-schedule" class="home-section home-zoom bg-slate-50 py-20 lg:py-28 relative">
       <div class="mx-auto max-w-7xl px-5 lg:px-8">
-        <div class="mx-auto mb-16 max-w-2xl text-center">
-          <span class="text-orange-600 font-bold tracking-wider uppercase text-xs mb-3 block">Tương tác trực tiếp</span>
+        <div class="home-section-heading mx-auto mb-16 max-w-2xl text-center">
+          <span class="home-kicker">06 — Tương tác trực tiếp</span>
           <h2 class="text-3xl sm:text-4xl font-bold text-primary font-display">Lịch Hội Thảo & Tư Vấn Zoom</h2>
           <p class="mt-4 text-slate-500 text-[15px]">Đăng ký tham gia miễn phí các buổi chia sẻ thông tin trực tuyến từ chuyên gia Bright Education và các trường Nhật ngữ đối tác.</p>
         </div>
@@ -42,35 +42,12 @@
                 <?php endif; ?>
               </div>
             </div>
-            <button type="button" class="w-full mt-6 py-3 bg-primary hover:bg-slate-800 text-white rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 zoom-btn" data-title="<?php echo htmlspecialchars($slot['title']); ?>">
+            <a href="/consultation" class="w-full mt-6 py-3 bg-primary hover:bg-slate-800 text-white rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5">
               Đăng ký tham gia qua Zoom <i class="bi bi-arrow-right"></i>
-            </button>
+            </a>
           </div>
           <?php endforeach; ?>
         </div>
       </div>
-
-      <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          document.querySelectorAll('.zoom-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-              const title = this.dataset.title;
-              const contactSection = document.getElementById('contact');
-              if (contactSection) {
-                // Focus and populate message in form
-                const messageTextarea = contactSection.querySelector('textarea[name="message"]');
-                const nameInput = contactSection.querySelector('input[name="name"]');
-                if (messageTextarea) {
-                  messageTextarea.value = `Tôi muốn đăng ký tham gia buổi hội thảo Zoom trực tuyến: "${title}".`;
-                }
-                contactSection.scrollIntoView({ behavior: 'smooth' });
-                if (nameInput) {
-                  setTimeout(() => nameInput.focus(), 800);
-                }
-              }
-            });
-          });
-        });
-      </script>
     </section>
     <?php endif; ?>

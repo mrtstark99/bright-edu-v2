@@ -1,8 +1,8 @@
-    <section id="cost" class="bg-slate-50 py-20 lg:py-28 relative">
+    <section id="cost" class="home-section home-cost bg-slate-50 py-20 lg:py-28 relative">
       <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-sand-200 to-transparent"></div>
       <div class="mx-auto max-w-7xl px-5 lg:px-8">
-        <div class="mx-auto max-w-2xl text-center mb-16">
-          <span class="text-primary font-bold tracking-wider uppercase text-xs mb-3 block">Minh bạch chi phí</span>
+        <div class="home-section-heading mx-auto max-w-2xl text-center mb-16">
+          <span class="home-kicker">04 — Minh bạch chi phí</span>
           <h2 class="text-3xl sm:text-4xl font-bold text-primary font-display">Tổng chi phí dự kiến năm đầu</h2>
           <p class="mt-4 text-lg text-muted">Hãy tùy chỉnh các lựa chọn dưới đây để xem chi tiết dự toán và chuẩn bị tài chính vững vàng cho lộ trình du học của bạn.</p>
         </div>

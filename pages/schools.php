@@ -23,31 +23,21 @@ $schools_json = json_encode($schools, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QU
 
 <main class="pt-20 pb-24 bg-slate-50 min-h-screen">
   <!-- Hero Section -->
-  <section class="relative bg-midnight overflow-hidden py-16 sm:py-24">
-    <!-- Background Effects -->
-    <div class="absolute inset-0 z-0">
-      <div class="absolute -top-24 -right-24 w-96 h-96 bg-sage-500/20 rounded-full blur-3xl mix-blend-screen"></div>
-      <div class="absolute bottom-0 -left-24 w-72 h-72 bg-sky-500/20 rounded-full blur-3xl mix-blend-screen"></div>
-      <div class="absolute inset-0 bg-[url('/assets/images/pattern-grid.svg')] opacity-5"></div>
-    </div>
-    
-    <div class="container mx-auto px-6 lg:px-12 relative z-10">
-      <div class="max-w-3xl">
-        <span class="inline-flex items-center justify-center bg-white/10 text-sage-300 backdrop-blur-md px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide uppercase mb-6 border border-white/10">
-          Mạng Lưới Đối Tác
-        </span>
-        <h1 class="text-4xl sm:text-5xl font-black text-white font-display leading-tight mb-6">
-          Hệ thống các trường <br>
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-sage-300 to-sky-300">Nhật Ngữ uy tín</span>
-        </h1>
-        <p class="text-lg text-slate-300 max-w-2xl leading-relaxed">
-          Bright Education tự hào là đại diện tuyển sinh của hàng trăm trường Nhật Ngữ chất lượng trên khắp các tỉnh thành Nhật Bản. Hãy chọn khu vực bạn muốn theo học và tìm hiểu ngôi trường phù hợp nhất.
-        </p>
-      </div>
+  <section class="relative overflow-hidden bg-primary py-14 sm:py-16 lg:py-20">
+    <div class="absolute -right-24 -top-32 h-80 w-80 rounded-full bg-white/[.06]"></div>
+    <div class="absolute -bottom-24 -left-16 h-56 w-56 rounded-full bg-primary-400/10"></div>
+    <div class="relative mx-auto max-w-7xl px-5 lg:px-8">
+      <p class="text-[11px] font-extrabold uppercase tracking-[.2em] text-primary-300">Japanese language schools</p>
+      <h1 class="mt-3 text-4xl font-black tracking-tight text-white font-display sm:text-5xl">Hệ thống trường Nhật ngữ</h1>
+      <nav class="mt-6 flex items-center gap-2 text-xs font-semibold text-white/65" aria-label="Breadcrumb">
+        <a href="/" class="transition hover:text-white">Trang chủ</a>
+        <i class="bi bi-chevron-right text-[10px]"></i>
+        <span class="text-white">Trường Nhật ngữ</span>
+      </nav>
     </div>
   </section>
 
-  <section class="py-12 relative z-20 -mt-8">
+  <section class="py-10 sm:py-14 relative">
     <div class="container mx-auto px-6 lg:px-12">
         <!-- Interactive Filter Panel -->
         <div class="bg-white rounded-3xl p-6 md:p-8 shadow-xl shadow-slate-200/50 border border-slate-100 flex flex-col items-center justify-between gap-6">

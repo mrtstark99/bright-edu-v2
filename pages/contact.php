@@ -51,7 +51,7 @@ include 'includes/header.php';
               <div>
                 <h3 class="text-[11px] font-bold uppercase tracking-wider text-white/60 mb-1">Văn phòng</h3>
                 <p class="text-[14px] font-medium text-white/90 leading-relaxed">
-                  <span class="block"><?php echo getSetting('site_address', '207 Quang Trung, Thành Đông, Hải Phòng'); ?></span>
+                  <span class="block"><?php echo getSetting('site_address', 'Số 45 ngõ 207 Quang Trung, Phường Thành Đông, TP Hải Phòng, Việt Nam'); ?></span>
                 </p>
               </div>
             </div>

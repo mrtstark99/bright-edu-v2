@@ -59,6 +59,18 @@ include __DIR__ . '/../../includes/header.php';
 
   <main id="hero">
     <?php include __DIR__ . '/sections/hero.php'; ?>
+
+    <section class="home-trust" aria-label="Cam kết của Bright Education">
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="home-trust-grid">
+          <div class="home-trust-item"><i class="bi bi-person-check"></i><span><strong>Tư vấn 1–1</strong><small>Lộ trình theo từng hồ sơ</small></span></div>
+          <div class="home-trust-item"><i class="bi bi-receipt"></i><span><strong>Chi phí minh bạch</strong><small>Dự toán rõ ngay từ đầu</small></span></div>
+          <div class="home-trust-item"><i class="bi bi-file-earmark-check"></i><span><strong>Hồ sơ trọn gói</strong><small>Theo sát từng cột mốc</small></span></div>
+          <div class="home-trust-item"><i class="bi bi-globe2"></i><span><strong>Hỗ trợ Việt – Nhật</strong><small>Đồng hành trước và sau nhập cảnh</small></span></div>
+        </div>
+      </div>
+    </section>
+
     <?php include __DIR__ . '/sections/programs.php'; ?>
     <?php include __DIR__ . '/sections/process_steps.php'; ?>
     <?php include __DIR__ . '/sections/info_portal.php'; ?>

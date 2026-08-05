@@ -1,7 +1,7 @@
-    <section id="services" class="bg-slate-50 py-20 lg:py-28 relative">
+    <section id="services" class="home-section home-process bg-slate-50 py-20 lg:py-28 relative overflow-hidden">
       <div class="mx-auto max-w-7xl px-5 lg:px-8">
-        <div class="mx-auto mb-16 max-w-2xl text-center">
-          <span class="text-primary font-bold tracking-wider uppercase text-xs mb-3 block">Lộ trình chuẩn hóa</span>
+        <div class="home-section-heading mx-auto mb-16 max-w-2xl text-center">
+          <span class="home-kicker">02 — Lộ trình chuẩn hóa</span>
           <h2 class="text-3xl sm:text-4xl font-bold text-primary font-display">Các Bước & Quy Trình</h2>
           <p class="mt-4 text-slate-500 text-[15px] max-w-xl mx-auto">Bright Education đồng hành cùng bạn qua 7 bước chuẩn bị chi tiết và chuyên nghiệp để hiện thực hóa giấc mơ du học Nhật Bản.</p>
         </div>
@@ -28,7 +28,6 @@
                   <li class="flex items-start gap-1.5"><i class="bi bi-check2 text-primary mt-0.5 shrink-0"></i> <span>Tư vấn 1-1 miễn phí</span></li>
                 </ul>
               </div>
-              <div class="hidden lg:block absolute top-[182px] left-[calc(100%-8px)] w-[24px] h-0.5 border-t-2 border-dashed border-slate-200 z-10"></div>
             </article>
 
             <!-- Step 2 -->
@@ -50,7 +49,6 @@
                   <li class="flex items-start gap-1.5"><i class="bi bi-check2 text-orange-600 mt-0.5 shrink-0"></i> <span>Đạt chứng chỉ cần thiết</span></li>
                 </ul>
               </div>
-              <div class="hidden lg:block absolute top-[182px] left-[calc(100%-8px)] w-[24px] h-0.5 border-t-2 border-dashed border-slate-200 z-10"></div>
             </article>
 
             <!-- Step 3 -->
@@ -72,7 +70,6 @@
                   <li class="flex items-start gap-1.5"><i class="bi bi-check2 text-sky-600 mt-0.5 shrink-0"></i> <span>Đăng ký hồ sơ vào trường</span></li>
                 </ul>
               </div>
-              <div class="hidden lg:block absolute top-[182px] left-[calc(100%-8px)] w-[24px] h-0.5 border-t-2 border-dashed border-slate-200 z-10"></div>
             </article>
 
             <!-- Step 4 -->
@@ -115,7 +112,6 @@
                   <li class="flex items-start gap-1.5"><i class="bi bi-check2 text-emerald-600 mt-0.5 shrink-0"></i> <span>Nộp hồ sơ lên Cục XNC Nhật</span></li>
                 </ul>
               </div>
-              <div class="hidden lg:block absolute top-[182px] left-[calc(100%-8px)] w-[24px] h-0.5 border-t-2 border-dashed border-slate-200 z-10"></div>
             </article>
 
             <!-- Step 6 -->
@@ -137,7 +133,6 @@
                   <li class="flex items-start gap-1.5"><i class="bi bi-check2 text-rose-600 mt-0.5 shrink-0"></i> <span>Đóng học phí sang trường</span></li>
                 </ul>
               </div>
-              <div class="hidden lg:block absolute top-[182px] left-[calc(100%-8px)] w-[24px] h-0.5 border-t-2 border-dashed border-slate-200 z-10"></div>
             </article>
 
             <!-- Step 7 -->

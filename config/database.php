@@ -198,6 +198,11 @@ class Database {
         if ((int)$stmt->fetchColumn() === 0) {
             $this->conn->exec("INSERT INTO settings (setting_key, setting_value, setting_type, description) VALUES ('site_phone_jp', '+81 08037316436', 'text', 'Số điện thoại Nhật Bản')");
         }
+        $this->conn->exec("UPDATE settings SET setting_value = 'Số 45 ngõ 207 Quang Trung, Phường Thành Đông, TP Hải Phòng, Việt Nam' WHERE setting_key = 'site_address' AND setting_value = '207 Quang Trung, Thành Đông, Hải Phòng'");
+        $stmt = $this->conn->query("SELECT COUNT(*) FROM settings WHERE setting_key = 'legal_entity_name'");
+        if ((int)$stmt->fetchColumn() === 0) {
+            $this->conn->exec("INSERT INTO settings (setting_key, setting_value, setting_type, description) VALUES ('legal_entity_name', 'VICTORIA UNIVERSAL CO.,LTD', 'text', 'Tên pháp nhân hoạt động')");
+        }
     }
 
     public static function getInstance() {
