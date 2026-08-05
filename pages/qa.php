@@ -1,6 +1,6 @@
 <?php
 /**
- * Q&A Page - Threads Style with Sidebar, Image Uploads, and Details View
+ * Q&A Page - Optimized Threads Style with Perfect Spacing & Alignments
  */
 $page_title = 'Hỏi đáp - Cộng đồng Bright Education';
 require_once 'includes/header.php';
@@ -10,31 +10,33 @@ $current_user_name = $is_logged_in ? $_SESSION['user_name'] ?? 'Thành viên' : 
 $is_admin = $is_logged_in && (isAdmin() || isEditor());
 ?>
 
-<!-- Minimalist Threads Style CSS -->
+<!-- Premium Minimalist Threads Style CSS -->
 <style>
+    /* Thread connection line perfectly centered with the avatars */
     .thread-line {
         position: absolute;
-        top: 48px;
-        bottom: 12px;
-        left: 20px;
+        top: 56px;
+        bottom: 24px;
+        left: 38px; /* Perfectly aligned with the center of w-12 avatar container (p-6 pad + 24px half) */
         width: 2px;
-        background-color: #e2e8f0;
-        border-radius: 1px;
+        background-color: #f1f5f9;
+        border-radius: 99px;
+        z-index: 10;
     }
     .threads-card {
-        border-bottom: 1px solid #f1f5f9;
-        transition: background-color 0.2s ease;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .threads-card:hover {
-        background-color: #fafafa;
+        border-color: #e2e8f0;
+        box-shadow: 0 10px 30px -10px rgba(13, 36, 62, 0.06);
     }
     .action-icon-btn {
-        color: #64748b;
+        color: #94a3b8;
         transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
     .action-icon-btn:hover {
-        color: #000000;
-        transform: scale(1.12);
+        color: #0d243e;
+        transform: scale(1.1);
     }
     .action-icon-btn.liked {
         color: #ef4444 !important;
@@ -42,108 +44,110 @@ $is_admin = $is_logged_in && (isAdmin() || isEditor());
     }
     @keyframes heartBeat {
         0% { transform: scale(1); }
-        35% { transform: scale(1.3); }
+        35% { transform: scale(1.25); }
         70% { transform: scale(0.9); }
         100% { transform: scale(1); }
     }
     .tag-badge {
-        transition: all 0.2s ease;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .tag-badge:hover {
-        background-color: #000000;
+        background-color: #0d243e;
         color: #ffffff;
+        border-color: #0d243e;
     }
     .tag-badge.active {
-        background-color: #000000;
+        background-color: #0d243e;
         color: #ffffff;
+        border-color: #0d243e;
     }
 </style>
 
-<div class="min-h-screen bg-white pt-24 pb-12">
-    <!-- Centered Container with responsive Sidebar layout -->
-    <div class="max-w-5xl mx-auto px-4">
+<main class="pt-20 bg-slate-50 min-h-screen">
+    <!-- Balanced container matching the rest of the application -->
+    <section class="max-w-6xl mx-auto px-5 lg:px-8 mt-12 mb-20">
         
-        <!-- Header Page Title -->
-        <div class="text-center py-6 mb-8 border-b border-slate-100">
-            <h1 class="text-2xl font-black tracking-tight text-slate-900 font-display">Hỏi đáp Cộng đồng</h1>
-            <p class="text-xs font-semibold text-slate-400 mt-1 uppercase tracking-widest">Bright Threads</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-8 items-start">
+        <div class="grid grid-cols-1 md:grid-cols-[240px_1fr] gap-8 items-start">
             
-            <!-- Left Sidebar: Tags list -->
-            <aside class="sticky top-28 bg-slate-50/50 p-5 rounded-2xl border border-slate-100 hidden md:block">
-                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">Chủ đề thảo luận</h3>
-                <div class="flex flex-col gap-2" id="sidebar_tags_list">
-                    <button class="tag-badge text-left px-3 py-2 rounded-xl text-[13.5px] font-semibold text-slate-600 bg-white hover:shadow-sm border border-slate-100 transition-all active active-all" data-tag="">
-                        <i class="bi bi-grid-fill mr-1.5 text-xs text-slate-400"></i> Tất cả chủ đề
+            <!-- Left Sidebar: Category tags list -->
+            <aside class="sticky top-28 bg-white p-6 rounded-[2rem] border border-slate-100 shadow-soft hidden md:block">
+                <div class="flex items-center gap-2 mb-4 pb-3 border-b border-slate-100">
+                    <div class="w-2.5 h-2.5 rounded-full bg-orange-500 animate-pulse"></div>
+                    <h3 class="text-[11px] font-black uppercase tracking-wider text-slate-400">Chủ đề thảo luận</h3>
+                </div>
+                <div class="flex flex-col gap-1.5" id="sidebar_tags_list">
+                    <button class="tag-badge text-left px-3.5 py-2.5 rounded-xl text-[13.5px] font-bold text-slate-600 bg-slate-50 hover:bg-slate-100 border border-transparent transition-all active active-all" data-tag="">
+                        <i class="bi bi-grid mr-2 text-xs text-slate-400"></i> Tất cả chủ đề
                     </button>
-                    <button class="tag-badge text-left px-3 py-2 rounded-xl text-[13.5px] font-semibold text-slate-600 bg-white hover:shadow-sm border border-slate-100 transition-all" data-tag="#tuyensinh">
+                    <button class="tag-badge text-left px-3.5 py-2.5 rounded-xl text-[13.5px] font-bold text-slate-600 bg-white hover:bg-slate-50 border border-slate-100 transition-all" data-tag="#tuyensinh">
                         #tuyensinh
                     </button>
-                    <button class="tag-badge text-left px-3 py-2 rounded-xl text-[13.5px] font-semibold text-slate-600 bg-white hover:shadow-sm border border-slate-100 transition-all" data-tag="#hocphi">
+                    <button class="tag-badge text-left px-3.5 py-2.5 rounded-xl text-[13.5px] font-bold text-slate-600 bg-white hover:bg-slate-50 border border-slate-100 transition-all" data-tag="#hocphi">
                         #hocphi
                     </button>
-                    <button class="tag-badge text-left px-3 py-2 rounded-xl text-[13.5px] font-semibold text-slate-600 bg-white hover:shadow-sm border border-slate-100 transition-all" data-tag="#visanhat">
+                    <button class="tag-badge text-left px-3.5 py-2.5 rounded-xl text-[13.5px] font-bold text-slate-600 bg-white hover:bg-slate-50 border border-slate-100 transition-all" data-tag="#visanhat">
                         #visanhat
                     </button>
-                    <button class="tag-badge text-left px-3 py-2 rounded-xl text-[13.5px] font-semibold text-slate-600 bg-white hover:shadow-sm border border-slate-100 transition-all" data-tag="#vieclam">
+                    <button class="tag-badge text-left px-3.5 py-2.5 rounded-xl text-[13.5px] font-bold text-slate-600 bg-white hover:bg-slate-50 border border-slate-100 transition-all" data-tag="#vieclam">
                         #vieclam
                     </button>
-                    <button class="tag-badge text-left px-3 py-2 rounded-xl text-[13.5px] font-semibold text-slate-600 bg-white hover:shadow-sm border border-slate-100 transition-all" data-tag="#nhatngu">
+                    <button class="tag-badge text-left px-3.5 py-2.5 rounded-xl text-[13.5px] font-bold text-slate-600 bg-white hover:bg-slate-50 border border-slate-100 transition-all" data-tag="#nhatngu">
                         #nhatngu
                     </button>
-                    <button class="tag-badge text-left px-3 py-2 rounded-xl text-[13.5px] font-semibold text-slate-600 bg-white hover:shadow-sm border border-slate-100 transition-all" data-tag="#cuocsong">
+                    <button class="tag-badge text-left px-3.5 py-2.5 rounded-xl text-[13.5px] font-bold text-slate-600 bg-white hover:bg-slate-50 border border-slate-100 transition-all" data-tag="#cuocsong">
                         #cuocsong
                     </button>
                 </div>
             </aside>
 
-            <!-- Right side: Create question and feed -->
-            <div class="max-w-[620px] w-full mx-auto md:mx-0">
+            <!-- Right Feed: Core Content area -->
+            <div class="max-w-[620px] w-full mx-auto md:mx-0 flex flex-col gap-6">
                 
-                <!-- Tags carousel for mobile view -->
-                <div class="md:hidden flex gap-2 overflow-x-auto pb-4 mb-4 select-none scrollbar-hide" id="mobile_tags_list">
-                    <button class="tag-badge shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold text-slate-600 bg-slate-100 active active-all" data-tag="">Tất cả</button>
-                    <button class="tag-badge shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold text-slate-600 bg-slate-100" data-tag="#tuyensinh">#tuyensinh</button>
-                    <button class="tag-badge shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold text-slate-600 bg-slate-100" data-tag="#hocphi">#hocphi</button>
-                    <button class="tag-badge shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold text-slate-600 bg-slate-100" data-tag="#visanhat">#visanhat</button>
-                    <button class="tag-badge shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold text-slate-600 bg-slate-100" data-tag="#vieclam">#vieclam</button>
-                    <button class="tag-badge shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold text-slate-600 bg-slate-100" data-tag="#nhatngu">#nhatngu</button>
-                    <button class="tag-badge shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold text-slate-600 bg-slate-100" data-tag="#cuocsong">#cuocsong</button>
+                <!-- Title & tag list for mobile -->
+                <div class="md:hidden">
+                    <h2 class="text-xl font-black text-primary font-display mb-3">Hỏi đáp Cộng đồng</h2>
+                    <div class="flex gap-2 overflow-x-auto pb-3 select-none scrollbar-hide" id="mobile_tags_list">
+                        <button class="tag-badge shrink-0 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-600 bg-white border border-slate-200 active active-all" data-tag="">Tất cả</button>
+                        <button class="tag-badge shrink-0 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-600 bg-white border border-slate-200" data-tag="#tuyensinh">#tuyensinh</button>
+                        <button class="tag-badge shrink-0 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-600 bg-white border border-slate-200" data-tag="#hocphi">#hocphi</button>
+                        <button class="tag-badge shrink-0 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-600 bg-white border border-slate-200" data-tag="#visanhat">#visanhat</button>
+                        <button class="tag-badge shrink-0 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-600 bg-white border border-slate-200" data-tag="#vieclam">#vieclam</button>
+                        <button class="tag-badge shrink-0 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-600 bg-white border border-slate-200" data-tag="#nhatngu">#nhatngu</button>
+                        <button class="tag-badge shrink-0 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-600 bg-white border border-slate-200" data-tag="#cuocsong">#cuocsong</button>
+                    </div>
                 </div>
 
-                <!-- Create Post Section -->
+                <!-- Create Post Input (Aligned properly with card structure) -->
                 <?php if ($is_logged_in): ?>
-                <div class="py-4 border-b border-slate-100 mb-6 bg-slate-50/50 p-4 rounded-2xl border border-slate-100">
-                    <div class="flex gap-3">
+                <div class="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-soft">
+                    <div class="flex gap-4">
                         <!-- User Avatar -->
-                        <div class="w-11 h-11 rounded-full bg-slate-100 flex-shrink-0 flex items-center justify-center overflow-hidden border border-slate-200 shadow-sm">
-                            <i class="bi bi-person-fill text-slate-400 text-xl"></i>
+                        <div class="w-12 h-12 rounded-full bg-slate-100 flex-shrink-0 flex items-center justify-center overflow-hidden border border-slate-200 shadow-xs">
+                            <i class="bi bi-person-fill text-slate-400 text-2xl"></i>
                         </div>
                         <div class="flex-1">
-                            <div class="font-bold text-[14px] text-slate-800 mb-1"><?= htmlspecialchars($current_user_name) ?></div>
-                            <textarea id="post_content" rows="2" placeholder="Bạn đang thắc mắc điều gì về du học Nhật Bản?..." class="threads-input w-full bg-transparent text-[15px] placeholder-slate-400 focus:outline-none resize-none py-1"></textarea>
+                            <div class="font-bold text-[14px] text-slate-900 mb-1"><?= htmlspecialchars($current_user_name) ?></div>
+                            <textarea id="post_content" rows="2" placeholder="Bạn đang thắc mắc điều gì về du học Nhật Bản?..." class="w-full bg-transparent text-[15px] placeholder-slate-400 focus:outline-none resize-none py-1.5 leading-relaxed"></textarea>
                             
-                            <!-- Image Preview Area -->
-                            <div id="image_preview_container" class="hidden relative mt-2 rounded-2xl overflow-hidden max-h-60 border border-slate-100">
+                            <!-- Image Preview area -->
+                            <div id="image_preview_container" class="hidden relative mt-3 rounded-2xl overflow-hidden border border-slate-100 max-h-64 shadow-xs select-none">
                                 <img id="image_preview" src="" class="w-full h-full object-cover">
-                                <button id="btn_remove_image" class="absolute top-2 right-2 bg-black/60 hover:bg-black/80 text-white rounded-full p-1.5 w-7 h-7 flex items-center justify-center transition-colors">
+                                <button id="btn_remove_image" class="absolute top-3 right-3 bg-black/60 hover:bg-black/85 text-white rounded-full p-1.5 w-8 h-8 flex items-center justify-center transition-colors">
                                     <i class="bi bi-x-lg text-xs"></i>
                                 </button>
                             </div>
 
-                            <!-- Post Options & Publish -->
+                            <!-- Options Bar -->
                             <div class="flex justify-between items-center mt-3 pt-3 border-t border-slate-100">
-                                <div class="flex items-center gap-3">
+                                <div class="flex items-center gap-3.5">
                                     <!-- Image upload trigger -->
-                                    <button id="btn_trigger_file" class="text-slate-400 hover:text-black transition-colors" title="Đính kèm ảnh">
+                                    <button id="btn_trigger_file" class="text-slate-400 hover:text-primary transition-colors p-1" title="Đính kèm ảnh">
                                         <i class="bi bi-image text-lg"></i>
                                     </button>
                                     <input type="file" id="file_input" class="hidden" accept="image/*">
                                     
                                     <!-- Tag Selector -->
-                                    <select id="post_tag" class="bg-transparent border border-slate-200 text-xs font-semibold text-slate-500 rounded-full px-2 py-1 focus:outline-none focus:border-slate-400">
+                                    <select id="post_tag" class="bg-slate-50 border border-slate-200 text-[11px] font-bold text-slate-500 rounded-full px-3 py-1 focus:outline-none focus:border-slate-350 transition-colors">
                                         <option value="">Chọn chủ đề</option>
                                         <option value="#tuyensinh">#tuyensinh</option>
                                         <option value="#hocphi">#hocphi</option>
@@ -153,40 +157,40 @@ $is_admin = $is_logged_in && (isAdmin() || isEditor());
                                         <option value="#cuocsong">#cuocsong</option>
                                     </select>
                                 </div>
-                                <button id="btn_post_question" class="bg-black text-white font-bold text-xs px-5 py-2 rounded-full hover:bg-slate-850 active:scale-95 transition-all shadow-sm">Đăng bài</button>
+                                <button id="btn_post_question" class="bg-primary text-white font-bold text-xs px-5 py-2.5 rounded-full hover:bg-slate-800 active:scale-95 transition-all shadow-sm">Đăng bài</button>
                             </div>
                         </div>
                     </div>
                 </div>
                 <?php else: ?>
-                <div class="bg-slate-50 rounded-2xl p-6 mb-8 text-center border border-slate-100">
-                    <h3 class="text-base font-bold text-slate-800 mb-1">Gửi thắc mắc của bạn</h3>
-                    <p class="text-xs text-slate-500 mb-4">Đăng nhập để đặt câu hỏi. Ban quản trị và cộng đồng sẽ hỗ trợ bạn.</p>
-                    <a href="/login?redirect=/qa" class="inline-flex bg-black text-white font-bold text-xs px-6 py-2.5 rounded-full hover:bg-slate-850 active:scale-95 transition-all shadow-sm">Đăng nhập ngay</a>
+                <div class="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-soft text-center py-8">
+                    <h3 class="text-base font-bold text-primary mb-1">Gửi thắc mắc của bạn</h3>
+                    <p class="text-xs text-slate-500 mb-5">Đăng nhập để đặt câu hỏi và tham gia thảo luận cùng cộng đồng.</p>
+                    <a href="/login?redirect=/qa" class="inline-flex bg-primary text-white font-bold text-xs px-6 py-3 rounded-full hover:bg-slate-800 active:scale-95 transition-all shadow-sm">Đăng nhập ngay</a>
                 </div>
                 <?php endif; ?>
 
-                <!-- Back button from details view -->
-                <div id="details_back_bar" class="hidden items-center gap-2 mb-4">
-                    <button id="btn_close_details" class="flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-black py-1 px-3 bg-slate-100 rounded-full transition-colors">
-                        <i class="bi bi-arrow-left"></i> Quay lại danh sách
+                <!-- Back button to return to thread list -->
+                <div id="details_back_bar" class="hidden mb-2">
+                    <button id="btn_close_details" class="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-primary py-2 px-4 bg-white border border-slate-100 rounded-full shadow-soft transition-colors">
+                        <i class="bi bi-arrow-left"></i> Quay lại danh sách câu hỏi
                     </button>
                 </div>
 
-                <!-- Feed Threads Container -->
-                <div id="feed_container" class="space-y-1">
+                <!-- Feed Thread Cards -->
+                <div id="feed_container" class="flex flex-col gap-4">
                     <!-- Loading Spinner -->
-                    <div id="feed_loading" class="text-center py-12">
-                        <i class="bi bi-arrow-repeat text-2xl text-slate-300 animate-spin inline-block"></i>
-                        <p class="text-slate-400 mt-2 text-xs font-medium">Đang tải các cuộc thảo luận...</p>
+                    <div id="feed_loading" class="text-center py-16 bg-white rounded-[2rem] border border-slate-100 shadow-soft">
+                        <i class="bi bi-arrow-repeat text-3xl text-primary/30 animate-spin inline-block"></i>
+                        <p class="text-slate-400 mt-3 text-xs font-semibold">Đang tải các thảo luận...</p>
                     </div>
                 </div>
 
             </div>
         </div>
 
-    </div>
-</div>
+    </section>
+</main>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -213,7 +217,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let selectedFile = null;
     let viewingQuestionId = null;
 
-    // Check query param 'qid' on load to view details directly
+    // Check URL queries
     const urlParams = new URLSearchParams(window.location.search);
     const qidParam = urlParams.get('qid');
     if (qidParam) {
@@ -251,7 +255,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Load single question details
+    // Load single question
     function loadSingleQuestion(qid) {
         if (loadingIndicator) loadingIndicator.style.display = 'block';
         
@@ -270,9 +274,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 renderSingleQuestion(res.data);
             } else {
                 feedContainer.innerHTML = `
-                    <div class="text-center text-slate-400 py-12 bg-slate-50 rounded-2xl border border-slate-100">
-                        <i class="bi bi-exclamation-triangle text-3xl text-slate-350 mb-2 block"></i>
-                        <span class="text-xs font-medium">Không tìm thấy câu hỏi hoặc liên kết này đã bị ẩn.</span>
+                    <div class="text-center text-slate-400 py-16 bg-white rounded-[2rem] border border-slate-100 shadow-soft">
+                        <i class="bi bi-exclamation-triangle text-4xl text-slate-300 mb-3 block"></i>
+                        <span class="text-xs font-bold text-slate-500">Câu hỏi không tồn tại hoặc đã bị gỡ bỏ.</span>
                     </div>
                 `;
             }
@@ -283,14 +287,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Render single question layout
+    // Render single question
     function renderSingleQuestion(q) {
         feedContainer.querySelectorAll('.threads-card').forEach(el => el.remove());
         const card = createThreadCard(q, true);
         feedContainer.appendChild(card);
     }
 
-    // Render all questions
+    // Render feed
     function renderFeed(questions) {
         feedContainer.querySelectorAll('.threads-card').forEach(el => el.remove());
         const emptyState = feedContainer.querySelector('.empty-state');
@@ -298,9 +302,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (questions.length === 0) {
             feedContainer.insertAdjacentHTML('beforeend', `
-                <div class="empty-state text-center text-slate-400 py-12 bg-slate-50 rounded-2xl border border-slate-100">
-                    <i class="bi bi-chat-text text-3xl text-slate-300 mb-2 block"></i>
-                    <span class="text-xs font-medium">Chưa có cuộc thảo luận nào về chủ đề này.</span>
+                <div class="empty-state text-center text-slate-400 py-16 bg-white rounded-[2rem] border border-slate-100 shadow-soft">
+                    <i class="bi bi-chat-left-text text-4xl text-slate-200 mb-3 block"></i>
+                    <span class="text-xs font-bold text-slate-500">Chưa có thắc mắc nào ở chủ đề này.</span>
                 </div>
             `);
             return;
@@ -312,59 +316,58 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Generate HTML for thread card
+    // Generate HTML for card (Optimized padding, margins, alignment)
     function createThreadCard(q, isDetailedView = false) {
         const div = document.createElement('div');
-        div.className = 'threads-card py-5 px-1 relative';
+        div.className = 'threads-card bg-white p-6 rounded-[2rem] border border-slate-100 shadow-soft relative';
         div.dataset.id = q.id;
 
         const timeString = formatTime(q.created_at);
         const hasReplies = q.answers && q.answers.length > 0;
 
-        // Render attachments/image if exists
+        // Image Attachment
         let attachmentHtml = '';
         if (q.image) {
             attachmentHtml = `
-                <div class="mt-2.5 rounded-2xl overflow-hidden border border-slate-100 max-h-96 shadow-xs select-none">
-                    <img src="/uploads/${q.image}" class="w-full object-cover max-h-96" alt="Ảnh đính kèm" style="max-height: 380px;">
+                <div class="mt-3 rounded-2xl overflow-hidden border border-slate-100 shadow-xs max-h-96">
+                    <img src="/uploads/${q.image}" class="w-full object-cover max-h-96" alt="Ảnh đính kèm">
                 </div>
             `;
         }
 
-        // Render tag badge if exists
+        // Tag
         let tagHtml = '';
         if (q.tags) {
-            tagHtml = `<span class="inline-block text-xs font-bold text-slate-400 hover:text-black transition-colors mr-2 cursor-pointer btn-tag-filter" data-tag="${q.tags}">${q.tags}</span>`;
+            tagHtml = `<span class="inline-block text-xs font-bold text-orange-600 hover:underline mr-2 cursor-pointer btn-tag-filter" data-tag="${q.tags}">${q.tags}</span>`;
         }
 
-        // Render replies list
+        // Replies
         let repliesHtml = '';
         if (hasReplies) {
             repliesHtml = q.answers.map(ans => {
                 const isAdminReply = ans.user_role === 'admin' || ans.user_role === 'editor' || ans.author_name.includes('Admin');
                 return `
                     <!-- Reply Item -->
-                    <div class="flex gap-3 mt-4 relative" data-ans-id="${ans.id}">
-                        <!-- Avatar -->
-                        <div class="flex flex-col items-center flex-shrink-0">
-                            <div class="w-8 h-8 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center overflow-hidden shadow-sm">
+                    <div class="flex gap-4 mt-5 pt-4 border-t border-slate-50 relative" data-ans-id="${ans.id}">
+                        <!-- Left: Avatar w-12 matching parent avatar column width for visual alignment -->
+                        <div class="flex justify-center flex-shrink-0 w-12">
+                            <div class="w-9 h-9 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center overflow-hidden shadow-xs">
                                 <i class="bi bi-person-fill text-slate-400 text-xs"></i>
                             </div>
                         </div>
-                        <!-- Reply Body -->
+                        <!-- Right: Content -->
                         <div class="flex-1 min-w-0">
-                            <div class="flex items-center gap-1.5 mb-0.5">
-                                <span class="font-bold text-[13px] text-slate-900">${escapeHtml(ans.author_name)}</span>
-                                ${isAdminReply ? `<span class="bg-black text-[9px] font-black text-white px-1.5 py-0.5 rounded-full uppercase tracking-wider scale-90">Admin</span>` : ''}
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="font-bold text-[13.5px] text-slate-900">${escapeHtml(ans.author_name)}</span>
+                                ${isAdminReply ? `<span class="bg-black text-[9px] font-black text-white px-2 py-0.5 rounded-full uppercase tracking-wider scale-90">Admin</span>` : ''}
                                 <span class="text-[11px] text-slate-400 ml-auto">${formatTime(ans.created_at)}</span>
                             </div>
                             <div class="text-[14px] text-slate-700 leading-relaxed">${escapeHtml(ans.content)}</div>
                             
-                            <!-- Reply Actions -->
                             <div class="flex items-center gap-4 mt-2">
-                                <button class="action-icon-btn btn-like-answer flex items-center gap-1 text-[12px]" data-id="${ans.id}">
+                                <button class="action-icon-btn btn-like-answer flex items-center gap-1.5 text-xs" data-id="${ans.id}">
                                     <i class="bi bi-heart"></i>
-                                    <span>Thích ${ans.likes_count > 0 ? `<span class="font-bold">(${ans.likes_count})</span>` : ''}</span>
+                                    <span class="font-bold text-[11px]">${ans.likes_count > 0 ? `Thích (${ans.likes_count})` : 'Thích'}</span>
                                 </button>
                             </div>
                         </div>
@@ -374,44 +377,44 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         div.innerHTML = `
-            <!-- Thread connecting line -->
+            <!-- Vertical Threading Line linking Main post to Replies -->
             ${hasReplies ? '<div class="thread-line"></div>' : ''}
             
-            <div class="flex gap-3">
-                <!-- Left avatar -->
-                <div class="flex flex-col items-center flex-shrink-0">
-                    <div class="w-11 h-11 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center overflow-hidden shadow-sm">
-                        <i class="bi bi-person-fill text-slate-400 text-lg"></i>
+            <div class="flex gap-4">
+                <!-- Left Avatar -->
+                <div class="flex flex-col items-center flex-shrink-0 w-12">
+                    <div class="w-12 h-12 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center overflow-hidden shadow-xs">
+                        <i class="bi bi-person-fill text-slate-400 text-2xl"></i>
                     </div>
                 </div>
                 
-                <!-- Right Post Body -->
+                <!-- Right Body -->
                 <div class="flex-1 min-w-0">
-                    <!-- Username & Time -->
-                    <div class="flex items-center justify-between mb-1">
-                        <span class="font-bold text-[14px] text-slate-900 hover:underline cursor-pointer btn-view-details">${escapeHtml(q.author_name)}</span>
-                        <div class="flex items-center gap-2">
+                    <!-- Title & Time -->
+                    <div class="flex items-center justify-between mb-1.5">
+                        <span class="font-bold text-[14.5px] text-slate-900 hover:underline cursor-pointer btn-view-details">${escapeHtml(q.author_name)}</span>
+                        <div class="flex items-center gap-1">
                             ${tagHtml}
                             <span class="text-[12px] text-slate-400">${timeString}</span>
                         </div>
                     </div>
                     
-                    <!-- Content -->
-                    <div class="text-[14.5px] text-slate-800 leading-relaxed mb-1 whitespace-pre-wrap cursor-pointer btn-view-details">${escapeHtml(q.content)}</div>
+                    <!-- Content Text -->
+                    <div class="text-[15px] text-slate-800 leading-relaxed mb-1 whitespace-pre-wrap cursor-pointer btn-view-details">${escapeHtml(q.content)}</div>
                     
-                    <!-- Attachment image -->
+                    <!-- Image attachment -->
                     ${attachmentHtml}
                     
-                    <!-- Actions -->
-                    <div class="flex items-center gap-5 py-3 text-slate-500">
+                    <!-- Threads Buttons -->
+                    <div class="flex items-center gap-5 mt-3 text-slate-500 border-b border-slate-50 pb-3">
                         <button class="action-icon-btn btn-like-question flex items-center gap-1.5 text-sm" data-id="${q.id}">
                             <i class="bi bi-heart"></i>
-                            <span class="text-[12px] font-semibold q-like-count">${q.likes_count || 'Thích'}</span>
+                            <span class="text-[12px] font-bold q-like-count">${q.likes_count || 'Thích'}</span>
                         </button>
                         
                         <button class="action-icon-btn btn-comment-focus flex items-center gap-1.5 text-sm">
                             <i class="bi bi-chat"></i>
-                            <span class="text-[12px] font-semibold">${q.answers ? q.answers.length : 0}</span>
+                            <span class="text-[12px] font-bold">${q.answers ? q.answers.length : 0}</span>
                         </button>
                         
                         <button class="action-icon-btn btn-share-post flex items-center text-sm" data-id="${q.id}">
@@ -419,27 +422,25 @@ document.addEventListener('DOMContentLoaded', function() {
                         </button>
                     </div>
 
-                    <!-- Replies area -->
+                    <!-- Nested comments -->
                     <div class="replies-list">
                         ${repliesHtml}
                     </div>
 
-                    <!-- Inline Reply Input -->
+                    <!-- Inline Reply Input for Logged In users -->
                     ${isLoggedIn ? `
-                    <div class="flex gap-2.5 mt-4 pt-3 border-t border-slate-50">
-                        <div class="w-8 h-8 rounded-full bg-slate-100 border border-slate-200 flex-shrink-0 flex items-center justify-center overflow-hidden shadow-xs">
-                            <i class="bi bi-person-fill text-slate-400 text-xs"></i>
+                    <div class="flex gap-4 mt-5 pt-4 border-t border-slate-100 relative z-20">
+                        <div class="flex justify-center flex-shrink-0 w-12">
+                            <div class="w-8 h-8 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center overflow-hidden shadow-xs">
+                                <i class="bi bi-person-fill text-slate-400 text-xs"></i>
+                            </div>
                         </div>
                         <div class="flex-1 flex gap-2">
-                            <input type="text" class="ans_content flex-1 bg-slate-50 hover:bg-slate-100/75 focus:bg-white border border-slate-100 rounded-full px-4 py-1.5 text-[13px] placeholder-slate-400 focus:outline-none focus:border-slate-300 transition-all" placeholder="Viết phản hồi..." data-qid="${q.id}">
-                            <button class="btn-post-answer bg-black text-white hover:bg-slate-800 rounded-full px-4 py-1 text-[11px] font-bold transition-all" data-qid="${q.id}">Gửi</button>
+                            <input type="text" class="ans_content flex-1 bg-slate-50 hover:bg-slate-100/75 focus:bg-white border border-slate-100 rounded-full px-4.5 py-2 text-[13px] placeholder-slate-400 focus:outline-none focus:border-slate-350 transition-all" placeholder="Viết phản hồi của bạn..." data-qid="${q.id}">
+                            <button class="btn-post-answer bg-primary text-white hover:bg-slate-800 rounded-full px-5 py-2 text-[11px] font-bold transition-all" data-qid="${q.id}">Gửi</button>
                         </div>
                     </div>
-                    ` : `
-                    <div class="text-center py-2.5 mt-2 bg-slate-50 rounded-xl border border-slate-100">
-                        <a href="/login?redirect=/qa" class="text-[11.5px] font-bold text-slate-500 hover:text-black">Đăng nhập để tham gia cuộc trò chuyện</a>
-                    </div>
-                    `}
+                    ` : ''}
                 </div>
             </div>
         `;
@@ -447,7 +448,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return div;
     }
 
-    // Relative Time Helper
+    // Relative Time formatting
     function formatTime(dateString) {
         const date = new Date(dateString.replace(' ', 'T'));
         const now = new Date();
@@ -469,7 +470,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return text.replace(/[&<>"']/g, function(m) { return map[m]; });
     }
 
-    // Image Upload Handlers
+    // File input handlers
     if (btnTriggerFile && fileInput) {
         btnTriggerFile.addEventListener('click', (e) => {
             e.preventDefault();
@@ -500,7 +501,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Create New Post (Ajax with multipart/form-data for file upload)
+    // Post Question
     if (btnPost && postContent) {
         btnPost.addEventListener('click', () => {
             const content = postContent.value.trim();
@@ -533,7 +534,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (res.status === 'success') {
                     postContent.value = '';
                     if (postTag) postTag.value = '';
-                    // Reset image preview
                     if (btnRemoveImage) btnRemoveImage.click();
                     loadFeed();
                 } else {
@@ -548,29 +548,27 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Sidebar & Mobile Tags Filter click
+    // Sidebar & Mobile Tags Click Filter
     document.querySelectorAll('.tag-badge').forEach(btn => {
         btn.addEventListener('click', function(e) {
             e.preventDefault();
             
-            // Update UI state
             document.querySelectorAll('.tag-badge').forEach(b => {
-                b.classList.remove('active', 'bg-black', 'text-white', 'bg-slate-100');
+                b.classList.remove('active', 'bg-slate-50', 'bg-slate-100', 'bg-primary', 'text-white');
                 if (b.classList.contains('active-all')) {
-                    // Reset styling to original
+                    // Restores tag style
                 }
             });
             
             this.classList.add('active');
             if (this.dataset.tag) {
-                this.classList.add('bg-black', 'text-white');
+                this.classList.add('bg-primary', 'text-white');
             }
             
             selectedTag = this.dataset.tag;
-            viewingQuestionId = null; // Return to list view
+            viewingQuestionId = null;
             detailsBackBar.classList.add('hidden');
             
-            // Clean qid from URL history
             const cleanUrl = window.location.origin + window.location.pathname;
             window.history.pushState({}, '', cleanUrl);
 
@@ -578,13 +576,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Close Details View and return to list
+    // Close Details View
     if (btnCloseDetails) {
         btnCloseDetails.addEventListener('click', () => {
             viewingQuestionId = null;
             detailsBackBar.classList.add('hidden');
             
-            // Clean qid from URL history
             const cleanUrl = window.location.origin + window.location.pathname;
             window.history.pushState({}, '', cleanUrl);
 
@@ -592,35 +589,30 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Click delegation for feed interaction
+    // Delegate clicks
     feedContainer.addEventListener('click', (e) => {
-        // Focus reply comment box
         if (e.target.closest('.btn-comment-focus')) {
             const card = e.target.closest('.threads-card');
             const input = card.querySelector('.ans_content');
             if (input) input.focus();
         }
 
-        // View single thread details
         if (e.target.closest('.btn-view-details')) {
             const card = e.target.closest('.threads-card');
             const qid = card.dataset.id;
             viewingQuestionId = parseInt(qid);
             detailsBackBar.classList.remove('hidden');
 
-            // Push state history to include ?qid=ID
             const newUrl = window.location.origin + window.location.pathname + '?qid=' + qid;
             window.history.pushState({ qid: qid }, '', newUrl);
             
             loadFeed();
         }
 
-        // Click tag inside post to filter
         if (e.target.closest('.btn-tag-filter')) {
             const tagBtn = e.target.closest('.btn-tag-filter');
             const tag = tagBtn.dataset.tag;
             
-            // Find active state badge and trigger click
             const matchedBadge = Array.from(document.querySelectorAll('.tag-badge')).find(b => b.dataset.tag === tag);
             if (matchedBadge) {
                 matchedBadge.click();
@@ -630,16 +622,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        // Copy Share Link
         if (e.target.closest('.btn-share-post')) {
             const btn = e.target.closest('.btn-share-post');
             const qid = btn.dataset.id;
             const shareUrl = window.location.origin + window.location.pathname + '?qid=' + qid;
             
             navigator.clipboard.writeText(shareUrl).then(() => {
-                // Temporary tooltip alert
                 const tooltip = document.createElement('div');
-                tooltip.className = 'fixed bottom-10 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs font-bold px-4 py-2.5 rounded-full shadow-lg z-50 animate-bounce';
+                tooltip.className = 'fixed bottom-10 left-1/2 transform -translate-x-1/2 bg-primary text-white text-xs font-bold px-4 py-2.5 rounded-full shadow-lg z-50 animate-bounce';
                 tooltip.textContent = 'Đã sao chép liên kết câu hỏi này!';
                 document.body.appendChild(tooltip);
                 setTimeout(() => tooltip.remove(), 2500);
@@ -648,7 +638,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
-        // Like a Question
         if (e.target.closest('.btn-like-question')) {
             const btn = e.target.closest('.btn-like-question');
             const qid = btn.dataset.id;
@@ -671,7 +660,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
-        // Like a specific Reply/Answer
         if (e.target.closest('.btn-like-answer')) {
             const btn = e.target.closest('.btn-like-answer');
             const ansId = btn.dataset.id;
@@ -684,13 +672,12 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(res => res.json())
             .then(res => {
                 if (res.status === 'success') {
-                    btn.innerHTML = `<i class="bi bi-heart-fill text-red-500"></i> <span class="font-bold">(${res.likes})</span>`;
+                    btn.innerHTML = `<i class="bi bi-heart-fill text-red-500"></i> <span class="font-bold text-[11px]">(${res.likes})</span>`;
                     btn.classList.add('liked');
                 }
             });
         }
 
-        // Post answer
         if (e.target.closest('.btn-post-answer')) {
             const btn = e.target.closest('.btn-post-answer');
             const qid = btn.dataset.qid;
@@ -699,7 +686,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Enter to post answer
     feedContainer.addEventListener('keypress', (e) => {
         if (e.target.classList.contains('ans_content') && e.key === 'Enter') {
             const qid = e.target.dataset.qid;
@@ -735,7 +721,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Listen to history popstate to allow back button navigation of single thread
     window.addEventListener('popstate', (e) => {
         if (e.state && e.state.qid) {
             viewingQuestionId = parseInt(e.state.qid);
@@ -747,7 +732,6 @@ document.addEventListener('DOMContentLoaded', function() {
         loadFeed();
     });
 
-    // Initial Load of feed
     loadFeed();
 });
 </script>
