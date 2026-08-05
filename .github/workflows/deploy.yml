@@ -33,6 +33,8 @@ jobs:
           port: 21
           local-dir: ./
           server-dir: ./   # this FTP account lands directly in the web root
+          timeout: 180000
+          security: loose
           # Never overwrite live data/uploads or push VCS/CI noise:
           exclude: |
             **/.git*
