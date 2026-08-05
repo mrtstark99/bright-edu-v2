@@ -234,9 +234,53 @@ if (!isset($services_data[$slug])) {
 
 $data = $services_data[$slug];
 $page_title = $data['title'] . ' - Bright Education';
-$page_description = $data['subtitle'] . '. ' . truncateText(strip_tags($data['description']), 140);
+$page_description = seoDescription(
+    $data['subtitle'] . '. Nhận tư vấn lộ trình, hồ sơ và chi phí miễn phí từ Bright Education.'
+);
 $page_image = !empty($data['image']) ? APP_URL . $data['image'] : APP_URL . '/assets/images/favicon.png';
 $og_type = 'website';
+$service_faqs = [
+    [
+        'question' => 'Chương trình ' . $data['title'] . ' kéo dài bao lâu?',
+        'answer' => $data['duration'] . '. Bright Education sẽ xây dựng mốc chuẩn bị hồ sơ phù hợp với kỳ nhập học của bạn.'
+    ],
+    [
+        'question' => 'Điều kiện đăng ký ' . $data['title'] . ' là gì?',
+        'answer' => implode(' ', array_slice($data['conditions'], 0, 2))
+    ],
+    [
+        'question' => 'Chi phí dự kiến cho ' . $data['title'] . ' là bao nhiêu?',
+        'answer' => 'Phí dịch vụ tại Việt Nam là ' . $data['price'] . '; học phí tham khảo tại Nhật là ' . $data['fee'] . '. Chi phí thực tế phụ thuộc trường và kỳ nhập học.'
+    ]
+];
+$faq_schema = [
+    '@context' => 'https://schema.org',
+    '@type' => 'FAQPage',
+    'mainEntity' => array_map(function ($faq) {
+        return [
+            '@type' => 'Question',
+            'name' => $faq['question'],
+            'acceptedAnswer' => ['@type' => 'Answer', 'text' => $faq['answer']]
+        ];
+    }, $service_faqs)
+];
+$cluster_keywords = [
+    'japanese-language-school' => 'trường Nhật ngữ',
+    'senmon-vocational-school' => 'việc làm',
+    'university-program' => 'đại học',
+    'scholarship-program' => 'học bổng',
+    'english-track-university' => 'đại học'
+];
+$cluster_keyword = $cluster_keywords[$slug] ?? 'du học Nhật Bản';
+$db_service = Database::getInstance();
+$stmt_cluster = $db_service->prepare("SELECT title, slug, excerpt, content FROM posts WHERE status = 'published' AND (title LIKE ? OR content LIKE ?) ORDER BY published_at DESC LIMIT 3");
+$stmt_cluster->execute(['%' . $cluster_keyword . '%', '%' . $cluster_keyword . '%']);
+$cluster_posts = $stmt_cluster->fetchAll();
+if (empty($cluster_posts)) {
+    $stmt_cluster = $db_service->prepare("SELECT title, slug, excerpt, content FROM posts WHERE status = 'published' ORDER BY published_at DESC LIMIT 3");
+    $stmt_cluster->execute();
+    $cluster_posts = $stmt_cluster->fetchAll();
+}
 include 'includes/header.php';
 ?>
 
@@ -249,7 +293,7 @@ include 'includes/header.php';
     <div class="mx-auto max-w-7xl px-5 lg:px-8 relative z-10">
       
       <!-- Breadcrumb -->
-      <nav class="flex items-center gap-2 text-xs font-semibold text-white/60 mb-6 uppercase tracking-wider">
+      <nav class="flex items-center gap-2 text-xs font-semibold text-white/60 mb-6 uppercase tracking-wider" aria-label="Breadcrumb">
         <a href="/" class="hover:text-white transition-colors">Trang chủ</a>
         <i class="bi bi-chevron-right text-[10px]"></i>
         <a href="/services" class="hover:text-white transition-colors">Chương trình du học</a>
@@ -281,16 +325,16 @@ include 'includes/header.php';
               <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
             </div>
             <div class="p-6 sm:p-8">
-              <h3 class="text-xl font-bold text-primary font-display mb-4">Giới Thiệu Chương Trình</h3>
+              <h2 class="text-xl font-bold text-primary font-display mb-4">Giới Thiệu Chương Trình</h2>
               <p class="text-slate-600 leading-relaxed text-[15px]"><?php echo $data['description']; ?></p>
             </div>
           </div>
 
           <!-- Conditions Section -->
           <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-soft">
-            <h3 class="text-xl font-bold text-primary font-display mb-5 flex items-center gap-2">
+            <h2 class="text-xl font-bold text-primary font-display mb-5 flex items-center gap-2">
               <i class="bi bi-shield-check text-green-500"></i> Điều Kiện Tuyển Sinh
-            </h3>
+            </h2>
             <ul class="space-y-3">
               <?php foreach ($data['conditions'] as $condition): ?>
                 <li class="flex items-start gap-3 text-slate-600 text-sm sm:text-[14.5px]">
@@ -303,15 +347,15 @@ include 'includes/header.php';
 
           <!-- Timeline Section -->
           <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-soft">
-            <h3 class="text-xl font-bold text-primary font-display mb-6 flex items-center gap-2">
+            <h2 class="text-xl font-bold text-primary font-display mb-6 flex items-center gap-2">
               <i class="bi bi-calendar3 text-indigo-500"></i> Lộ Trình Đào Tạo & Thực Hiện
-            </h3>
+            </h2>
             <div class="relative border-l border-slate-200 ml-4 pl-6 space-y-8">
               <?php foreach ($data['timeline'] as $index => $step): ?>
                 <div class="relative">
                   <!-- Bullet Circle -->
                   <span class="absolute -left-[35px] top-1 w-5 h-5 rounded-full bg-primary border-4 border-white shadow-soft"></span>
-                  <h4 class="font-bold text-slate-800 text-[15px] mb-1.5"><?php echo $step['title']; ?></h4>
+                  <h3 class="font-bold text-slate-800 text-[15px] mb-1.5"><?php echo $step['title']; ?></h3>
                   <p class="text-slate-500 text-xs sm:text-sm leading-relaxed"><?php echo $step['desc']; ?></p>
                 </div>
               <?php endforeach; ?>
@@ -320,9 +364,9 @@ include 'includes/header.php';
 
           <!-- Features Section -->
           <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-soft">
-            <h3 class="text-xl font-bold text-primary font-display mb-5 flex items-center gap-2">
+            <h2 class="text-xl font-bold text-primary font-display mb-5 flex items-center gap-2">
               <i class="bi bi-patch-check text-orange-500"></i> Cam Kết Từ Bright Education
-            </h3>
+            </h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <?php foreach ($data['features'] as $feat): ?>
                 <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-start gap-3">
@@ -420,9 +464,9 @@ include 'includes/header.php';
           ?>
 
           <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-soft">
-            <h3 class="text-xl font-bold text-primary font-display mb-2 flex items-center gap-2">
+            <h2 class="text-xl font-bold text-primary font-display mb-2 flex items-center gap-2">
               <i class="bi bi-cash-coin text-amber-500"></i> Bảng So Sánh Chi Phí Thực Tế (Tỷ giá 175)
-            </h3>
+            </h2>
             <p class="text-[13px] text-slate-500 mb-6 leading-relaxed">
               Bảng đối chiếu minh bạch các khoản phí xử lý hồ sơ tại Việt Nam và các chi phí chuẩn bị ban đầu. Bright Education cam kết <strong>không phát sinh chi phí ngoài hợp đồng</strong>.
             </p>
@@ -520,6 +564,38 @@ include 'includes/header.php';
             </div>
           </div>
 
+          <!-- Frequently Asked Questions -->
+          <section class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-soft" aria-labelledby="service-faq-title">
+            <h2 id="service-faq-title" class="text-2xl font-bold text-primary font-display mb-6">Câu hỏi thường gặp</h2>
+            <div class="space-y-4">
+              <?php foreach ($service_faqs as $faq): ?>
+              <details class="group rounded-2xl border border-slate-200 p-5">
+                <summary class="cursor-pointer list-none font-bold text-slate-800 flex items-center justify-between gap-4">
+                  <?php echo htmlspecialchars($faq['question']); ?>
+                  <i class="bi bi-plus-lg text-primary group-open:rotate-45 transition-transform"></i>
+                </summary>
+                <p class="mt-3 text-sm leading-7 text-slate-600"><?php echo htmlspecialchars($faq['answer']); ?></p>
+              </details>
+              <?php endforeach; ?>
+            </div>
+          </section>
+
+          <?php if (!empty($cluster_posts)): ?>
+          <section class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-soft" aria-labelledby="service-guides-title">
+            <h2 id="service-guides-title" class="text-2xl font-bold text-primary font-display mb-2">Kiến thức liên quan</h2>
+            <p class="mb-6 text-sm text-slate-500">Hướng dẫn giúp bạn chuẩn bị tốt hơn cho lộ trình <?php echo htmlspecialchars($data['title']); ?>.</p>
+            <div class="grid gap-4 sm:grid-cols-3">
+              <?php foreach ($cluster_posts as $cluster_post): ?>
+              <article class="rounded-2xl border border-slate-200 p-4">
+                <h3 class="font-bold leading-6 text-slate-800"><?php echo htmlspecialchars($cluster_post['title']); ?></h3>
+                <p class="mt-2 text-xs leading-5 text-slate-500"><?php echo htmlspecialchars(getExcerpt($cluster_post['excerpt'] ?: $cluster_post['content'], 85)); ?></p>
+                <a class="mt-3 inline-flex items-center gap-1 text-sm font-bold text-primary hover:underline" href="/blog/<?php echo rawurlencode($cluster_post['slug']); ?>">Xem hướng dẫn <i class="bi bi-arrow-right"></i></a>
+              </article>
+              <?php endforeach; ?>
+            </div>
+          </section>
+          <?php endif; ?>
+
         </div>
 
         <!-- Right Column: Sidebar (4 cols) -->
@@ -527,7 +603,7 @@ include 'includes/header.php';
           
           <!-- Summary Box -->
           <div class="bg-white rounded-3xl p-6 border border-slate-100 shadow-soft space-y-5">
-            <h4 class="text-base font-bold text-primary font-display border-b border-slate-100 pb-3">Thông Tin Lộ Trình</h4>
+            <h2 class="text-base font-bold text-primary font-display border-b border-slate-100 pb-3">Thông Tin Lộ Trình</h2>
             
             <div class="space-y-4 text-xs sm:text-[13px]">
               <div>
@@ -557,7 +633,7 @@ include 'includes/header.php';
           <!-- Lead Capture Form in Sidebar -->
           <div class="bg-gradient-to-br from-primary to-slate-900 rounded-3xl p-6 text-white shadow-soft relative overflow-hidden">
             <div class="absolute -top-16 -right-16 w-40 h-40 bg-white/5 rounded-full blur-xl pointer-events-none"></div>
-            <h4 class="text-base font-bold font-display mb-2 relative z-10">Đăng Ký Tư Vấn 1-1</h4>
+            <h2 class="text-base font-bold font-display mb-2 relative z-10">Đăng Ký Tư Vấn 1-1</h2>
             <p class="text-xs text-white/70 mb-5 relative z-10 leading-relaxed">Nhận lộ trình cá nhân hóa và thông tin chi tiết các ưu đãi học bổng mới nhất.</p>
             
             <form method="POST" action="/api/contact.php" id="sidebar-intake-form" class="space-y-3.5 relative z-10">

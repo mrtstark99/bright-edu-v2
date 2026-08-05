@@ -1,5 +1,4 @@
 <?php
-/**
- * Pricing Page - Bridges to cost.php
- */
-require_once __DIR__ . '/cost.php';
+// Keep a single indexable URL for pricing content.
+header('Location: /cost', true, 301);
+exit;

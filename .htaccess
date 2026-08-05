@@ -5,8 +5,9 @@ RewriteEngine On
 RewriteRule ^sitemap\.xml$ sitemap.php [L]
 
 # Force HTTPS in production
-# RewriteCond %{HTTPS} off
-# RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
 # Route non-file, non-directory, non-php requests through index.php
 RewriteCond %{REQUEST_FILENAME} !-f

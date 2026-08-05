@@ -21,7 +21,9 @@ $static_pages = [
     '/cost',
     '/blog',
     '/qa',
-    '/contact'
+    '/contact',
+    '/privacy',
+    '/terms'
 ];
 
 foreach ($static_pages as $page) {
@@ -38,7 +40,7 @@ $services = [
     'senmon-vocational-school',
     'university-program',
     'scholarship-program',
-    'english-program'
+    'english-track-university'
 ];
 foreach ($services as $slug) {
     echo '  <url>' . PHP_EOL;

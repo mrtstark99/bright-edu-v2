@@ -153,7 +153,7 @@ include 'includes/header.php';
           </button>
           
           <p class="text-[11px] text-center text-slate-400 mt-4">
-            Bằng việc gửi thông tin, bạn đồng ý với <a href="#" class="underline hover:text-primary">Chính sách bảo mật</a> của chúng tôi.
+            Bằng việc gửi thông tin, bạn đồng ý với <a href="/privacy" class="underline hover:text-primary">Chính sách bảo mật</a> của chúng tôi.
           </p>
         </form>
       </div>

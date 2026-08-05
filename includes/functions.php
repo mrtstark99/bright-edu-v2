@@ -84,6 +84,75 @@ function getExcerpt($content, $length = 160) {
     return truncateText($content, $length);
 }
 
+// Build a search-result title that always stays within Google's common limit.
+function seoTitle($title, $brand = 'Bright Education', $maxLength = 60) {
+    $title = trim(strip_tags((string)$title));
+    $title = preg_replace('/\s*[-|]\s*' . preg_quote($brand, '/') . '\s*$/iu', '', $title);
+    $suffix = ' | ' . $brand;
+    $available = max(20, $maxLength - mb_strlen($suffix, 'UTF-8'));
+
+    if (mb_strlen($title, 'UTF-8') > $available) {
+        $title = mb_substr($title, 0, $available, 'UTF-8');
+        $lastSpace = mb_strrpos($title, ' ', 0, 'UTF-8');
+        if ($lastSpace !== false && $lastSpace >= (int)($available * 0.7)) {
+            $title = mb_substr($title, 0, $lastSpace, 'UTF-8');
+        }
+    }
+
+    return rtrim($title, " -|,.") . $suffix;
+}
+
+// Normalize meta descriptions and cap them at 155 characters.
+function seoDescription($description, $fallback = '', $maxLength = 155) {
+    $description = trim(preg_replace('/\s+/u', ' ', strip_tags((string)$description)));
+    if ($description === '') {
+        $description = trim(preg_replace('/\s+/u', ' ', strip_tags((string)$fallback)));
+    }
+    if (mb_strlen($description, 'UTF-8') <= $maxLength) {
+        return $description;
+    }
+
+    $cut = mb_substr($description, 0, $maxLength - 3, 'UTF-8');
+    $lastSpace = mb_strrpos($cut, ' ', 0, 'UTF-8');
+    if ($lastSpace !== false && $lastSpace >= (int)($maxLength * 0.75)) {
+        $cut = mb_substr($cut, 0, $lastSpace, 'UTF-8');
+    }
+    return rtrim($cut, " ,.;:-") . '...';
+}
+
+// Add stable anchors to H2/H3 headings and return data for a clickable TOC.
+function buildPostTableOfContents($html) {
+    $items = [];
+    $usedIds = [];
+    $content = preg_replace_callback('/<h([23])([^>]*)>(.*?)<\/h\1>/isu', function ($match) use (&$items, &$usedIds) {
+        $level = (int)$match[1];
+        $attributes = $match[2];
+        $headingHtml = $match[3];
+        $label = trim(preg_replace('/\s+/u', ' ', strip_tags($headingHtml)));
+        if ($label === '') {
+            return $match[0];
+        }
+
+        if (preg_match('/\sid=["\']([^"\']+)["\']/iu', $attributes, $idMatch)) {
+            $id = $idMatch[1];
+        } else {
+            $baseId = createSlug($label) ?: 'muc-noi-dung';
+            $id = $baseId;
+            $counter = 2;
+            while (isset($usedIds[$id])) {
+                $id = $baseId . '-' . $counter++;
+            }
+            $attributes .= ' id="' . htmlspecialchars($id, ENT_QUOTES, 'UTF-8') . '"';
+        }
+
+        $usedIds[$id] = true;
+        $items[] = ['level' => $level, 'id' => $id, 'label' => $label];
+        return '<h' . $level . $attributes . '>' . $headingHtml . '</h' . $level . '>';
+    }, (string)$html);
+
+    return ['content' => $content, 'items' => $items];
+}
+
 // Redirect with message
 function redirect($url, $message = null, $type = 'success') {
     if ($message) {

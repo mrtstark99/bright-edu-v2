@@ -88,6 +88,7 @@ include 'includes/header.php';
           <div class="relative h-36 overflow-hidden bg-slate-100">
             <img src="/uploads/<?php echo htmlspecialchars($g['image']); ?>"
                  alt="<?php echo htmlspecialchars($g['name']); ?>"
+                 loading="lazy" decoding="async"
                  class="w-full h-full object-cover">
             <span class="absolute top-3 left-3 inline-flex items-center gap-1.5 text-[11px] font-bold px-2.5 py-1 rounded-full text-white shadow"
                   style="background:<?php echo $meta['color']; ?>">

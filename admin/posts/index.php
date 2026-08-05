@@ -45,7 +45,7 @@ include dirname(dirname(__DIR__)) . '/includes/admin/header.php';
 ?>
 
 <div class="page-header">
-    <div><h1>Bài viết</h1><p>Quản lý nội dung blog</p></div>
+    <div><h1>Bài viết</h1><p>Quản lý nội dung blog · Rà soát và làm mới bài viết sau mỗi 6 tháng</p></div>
     <a href="/admin/posts/create" class="btn-adm"><i class="bi bi-plus-lg"></i> Thêm bài viết</a>
 </div>
 
@@ -111,6 +111,13 @@ include dirname(dirname(__DIR__)) . '/includes/admin/header.php';
                             </a>
                             <?php if ($post['featured']): ?>
                             <span class="inline-block mt-0.5 text-[10px] font-bold bg-amber-50 text-amber-600 px-1.5 py-0.5 rounded uppercase">Nổi bật</span>
+                            <?php endif; ?>
+                            <?php
+                              $last_reviewed = strtotime($post['updated_at'] ?: $post['created_at']);
+                              $review_due = $last_reviewed && $last_reviewed < strtotime('-6 months');
+                            ?>
+                            <?php if ($review_due): ?>
+                            <span class="inline-block mt-0.5 text-[10px] font-bold bg-red-50 text-red-600 px-1.5 py-0.5 rounded uppercase">Cần cập nhật SEO</span>
                             <?php endif; ?>
                         </div>
                     </div>

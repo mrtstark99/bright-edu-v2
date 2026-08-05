@@ -109,6 +109,7 @@ include 'includes/header.php';
               <?php if ($post['featured_image']): ?>
               <img src="<?php echo getPostImage($post['featured_image']); ?>" 
                    alt="<?php echo htmlspecialchars($post['title']); ?>"
+                   loading="lazy" decoding="async"
                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
               <?php else: ?>
               <div class="w-full h-full bg-slate-100 flex items-center justify-center">

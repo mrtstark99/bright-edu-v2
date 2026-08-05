@@ -394,7 +394,7 @@ $platform_meta = [
 
                 <!-- Attachment Image Preview -->
                 <div id="image_preview_container" class="hidden relative mt-4 rounded-2xl overflow-hidden border border-slate-100 max-h-56 shadow-xs select-none">
-                    <img id="image_preview" src="" class="w-full h-full object-cover">
+                    <img id="image_preview" src="" alt="Xem trước ảnh đính kèm" class="w-full h-full object-cover">
                     <button id="btn_remove_image" class="absolute top-3 right-3 bg-black/60 hover:bg-black/80 text-white rounded-full p-1.5 w-7 h-7 flex items-center justify-center transition-colors">
                         <i class="bi bi-x-lg text-xs"></i>
                     </button>

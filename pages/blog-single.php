@@ -44,8 +44,12 @@ $stmt = $db->prepare("
 $stmt->execute([$post['category_id'], $post['id']]);
 $related_posts = $stmt->fetchAll();
 
-$page_title = $post['meta_title'] ?: $post['title'] . ' - Bright Education';
-$page_description = $post['meta_description'] ?: getExcerpt($post['content']);
+$processed_post = buildPostTableOfContents($post['content']);
+$post_content = $processed_post['content'];
+$toc_items = $processed_post['items'];
+$page_title = seoTitle($post['meta_title'] ?: $post['title']);
+$description_source = $post['meta_description'] ?: getExcerpt($post['content'], 105);
+$page_description = seoDescription($description_source . ' Xem hướng dẫn và nhận tư vấn từ Bright Education.');
 $page_keywords = $post['meta_keywords'];
 $page_image = getPostImage($post['featured_image']) ?: APP_URL . '/assets/images/favicon.png';
 $og_type = 'article';
@@ -97,10 +101,33 @@ include 'includes/header.php';
              class="w-full rounded-2xl shadow-lg">
       </div>
       <?php endif; ?>
+
+      <?php if (count($toc_items) >= 2): ?>
+      <nav class="mb-8 rounded-2xl border border-primary-100 bg-primary-50 p-5 sm:p-6" aria-label="Mục lục bài viết">
+        <h2 class="mb-4 text-lg font-bold text-primary">Mục lục bài viết</h2>
+        <ol class="space-y-2 text-sm text-slate-700">
+          <?php foreach ($toc_items as $item): ?>
+          <li class="<?php echo $item['level'] === 3 ? 'ml-5' : ''; ?>">
+            <a class="hover:text-primary hover:underline" href="#<?php echo htmlspecialchars($item['id']); ?>">
+              <?php echo htmlspecialchars($item['label']); ?>
+            </a>
+          </li>
+          <?php endforeach; ?>
+        </ol>
+      </nav>
+      <?php endif; ?>
       
       <div class="prose prose-lg max-w-none">
-        <?php echo $post['content']; ?>
+        <?php echo $post_content; ?>
       </div>
+
+      <aside class="mt-10 rounded-2xl border border-primary-100 bg-primary-50 p-6" aria-label="Tư vấn du học Nhật Bản">
+        <h2 class="text-xl font-bold text-primary">Cần lộ trình du học phù hợp?</h2>
+        <p class="mt-2 text-sm leading-6 text-slate-600">Khám phá các chương trình du học Nhật Bản và nhận tư vấn theo học lực, ngân sách và mục tiêu của bạn.</p>
+        <a href="/services" class="mt-4 inline-flex items-center gap-2 font-bold text-primary hover:underline">
+          Xem dịch vụ tư vấn du học <i class="bi bi-arrow-right"></i>
+        </a>
+      </aside>
       
       <!-- Share buttons -->
       <div class="mt-12 pt-8 border-t border-slate-200">
@@ -132,6 +159,7 @@ include 'includes/header.php';
           <?php if ($related['featured_image']): ?>
           <img src="<?php echo getPostImage($related['featured_image']); ?>" 
                alt="<?php echo htmlspecialchars($related['title']); ?>"
+               loading="lazy" decoding="async"
                class="w-full h-48 object-cover">
           <?php endif; ?>
           <div class="p-6">

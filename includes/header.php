@@ -1,7 +1,25 @@
 <?php
-// Compute canonical URL dynamically
-$request_uri = strtok($_SERVER['REQUEST_URI'], '?');
+// Compute canonical URL dynamically and supply unique defaults for static pages.
+$request_uri = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
 $canonical_url = APP_URL . $request_uri;
+$static_meta_descriptions = [
+    '/' => 'Tư vấn du học Nhật Bản, chọn trường, học bổng, hồ sơ và visa cùng Bright Education. Đăng ký tư vấn miễn phí.',
+    '/services' => 'Khám phá chương trình du học Nhật ngữ, Senmon, đại học và học bổng. Nhận lộ trình phù hợp từ Bright Education.',
+    '/schools' => 'Tra cứu trường Nhật ngữ theo khu vực, học phí và kỳ tuyển sinh. Liên hệ Bright Education để được tư vấn chọn trường.',
+    '/courses' => 'Khóa học tiếng Nhật từ cơ bản đến luyện thi JLPT, hỗ trợ lộ trình du học. Đăng ký học thử cùng Bright Education.',
+    '/process' => 'Tìm hiểu quy trình du học Nhật Bản từ chọn trường, chuẩn bị hồ sơ, xin COE đến visa và xuất cảnh.',
+    '/documents' => 'Danh sách hồ sơ du học Nhật Bản cần chuẩn bị cho học sinh và người bảo lãnh. Nhận hướng dẫn từ Bright Education.',
+    '/cost' => 'Dự tính học phí, sinh hoạt phí và chi phí hồ sơ du học Nhật Bản. Nhận bảng chi phí cá nhân hóa miễn phí.',
+    '/blog' => 'Cẩm nang du học Nhật Bản về trường học, visa, học bổng, việc làm thêm và cuộc sống dành cho du học sinh.',
+    '/contact' => 'Liên hệ Bright Education để được tư vấn lộ trình, chi phí, trường học và học bổng du học Nhật Bản.',
+];
+if (empty($page_description) && isset($static_meta_descriptions[$request_uri])) {
+    $page_description = $static_meta_descriptions[$request_uri];
+}
+$page_description = seoDescription($page_description ?? '', DEFAULT_META_DESC);
+$page_title = trim((string)($page_title ?? DEFAULT_META_TITLE));
+$ga_id = trim((string)getSetting('ga_id', ''));
+$gsc_verification = trim((string)getSetting('gsc_verification', ''));
 ?>
 <!DOCTYPE html>
 <html lang="vi">
@@ -10,6 +28,9 @@ $canonical_url = APP_URL . $request_uri;
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title><?php echo htmlspecialchars($page_title ?? DEFAULT_META_TITLE); ?></title>
   <meta name="description" content="<?php echo htmlspecialchars($page_description ?? DEFAULT_META_DESC); ?>" />
+  <?php if ($gsc_verification !== ''): ?>
+  <meta name="google-site-verification" content="<?php echo htmlspecialchars($gsc_verification); ?>" />
+  <?php endif; ?>
   <meta name="keywords" content="<?php echo htmlspecialchars($page_keywords ?? DEFAULT_META_KEYWORDS); ?>" />
   <link rel="canonical" href="<?php echo htmlspecialchars($canonical_url); ?>" />
   <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
@@ -40,6 +61,11 @@ $canonical_url = APP_URL . $request_uri;
           "url" => APP_URL,
           "logo" => APP_URL . "/assets/images/logo.svg",
           "description" => DEFAULT_META_DESC,
+          "address" => [
+              "@type" => "PostalAddress",
+              "streetAddress" => getSetting('site_address', ''),
+              "addressCountry" => "VN"
+          ],
           "contactPoint" => [
               "@type" => "ContactPoint",
               "telephone" => "+84 0971044576",
@@ -77,9 +103,12 @@ $canonical_url = APP_URL . $request_uri;
   if (isset($data) && isset($data['title'])) {
       $schemas[] = [
           "@context" => "https://schema.org",
-          "@type" => "Course",
+          "@type" => "Service",
           "name" => $data['title'],
           "description" => $data['subtitle'] ?? '',
+          "serviceType" => $data['title'],
+          "areaServed" => ["VN", "JP"],
+          "url" => $canonical_url,
           "provider" => [
               "@type" => "Organization",
               "name" => "Bright Education",
@@ -95,6 +124,17 @@ $canonical_url = APP_URL . $request_uri;
   echo json_encode($schemas, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
   ?>
   </script>
+
+  <?php if (preg_match('/^G-[A-Z0-9]+$/i', $ga_id)): ?>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo rawurlencode($ga_id); ?>"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', <?php echo json_encode(strtoupper($ga_id)); ?>);
+  </script>
+  <?php endif; ?>
 
   <!-- Fonts: Inter for body, Quicksand for headings (BrightHome style) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">

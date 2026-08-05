@@ -12,16 +12,27 @@
           <p class="text-primary-100 text-sm leading-relaxed">
             <?php echo getSetting('site_footer_desc', 'Đồng hành cùng hàng ngàn học viên Việt Nam trên con đường chinh phục tri thức và xây dựng sự nghiệp tại Nhật Bản.'); ?>
           </p>
+          <?php
+            $facebook_url = trim((string)getSetting('facebook_url', ''));
+            $youtube_url = trim((string)getSetting('youtube_url', ''));
+            $tiktok_url = trim((string)getSetting('tiktok_url', ''));
+          ?>
           <div class="flex items-center gap-4 pt-2">
-            <a href="<?php echo getSetting('facebook_url', '#'); ?>" target="_blank" class="h-10 w-10 rounded-full bg-primary-800 flex items-center justify-center text-white hover:bg-white hover:text-primary transition-colors">
+            <?php if ($facebook_url && $facebook_url !== '#'): ?>
+            <a href="<?php echo htmlspecialchars($facebook_url); ?>" target="_blank" rel="noopener noreferrer" aria-label="Facebook Bright Education" class="h-10 w-10 rounded-full bg-primary-800 flex items-center justify-center text-white hover:bg-white hover:text-primary transition-colors">
               <i class="bi bi-facebook text-lg"></i>
             </a>
-            <a href="<?php echo getSetting('youtube_url', '#'); ?>" target="_blank" class="h-10 w-10 rounded-full bg-primary-800 flex items-center justify-center text-white hover:bg-white hover:text-primary transition-colors">
+            <?php endif; ?>
+            <?php if ($youtube_url && $youtube_url !== '#'): ?>
+            <a href="<?php echo htmlspecialchars($youtube_url); ?>" target="_blank" rel="noopener noreferrer" aria-label="YouTube Bright Education" class="h-10 w-10 rounded-full bg-primary-800 flex items-center justify-center text-white hover:bg-white hover:text-primary transition-colors">
               <i class="bi bi-youtube text-lg"></i>
             </a>
-            <a href="<?php echo getSetting('tiktok_url', '#'); ?>" target="_blank" class="h-10 w-10 rounded-full bg-primary-800 flex items-center justify-center text-white hover:bg-white hover:text-primary transition-colors">
+            <?php endif; ?>
+            <?php if ($tiktok_url && $tiktok_url !== '#'): ?>
+            <a href="<?php echo htmlspecialchars($tiktok_url); ?>" target="_blank" rel="noopener noreferrer" aria-label="TikTok Bright Education" class="h-10 w-10 rounded-full bg-primary-800 flex items-center justify-center text-white hover:bg-white hover:text-primary transition-colors">
               <i class="bi bi-tiktok text-lg"></i>
             </a>
+            <?php endif; ?>
           </div>
         </div>
 
@@ -45,7 +56,7 @@
           <ul class="space-y-3 text-sm text-primary-100">
             <li><a href="/services" class="hover:text-white transition-colors flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Tất cả dịch vụ</a></li>
             <li><a href="/courses" class="hover:text-white transition-colors flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Khóa học tiếng Nhật</a></li>
-            <li><a href="/du-hoc" class="hover:text-white transition-colors flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Thông tin du học</a></li>
+            <li><a href="/services" class="hover:text-white transition-colors flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Thông tin du học</a></li>
             <li><a href="/process" class="hover:text-white transition-colors flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Quy trình thủ tục</a></li>
             <li><a href="/documents" class="hover:text-white transition-colors flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Kho tài liệu</a></li>
             <li><a href="/consultation" class="hover:text-white transition-colors flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Đăng ký tư vấn</a></li>
@@ -84,8 +95,12 @@
       <div class="pt-8 border-t border-primary-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-primary-200">
         <p>© <?php echo date('Y'); ?> Bright Education Japan. All rights reserved.</p>
         <div class="flex gap-6">
-          <a href="#" class="hover:text-white transition-colors">Chính sách bảo mật</a>
-          <a href="#" class="hover:text-white transition-colors">Điều khoản sử dụng</a>
+          <?php $google_business_url = trim((string)getSetting('google_business_url', '')); ?>
+          <?php if ($google_business_url): ?>
+          <a href="<?php echo htmlspecialchars($google_business_url); ?>" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Đánh giá Bright Education</a>
+          <?php endif; ?>
+          <a href="/privacy" class="hover:text-white transition-colors">Chính sách bảo mật</a>
+          <a href="/terms" class="hover:text-white transition-colors">Điều khoản sử dụng</a>
         </div>
       </div>
     </div>

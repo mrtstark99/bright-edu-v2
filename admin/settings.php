@@ -128,8 +128,13 @@ $si = function($key, $default = '') use ($s) {
                 <div class="a-field"><label class="a-label">Tiktok URL</label>
                     <input type="text" name="tiktok_url" class="a-input" value="<?php echo $si('tiktok_url'); ?>">
                 </div>
+                <div class="a-field"><label class="a-label">Google Business / Review URL</label>
+                    <input type="url" name="google_business_url" class="a-input" value="<?php echo $si('google_business_url'); ?>" placeholder="https://g.page/r/..."></div>
                 <div class="a-field"><label class="a-label">Google Analytics ID</label>
                     <input type="text" name="ga_id" class="a-input" value="<?php echo $si('ga_id'); ?>" placeholder="G-XXXXXXXXXX">
+                </div>
+                <div class="a-field"><label class="a-label">Google Search Console verification</label>
+                    <input type="text" name="gsc_verification" class="a-input" value="<?php echo $si('gsc_verification'); ?>" placeholder="Mã content của thẻ google-site-verification">
                 </div>
                 <div class="a-field"><label class="a-label">Kiểu nút liên hệ nổi</label>
                     <select name="fab_display_style" class="a-input">
