@@ -71,16 +71,21 @@ include 'includes/header.php';
         </div>
         
         <!-- Bottom Social Links -->
+        <?php
+          $contact_socials = [
+            ['url' => trim((string)getSetting('facebook_url', '')), 'icon' => 'bi-facebook', 'label' => 'Facebook Bright Education'],
+            ['url' => trim((string)getSetting('youtube_url', '')), 'icon' => 'bi-youtube', 'label' => 'YouTube Bright Education'],
+            ['url' => trim((string)getSetting('tiktok_url', '')), 'icon' => 'bi-tiktok', 'label' => 'TikTok Bright Education'],
+          ];
+        ?>
         <div class="relative z-10 mt-16 pt-8 border-t border-white/10 flex gap-4">
-          <a href="<?php echo getSetting('facebook_url', '#'); ?>" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition text-white shadow-soft">
-            <i class="bi bi-facebook"></i>
+          <?php foreach ($contact_socials as $social): ?>
+          <?php if ($social['url'] !== '' && $social['url'] !== '#'): ?>
+          <a href="<?php echo htmlspecialchars($social['url']); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php echo htmlspecialchars($social['label']); ?>" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition text-white shadow-soft">
+            <i class="bi <?php echo htmlspecialchars($social['icon']); ?>"></i>
           </a>
-          <a href="<?php echo getSetting('youtube_url', '#'); ?>" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition text-white shadow-soft">
-            <i class="bi bi-youtube"></i>
-          </a>
-          <a href="<?php echo getSetting('tiktok_url', '#'); ?>" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition text-white shadow-soft">
-            <i class="bi bi-tiktok"></i>
-          </a>
+          <?php endif; ?>
+          <?php endforeach; ?>
         </div>
       </div>
       
