@@ -1,0 +1,78 @@
+/* =====================================================
+   BRIGHT EDUCATION – HOME PAGE STYLES
+   Tách từ pages/home.php
+   ===================================================== */
+
+/* ---- Hero Section ---- */
+@keyframes floatUp {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-8px); }
+}
+.animate-float-1 { animation: floatUp 4s infinite ease-in-out; }
+.animate-float-2 { animation: floatUp 4.5s infinite ease-in-out; animation-delay: 0.5s; }
+.animate-float-3 { animation: floatUp 4.8s infinite ease-in-out; animation-delay: 0.2s; }
+.animate-float-4 { animation: floatUp 5.2s infinite ease-in-out; animation-delay: 1.5s; }
+.animate-float-5 { animation: floatUp 5s infinite ease-in-out; animation-delay: 1s; }
+
+@keyframes morphGlow {
+    0%, 100% { border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+    33%       { border-radius: 70% 30% 52% 48% / 60% 40% 60% 40%; transform: translate(-50%, -50%) rotate(120deg) scale(1.1); }
+    66%       { border-radius: 28% 72% 37% 63% / 40% 60% 30% 70%; transform: translate(-50%, -50%) rotate(240deg) scale(0.9); }
+}
+.animate-morph-glow { animation: morphGlow 15s infinite linear; }
+
+/* Wave Bottom */
+.wave-bottom {
+    position: absolute; bottom: 0; left: 0;
+    width: 100%; overflow: hidden; line-height: 0;
+    transform: rotate(180deg); z-index: 25;
+}
+.wave-bottom svg {
+    position: relative; display: block;
+    width: calc(100% + 1.3px); height: 60px;
+}
+.wave-bottom .shape-fill { fill: #ffffff; }
+@media (min-width: 768px) {
+    .wave-bottom svg { height: 100px; }
+}
+
+/* Hero background with faded image */
+.hero-bg-faded {
+    position: relative;
+    background-color: #f3f5f9;
+}
+.hero-bg-faded::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image: url('/assets/images/sakura_bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.25;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ---- Cost Calculator Section ---- */
+.wiz-panel { display: none; }
+.wiz-panel.wiz-active {
+    display: flex; flex-direction: column; gap: 12px;
+    animation: wizFade 0.22s ease;
+}
+@keyframes wizFade {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.calc-item input:checked + .calc-box {
+    border-color: var(--color-primary, #0d243e);
+    background-color: rgba(13, 36, 62, 0.04);
+}
+.calc-item input:checked + .calc-box .radio-dot { transform: scale(1); }
+.calc-item input:checked + .calc-box .calc-details {
+    display: block;
+    animation: slideDown 0.22s ease-out;
+}
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}

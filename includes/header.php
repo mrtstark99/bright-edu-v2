@@ -14,6 +14,7 @@
   
   <!-- Font Awesome/Bootstrap Icons if needed -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -61,88 +62,7 @@
       }
     }
   </script>
-  <style>
-    html { scroll-behavior: smooth; }
-    body { background-color: #ffffff; }
-    
-    /* Typography Utilities */
-    h1, h2, h3, h4, h5, h6 { font-family: 'Quicksand', sans-serif; letter-spacing: -0.02em; }
-    /* Reset table headers and cells to use body font (Inter), not Quicksand */
-    table th, table td { font-family: 'Inter', sans-serif; letter-spacing: 0; }
-    
-    /* Animations */
-    .reveal { opacity: 0; transform: translateY(30px); }
-    .reveal.show { opacity: 1; transform: translateY(0); transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
-    
-    /* Card Interactions */
-    .card-hover { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-    .card-hover:hover { transform: translateY(-6px); box-shadow: 0 24px 48px -12px rgba(15, 23, 42, 0.1); }
-    
-    /* Buttons */
-    .btn-primary { 
-        position: relative; overflow: hidden; transition: all 0.3s ease; 
-        background: #0d243e;
-    }
-    .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 25px -5px rgba(13, 36, 62, 0.4);
-    }
-    .btn-outline {
-        transition: all 0.3s ease;
-    }
-    .btn-outline:hover {
-        background-color: #f8fafc;
-        border-color: #0d243e;
-        color: #0d243e;
-    }
-
-    /* Glassmorphism utility */
-    .glass {
-        background: rgba(255, 255, 255, 0.85);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        border: 1px solid rgba(255, 255, 255, 0.6);
-    }
-
-    /* Soft gradients */
-    .bg-mesh {
-        background-color: #ffffff;
-    }
-
-    /* Diverse Frames & Animations */
-    .shape-blob {
-        animation: morph 8s ease-in-out infinite;
-        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-        transition: all 1s ease-in-out;
-    }
-    
-    @keyframes morph {
-        0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-        50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
-        100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-    }
-
-    .shape-arch {
-        border-radius: 20rem 20rem 2rem 2rem;
-    }
-
-    .parallax-bg {
-        background-attachment: fixed;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-
-    .float-slow {
-        animation: float 6s ease-in-out infinite;
-    }
-    
-    @keyframes float {
-        0% { transform: translateY(0px); }
-        50% { transform: translateY(-15px); }
-        100% { transform: translateY(0px); }
-    }
-  </style>
+  <!-- Page-specific styles are loaded via /assets/css/ -->
 </head>
 <body class="text-ink font-sans antialiased bg-rice selection:bg-sage-200 selection:text-sage-900">
   
@@ -165,35 +85,7 @@
         <?php endif; ?>
       </nav>
 
-      <style>
-        .nav-link {
-          padding: 6px 14px; border-radius: 10px; color: #6b7280;
-          transition: color .2s, background .2s; text-decoration: none;
-          font-weight: 500; white-space: nowrap;
-          background: transparent; border: none; cursor: pointer; font-size: 15px;
-          font-family: 'Inter', sans-serif;
-        }
-        .nav-link:hover { color: #0d243e; background: #f8fafc; }
-
-        .nav-dropdown {
-          visibility: hidden; opacity: 0; transform: translateY(6px);
-          transition: opacity .2s ease, transform .2s ease, visibility .2s;
-          pointer-events: none;
-        }
-        .nav-dropdown-trigger:hover .nav-dropdown {
-          visibility: visible; opacity: 1; transform: translateY(0);
-          pointer-events: auto;
-        }
-        .nav-dropdown-trigger:hover .nav-chevron { transform: rotate(180deg); }
-
-        .dd-link {
-          display: flex; align-items: center; gap: 10px;
-          padding: 9px 12px; border-radius: 12px; color: #374151;
-          text-decoration: none; font-size: 14px; font-weight: 500;
-          transition: background .15s, color .15s;
-        }
-        .dd-link:hover { background: #f2f5f9; color: #0d243e; }
-      </style>
+      <!-- Nav styles loaded via /assets/css/components.css -->
       
       <div class="flex items-center gap-3">
         <?php if (isLoggedIn()): ?>
