@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /auth/
+Disallow: /backup/
+Disallow: /config/
+Disallow: /includes/
+Disallow: /models/
+Disallow: /controllers/
+Disallow: /database/
+
+Sitemap: https://brighteducation.net/sitemap.xml

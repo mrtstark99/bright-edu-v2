@@ -30,6 +30,22 @@ foreach ($blocked as $b) {
     }
 }
 
+// Route sitemap.xml to sitemap.php
+if ($uri === '/sitemap.xml') {
+    require __DIR__ . '/sitemap.php';
+    return true;
+}
+
+// Serve robots.txt directly
+if ($uri === '/robots.txt') {
+    $filePath = __DIR__ . '/robots.txt';
+    if (file_exists($filePath)) {
+        header('Content-Type: text/plain; charset=utf-8');
+        readfile($filePath);
+        return true;
+    }
+}
+
 // If it's a real PHP file, serve it directly
 if ($ext === 'php') {
     $filePath = __DIR__ . $uri;

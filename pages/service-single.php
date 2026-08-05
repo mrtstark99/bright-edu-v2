@@ -99,7 +99,7 @@ $services_data = [
         'badge' => 'Học thuật Cao cấp',
         'icon' => 'bi-mortarboard',
         'color' => 'rose',
-        'image' => '/assets/images/program_university.jpg',
+        'image' => '/assets/images/program_university.webp',
         'price' => '30.000.000 VNĐ',
         'duration' => '4 năm học chính quy',
         'language' => 'Đạt JLPT N2 trở lên hoặc điểm thi EJU cao',
@@ -186,7 +186,7 @@ $services_data = [
         'badge' => 'Hội nhập Toàn cầu',
         'icon' => 'bi-globe',
         'color' => 'sky',
-        'image' => '/assets/images/whyus_tokyo.png',
+        'image' => '/assets/images/whyus_tokyo.webp',
         'price' => '30.000.000 VNĐ',
         'duration' => '4 năm học chính quy',
         'language' => 'IELTS từ 6.0 trở lên hoặc TOEFL iBT từ 75',
@@ -234,6 +234,9 @@ if (!isset($services_data[$slug])) {
 
 $data = $services_data[$slug];
 $page_title = $data['title'] . ' - Bright Education';
+$page_description = $data['subtitle'] . '. ' . truncateText(strip_tags($data['description']), 140);
+$page_image = !empty($data['image']) ? APP_URL . $data['image'] : APP_URL . '/assets/images/favicon.png';
+$og_type = 'website';
 include 'includes/header.php';
 ?>
 

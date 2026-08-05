@@ -1,12 +1,101 @@
+<?php
+// Compute canonical URL dynamically
+$request_uri = strtok($_SERVER['REQUEST_URI'], '?');
+$canonical_url = APP_URL . $request_uri;
+?>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title><?php echo $page_title ?? DEFAULT_META_TITLE; ?></title>
-  <meta name="description" content="<?php echo $page_description ?? DEFAULT_META_DESC; ?>" />
+  <title><?php echo htmlspecialchars($page_title ?? DEFAULT_META_TITLE); ?></title>
+  <meta name="description" content="<?php echo htmlspecialchars($page_description ?? DEFAULT_META_DESC); ?>" />
+  <meta name="keywords" content="<?php echo htmlspecialchars($page_keywords ?? DEFAULT_META_KEYWORDS); ?>" />
+  <link rel="canonical" href="<?php echo htmlspecialchars($canonical_url); ?>" />
   <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
   
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="<?php echo $og_type ?? 'website'; ?>" />
+  <meta property="og:title" content="<?php echo htmlspecialchars($page_title ?? DEFAULT_META_TITLE); ?>" />
+  <meta property="og:description" content="<?php echo htmlspecialchars($page_description ?? DEFAULT_META_DESC); ?>" />
+  <meta property="og:image" content="<?php echo htmlspecialchars($page_image ?? APP_URL . '/assets/images/favicon.png'); ?>" />
+  <meta property="og:url" content="<?php echo htmlspecialchars($canonical_url); ?>" />
+  <meta property="og:site_name" content="Bright Education" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="<?php echo htmlspecialchars($canonical_url); ?>" />
+  <meta property="twitter:title" content="<?php echo htmlspecialchars($page_title ?? DEFAULT_META_TITLE); ?>" />
+  <meta property="twitter:description" content="<?php echo htmlspecialchars($page_description ?? DEFAULT_META_DESC); ?>" />
+  <meta property="twitter:image" content="<?php echo htmlspecialchars($page_image ?? APP_URL . '/assets/images/favicon.png'); ?>" />
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  <?php
+  $schemas = [
+      [
+          "@context" => "https://schema.org",
+          "@type" => "EducationalOrganization",
+          "name" => "Bright Education",
+          "url" => APP_URL,
+          "logo" => APP_URL . "/assets/images/logo.svg",
+          "description" => DEFAULT_META_DESC,
+          "contactPoint" => [
+              "@type" => "ContactPoint",
+              "telephone" => "+84 0971044576",
+              "contactType" => "customer service",
+              "areaServed" => "VN",
+              "availableLanguage" => "Vietnamese"
+          ]
+      ]
+  ];
+
+  if (isset($post) && !empty($post)) {
+      $schemas[] = [
+          "@context" => "https://schema.org",
+          "@type" => "BlogPosting",
+          "headline" => $post['title'],
+          "description" => $page_description,
+          "image" => $page_image ?? (APP_URL . '/assets/images/favicon.png'),
+          "datePublished" => date('c', strtotime($post['published_at'] ?? $post['created_at'])),
+          "dateModified" => date('c', strtotime($post['updated_at'])),
+          "author" => [
+              "@type" => "Person",
+              "name" => $post['author_name'] ?? 'Bright Education'
+          ],
+          "publisher" => [
+              "@type" => "Organization",
+              "name" => "Bright Education",
+              "logo" => [
+                  "@type" => "ImageObject",
+                  "url" => APP_URL . "/assets/images/logo.svg"
+              ]
+          ]
+      ];
+  }
+
+  if (isset($data) && isset($data['title'])) {
+      $schemas[] = [
+          "@context" => "https://schema.org",
+          "@type" => "Course",
+          "name" => $data['title'],
+          "description" => $data['subtitle'] ?? '',
+          "provider" => [
+              "@type" => "Organization",
+              "name" => "Bright Education",
+              "sameAs" => APP_URL
+          ]
+      ];
+  }
+
+  if (isset($faq_schema) && !empty($faq_schema)) {
+      $schemas[] = $faq_schema;
+  }
+
+  echo json_encode($schemas, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+  ?>
+  </script>
+
   <!-- Fonts: Inter for body, Quicksand for headings (BrightHome style) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +104,8 @@
   <!-- Font Awesome/Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
+  <!-- Optimize CDN Loading -->
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {

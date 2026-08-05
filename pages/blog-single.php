@@ -47,13 +47,25 @@ $related_posts = $stmt->fetchAll();
 $page_title = $post['meta_title'] ?: $post['title'] . ' - Bright Education';
 $page_description = $post['meta_description'] ?: getExcerpt($post['content']);
 $page_keywords = $post['meta_keywords'];
+$page_image = getPostImage($post['featured_image']) ?: APP_URL . '/assets/images/favicon.png';
+$og_type = 'article';
 
 include 'includes/header.php';
 ?>
 
-<main class="pt-24">
+<main class="pt-24 bg-slate-50 min-h-screen">
   <article>
-    <div class="mx-auto max-w-4xl px-4 sm:px-5 py-12">
+    <div class="mx-auto max-w-4xl px-4 sm:px-5 py-12 bg-white rounded-3xl border border-slate-200 shadow-soft mt-6">
+      
+      <!-- Breadcrumbs -->
+      <nav class="flex items-center gap-2 text-xs font-semibold text-slate-500 mb-6 uppercase tracking-wider" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-primary transition-colors">Trang chủ</a>
+        <i class="bi bi-chevron-right text-[10px]"></i>
+        <a href="/blog" class="hover:text-primary transition-colors">Blog</a>
+        <i class="bi bi-chevron-right text-[10px]"></i>
+        <span class="text-slate-400 truncate max-w-[150px] sm:max-w-xs md:max-w-md"><?php echo htmlspecialchars($post['title']); ?></span>
+      </nav>
+
       <div class="mb-8">
         <div class="flex items-center gap-3 mb-4">
           <span class="text-sm font-semibold text-midnight bg-midnight/10 px-3 py-1 rounded-full">

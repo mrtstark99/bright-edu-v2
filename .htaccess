@@ -1,6 +1,9 @@
 # Enable Rewrite Engine
 RewriteEngine On
 
+# Rewrite sitemap.xml to sitemap.php
+RewriteRule ^sitemap\.xml$ sitemap.php [L]
+
 # Force HTTPS in production
 # RewriteCond %{HTTPS} off
 # RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]

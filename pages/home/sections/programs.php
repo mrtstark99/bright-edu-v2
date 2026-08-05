@@ -64,7 +64,7 @@
                <article class="flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] group relative bg-white rounded-3xl border border-slate-100 shadow-soft hover:shadow-medium hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between overflow-hidden">
                   <!-- Image Header -->
                   <div class="relative h-[222px] overflow-hidden">
-                    <img src="/assets/images/program_university.jpg" alt="Du học Trường Đại học" style="object-position: center -30px;" class="w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-105">
+                    <img src="/assets/images/program_university.webp" alt="Du học Trường Đại học" style="object-position: center -30px;" class="w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-105">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
                   </div>
                   <!-- Card Content -->
@@ -112,7 +112,7 @@
                <article class="flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] group relative bg-white rounded-3xl border border-slate-100 shadow-soft hover:shadow-medium hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between h-full overflow-hidden">
                   <!-- Image Header -->
                   <div class="relative h-[222px] overflow-hidden">
-                    <img src="/assets/images/whyus_tokyo.png" alt="Du học Hệ Đại học Tiếng Anh" style="object-position: center -30px;" class="w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-105">
+                    <img src="/assets/images/whyus_tokyo.webp" alt="Du học Hệ Đại học Tiếng Anh" style="object-position: center -30px;" class="w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-105">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
                   </div>
                   <!-- Card Content -->

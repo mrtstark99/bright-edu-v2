@@ -3,6 +3,48 @@
  * Q&A Page - Premium Social Media Feed Style with Collapsible Inline Comments
  */
 $page_title = 'Góc chia sẻ kiến thức du học - Bright Education';
+$page_description = 'Cộng đồng hỏi đáp du học Nhật Bản. Chia sẻ kinh nghiệm, giải đáp thắc mắc tuyển sinh, chi phí, học bổng và cuộc sống.';
+
+// Build FAQ Schema from active QA questions
+require_once 'config/config.php';
+try {
+    $db = Database::getInstance();
+    $q_stmt = $db->prepare("
+        SELECT q.*, (SELECT a.content FROM qa_answers a WHERE a.question_id = q.id AND a.status = 'active' ORDER BY a.likes_count DESC, a.created_at ASC LIMIT 1) as best_answer
+        FROM qa_questions q
+        WHERE q.status = 'active'
+        ORDER BY q.likes_count DESC, q.created_at DESC
+        LIMIT 10
+    ");
+    $q_stmt->execute();
+    $faq_questions = $q_stmt->fetchAll();
+
+    if (!empty($faq_questions)) {
+        $main_entity = [];
+        foreach ($faq_questions as $fq) {
+            if (!empty($fq['best_answer'])) {
+                $main_entity[] = [
+                    "@type" => "Question",
+                    "name" => truncateText(strip_tags($fq['content']), 120),
+                    "acceptedAnswer" => [
+                        "@type" => "Answer",
+                        "text" => strip_tags($fq['best_answer'])
+                    ]
+                ];
+            }
+        }
+        if (!empty($main_entity)) {
+            $faq_schema = [
+                "@context" => "https://schema.org",
+                "@type" => "FAQPage",
+                "mainEntity" => $main_entity
+            ];
+        }
+    }
+} catch (Exception $e) {
+    // Ignore database errors
+}
+
 require_once 'includes/header.php';
 
 $is_logged_in = isLoggedIn();
@@ -108,8 +150,32 @@ $platform_meta = [
     }
 </style>
 
-<main class="pt-20 bg-slate-50/40 min-h-screen">
-    <section class="py-10">
+<main class="pt-20 bg-slate-50 min-h-screen">
+
+    <!-- Hero Section -->
+    <section class="bg-primary text-white pt-16 pb-24 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-[80px] pointer-events-none"></div>
+        <div class="mx-auto max-w-7xl px-5 lg:px-8 relative z-10 text-center">
+            
+            <!-- Breadcrumb -->
+            <nav class="flex items-center justify-center gap-2 text-xs font-semibold text-white/60 mb-6 uppercase tracking-wider" aria-label="Breadcrumb">
+                <a href="/" class="hover:text-white transition-colors">Trang chủ</a>
+                <i class="bi bi-chevron-right text-[10px]"></i>
+                <span class="text-white">Hỏi đáp cộng đồng</span>
+            </nav>
+
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3.5 py-1 text-xs font-bold text-white/90 mb-4 border border-white/10 uppercase tracking-widest">
+                <i class="bi bi-chat-left-text text-[10px] text-amber-400"></i> Trao đổi kiến thức
+            </span>
+            <h1 class="text-3xl sm:text-[2.75rem] font-black font-display tracking-tight leading-tight mb-4">Hỏi Đáp Du Học Nhật Bản</h1>
+            <p class="text-base sm:text-lg text-white/85 max-w-3xl leading-relaxed mx-auto">
+                Cộng đồng chia sẻ kinh nghiệm, giải đáp thắc mắc tuyển sinh, chi phí, học bổng và cuộc sống sinh hoạt tại Nhật Bản.
+            </p>
+        </div>
+    </section>
+
+    <section class="py-12 -mt-10 relative z-20">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             
             <!-- Categories Slider -->

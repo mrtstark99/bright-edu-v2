@@ -118,7 +118,7 @@
             </div>
 
             <!-- Mascot/Student Image -->
-            <img src="/assets/images/hero-new.png" alt="Sinh viên Bright Education" class="w-auto object-contain max-h-[320px] md:max-h-[480px] lg:max-h-[520px] relative z-10 transform scale-[1.05] drop-shadow-2xl">
+            <img src="/assets/images/hero-new.webp" alt="Sinh viên Bright Education" class="w-auto object-contain max-h-[320px] md:max-h-[480px] lg:max-h-[520px] relative z-10 transform scale-[1.05] drop-shadow-2xl">
           </div>
         </div>
       </div>
