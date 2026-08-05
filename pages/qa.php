@@ -12,20 +12,32 @@ $is_admin = $is_logged_in && (isAdmin() || isEditor());
 
 <!-- Premium Minimalist Threads Style CSS -->
 <style>
-    /* Font is already set via Tailwind config (Inter / Quicksand) in header.php */
-
+    /* Thread connection line perfectly centered with the avatars */
+    .thread-line {
+        position: absolute;
+        top: 68px;
+        bottom: 24px;
+        left: 47px;
+        width: 2px;
+        background: linear-gradient(to bottom, #e2e8f0 0%, #f8fafc 100%);
+        border-radius: 99px;
+        z-index: 1;
+    }
     .threads-card {
         transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 2;
         position: relative;
         cursor: pointer;
     }
     .threads-card:hover {
         transform: translateY(-2px);
         box-shadow: 0 12px 32px -4px rgba(1, 53, 103, 0.08);
+        background-color: rgba(248, 250, 252, 0.5);
     }
     .threads-card.active {
         border-color: #0d243e !important;
         box-shadow: 0 12px 32px -4px rgba(1, 53, 103, 0.08) !important;
+        background-color: #f8fafc;
     }
     .tag-badge {
         transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -106,10 +118,9 @@ $is_admin = $is_logged_in && (isAdmin() || isEditor());
     .skeleton-line.long { width: 100%; }
     
     .skeleton-card {
-        background: #ffffff;
-        border: 1px solid #f1f5f9;
-        border-radius: 1rem;
-        padding: 1.25rem;
+        background: transparent;
+        border-bottom: 1px solid #f1f5f9;
+        padding: 1.5rem 1.25rem;
         display: flex;
         gap: 1rem;
         position: relative;
@@ -187,168 +198,175 @@ $is_admin = $is_logged_in && (isAdmin() || isEditor());
     .bg-threads-lavender {
         background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
     }
+
+    /* Fix alignment for extra large screens to align posts with header content */
+    @media (min-width: 1760px) {
+        .qa-sidebar {
+            position: fixed !important;
+            left: calc(50vw - 880px) !important;
+            right: auto !important;
+            width: 240px !important;
+            top: 80px !important;
+            bottom: 0 !important;
+            z-index: 40;
+            border-right: 1px solid #f1f5f9 !important;
+            border-left: none !important;
+        }
+        .qa-main-container {
+            max-width: 80rem !important; /* max-w-7xl (1280px) */
+            margin-left: auto !important;
+            margin-right: auto !important;
+            width: 100% !important;
+        }
+    }
 </style>
 
-<main class="pt-20 bg-slate-50 min-h-screen">
-    <!-- Fixed Left Sidebar (Instagram Style Menu) - hugging left viewport margin -->
-    <aside class="fixed left-6 top-28 bottom-0 w-[200px] z-30 pt-8 hidden min-[1600px]:flex flex-col gap-6">
-        <div>
-            <h2 class="text-xs font-black uppercase tracking-wider text-slate-400 mb-4 px-4 font-display">Danh mục chủ đề</h2>
-            <nav class="flex flex-col gap-1">
-                <button class="tag-badge insta-menu-btn active active-all" data-tag="">
-                    <i class="bi bi-grid text-lg"></i>
-                    <span>Tất cả chủ đề</span>
-                </button>
-                <button class="tag-badge insta-menu-btn" data-tag="#tuyensinh">
-                    <i class="bi bi-mortarboard text-lg text-orange-500"></i>
-                    <span>#tuyensinh</span>
-                </button>
-                <button class="tag-badge insta-menu-btn" data-tag="#hocphi">
-                    <i class="bi bi-wallet2 text-lg text-emerald-500"></i>
-                    <span>#hocphi</span>
-                </button>
-                <button class="tag-badge insta-menu-btn" data-tag="#visanhat">
-                    <i class="bi bi-passport text-lg text-blue-550"></i>
-                    <span>#visanhat</span>
-                </button>
-                <button class="tag-badge insta-menu-btn" data-tag="#vieclam">
-                    <i class="bi bi-briefcase text-lg text-amber-500"></i>
-                    <span>#vieclam</span>
-                </button>
-                <button class="tag-badge insta-menu-btn" data-tag="#nhatngu">
-                    <i class="bi bi-translate text-lg text-indigo-500"></i>
-                    <span>#nhatngu</span>
-                </button>
-                <button class="tag-badge insta-menu-btn" data-tag="#cuocsong">
-                    <i class="bi bi-heart-pulse text-lg text-rose-500"></i>
-                    <span>#cuocsong</span>
-                </button>
-            </nav>
-        </div>
-    </aside>
-
-    <!-- Main Content Section - Centered to match header navigation container -->
-    <div class="w-full">
-        <section class="max-w-7xl mx-auto px-5 sm:px-8 py-8 pb-12">
+<main class="pt-20 bg-white min-h-screen">
+    <section class="w-full border-t border-slate-100">
+        
+        <div class="flex flex-col md:flex-row min-h-[calc(100vh-80px)] qa-layout-wrapper">
             
-            <!-- Header Page Title -->
-            <div class="mb-8 pb-5 border-b border-slate-200/60">
-                <h1 class="text-2xl md:text-3xl font-bold text-slate-900 font-display tracking-tight">Hỏi đáp & Chia sẻ Kiến thức</h1>
-                <p class="text-xs md:text-sm text-slate-550 mt-1">Nơi thảo luận, trao đổi kinh nghiệm và chia sẻ kiến thức du học Nhật Bản.</p>
-            </div>
-
-            <div class="flex flex-col md:flex-row gap-6 lg:gap-8 items-start">
-                
-                <!-- Middle Feed Column (List of posts) -->
-                <div id="feed_column" class="w-full md:w-[400px] lg:w-[420px] shrink-0 flex flex-col gap-5">
-                    
-                    <!-- Mobile top tags filter - Hidden on Desktop -->
-                    <div class="min-[1600px]:hidden">
-                        <div class="flex gap-1.5 overflow-x-auto pb-3 scrollbar-hide select-none">
-                            <button class="tag-badge px-3.5 py-2 shrink-0 rounded-full text-xs font-bold bg-white text-slate-650 border border-slate-200 hover:bg-slate-50 active active-all transition-all" data-tag="">
-                                Tất cả
-                            </button>
-                            <button class="tag-badge px-3.5 py-2 shrink-0 rounded-full text-xs font-bold bg-white text-slate-650 border border-slate-200 hover:bg-slate-50 transition-all" data-tag="#tuyensinh">
-                                #tuyensinh
-                            </button>
-                            <button class="tag-badge px-3.5 py-2 shrink-0 rounded-full text-xs font-bold bg-white text-slate-650 border border-slate-200 hover:bg-slate-50 transition-all" data-tag="#hocphi">
-                                #hocphi
-                            </button>
-                            <button class="tag-badge px-3.5 py-2 shrink-0 rounded-full text-xs font-bold bg-white text-slate-650 border border-slate-200 hover:bg-slate-50 transition-all" data-tag="#visanhat">
-                                #visanhat
-                            </button>
-                            <button class="tag-badge px-3.5 py-2 shrink-0 rounded-full text-xs font-bold bg-white text-slate-650 border border-slate-200 hover:bg-slate-50 transition-all" data-tag="#vieclam">
-                                #vieclam
-                            </button>
-                            <button class="tag-badge px-3.5 py-2 shrink-0 rounded-full text-xs font-bold bg-white text-slate-650 border border-slate-200 hover:bg-slate-50 transition-all" data-tag="#nhatngu">
-                                #nhatngu
-                            </button>
-                            <button class="tag-badge px-3.5 py-2 shrink-0 rounded-full text-xs font-bold bg-white text-slate-650 border border-slate-200 hover:bg-slate-50 transition-all" data-tag="#cuocsong">
-                                #cuocsong
-                            </button>
-                        </div>
+            <!-- Left Sidebar -->
+            <aside class="qa-sidebar w-[240px] shrink-0 border-r border-slate-100 pl-6 pr-5 py-6 hidden md:block sticky top-20 max-h-[calc(100vh-80px)] overflow-y-auto">
+                <!-- User Profile Card -->
+                <?php if ($is_logged_in): ?>
+                <div class="flex items-center gap-3 mb-6 px-1">
+                    <div class="w-10 h-10 rounded-full bg-primary-600 text-white font-extrabold flex items-center justify-center shadow-xs border border-white uppercase text-sm select-none flex-shrink-0">
+                        <span><?= mb_substr($current_user_name, 0, 1, 'UTF-8') ?></span>
                     </div>
-                    
-                    <!-- Login invitation for non-logged-in users -->
-                    <?php if (!$is_logged_in): ?>
-                    <div class="bg-white p-6 border border-slate-100/80 rounded-2xl shadow-soft text-center">
-                        <div class="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center mx-auto mb-3">
-                            <i class="bi bi-people text-primary text-base"></i>
-                        </div>
-                        <h4 class="font-bold text-sm text-slate-900 mb-1 font-display">Tham gia thảo luận</h4>
-                        <p class="text-xs text-slate-555 leading-relaxed mb-4">Đăng nhập để đặt câu hỏi và phản hồi chia sẻ cùng Bright Education.</p>
-                        <div class="flex gap-2 justify-center">
-                            <a href="/login?redirect=/qa" class="px-5 py-2.5 bg-primary text-white rounded-full text-xs font-bold hover:bg-slate-800 transition-all shadow-sm">
-                                Đăng nhập
-                            </a>
-                            <a href="/register?redirect=/qa" class="px-5 py-2.5 border border-slate-200 text-slate-650 rounded-full text-xs font-bold hover:bg-slate-50 transition-all">
-                                Đăng ký
-                            </a>
-                        </div>
+                    <div class="min-w-0">
+                        <h4 class="font-bold text-[13px] text-slate-900 truncate leading-tight"><?= htmlspecialchars($current_user_name) ?></h4>
+                        <span class="text-[9px] font-bold text-slate-400 uppercase tracking-wide">
+                            <?= $is_admin ? 'Ban quản trị' : 'Thành viên' ?>
+                        </span>
                     </div>
-                    <?php endif; ?>
-
-                    <!-- One post creation trigger button (Only for Admin/Editor) -->
-                    <?php if ($is_admin): ?>
-                    <div class="bg-white p-5 border border-slate-100/80 rounded-2xl shadow-soft">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-full bg-primary text-white font-extrabold flex items-center justify-center border border-white uppercase text-sm select-none flex-shrink-0 shadow-xs">
-                                <span><?= mb_substr($current_user_name, 0, 1, 'UTF-8') ?></span>
-                            </div>
-                            <button id="btn_open_post_modal" class="flex-1 bg-slate-50 hover:bg-slate-100/75 text-slate-500 rounded-full px-5 py-3 text-left text-[13px] font-medium flex items-center justify-between transition-all duration-200 focus:outline-none">
-                                <span>Đăng bài chia sẻ kiến thức mới...</span>
-                                <i class="bi bi-pencil-square text-slate-400 text-base"></i>
-                            </button>
-                        </div>
-                        
-                        <div class="flex items-center justify-between mt-4 pt-3 border-t border-slate-100">
-                            <button onclick="document.getElementById('btn_open_post_modal').click(); document.getElementById('btn_trigger_file').click();" class="flex items-center gap-2 px-3 py-1.5 hover:bg-slate-50 rounded-xl transition-colors text-xs font-semibold text-slate-500">
-                                <i class="bi bi-image text-emerald-550 text-base"></i>
-                                <span>Đính kèm ảnh</span>
-                            </button>
-                            <button onclick="document.getElementById('btn_open_post_modal').click(); document.getElementById('post_tag').focus();" class="flex items-center gap-2 px-3 py-1.5 hover:bg-slate-50 rounded-xl transition-colors text-xs font-semibold text-slate-500">
-                                <i class="bi bi-tags text-orange-550 text-base"></i>
-                                <span>Chọn chủ đề</span>
-                            </button>
-                        </div>
-                    </div>
-                    <?php endif; ?>
-
-                    <!-- Feed Cards -->
-                    <div id="feed_container" class="flex flex-col gap-4">
-                        <!-- Loading Spinner -->
-                        <div id="feed_loading" class="text-center py-16 bg-white rounded-2xl border border-slate-100/80 shadow-soft">
-                            <i class="bi bi-arrow-repeat text-3xl text-primary/30 animate-spin inline-block"></i>
-                            <p class="text-slate-400 mt-3 text-xs font-semibold">Đang tải danh sách bài viết...</p>
-                        </div>
-                    </div>
-
                 </div>
+                <?php else: ?>
+                <div class="border border-slate-100 bg-slate-50/30 p-4 rounded-xl text-center mb-6 mr-1">
+                    <div class="w-8 h-8 rounded-full bg-primary-50 flex items-center justify-center mx-auto mb-2">
+                        <i class="bi bi-people text-primary text-sm"></i>
+                    </div>
+                    <h4 class="font-bold text-xs text-slate-950 mb-0.5">Cộng đồng</h4>
+                    <p class="text-[10px] text-slate-500 leading-relaxed mb-3">Đăng nhập để thảo luận cùng Bright Education.</p>
+                    <a href="/login?redirect=/qa" class="inline-block w-full py-1 bg-primary text-white rounded-full text-[11px] font-bold hover:bg-slate-800 transition-all shadow-sm">
+                        Đăng nhập
+                    </a>
+                </div>
+                <?php endif; ?>
 
-                <!-- Right Details Column (Detailed Content of selected post) -->
-                <div id="details_column" class="details-panel-sticky flex-1 w-full hidden md:block">
-                    <!-- Back button to return to list (Visible on mobile/tablet only when viewing details) -->
-                    <div id="details_back_bar" class="hidden mb-4">
-                        <button id="btn_close_details" class="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-primary py-2.5 px-4.5 bg-white border border-slate-200 rounded-full shadow-soft transition-colors">
-                            <i class="bi bi-arrow-left"></i> Quay lại danh sách bài viết
+                <!-- Category tags list -->
+                <div class="py-2">
+                    <div class="flex items-center gap-2 mb-4 pb-3 border-b border-slate-100">
+                        <div class="w-2.5 h-2.5 rounded-full bg-orange-500 animate-pulse"></div>
+                        <h3 class="text-[11px] font-black uppercase tracking-wider text-slate-400">Danh mục kiến thức</h3>
+                    </div>
+                    <div class="flex flex-col gap-1" id="sidebar_tags_list">
+                        <button class="tag-badge text-left px-3.5 py-2 rounded-xl text-[13px] font-bold text-slate-600 hover:bg-slate-50 border border-transparent transition-all active active-all" data-tag="">
+                            <i class="bi bi-grid mr-2 text-xs text-slate-400"></i> Tất cả chủ đề
+                        </button>
+                        <button class="tag-badge text-left px-3.5 py-2 rounded-xl text-[13px] font-bold text-slate-600 hover:bg-slate-50 border border-transparent transition-all" data-tag="#tuyensinh">
+                            <i class="bi bi-mortarboard mr-2 text-xs text-orange-500"></i> #tuyensinh
+                        </button>
+                        <button class="tag-badge text-left px-3.5 py-2 rounded-xl text-[13px] font-bold text-slate-600 hover:bg-slate-50 border border-transparent transition-all" data-tag="#hocphi">
+                            <i class="bi bi-wallet2 mr-2 text-xs text-emerald-500"></i> #hocphi
+                        </button>
+                        <button class="tag-badge text-left px-3.5 py-2 rounded-xl text-[13px] font-bold text-slate-600 hover:bg-slate-50 border border-transparent transition-all" data-tag="#visanhat">
+                            <i class="bi bi-passport mr-2 text-xs text-blue-500"></i> #visanhat
+                        </button>
+                        <button class="tag-badge text-left px-3.5 py-2 rounded-xl text-[13px] font-bold text-slate-600 hover:bg-slate-50 border border-transparent transition-all" data-tag="#vieclam">
+                            <i class="bi bi-briefcase mr-2 text-xs text-amber-500"></i> #vieclam
+                        </button>
+                        <button class="tag-badge text-left px-3.5 py-2 rounded-xl text-[13px] font-bold text-slate-600 hover:bg-slate-50 border border-transparent transition-all" data-tag="#nhatngu">
+                            <i class="bi bi-translate mr-2 text-xs text-indigo-500"></i> #nhatngu
+                        </button>
+                        <button class="tag-badge text-left px-3.5 py-2 rounded-xl text-[13px] font-bold text-slate-600 hover:bg-slate-50 border border-transparent transition-all" data-tag="#cuocsong">
+                            <i class="bi bi-heart-pulse mr-2 text-xs text-rose-500"></i> #cuocsong
                         </button>
                     </div>
-
-                    <!-- Single Post Detailed View Container -->
-                    <div id="details_container" class="w-full">
-                         <!-- Empty state / Selected post details -->
-                         <div class="bg-white rounded-2xl border border-slate-100/80 shadow-soft p-8 flex flex-col items-center justify-center text-center py-24 text-slate-400 select-none">
-                             <div class="w-16 h-16 rounded-full bg-slate-50 flex items-center justify-center mb-4">
-                                 <i class="bi bi-chat-left-text text-2xl text-slate-350"></i>
-                             </div>
-                             <p class="text-xs font-semibold text-slate-500">Chọn một bài viết ở danh sách bên trái để xem nội dung chi tiết và bình luận.</p>
-                         </div>
-                    </div>
                 </div>
-                
+            </aside>
+
+            <!-- Center-aligned Container for Feed + Details -->
+            <div class="flex-1 flex justify-center qa-main-container">
+                <div class="w-full max-w-7xl flex flex-col md:flex-row min-h-full">
+                    
+                    <!-- Middle Feed Column (List of posts) -->
+                    <div id="feed_column" class="w-full md:w-[450px] shrink-0 border-r border-slate-100 p-5 flex flex-col gap-5">
+                        
+                        <!-- Title & tag list for mobile -->
+                        <div class="md:hidden">
+                            <h2 class="text-xl font-black text-primary font-display mb-3">Góc Chia sẻ Kiến thức</h2>
+                            <div class="flex gap-2 overflow-x-auto pb-3 select-none scrollbar-hide" id="mobile_tags_list">
+                                <button class="tag-badge shrink-0 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-600 bg-white border border-slate-200 active active-all" data-tag="">Tất cả</button>
+                                <button class="tag-badge shrink-0 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-600 bg-white border border-slate-200" data-tag="#tuyensinh">#tuyensinh</button>
+                                <button class="tag-badge shrink-0 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-600 bg-white border border-slate-200" data-tag="#hocphi">#hocphi</button>
+                                <button class="tag-badge shrink-0 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-600 bg-white border border-slate-200" data-tag="#visanhat">#visanhat</button>
+                                <button class="tag-badge shrink-0 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-600 bg-white border border-slate-200" data-tag="#vieclam">#vieclam</button>
+                                <button class="tag-badge shrink-0 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-600 bg-white border border-slate-200" data-tag="#nhatngu">#nhatngu</button>
+                                <button class="tag-badge shrink-0 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-600 bg-white border border-slate-200" data-tag="#cuocsong">#cuocsong</button>
+                            </div>
+                        </div>
+
+                        <!-- One post creation trigger button (Only for Admin/Editor) -->
+                        <?php if ($is_admin): ?>
+                        <div class="bg-slate-50/50 p-4 border border-slate-100 rounded-2xl">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-primary-600 text-white font-extrabold flex items-center justify-center shadow-xs border border-white uppercase text-sm select-none flex-shrink-0">
+                                    <span><?= mb_substr($current_user_name, 0, 1, 'UTF-8') ?></span>
+                                </div>
+                                <button id="btn_open_post_modal" class="flex-1 bg-white hover:bg-slate-50 border border-slate-200 text-slate-500 rounded-full px-5 py-2.5 text-left text-[13px] font-medium flex items-center justify-between transition-all duration-200 shadow-xs focus:outline-none">
+                                    <span>Đăng bài chia sẻ kiến thức mới...</span>
+                                    <i class="bi bi-pencil-square text-slate-400 text-base"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="flex items-center justify-between mt-3 pt-3 border-t border-slate-100">
+                                <button onclick="document.getElementById('btn_open_post_modal').click(); document.getElementById('btn_trigger_file').click();" class="flex items-center gap-2 px-3 py-1.5 hover:bg-white rounded-xl transition-colors text-xs font-semibold text-slate-500">
+                                    <i class="bi bi-image text-emerald-550 text-base"></i>
+                                    <span>Đính kèm ảnh</span>
+                                </button>
+                                <button onclick="document.getElementById('btn_open_post_modal').click(); document.getElementById('post_tag').focus();" class="flex items-center gap-2 px-3 py-1.5 hover:bg-white rounded-xl transition-colors text-xs font-semibold text-slate-500">
+                                    <i class="bi bi-tags text-orange-500 text-base"></i>
+                                    <span>Chọn chủ đề</span>
+                                </button>
+                            </div>
+                        </div>
+                        <?php endif; ?>
+
+                        <!-- Feed Cards -->
+                        <div id="feed_container" class="flex flex-col">
+                            <!-- Loading Spinner -->
+                            <div id="feed_loading" class="text-center py-16 bg-white rounded-2xl border border-slate-100/80">
+                                <i class="bi bi-arrow-repeat text-3xl text-primary/30 animate-spin inline-block"></i>
+                                <p class="text-slate-400 mt-3 text-xs font-semibold">Đang tải danh sách bài viết...</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Details Column (Detailed Content of selected post) -->
+                    <div id="details_column" class="details-panel-sticky flex-1 p-6 hidden md:block">
+                        <!-- Back button to return to list (Visible on mobile/tablet only when viewing details) -->
+                        <div id="details_back_bar" class="hidden mb-4">
+                            <button id="btn_close_details" class="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-primary py-2 px-4 bg-white border border-slate-200 rounded-full shadow-soft transition-colors">
+                                <i class="bi bi-arrow-left"></i> Quay lại danh sách bài viết
+                            </button>
+                        </div>
+
+                        <!-- Single Post Detailed View Container -->
+                        <div id="details_container" class="max-w-3xl">
+                             <!-- Empty state / Selected post details -->
+                             <div class="flex flex-col items-center justify-center text-center py-24 text-slate-400 select-none">
+                                 <i class="bi bi-journal-text text-5xl mb-4 text-slate-200"></i>
+                                 <p class="text-xs font-semibold text-slate-500">Chọn một bài viết ở danh sách bên trái để xem nội dung chi tiết và bình luận.</p>
+                             </div>
+                        </div>
+                    </div>
+                    
+                </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 </main>
 
 <!-- Popup Modal for Creating a Question -->
@@ -595,6 +613,110 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // CSS Initials Avatar Generator Helper
+    function getAvatarHtml(name, size = 12) {
+        if (!name) name = 'Thành viên';
+        const initial = name.trim().charAt(0).toUpperCase();
+        
+        // Hash function for colors
+        let hash = 0;
+        for (let i = 0; i < name.length; i++) {
+            hash = name.charCodeAt(i) + ((hash << 5) - hash);
+        }
+        
+        const bgColors = [
+            'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)', // Blue
+            'linear-gradient(135deg, #10b981 0%, #047857 100%)', // Emerald
+            'linear-gradient(135deg, #6366f1 0%, #4338ca 100%)', // Indigo
+            'linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%)', // Violet
+            'linear-gradient(135deg, #ec4899 0%, #be185d 100%)', // Pink
+            'linear-gradient(135deg, #f59e0b 0%, #b45309 100%)', // Amber
+            'linear-gradient(135deg, #14b8a6 0%, #0f766e 100%)', // Teal
+            'linear-gradient(135deg, #f43f5e 0%, #be123c 100%)', // Rose
+            'linear-gradient(135deg, #06b6d4 0%, #0369a1 100%)'  // Cyan
+        ];
+        const gradient = bgColors[Math.abs(hash) % bgColors.length];
+        
+        let sizeClasses = 'w-12 h-12 text-[15px]';
+        if (size === 10) sizeClasses = 'w-10 h-10 text-sm';
+        if (size === 9) sizeClasses = 'w-9 h-9 text-xs';
+        if (size === 8) sizeClasses = 'w-8 h-8 text-[10px]';
+
+        return `<div class="${sizeClasses} rounded-full text-white font-extrabold flex items-center justify-center shadow-xs border border-white uppercase select-none flex-shrink-0" style="background: ${gradient};">
+            <span>${initial}</span>
+        </div>`;
+    }
+
+    // Skeleton screen builder
+    function getSkeletonHtml() {
+        let html = '';
+        for (let i = 0; i < 3; i++) {
+            html += `
+            <div class="skeleton-card">
+                <div class="skeleton-avatar"></div>
+                <div class="flex-1 space-y-3 py-1">
+                    <div class="flex justify-between items-center">
+                        <div class="skeleton-line short"></div>
+                        <div class="skeleton-line w-16"></div>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="skeleton-line long"></div>
+                        <div class="skeleton-line medium"></div>
+                    </div>
+                    <div class="flex justify-between items-center pt-3 border-t border-slate-50 mt-4">
+                        <div class="skeleton-line w-20"></div>
+                        <div class="skeleton-line w-20"></div>
+                    </div>
+                </div>
+            </div>
+            `;
+        }
+        return html;
+    }
+
+    function showSkeletonLoader() {
+        feedContainer.innerHTML = getSkeletonHtml();
+    }
+
+    // Custom styled pill tag
+    function getStyledTagHtml(tag) {
+        if (!tag) return '';
+        const cleanTag = tag.trim().toLowerCase();
+        const mapping = {
+            '#tuyensinh': 'bg-orange-50/80 text-orange-600 border border-orange-100/50',
+            '#hocphi': 'bg-emerald-50/80 text-emerald-600 border border-emerald-100/50',
+            '#visanhat': 'bg-blue-50/80 text-blue-600 border border-blue-100/50',
+            '#vieclam': 'bg-amber-50/80 text-amber-600 border border-amber-100/50',
+            '#nhatngu': 'bg-indigo-50/80 text-indigo-600 border border-indigo-100/50',
+            '#cuocsong': 'bg-rose-50/80 text-rose-600 border border-rose-100/50'
+        };
+        const classes = mapping[cleanTag] || 'bg-slate-100 text-slate-600 border border-slate-200/50';
+        return `<span class="inline-block text-[11px] font-bold px-2.5 py-0.5 rounded-full ${classes} hover:scale-102 hover:shadow-xs transition-all cursor-pointer btn-tag-filter" data-tag="${tag}">${tag}</span>`;
+    }
+
+    // Get verified / Admin role badge
+    function getRoleBadge(name) {
+        if (!name) return '';
+        const cleanName = name.toLowerCase();
+        if (cleanName.includes('admin') || cleanName.includes('editor') || cleanName.includes('bright education')) {
+            return `<span class="inline-flex items-center gap-0.5 bg-slate-900 text-[9.5px] font-black text-white px-2 py-0.5 rounded-full uppercase tracking-wider scale-90">
+                <i class="bi bi-shield-check text-orange-400"></i> Admin
+            </span>`;
+        }
+        return `<span class="bg-slate-50 border border-slate-100 text-[9.5px] font-bold text-slate-500 px-2 py-0.5 rounded-full uppercase tracking-wider scale-90">Thành viên</span>`;
+    }
+
+    // Highlight active card helper
+    function highlightActiveCard(qid) {
+        document.querySelectorAll('#feed_container .threads-card').forEach(card => {
+            if (parseInt(card.dataset.id) === parseInt(qid)) {
+                card.classList.add('active');
+            } else {
+                card.classList.remove('active');
+            }
+        });
+    }
+
     // Load Feed
     function loadFeed() {
         showSkeletonLoader();
@@ -683,10 +805,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function showEmptyDetails() {
         const detailsContainer = document.getElementById('details_container');
         detailsContainer.innerHTML = `
-             <div class="bg-white rounded-2xl border border-slate-100/80 shadow-soft p-8 flex flex-col items-center justify-center text-center py-24 text-slate-400 select-none">
-                 <div class="w-16 h-16 rounded-full bg-slate-50 flex items-center justify-center mb-4">
-                     <i class="bi bi-chat-left-text text-2xl text-slate-350"></i>
-                 </div>
+             <div class="flex flex-col items-center justify-center text-center py-24 text-slate-400 select-none">
+                 <i class="bi bi-journal-text text-5xl mb-4 text-slate-200"></i>
                  <p class="text-xs font-semibold text-slate-500">Chọn một bài viết ở danh sách bên trái để xem nội dung chi tiết và bình luận.</p>
              </div>
         `;
@@ -743,8 +863,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function createThreadCard(q, isDetailedView = false) {
         const div = document.createElement('div');
         div.className = isDetailedView 
-            ? 'detailed-card bg-white rounded-2xl border border-slate-100 shadow-soft p-6 relative mb-6' 
-            : 'threads-card bg-white rounded-2xl border border-slate-100/80 shadow-soft p-5 relative';
+            ? 'detailed-card relative pb-2' 
+            : 'threads-card border-b border-slate-100 p-5 relative';
         div.dataset.id = q.id;
 
         const timeString = formatTime(q.created_at);
@@ -790,22 +910,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     const replyAvatar = getAvatarHtml(ans.author_name, 9);
                     return `
                         <!-- Reply Item -->
-                        <div class="mt-5 pt-4 border-t border-slate-50 relative z-10" data-ans-id="${ans.id}">
-                             <!-- Top Row -->
-                             <div class="flex items-center gap-2.5 mb-2.5">
+                        <div class="flex gap-4 mt-5 pt-4 border-t border-slate-50 relative z-10" data-ans-id="${ans.id}">
+                             <div class="flex justify-center flex-shrink-0 w-12">
                                  ${replyAvatar}
-                                 <div class="flex-1 min-w-0">
-                                     <div class="flex items-center gap-2 flex-wrap">
-                                         <span class="font-bold text-[13px] text-slate-900 leading-none">${escapeHtml(ans.author_name)}</span>
-                                         ${isAdminReply ? `<span class="bg-slate-900 text-[8.5px] font-black text-white px-2 py-0.5 rounded-full uppercase tracking-wider scale-90 flex items-center gap-0.5"><i class="bi bi-shield-check text-orange-400"></i> Admin</span>` : ''}
-                                     </div>
-                                     <span class="text-[10px] text-slate-400 font-medium mt-0.5 block">${formatTime(ans.created_at)}</span>
-                                 </div>
                              </div>
-                             
-                             <!-- Content & Actions (Full width) -->
-                             <div class="w-full pl-1">
-                                 <div class="text-[13.5px] text-slate-700 leading-relaxed">${escapeHtml(ans.content)}</div>
+                             <div class="flex-1 min-w-0">
+                                 <div class="flex items-center gap-2 mb-1">
+                                     <span class="font-bold text-[13.5px] text-slate-900">${escapeHtml(ans.author_name)}</span>
+                                     ${isAdminReply ? `<span class="bg-slate-900 text-[9px] font-black text-white px-2 py-0.5 rounded-full uppercase tracking-wider scale-90 flex items-center gap-0.5"><i class="bi bi-shield-check text-orange-400"></i> Admin</span>` : ''}
+                                     <span class="text-[11px] text-slate-400 ml-auto">${formatTime(ans.created_at)}</span>
+                                 </div>
+                                 <div class="text-[14px] text-slate-700 leading-relaxed">${escapeHtml(ans.content)}</div>
                                  
                                  <div class="flex items-center gap-4 mt-2">
                                      <button class="action-icon-btn btn-like-answer flex items-center gap-1.5 text-xs text-slate-400 hover:text-red-500 transition-colors" data-id="${ans.id}">
@@ -847,8 +962,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 <!-- Inline Reply Input -->
                 ${isLoggedIn ? `
-                <div class="flex items-center gap-3 mt-5 pt-4 border-t border-slate-100 relative z-20">
-                    ${getAvatarHtml(currentUserName, 9)}
+                <div class="flex gap-4 mt-5 pt-4 border-t border-slate-100 relative z-20">
+                    <div class="flex justify-center flex-shrink-0 w-12">
+                        ${getAvatarHtml(currentUserName, 10)}
+                    </div>
                     <div class="flex-1 flex gap-2">
                         <input type="text" class="ans_content flex-1 bg-slate-50 hover:bg-slate-100/75 focus:bg-white border border-slate-200/60 rounded-full px-4.5 py-2 text-[13px] placeholder-slate-400 focus:outline-none focus:border-slate-350 transition-all shadow-xs" placeholder="Viết phản hồi của bạn..." data-qid="${q.id}">
                         <button class="btn-post-answer bg-primary text-white hover:bg-slate-800 rounded-full px-5 py-2 text-[11px] font-bold transition-all shadow-sm" data-qid="${q.id}">Gửi</button>
@@ -863,40 +980,48 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             const answersCount = q.answers ? q.answers.length : 0;
             footerHtml = `
-                <div class="flex justify-between items-center mt-4 pt-3.5 border-t border-slate-100/60">
+                <div class="flex justify-between items-center mt-4 pt-3 border-t border-slate-50">
                     <div class="flex items-center gap-4 text-xs font-bold text-slate-400 select-none">
-                        <span class="flex items-center gap-1.5 hover:text-red-500 transition-colors cursor-pointer"><i class="bi bi-heart"></i> ${q.likes_count || 0}</span>
-                        <span class="flex items-center gap-1.5 hover:text-primary transition-colors cursor-pointer"><i class="bi bi-chat"></i> ${answersCount}</span>
+                        <span class="flex items-center gap-1.5 hover:text-red-500 transition-colors"><i class="bi bi-heart"></i> ${q.likes_count || 0}</span>
+                        <span class="flex items-center gap-1.5 hover:text-primary transition-colors"><i class="bi bi-chat"></i> ${answersCount}</span>
                     </div>
-                    <button class="btn-view-details flex items-center gap-1 text-primary hover:text-primary-700 font-bold text-[12.5px] group transition-colors cursor-pointer">
-                        <span>Xem chi tiết</span>
-                        <i class="bi bi-arrow-right text-[13px] transition-transform group-hover:translate-x-1 duration-200"></i>
+                    <button class="btn-view-details flex items-center gap-1.5 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-black font-bold text-[11.5px] px-4.5 py-2.5 rounded-full transition-colors shadow-xs">
+                        Xem chi tiết <i class="bi bi-chevron-right text-[10px]"></i>
                     </button>
                 </div>
             `;
         }
 
         div.innerHTML = `
-            <!-- Top Row: Author Avatar, Name, Time, Tag -->
-            <div class="flex items-center gap-3 mb-3.5">
-                ${getAvatarHtml(q.author_name, 10)}
-                <div class="flex-1 min-w-0">
-                    <div class="flex items-center gap-2 flex-wrap">
-                        <span class="font-bold text-[14px] text-slate-900 leading-none">${escapeHtml(q.author_name)}</span>
-                        ${getRoleBadge(q.author_name)}
-                    </div>
-                    <span class="text-[11px] text-slate-400 font-medium mt-0.5 block">${timeString}</span>
-                </div>
-                <div class="flex-shrink-0">
-                    ${tagHtml}
-                </div>
-            </div>
+            ${(isDetailedView && hasReplies) ? '<div class="thread-line"></div>' : ''}
             
-            <!-- Content & Image & Footer (Full Width, No Indent) -->
-            <div class="w-full">
-                ${contentHtml}
-                ${attachmentHtml}
-                ${footerHtml}
+            <div class="flex gap-4">
+                <!-- Left Avatar -->
+                <div class="flex flex-col items-center flex-shrink-0 w-12">
+                    ${getAvatarHtml(q.author_name, 12)}
+                </div>
+                
+                <!-- Right Body -->
+                <div class="flex-1 min-w-0">
+                    <!-- Title & Time -->
+                    <div class="flex items-center justify-between mb-1.5">
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <span class="font-bold text-[14.5px] text-slate-900">${escapeHtml(q.author_name)}</span>
+                            ${getRoleBadge(q.author_name)}
+                        </div>
+                        <div class="flex items-center gap-2">
+                            ${tagHtml}
+                            <span class="text-[12px] text-slate-400 font-medium">${timeString}</span>
+                        </div>
+                    <!-- Content -->
+                    ${contentHtml}
+                    
+                    <!-- Image -->
+                    ${attachmentHtml}
+                    
+                    <!-- Footer Block -->
+                    ${footerHtml}
+                </div>
             </div>
         `;
 

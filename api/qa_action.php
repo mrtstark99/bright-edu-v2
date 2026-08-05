@@ -76,7 +76,11 @@ switch ($action) {
         
     case 'post_question':
         if (!isLoggedIn()) {
-            echo json_encode(['status' => 'error', 'message' => 'Vui lòng đăng nhập để đặt câu hỏi']);
+            echo json_encode(['status' => 'error', 'message' => 'Vui lòng đăng nhập để thực hiện']);
+            break;
+        }
+        if (!isAdmin() && !isEditor()) {
+            echo json_encode(['status' => 'error', 'message' => 'Chỉ có Ban quản trị mới được quyền chia sẻ bài viết kiến thức']);
             break;
         }
         $content = $_POST['content'] ?? '';
