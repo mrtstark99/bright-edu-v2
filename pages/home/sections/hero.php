@@ -1,4 +1,4 @@
-  <link rel="stylesheet" href="/assets/css/home.css">
+  <link rel="stylesheet" href="/assets/css/home.css?v=<?= filemtime(APP_ROOT . '/assets/css/home.css') ?>">
   <section class="home-hero hero-bg-faded relative pt-[140px] pb-24 lg:pb-32 w-full min-h-[70vh] lg:min-h-[85vh] flex items-center overflow-hidden">
     
     <!-- Background SVG curves for premium layered look -->

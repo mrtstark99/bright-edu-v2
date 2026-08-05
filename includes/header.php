@@ -62,7 +62,7 @@
     }
   </script>
   <!-- Global component styles (after Tailwind to override correctly) -->
-  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/components.css?v=<?= filemtime(APP_ROOT . '/assets/css/components.css') ?>">
   <style>
     /* Đảm bảo heading dùng Quicksand (override Tailwind reset) */
     h1, h2, h3, h4, h5, h6 { font-family: 'Quicksand', ui-sans-serif, system-ui, sans-serif !important; }
