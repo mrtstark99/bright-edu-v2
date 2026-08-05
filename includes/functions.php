@@ -58,6 +58,17 @@ function formatMoney($amount) {
     return formatNumber($amount) . ' ₫';
 }
 
+// Get post featured image URL (handles external Unsplash URLs and local uploaded files)
+function getPostImage($path) {
+    if (empty($path)) {
+        return '';
+    }
+    if (strpos($path, 'http://') === 0 || strpos($path, 'https://') === 0) {
+        return $path;
+    }
+    return UPLOAD_URL . $path;
+}
+
 // Truncate text
 function truncateText($text, $length = 100, $suffix = '...') {
     if (mb_strlen($text, 'UTF-8') <= $length) {

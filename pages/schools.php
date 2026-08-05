@@ -211,7 +211,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Prev button
         const prevBtn = document.createElement('button');
-        prevBtn.className = \`px-4 py-2 rounded-xl text-sm font-medium transition-colors \${currentPage === 1 ? 'bg-slate-100 text-slate-400 cursor-not-allowed' : 'bg-white border border-slate-200 text-midnight hover:bg-slate-50'}\`;
+        prevBtn.className = `px-4 py-2 rounded-xl text-sm font-medium transition-colors ${currentPage === 1 ? 'bg-slate-100 text-slate-400 cursor-not-allowed' : 'bg-white border border-slate-200 text-midnight hover:bg-slate-50'}`;
         prevBtn.innerHTML = '<i class="bi bi-chevron-left"></i> Trước';
         prevBtn.disabled = currentPage === 1;
         prevBtn.addEventListener('click', () => {
@@ -233,7 +233,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         for (let i = startPage; i <= endPage; i++) {
             const pageBtn = document.createElement('button');
-            pageBtn.className = \`w-10 h-10 rounded-xl text-sm font-medium transition-colors \${i === currentPage ? 'bg-sage-500 text-white shadow-md' : 'bg-white border border-slate-200 text-midnight hover:bg-slate-50'}\`;
+            pageBtn.className = `w-10 h-10 rounded-xl text-sm font-medium transition-colors ${i === currentPage ? 'bg-sage-500 text-white shadow-md' : 'bg-white border border-slate-200 text-midnight hover:bg-slate-50'}`;
             pageBtn.innerText = i;
             pageBtn.addEventListener('click', () => {
                 currentPage = i;
@@ -245,7 +245,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Next button
         const nextBtn = document.createElement('button');
-        nextBtn.className = \`px-4 py-2 rounded-xl text-sm font-medium transition-colors \${currentPage === totalPages ? 'bg-slate-100 text-slate-400 cursor-not-allowed' : 'bg-white border border-slate-200 text-midnight hover:bg-slate-50'}\`;
+        nextBtn.className = `px-4 py-2 rounded-xl text-sm font-medium transition-colors ${currentPage === totalPages ? 'bg-slate-100 text-slate-400 cursor-not-allowed' : 'bg-white border border-slate-200 text-midnight hover:bg-slate-50'}`;
         nextBtn.innerHTML = 'Sau <i class="bi bi-chevron-right"></i>';
         nextBtn.disabled = currentPage === totalPages;
         nextBtn.addEventListener('click', () => {
@@ -259,7 +259,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function populateSelect(selectElement, options, placeholder) {
-        selectElement.innerHTML = \`<option value="">\${placeholder}</option>\`;
+        selectElement.innerHTML = `<option value="">${placeholder}</option>`;
         options.forEach(opt => {
             if (opt) {
                 const el = document.createElement('option');
@@ -316,17 +316,17 @@ document.addEventListener('DOMContentLoaded', function() {
         if (macro || pref || area) {
             activeFilterDisplay.classList.remove('hidden');
             let badgeText = [];
-            if (macro) badgeText.push(\`Vùng: \${macro}\`);
-            if (pref) badgeText.push(\`Tỉnh: \${pref}\`);
-            if (area) badgeText.push(\`Thành phố: \${area}\`);
-            activeRegionBadge.innerHTML = \`<i class="bi bi-geo-alt-fill"></i> \${badgeText.join(' - ')}\`;
+            if (macro) badgeText.push(`Vùng: ${macro}`);
+            if (pref) badgeText.push(`Tỉnh: ${pref}`);
+            if (area) badgeText.push(`Thành phố: ${area}`);
+            activeRegionBadge.innerHTML = `<i class="bi bi-geo-alt-fill"></i> ${badgeText.join(' - ')}`;
         } else {
             activeFilterDisplay.classList.add('hidden');
         }
 
         if (searchTerm) {
             currentFilteredSchools = currentFilteredSchools.filter(s => {
-                const searchStr = \`\${s.name_en} \${s.name_jp || ''} \${s.area || ''} \${s.area_ja || ''} \${s.prefecture} \${s.macro_region}\`.toLowerCase();
+                const searchStr = `${s.name_en} ${s.name_jp || ''} ${s.area || ''} ${s.area_ja || ''} ${s.prefecture} ${s.macro_region}`.toLowerCase();
                 return searchStr.includes(searchTerm);
             });
         }

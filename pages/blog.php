@@ -94,7 +94,7 @@ include 'includes/header.php';
           <article class="group bg-white rounded-[2rem] overflow-hidden border border-slate-100 shadow-soft hover:shadow-medium transition-all duration-300 card-hover flex flex-col h-full">
             <div class="relative overflow-hidden aspect-[4/3]">
               <?php if ($post['featured_image']): ?>
-              <img src="<?php echo UPLOAD_URL . $post['featured_image']; ?>" 
+              <img src="<?php echo getPostImage($post['featured_image']); ?>" 
                    alt="<?php echo htmlspecialchars($post['title']); ?>"
                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
               <?php else: ?>

@@ -111,9 +111,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
     <div class="w-full max-w-lg">
+        <!-- Logo/Header -->
         <div class="text-center mb-6">
-            <h1 class="text-3xl font-bold text-midnight font-display tracking-tight">Bright Education</h1>
-            <p class="text-slate-500 mt-2 font-medium">Tạo tài khoản mới</p>
+            <a href="/">
+                <img src="/assets/images/logo.svg" alt="Bright Education" class="h-16 w-auto mx-auto transition-transform hover:scale-105">
+            </a>
         </div>
 
         <div class="bg-white rounded-[2rem] shadow-sm border border-slate-100 p-8 sm:p-10">
@@ -187,6 +189,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php endif; ?>
         </div>
         
+        <!-- Back to Home Link -->
+        <div class="text-center mt-6">
+            <a href="/" class="inline-flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-midnight transition-colors group">
+                <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Quay lại trang chủ
+            </a>
+        </div>
+
         <div class="text-center mt-8 text-sm font-medium text-slate-400">
             &copy; <?php echo date('Y'); ?> Bright Education. All rights reserved.
         </div>

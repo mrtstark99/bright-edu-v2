@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title><?php echo $page_title ?? DEFAULT_META_TITLE; ?></title>
   <meta name="description" content="<?php echo $page_description ?? DEFAULT_META_DESC; ?>" />
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
   
   <!-- Fonts: Inter for body, Quicksand for headings (BrightHome style) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -66,6 +67,8 @@
     
     /* Typography Utilities */
     h1, h2, h3, h4, h5, h6 { font-family: 'Quicksand', sans-serif; letter-spacing: -0.02em; }
+    /* Reset table headers and cells to use body font (Inter), not Quicksand */
+    table th, table td { font-family: 'Inter', sans-serif; letter-spacing: 0; }
     
     /* Animations */
     .reveal { opacity: 0; transform: translateY(30px); }
@@ -153,10 +156,9 @@
       <nav class="hidden items-center gap-1 text-[15px] font-medium text-muted md:flex">
         <a class="nav-link" href="/">Trang chủ</a>
 
-        <a class="nav-link" href="/explore">Khám phá</a>
         <a class="nav-link" href="/qa">Hỏi đáp</a>
 
-        <a class="nav-link" href="/consultation">Đặt lịch</a>
+        <a class="nav-link" href="/services">Dịch vụ</a>
         <a class="nav-link" href="/contact">Liên hệ</a>
         <?php if (isLoggedIn() && (isAdmin() || isEditor())): ?>
           <a class="nav-link !text-primary font-semibold" href="/admin">Quản trị</a>
@@ -210,10 +212,7 @@
                 </div>
             </div>
         <?php else: ?>
-            <a href="/login" class="hidden sm:inline-flex items-center text-sm font-semibold text-slate-600 hover:text-primary transition-colors px-2">Đăng nhập</a>
-            <?php if (getSetting('allow_registration', '0') === '1'): ?>
-                <a href="/register" class="hidden sm:inline-flex rounded-full px-4 py-2 text-sm font-semibold text-primary bg-primary-50 hover:bg-primary-100 transition-colors">Đăng ký</a>
-            <?php endif; ?>
+            <a href="/login" class="hidden sm:inline-flex rounded-full px-4 py-2 text-sm font-semibold text-primary bg-primary-50 hover:bg-primary-100 transition-colors">Đăng nhập</a>
         <?php endif; ?>
         
         <a class="hidden rounded-full px-5 py-2.5 text-sm font-semibold text-white sm:inline-flex btn-primary" href="/contact">
@@ -265,11 +264,8 @@
           </a>
         </div>
 
-        <!-- Khám phá group -->
+        <!-- Danh mục group -->
         <div>
-          <a class="mobile-link flex items-center gap-3 px-4 py-3 rounded-2xl text-[16px] font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors" href="/explore">
-            <i class="bi bi-compass text-primary w-5 text-center text-sm"></i> Khám phá
-          </a>
           <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400 px-4 pt-2 pb-2">— Danh mục</p>
           <a class="mobile-link flex items-center gap-3 px-4 py-3 rounded-2xl text-[16px] font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors" href="/blog">
             <i class="bi bi-newspaper text-primary w-5 text-center text-sm"></i> Blog & Cẩm nang

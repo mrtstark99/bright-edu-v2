@@ -80,7 +80,7 @@ include 'includes/header.php';
       
       <?php if ($post['featured_image']): ?>
       <div class="mb-8">
-        <img src="<?php echo UPLOAD_URL . $post['featured_image']; ?>" 
+        <img src="<?php echo getPostImage($post['featured_image']); ?>" 
              alt="<?php echo htmlspecialchars($post['title']); ?>"
              class="w-full rounded-2xl shadow-lg">
       </div>
@@ -118,7 +118,7 @@ include 'includes/header.php';
         <?php foreach ($related_posts as $related): ?>
         <article class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-soft card-hover">
           <?php if ($related['featured_image']): ?>
-          <img src="<?php echo UPLOAD_URL . $related['featured_image']; ?>" 
+          <img src="<?php echo getPostImage($related['featured_image']); ?>" 
                alt="<?php echo htmlspecialchars($related['title']); ?>"
                class="w-full h-48 object-cover">
           <?php endif; ?>

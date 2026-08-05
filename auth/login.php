@@ -141,8 +141,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="w-full max-w-md">
         <!-- Logo/Header -->
         <div class="text-center mb-8">
-            <h1 class="text-3xl font-bold text-midnight font-display tracking-tight">Bright Education</h1>
-            <p class="text-slate-500 mt-2 font-medium">Hệ thống quản trị nội dung</p>
+            <a href="/">
+                <img src="/assets/images/logo.svg" alt="Bright Education" class="h-16 w-auto mx-auto transition-transform hover:scale-105">
+            </a>
         </div>
 
         <!-- Login Card -->
@@ -168,7 +169,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label for="email" class="block text-sm font-bold text-slate-700 mb-2">Địa chỉ Email</label>
                     <input type="email" id="email" name="email" 
                            class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-sage-500 focus:ring-1 focus:ring-sage-500 transition-colors placeholder-slate-400"
-                           placeholder="admin@bright.edu.vn"
+                           placeholder="Email"
                            value="<?php echo htmlspecialchars($_POST['email'] ?? ''); ?>" required autofocus>
                 </div>
                 
@@ -178,6 +179,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                            class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-sage-500 focus:ring-1 focus:ring-sage-500 transition-colors placeholder-slate-400"
                            placeholder="••••••••"
                            required>
+                </div>
+                
+                <div>
+                    <input type="hidden" name="csrf_token" value="<?php echo generateCSRFToken(); ?>">
                 </div>
                 
                 <div class="flex items-center justify-between pt-2">
@@ -192,12 +197,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <button type="submit" class="w-full bg-midnight hover:bg-slate-800 text-white font-semibold py-3.5 px-4 rounded-xl transition-all duration-200 transform hover:-translate-y-0.5 shadow-lg shadow-midnight/20">
                     Đăng nhập hệ thống
                 </button>
-
+ 
                 <div class="text-center mt-6">
                     <span class="text-sm text-slate-500">Chưa có tài khoản?</span>
                     <a href="/register" class="text-sm font-bold text-sage-600 hover:text-sage-700 ml-1 transition-colors">Đăng ký ngay</a>
                 </div>
             </form>
+        </div>
+        
+        <!-- Back to Home Link -->
+        <div class="text-center mt-6">
+            <a href="/" class="inline-flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-midnight transition-colors group">
+                <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Quay lại trang chủ
+            </a>
         </div>
         
         <!-- Footer -->

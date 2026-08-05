@@ -16,7 +16,6 @@ $routes = [
     '' => 'pages/home.php',
     'home' => 'pages/home.php',
     'about' => 'pages/about.php',
-    'explore' => 'pages/explore.php',
     'services' => 'pages/services.php',
     'schools' => 'pages/schools.php',
     'courses' => 'pages/courses.php',
