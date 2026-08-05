@@ -21,12 +21,12 @@ jobs:
       # So connect via the Tenten hostname (cert stays valid) mapped to the
       # server's IPv4 address.
       - name: Map FTP host to IP
-        run: echo "${{ secrets.FTP_IP }} ftp.oih1qyce8l.tenten.vn" | sudo tee -a /etc/hosts
+        run: echo "${{ secrets.FTP_IP }} ftp.brighteducation.net" | sudo tee -a /etc/hosts
 
       - name: FTPS deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ftp.oih1qyce8l.tenten.vn
+          server: ftp.brighteducation.net
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps          # explicit FTPS over port 21
