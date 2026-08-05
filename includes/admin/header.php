@@ -59,6 +59,8 @@
     <style>
         :root {
             --sidebar-w: 232px;
+            --admin-max-w: 1200px;
+            --admin-gutter: 28px;
             --sidebar-bg: #ffffff;
             --sidebar-border: #f1f5f9;
             --sidebar-accent: #0d243e;
@@ -68,7 +70,10 @@
             --footer-h: 52px;
         }
         * { box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #f8fafc; margin: 0; color: #334155; }
+        body {
+            font-family: 'Inter', sans-serif; background: #f8fafc;
+            margin: 0; color: #334155; min-width: 320px;
+        }
 
         /* ── Sidebar ── */
         #admin-sidebar {
@@ -171,8 +176,12 @@
             height: var(--topbar-h); background: rgba(255,255,255,0.95);
             backdrop-filter: blur(8px);
             border-bottom: 1px solid rgba(226,232,240,0.8);
-            display: flex; align-items: center;
-            padding: 0 24px; gap: 12px; z-index: 100;
+            z-index: 100;
+        }
+        .admin-topbar-inner {
+            width: 100%; max-width: var(--admin-max-w); height: 100%;
+            margin: 0 auto; padding: 0 var(--admin-gutter);
+            display: flex; align-items: center; gap: 12px;
         }
         .topbar-title { font-size: 17px; font-weight: 700; color: #0d243e; flex: 1; font-family: 'Quicksand', sans-serif; }
         .topbar-btn {
@@ -186,7 +195,27 @@
 
         /* ── Main Content ── */
         #admin-main { margin-left: var(--sidebar-w); padding-top: var(--topbar-h); min-height: 100vh; }
-        .admin-content { padding: 28px; }
+        .admin-content {
+            width: 100%; max-width: var(--admin-max-w);
+            margin: 0 auto; padding: 32px var(--admin-gutter) 44px;
+        }
+
+        #admin-footer {
+            margin-left: var(--sidebar-w); background: #fff;
+            border-top: 1px solid #e2e8f0; color: #94a3b8;
+        }
+        .admin-footer-inner {
+            width: 100%; max-width: var(--admin-max-w); min-height: var(--footer-h);
+            margin: 0 auto; padding: 10px var(--admin-gutter);
+            font-size: 12px; display: flex; align-items: center;
+            justify-content: space-between; gap: 12px;
+        }
+        .admin-footer-link {
+            color: #94a3b8; text-decoration: none; font-size: 11px;
+            display: inline-flex; align-items: center; gap: 5px;
+            transition: color .2s;
+        }
+        .admin-footer-link:hover { color: #0d243e; }
 
         /* ── Utility ── */
         .border-left-primary { border-left: 4px solid #4e73df!important; }
@@ -195,16 +224,20 @@
         .border-left-warning { border-left: 4px solid #f6c23e!important; }
 
         @media (max-width: 767px) {
+            :root { --admin-gutter: 16px; }
             #admin-sidebar { transform: translateX(-100%); }
             #admin-sidebar.open { transform: translateX(0); }
             #admin-topbar { left: 0; }
             #admin-main   { margin-left: 0; }
+            #admin-footer { margin-left: 0; }
+            .admin-content { padding-top: 22px; padding-bottom: 32px; }
+            .admin-footer-inner { align-items: flex-start; flex-direction: column; }
         }
 
         /* ── Shared page components ── */
         .page-header {
             display: flex; align-items: center; justify-content: space-between;
-            margin-bottom: 20px;
+            gap: 16px; margin-bottom: 24px;
         }
         .page-header h1 {
             font-size: 20px; font-weight: 800; color: #0d243e;
@@ -216,9 +249,9 @@
 
         /* Card */
         .a-card {
-            background: #fff; border-radius: 20px;
-            border: 1px solid #f1f5f9;
-            box-shadow: 0 4px 20px -2px rgba(1,53,103,0.05);
+            background: #fff; border-radius: 24px;
+            border: 1px solid #eef2f7;
+            box-shadow: 0 8px 28px -12px rgba(13,36,62,0.12);
             overflow: hidden;
         }
         .a-card-header {
@@ -246,9 +279,9 @@
 
         /* Filter bar */
         .a-filter {
-            background: #fff; border-radius: 16px; padding: 16px 20px;
-            border: 1px solid #f1f5f9;
-            box-shadow: 0 4px 20px -2px rgba(1,53,103,0.05);
+            background: #fff; border-radius: 20px; padding: 16px 20px;
+            border: 1px solid #eef2f7;
+            box-shadow: 0 8px 28px -12px rgba(13,36,62,0.1);
             margin-bottom: 16px;
         }
 
@@ -310,6 +343,13 @@
 
         /* Sticky sidebar panel */
         .sticky-panel { position: sticky; top: 88px; }
+
+        @media (max-width: 639px) {
+            .page-header { align-items: flex-start; flex-direction: column; }
+            .page-header > a, .page-header > button { width: 100%; justify-content: center; }
+            .a-card-header, .a-card-body { padding-left: 16px; padding-right: 16px; }
+            .a-table thead th, .a-table tbody td { padding-left: 12px; padding-right: 12px; }
+        }
     </style>
 </head>
 <body>
@@ -425,6 +465,7 @@
 
 <!-- ══ TOPBAR ══ -->
 <div id="admin-topbar">
+  <div class="admin-topbar-inner">
     <button id="sidebar-toggle" class="topbar-btn d-md-none me-1" onclick="document.getElementById('admin-sidebar').classList.toggle('open')">
         <i class="bi bi-list"></i>
     </button>
@@ -438,6 +479,7 @@
     <a href="/" target="_blank" class="topbar-btn" title="Xem trang web">
         <i class="bi bi-globe2"></i>
     </a>
+  </div>
 </div>
 
 <!-- ══ MAIN WRAPPER ══ -->
