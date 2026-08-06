@@ -1036,7 +1036,7 @@ try {
 
 } catch (Exception $e) {
     ob_end_clean(); // Clear buffer in case of failure
-    sendErrorResponse(500, 'An internal server error occurred while processing your request.');
+    sendErrorResponse(500, 'Internal Server Error: ' . $e->getMessage() . "\n" . $e->getTraceAsString());
 }
 
 // Global API payload helpers to structure JSON output
