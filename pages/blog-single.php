@@ -61,7 +61,7 @@ if (preg_match('/^\s*<(h[1-3])\b[^>]*>(.*?)<\/\1>/isu', $post['content'], $match
 }
 
 // Loại bỏ khung Mục lục tự sinh thủ công trong nội dung bài viết
-$toc_pattern = '/<(h[2-4]|p|div)\b[^>]*>(?:<strong>)?\s*(?:\|\s*)?(?:Mục\s+lục|Table\s+of\s+contents|Table\s+of\s+Content)\s*(?:<\/strong>)?<\/\1>\s*<(ol|ul)\b[^>]*>.*?<\/\3>/isu';
+$toc_pattern = '/<(h[2-4]|p|div)\b[^>]*>(?:<strong>)?\s*(?:\|\s*)?(?:Mục\s+lục|Table\s+of\s+contents|Table\s+of\s+Content)\s*(?:<\/strong>)?<\/\1>\s*<(ol|ul)\b[^>]*>.*?<\/\2>/isu';
 $post['content'] = preg_replace($toc_pattern, '', $post['content']);
 
 $processed_post = buildPostTableOfContents($post['content']);
