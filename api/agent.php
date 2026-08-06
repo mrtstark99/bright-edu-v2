@@ -955,6 +955,72 @@ try {
             }
             break;
 
+        case 'upload_image':
+            // Scope validation: posts:draft or seo:write
+            if (!$hasScope('posts:draft') && !$hasScope('seo:write')) {
+                sendErrorResponse(403, 'Forbidden: Missing required scope [posts:draft] or [seo:write].');
+            }
+
+            // Case 1: Upload a file via multipart form-data ($_FILES)
+            if (isset($_FILES['image'])) {
+                $upload_res = uploadImage($_FILES['image'], 'images');
+                if ($upload_res['success']) {
+                    sendSuccessResponse([
+                        'filename' => $upload_res['filename'],
+                        'filepath' => $upload_res['filepath'],
+                        'url' => $upload_res['url']
+                    ], 'Image uploaded successfully.');
+                } else {
+                    sendErrorResponse(400, 'Image upload failed: ' . $upload_res['message']);
+                }
+            } 
+            // Case 2: Save a remote image via image_url
+            elseif (!empty($input['image_url'])) {
+                $url = trim($input['image_url']);
+                if (filter_var($url, FILTER_VALIDATE_URL) === false) {
+                    sendErrorResponse(400, 'Invalid image_url format.');
+                }
+
+                $ext = strtolower(pathinfo(parse_url($url, PHP_URL_PATH), PATHINFO_EXTENSION));
+                if (!in_array($ext, ALLOWED_IMAGE_TYPES, true)) {
+                    $ext = 'jpg';
+                }
+
+                $ch = curl_init($url);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+                curl_setopt($ch, CURLOPT_TIMEOUT, 15);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                $imgData = curl_exec($ch);
+                $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                curl_close($ch);
+
+                if ($httpCode !== 200 || !$imgData) {
+                    sendErrorResponse(400, 'Failed to download image from the provided image_url.');
+                }
+
+                $upload_dir = UPLOAD_PATH . 'images/';
+                if (!is_dir($upload_dir)) {
+                    mkdir($upload_dir, 0777, true);
+                }
+
+                $filename = uniqid() . '_' . time() . '.' . $ext;
+                $filepath = $upload_dir . $filename;
+
+                if (file_put_contents($filepath, $imgData) === false) {
+                    sendErrorResponse(500, 'Failed to save downloaded image on the server.');
+                }
+
+                sendSuccessResponse([
+                    'filename' => $filename,
+                    'filepath' => 'images/' . $filename,
+                    'url' => UPLOAD_URL . 'images/' . $filename
+                ], 'Image downloaded and saved successfully.');
+            } else {
+                sendErrorResponse(400, 'Missing image file or image_url.');
+            }
+            break;
+
         default:
             sendErrorResponse(400, 'Invalid action parameter.');
             break;

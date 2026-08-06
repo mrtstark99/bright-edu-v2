@@ -72,6 +72,7 @@ Mỗi khóa Token được gán một danh sách các quyền hạn (Scopes) ng�
 | **`process_draft`** | `POST` | Gợi ý cấu trúc Heading (TOC), từ khóa LSI phù hợp | `posts:draft` hoặc `admin` |
 | **`create_draft`** | `POST` | Tạo bài viết mới ở trạng thái bản thảo AI (`ai_draft`) | `posts:draft` hoặc `admin` |
 | **`update_post`** | `POST` | Cập nhật nội dung bài viết cũ (yêu cầu khóa lạc quan) | `posts:draft` hoặc `admin` |
+| **`upload_image`** | `POST` | Tải lên file ảnh hoặc lưu ảnh từ một URL từ xa | `posts:draft` hoặc `admin` |
 | **`submit_for_review`** | `POST` | Gửi bài viết cho biên tập viên duyệt (`pending_review`) | `posts:draft` hoặc `admin` |
 | **`restore_revision`** | `POST` | Khôi phục bài viết về một phiên bản lịch sử trước đó | `posts:draft` hoặc `admin` |
 | **`approve_post`** | `POST` | Duyệt bài viết chuyển trạng thái sang `approved` | `posts:publish` hoặc `admin` |
