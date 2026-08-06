@@ -12,7 +12,7 @@ $stmt = $db->prepare("
     SELECT p.*, c.name as category_name 
     FROM posts p
     LEFT JOIN categories c ON p.category_id = c.id
-    WHERE p.status = 'published' AND p.featured = 1
+    WHERE p.status = 'published' AND p.featured = 1 AND p.published_at <= datetime('now', 'localtime')
     ORDER BY p.published_at DESC
     LIMIT 3
 ");
@@ -24,7 +24,7 @@ $stmt = $db->prepare("
     SELECT p.*, c.name as category_name 
     FROM posts p
     LEFT JOIN categories c ON p.category_id = c.id
-    WHERE p.status = 'published'
+    WHERE p.status = 'published' AND p.published_at <= datetime('now', 'localtime')
     ORDER BY p.published_at DESC
     LIMIT 6
 ");

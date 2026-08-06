@@ -10,7 +10,7 @@ $offset = ($page - 1) * $per_page;
 
 // Category filter
 $category_slug = $_GET['category'] ?? '';
-$where = "WHERE p.status = 'published'";
+$where = "WHERE p.status = 'published' AND p.published_at <= datetime('now', 'localtime')";
 $params = [];
 
 if ($category_slug) {

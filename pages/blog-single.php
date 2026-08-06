@@ -16,7 +16,7 @@ $stmt = $db->prepare("
     FROM posts p
     LEFT JOIN categories c ON p.category_id = c.id
     LEFT JOIN users u ON p.author_id = u.id
-    WHERE p.slug = ? AND p.status = 'published'
+    WHERE p.slug = ? AND p.status = 'published' AND p.published_at <= datetime('now', 'localtime')
     LIMIT 1
 ");
 $stmt->execute([$slug]);
@@ -37,7 +37,7 @@ $stmt = $db->prepare("
     SELECT p.*, c.name as category_name
     FROM posts p
     LEFT JOIN categories c ON p.category_id = c.id
-    WHERE p.category_id = ? AND p.id != ? AND p.status = 'published'
+    WHERE p.category_id = ? AND p.id != ? AND p.status = 'published' AND p.published_at <= datetime('now', 'localtime')
     ORDER BY p.published_at DESC
     LIMIT 3
 ");
@@ -223,7 +223,7 @@ include 'includes/header.php';
             $stmtLatest = $db->prepare("
               SELECT id, title, slug, published_at, featured_image 
               FROM posts 
-              WHERE status = 'published' AND id != ? 
+              WHERE status = 'published' AND id != ? AND published_at <= datetime('now', 'localtime')
               ORDER BY published_at DESC 
               LIMIT 4
             ");

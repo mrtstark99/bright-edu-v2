@@ -372,19 +372,25 @@ try {
             $featured_image = $input['featured_image'] ?? null;
 
             // Determine author assignment
-            $author_id = $agent['default_author_id'];
+                        $author_id = $agent['default_author_id'];
             if (!$author_id) {
                 $stmtAuth = $db->prepare("SELECT id FROM users WHERE role = 'admin' AND status = 'active' LIMIT 1");
                 $stmtAuth->execute();
                 $author_id = (int)$stmtAuth->fetchColumn() ?: 1;
             }
 
+            // Tiếp nhận ngày xuất bản (lên lịch)
+            $published_at = isset($input['published_at']) && trim($input['published_at']) !== '' ? trim($input['published_at']) : null;
+            if (($status === 'published' || $status === 'scheduled') && !$published_at) {
+                $published_at = date('Y-m-d H:i:s');
+            }
+
             $sqlInsert = "
-                INSERT INTO posts (title, slug, excerpt, content, featured_image, category_id, author_id, status, featured, meta_title, meta_description, meta_keywords) 
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                INSERT INTO posts (title, slug, excerpt, content, featured_image, category_id, author_id, status, featured, meta_title, meta_description, meta_keywords, published_at) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ";
             $stmtInsert = $db->prepare($sqlInsert);
-            $exec = $stmtInsert->execute([$title, $slug, $excerpt, $content, $featured_image, $category_id, $author_id, $status, $featured, $meta_title, $meta_description, $meta_keywords]);
+            $exec = $stmtInsert->execute([$title, $slug, $excerpt, $content, $featured_image, $category_id, $author_id, $status, $featured, $meta_title, $meta_description, $meta_keywords, $published_at]);
 
             if ($exec) {
                 $newId = $db->lastInsertId();
@@ -480,7 +486,10 @@ try {
             }
 
             $published_at = $post['published_at'];
-            if ($status === 'published' && !$published_at) {
+            if (isset($input['published_at'])) {
+                $published_at = trim($input['published_at']) !== '' ? trim($input['published_at']) : null;
+            }
+            if (($status === 'published' || $status === 'scheduled') && !$published_at) {
                 $published_at = date('Y-m-d H:i:s');
             }
 

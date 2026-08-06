@@ -53,7 +53,7 @@ foreach ($services as $slug) {
 // 3. Blog Posts from SQLite Database
 try {
     $db = Database::getInstance();
-    $stmt = $db->prepare("SELECT slug, updated_at, created_at FROM posts WHERE status = 'published' ORDER BY updated_at DESC");
+    $stmt = $db->prepare("SELECT slug, updated_at, created_at FROM posts WHERE status = 'published' AND published_at <= datetime('now', 'localtime') ORDER BY updated_at DESC");
     $stmt->execute();
     $posts = $stmt->fetchAll();
     foreach ($posts as $post) {
