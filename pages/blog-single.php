@@ -12,7 +12,7 @@ $db = Database::getInstance();
 
 // Get post
 $stmt = $db->prepare("
-    SELECT p.*, c.name as category_name, u.full_name as author_name
+    SELECT p.*, c.name as category_name, c.slug as category_slug, u.full_name as author_name
     FROM posts p
     LEFT JOIN categories c ON p.category_id = c.id
     LEFT JOIN users u ON p.author_id = u.id
@@ -70,29 +70,27 @@ include 'includes/header.php';
         <span class="text-slate-400 truncate max-w-[150px] sm:max-w-xs md:max-w-md"><?php echo htmlspecialchars($post['title']); ?></span>
       </nav>
 
-      <div class="mb-8">
-        <div class="flex items-center gap-3 mb-4">
-          <span class="text-sm font-semibold text-midnight bg-midnight/10 px-3 py-1 rounded-full">
-            <?php echo htmlspecialchars($post['category_name']); ?>
-          </span>
-          <span class="text-sm text-muted"><?php echo formatDate($post['published_at']); ?></span>
-          <span class="text-sm text-muted">• <?php echo formatNumber($post['views']); ?> lượt xem</span>
-        </div>
-        
-        <h1 class="text-3xl md:text-4xl font-bold text-midnight mb-4">
-          <?php echo htmlspecialchars($post['title']); ?>
-        </h1>
-        
-        <?php if ($post['excerpt']): ?>
-        <p class="text-lg text-muted">
-          <?php echo htmlspecialchars($post['excerpt']); ?>
-        </p>
-        <?php endif; ?>
-        
-        <div class="mt-4 text-sm text-muted">
-          Bởi <span class="font-medium text-midnight"><?php echo htmlspecialchars($post['author_name']); ?></span>
-        </div>
+      <!-- Thẻ H1 duy nhất trên trang bài viết chi tiết -->
+      <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight mb-4">
+        <?php echo htmlspecialchars($post['title']); ?>
+      </h1>
+      
+      <!-- Metadata hiển thị cho người đọc -->
+      <div class="flex flex-wrap items-center gap-2 sm:gap-4 text-sm text-slate-500 mb-8 border-b border-slate-100 pb-4">
+        <span>Tác giả: <strong><?php echo htmlspecialchars($post['author_name'] ?? 'Ban biên tập'); ?></strong></span>
+        <span>·</span>
+        <span>Ngày đăng: <?php echo date('d/m/Y', strtotime($post['published_at'] ?? $post['created_at'])); ?></span>
+        <span>·</span>
+        <span>Danh mục: <a href="/blog?category=<?php echo urlencode($post['category_slug'] ?? ''); ?>" class="text-primary-600 font-semibold"><?php echo htmlspecialchars($post['category_name'] ?? 'Tin tức'); ?></a></span>
+        <span>·</span>
+        <span>Lượt xem: <?php echo formatNumber($post['views']); ?></span>
       </div>
+
+      <?php if ($post['excerpt']): ?>
+      <p class="text-lg text-slate-600 mb-6 italic leading-relaxed">
+        <?php echo htmlspecialchars($post['excerpt']); ?>
+      </p>
+      <?php endif; ?>
       
       <?php if ($post['featured_image']): ?>
       <div class="mb-8">
@@ -117,7 +115,8 @@ include 'includes/header.php';
       </nav>
       <?php endif; ?>
       
-      <div class="prose prose-lg max-w-none">
+      <!-- Render Nội dung HTML từ Database với định dạng prose -->
+      <div class="prose prose-slate max-w-none prose-headings:font-bold prose-a:text-primary-600 hover:prose-a:underline">
         <?php echo $post_content; ?>
       </div>
 

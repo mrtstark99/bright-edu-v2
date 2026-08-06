@@ -7,6 +7,9 @@ description: Hướng dẫn AI đo lường chỉ số KPIs, lấy dữ liệu G
 
 Kỹ năng này hướng dẫn trợ lý AI cách thu thập dữ liệu đo lường, ghép nối chỉ số GA4 và Search Console, đồng thời vận hành chu kỳ tối ưu dựa trên Opportunities Engine của hệ thống Bright Education.
 
+> [!NOTE]
+> **Địa chỉ API Endpoint:** `https://brighteducation.net/api/agent`
+
 ## 1. Chu kỳ vận hành SEO tiêu chuẩn
 AI Agent cần hoạt động theo vòng lặp 5 bước sau để cải thiện thứ hạng và CRO (tối ưu hóa tỷ lệ chuyển đổi):
 ```text

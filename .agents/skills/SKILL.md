@@ -9,7 +9,7 @@ Tài liệu này cung cấp mô tả tổng quan về cấu trúc máy chủ, b�
 
 ## 1. Thông tin Cấu hình Máy chủ & Kết nối (Server Environment & Connection)
 
-- **Địa chỉ gọi API chính:** `https://brighteducation.net/api/agent`
+- **Địa chỉ gọi API:** `https://brighteducation.net/api/agent`
 - **Cơ sở dữ liệu:** Hệ thống sử dụng cơ sở dữ liệu SQLite tại đường dẫn `database/bright_edu.db`.
 - **Nhật ký Hệ thống (Audit Logs):** Mọi hành vi làm thay đổi dữ liệu của AI Agent (tạo nháp, sửa bài, gửi duyệt...) đều được tự động ghi lại vào bảng `audit_logs` trên máy chủ với tiền tố `agent_` để Quản trị viên dễ dàng giám sát nguồn gốc thay đổi.
 

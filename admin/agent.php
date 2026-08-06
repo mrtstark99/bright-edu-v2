@@ -202,6 +202,13 @@ function copyTokenToClipboard() {
                                 </div>
                             </label>
                             <label class="flex items-start gap-2.5 text-xs text-slate-700 cursor-pointer">
+                                <input type="checkbox" name="scopes[]" value="seo:write" class="mt-0.5">
+                                <div>
+                                    <strong class="text-midnight block">seo:write</strong>
+                                    Thêm, sửa và xóa từ khóa trong kế hoạch SEO.
+                                </div>
+                            </label>
+                            <label class="flex items-start gap-2.5 text-xs text-slate-700 cursor-pointer">
                                 <input type="checkbox" name="scopes[]" value="analytics:read" class="mt-0.5" checked>
                                 <div>
                                     <strong class="text-midnight block">analytics:read</strong>

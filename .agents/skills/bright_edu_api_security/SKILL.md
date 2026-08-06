@@ -11,6 +11,7 @@ Kỹ năng này hướng dẫn trợ lý AI cách kết nối bảo mật với 
 
 Mọi kết nối từ các môi trường bên ngoài (Cursor IDE, VS Code, n8n, Python script...) bắt buộc tuân thủ:
 
+- **Địa chỉ gọi API (Endpoint):** `https://brighteducation.net/api/agent`
 - **Xác thực:** Gửi Bearer Token trong header `Authorization: Bearer <TOKEN>`. Nghiêm cấm truyền token qua query string.
 - **IP Allowlist:** Kết nối từ các IP ngoài danh sách cho phép trên Admin Panel sẽ trả về lỗi `403 Forbidden`.
 - **Rate Limiting:** Tối đa 60 requests/phút cho mỗi Token. Vượt quá sẽ nhận lỗi `429 Too Many Requests`.

@@ -244,3 +244,82 @@ table th, table td { font-family: 'Inter', sans-serif; letter-spacing: 0; }
 @media (min-width: 641px) and (max-width: 1024px) {
     .floating-action-buttons { bottom: 20px; right: 20px; }
 }
+
+/* ---- Blog Post Typography Enhancements ---- */
+.prose {
+    color: #334155; /* slate-700 */
+    line-height: 1.8;
+}
+.prose h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0d243e !important; /* primary brand color */
+    margin-top: 2.25rem;
+    margin-bottom: 1.25rem;
+    border-left: 4px solid #0d243e; /* primary brand border */
+    padding-left: 0.75rem;
+}
+.prose h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e293b !important; /* slate-800 */
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
+}
+.prose p {
+    margin-bottom: 1.25rem;
+}
+.prose ul {
+    list-style-type: disc !important;
+    margin-bottom: 1.25rem;
+    padding-left: 1.5rem;
+}
+.prose ol {
+    list-style-type: decimal !important;
+    margin-bottom: 1.25rem;
+    padding-left: 1.5rem;
+}
+.prose li {
+    margin-bottom: 0.5rem;
+}
+.prose a {
+    color: #345b7b; /* primary-600 */
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+.prose a:hover {
+    color: #0d243e; /* primary-900 */
+}
+.prose img {
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    margin: 2rem auto;
+}
+.prose blockquote {
+    border-left: 4px solid #487596; /* primary-500 */
+    background-color: #f8fafc;
+    padding: 1rem 1.5rem;
+    font-style: italic;
+    border-radius: 0 1rem 1rem 0;
+    margin: 1.5rem 0;
+    color: #475569;
+}
+.prose table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
+}
+.prose table th {
+    background-color: #f1f5f9;
+    color: #0f172a;
+    font-weight: 600;
+    padding: 0.75rem 1rem;
+    border-bottom: 2px solid #cbd5e1;
+    text-align: left;
+}
+.prose table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e2e8f0;
+    color: #334155;
+}

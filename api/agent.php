@@ -148,6 +148,13 @@ try {
             $stmtKeywords->execute();
             $keywords = $stmtKeywords->fetchAll();
 
+            foreach ($keywords as &$kw) {
+                if ($kw['status'] === 'brief') {
+                    $kw['status'] = 'planned';
+                }
+            }
+            unset($kw);
+
             $targets = [
                 'organic_sessions' => (float)getSetting('kpi_organic_sessions_target', 0),
                 'impressions' => (float)getSetting('kpi_impressions_target', 0),
@@ -775,6 +782,168 @@ try {
                     'has_scripts' => preg_match('/<script/i', $rawContent) ? true : false,
                 ]
             ]);
+            break;
+
+        case 'create_keyword':
+            // Scope validation: seo:write
+            if (!$hasScope('seo:write')) {
+                sendErrorResponse(403, 'Forbidden: Missing required scope [seo:write].');
+            }
+
+            $planning_month = trim($input['planning_month'] ?? '');
+            $keyword = trim($input['keyword'] ?? '');
+
+            if ($planning_month === '' || $keyword === '') {
+                sendErrorResponse(400, 'Missing required fields: planning_month, keyword');
+            }
+
+            // Check if already exists
+            $stmtCheck = $db->prepare("SELECT id FROM seo_keyword_map WHERE planning_month = ? AND keyword = ?");
+            $stmtCheck->execute([$planning_month, $keyword]);
+            if ($stmtCheck->fetch()) {
+                sendErrorResponse(400, 'Conflict: Keyword already exists in this planning month.');
+            }
+
+            $intent = $input['intent'] ?? 'informational';
+            if (!in_array($intent, ['informational', 'navigational', 'commercial', 'transactional'], true)) {
+                $intent = 'informational';
+            }
+
+            $content_role = $input['content_role'] ?? 'satellite';
+            if (!in_array($content_role, ['pillar', 'satellite', 'standalone'], true)) {
+                $content_role = 'satellite';
+            }
+
+            $priority = $input['priority'] ?? 'medium';
+            if (!in_array($priority, ['high', 'medium', 'low'], true)) {
+                $priority = 'medium';
+            }
+
+            $notes = $input['notes'] ?? null;
+            $cluster_id = isset($input['cluster_id']) ? (int)$input['cluster_id'] : null;
+
+            $stmtInsert = $db->prepare("
+                INSERT INTO seo_keyword_map (planning_month, keyword, intent, content_role, priority, notes, cluster_id) 
+                VALUES (?, ?, ?, ?, ?, ?, ?)
+            ");
+            $exec = $stmtInsert->execute([$planning_month, $keyword, $intent, $content_role, $priority, $notes, $cluster_id]);
+
+            if ($exec) {
+                $newId = $db->lastInsertId();
+                sendSuccessResponse([
+                    'id' => (int)$newId,
+                    'planning_month' => $planning_month,
+                    'keyword' => $keyword,
+                    'status' => 'idea'
+                ], 'Keyword created successfully.');
+            } else {
+                sendErrorResponse(500, 'Failed to insert keyword record.');
+            }
+            break;
+
+        case 'update_keyword':
+            // Scope validation: seo:write
+            if (!$hasScope('seo:write')) {
+                sendErrorResponse(403, 'Forbidden: Missing required scope [seo:write].');
+            }
+
+            $id = (int)($input['id'] ?? 0);
+            if ($id <= 0) {
+                sendErrorResponse(400, 'Missing valid keyword id.');
+            }
+
+            // Verify keyword exists
+            $stmtCheck = $db->prepare("SELECT * FROM seo_keyword_map WHERE id = ?");
+            $stmtCheck->execute([$id]);
+            $keywordRow = $stmtCheck->fetch();
+            if (!$keywordRow) {
+                sendErrorResponse(404, 'Keyword not found.');
+            }
+
+            $fieldsToUpdate = [];
+            $params = [];
+
+            if (isset($input['status'])) {
+                $status = $input['status'];
+                if ($status === 'planned') {
+                    $status = 'brief';
+                }
+                if (!in_array($status, ['idea', 'brief', 'writing', 'published'], true)) {
+                    sendErrorResponse(400, 'Invalid status. Allowed values: idea, planned, writing, published');
+                }
+                $fieldsToUpdate[] = "status = ?";
+                $params[] = $status;
+            }
+
+            if (isset($input['target_url'])) {
+                $fieldsToUpdate[] = "target_url = ?";
+                $params[] = trim($input['target_url']);
+            }
+
+            if (isset($input['priority'])) {
+                $priority = $input['priority'];
+                if (!in_array($priority, ['high', 'medium', 'low'], true)) {
+                    sendErrorResponse(400, 'Invalid priority. Allowed values: high, medium, low');
+                }
+                $fieldsToUpdate[] = "priority = ?";
+                $params[] = $priority;
+            }
+
+            if (empty($fieldsToUpdate)) {
+                sendErrorResponse(400, 'No fields to update.');
+            }
+
+            $params[] = $id;
+
+            $sql = "UPDATE seo_keyword_map SET " . implode(", ", $fieldsToUpdate) . ", updated_at = datetime('now','localtime') WHERE id = ?";
+            $stmtUpdate = $db->prepare($sql);
+            $exec = $stmtUpdate->execute($params);
+
+            if ($exec) {
+                // Return updated row
+                $stmtCheck->execute([$id]);
+                $updatedRow = $stmtCheck->fetch();
+                // Map brief back to planned in output
+                if ($updatedRow['status'] === 'brief') {
+                    $updatedRow['status'] = 'planned';
+                }
+                // Cast types
+                $updatedRow['id'] = (int)$updatedRow['id'];
+                if ($updatedRow['cluster_id'] !== null) {
+                    $updatedRow['cluster_id'] = (int)$updatedRow['cluster_id'];
+                }
+                sendSuccessResponse($updatedRow, 'Keyword updated successfully.');
+            } else {
+                sendErrorResponse(500, 'Failed to update keyword.');
+            }
+            break;
+
+        case 'delete_keyword':
+            // Scope validation: seo:write
+            if (!$hasScope('seo:write')) {
+                sendErrorResponse(403, 'Forbidden: Missing required scope [seo:write].');
+            }
+
+            $id = (int)($input['id'] ?? 0);
+            if ($id <= 0) {
+                sendErrorResponse(400, 'Missing valid keyword id.');
+            }
+
+            // Verify keyword exists
+            $stmtCheck = $db->prepare("SELECT id FROM seo_keyword_map WHERE id = ?");
+            $stmtCheck->execute([$id]);
+            if (!$stmtCheck->fetch()) {
+                sendErrorResponse(404, 'Keyword not found.');
+            }
+
+            $stmtDelete = $db->prepare("DELETE FROM seo_keyword_map WHERE id = ?");
+            $exec = $stmtDelete->execute([$id]);
+
+            if ($exec) {
+                sendSuccessResponse(['id' => $id], 'Keyword deleted successfully.');
+            } else {
+                sendErrorResponse(500, 'Failed to delete keyword.');
+            }
             break;
 
         default:

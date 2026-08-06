@@ -13,11 +13,29 @@ $static_meta_descriptions = [
     '/blog' => 'Cẩm nang du học Nhật Bản về trường học, visa, học bổng, việc làm thêm và cuộc sống dành cho du học sinh.',
     '/contact' => 'Liên hệ Bright Education để được tư vấn lộ trình, chi phí, trường học và học bổng du học Nhật Bản.',
 ];
-if (empty($page_description) && isset($static_meta_descriptions[$request_uri])) {
-    $page_description = $static_meta_descriptions[$request_uri];
+if (isset($post) && is_array($post)) {
+    // Độ dài Title tốt nhất là từ 50-60 ký tự
+    $page_title = $post['title'];
+    
+    // Nếu tiêu đề bài viết chưa chứa tên thương hiệu, tự động nối thêm
+    if (strpos(strtolower($page_title), 'bright education') === false) {
+        $page_title .= " | Bright Education";
+    }
+    
+    // Độ dài Meta Description tốt nhất là từ 120-155 ký tự
+    if (!empty($post['meta_description'])) {
+        $page_description = $post['meta_description'];
+    } else {
+        // Fallback nếu bài viết chưa có meta description: Lấy 150 ký tự đầu của nội dung
+        $page_description = mb_substr(strip_tags($post['content']), 0, 150) . "...";
+    }
+} else {
+    if (empty($page_description) && isset($static_meta_descriptions[$request_uri])) {
+        $page_description = $static_meta_descriptions[$request_uri];
+    }
+    $page_description = seoDescription($page_description ?? '', DEFAULT_META_DESC);
+    $page_title = trim((string)($page_title ?? DEFAULT_META_TITLE));
 }
-$page_description = seoDescription($page_description ?? '', DEFAULT_META_DESC);
-$page_title = trim((string)($page_title ?? DEFAULT_META_TITLE));
 $ga_id = trim((string)getSetting('ga_id', ''));
 $gsc_verification = trim((string)getSetting('gsc_verification', ''));
 ?>
@@ -79,7 +97,7 @@ $gsc_verification = trim((string)getSetting('gsc_verification', ''));
   if (isset($post) && !empty($post)) {
       $schemas[] = [
           "@context" => "https://schema.org",
-          "@type" => "BlogPosting",
+          "@type" => "Article",
           "headline" => $post['title'],
           "description" => $page_description,
           "image" => $page_image ?? (APP_URL . '/assets/images/favicon.png'),
@@ -146,7 +164,7 @@ $gsc_verification = trim((string)getSetting('gsc_verification', ''));
 
   <!-- Optimize CDN Loading -->
   <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin />
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
   <script>
     tailwind.config = {
       theme: {
