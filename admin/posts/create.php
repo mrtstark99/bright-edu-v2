@@ -46,7 +46,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         
         if (!$error) {
-            $published_at = $status === 'published' ? date('Y-m-d H:i:s') : null;
+            $published_at = null;
+            if (!empty($_POST['published_at'])) {
+                $published_at = str_replace('T', ' ', $_POST['published_at']);
+                if (strlen($published_at) === 16) {
+                    $published_at .= ':00';
+                }
+            }
+            if (($status === 'published' || $status === 'scheduled') && !$published_at) {
+                $published_at = date('Y-m-d H:i:s');
+            }
             
             $sql = "INSERT INTO posts (title, slug, excerpt, content, featured_image, category_id, author_id, status, featured, meta_title, meta_description, meta_keywords, published_at) 
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -154,7 +163,13 @@ include dirname(dirname(__DIR__)) . '/includes/admin/header.php';
                             <select class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors" id="status" name="status">
                                 <option value="draft">Nháp</option>
                                 <option value="published">Đăng ngay</option>
+                                <option value="scheduled">Lên lịch đăng</option>
                             </select>
+                        </div>
+
+                        <div class="mb-6" id="publish-time-container" style="display: none;">
+                            <label for="published_at" class="block text-sm font-bold text-slate-700 mb-2">Thời gian xuất bản</label>
+                            <input type="datetime-local" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors" id="published_at" name="published_at" value="<?php echo date('Y-m-d\TH:i'); ?>">
                         </div>
                         
                         <div class="mb-6">
@@ -198,6 +213,22 @@ include dirname(dirname(__DIR__)) . '/includes/admin/header.php';
         plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
         toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
         height: 500
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const statusSelect = document.getElementById('status');
+        const timeContainer = document.getElementById('publish-time-container');
+        
+        function togglePublishTime() {
+            if (statusSelect.value === 'published' || statusSelect.value === 'scheduled') {
+                timeContainer.style.display = 'block';
+            } else {
+                timeContainer.style.display = 'none';
+            }
+        }
+        
+        statusSelect.addEventListener('change', togglePublishTime);
+        togglePublishTime();
     });
 </script>
 

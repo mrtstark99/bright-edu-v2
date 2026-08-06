@@ -68,7 +68,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         
         $published_at = $post['published_at'];
-        if ($status === 'published' && !$published_at) {
+        if (isset($_POST['published_at'])) {
+            $published_at = trim($_POST['published_at']) !== '' ? str_replace('T', ' ', $_POST['published_at']) : null;
+            if ($published_at && strlen($published_at) === 16) {
+                $published_at .= ':00';
+            }
+        }
+        if (($status === 'published' || $status === 'scheduled') && !$published_at) {
             $published_at = date('Y-m-d H:i:s');
         }
         
@@ -171,8 +177,22 @@ include dirname(dirname(__DIR__)) . '/includes/admin/header.php';
                             <select class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors" id="status" name="status">
                                 <option value="draft" <?php echo $post['status'] == 'draft' ? 'selected' : ''; ?>>Nháp</option>
                                 <option value="published" <?php echo $post['status'] == 'published' ? 'selected' : ''; ?>>Đã đăng</option>
+                                <option value="scheduled" <?php echo $post['status'] == 'scheduled' ? 'selected' : ''; ?>>Lên lịch đăng</option>
                                 <option value="archived" <?php echo $post['status'] == 'archived' ? 'selected' : ''; ?>>Lưu trữ</option>
                             </select>
+                        </div>
+
+                        <div class="mb-6" id="publish-time-container" style="display: none;">
+                            <label for="published_at" class="block text-sm font-bold text-slate-700 mb-2">Thời gian xuất bản</label>
+                            <?php 
+                            $formatted_published_at = '';
+                            if (!empty($post['published_at'])) {
+                                $formatted_published_at = date('Y-m-d\TH:i', strtotime($post['published_at']));
+                            } else {
+                                $formatted_published_at = date('Y-m-d\TH:i');
+                            }
+                            ?>
+                            <input type="datetime-local" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors" id="published_at" name="published_at" value="<?php echo $formatted_published_at; ?>">
                         </div>
                         
                         <div class="mb-6">
@@ -223,6 +243,22 @@ include dirname(dirname(__DIR__)) . '/includes/admin/header.php';
         plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
         toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
         height: 500
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const statusSelect = document.getElementById('status');
+        const timeContainer = document.getElementById('publish-time-container');
+        
+        function togglePublishTime() {
+            if (statusSelect.value === 'published' || statusSelect.value === 'scheduled') {
+                timeContainer.style.display = 'block';
+            } else {
+                timeContainer.style.display = 'none';
+            }
+        }
+        
+        statusSelect.addEventListener('change', togglePublishTime);
+        togglePublishTime();
     });
 </script>
 
