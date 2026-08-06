@@ -44,6 +44,26 @@ $stmt = $db->prepare("
 $stmt->execute([$post['category_id'], $post['id']]);
 $related_posts = $stmt->fetchAll();
 
+// Loại bỏ tiêu đề trùng lặp ở đầu nội dung bài viết nếu trùng với tiêu đề chính
+if (preg_match('/^\s*<(h[1-3])\b[^>]*>(.*?)<\/\1>/isu', $post['content'], $matches)) {
+    $headingText = trim(strip_tags($matches[2]));
+    $mainTitle = trim(html_entity_decode($post['title'], ENT_QUOTES, 'UTF-8'));
+    
+    $normHeading = preg_replace('/[^a-zA-Z0-9]/', '', mb_strtolower($headingText, 'UTF-8'));
+    $normTitle = preg_replace('/[^a-zA-Z0-9]/', '', mb_strtolower($mainTitle, 'UTF-8'));
+    
+    $normHeading = preg_replace('/202\d/', '', $normHeading);
+    $normTitle = preg_replace('/202\d/', '', $normTitle);
+    
+    if ($normHeading !== '' && (strpos($normTitle, $normHeading) !== false || strpos($normHeading, $normTitle) !== false)) {
+        $post['content'] = preg_replace('/^\s*<(h[1-3])\b[^>]*>(.*?)<\/\1>/isu', '', $post['content'], 1);
+    }
+}
+
+// Loại bỏ khung Mục lục tự sinh thủ công trong nội dung bài viết
+$toc_pattern = '/<(h[2-4]|p|div)\b[^>]*>(?:<strong>)?\s*(?:\|\s*)?(?:Mục\s+lục|Table\s+of\s+contents|Table\s+of\s+Content)\s*(?:<\/strong>)?<\/\1>\s*<(ol|ul)\b[^>]*>.*?<\/\3>/isu';
+$post['content'] = preg_replace($toc_pattern, '', $post['content']);
+
 $processed_post = buildPostTableOfContents($post['content']);
 $post_content = $processed_post['content'];
 $toc_items = $processed_post['items'];

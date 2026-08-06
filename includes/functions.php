@@ -132,6 +132,7 @@ function buildPostTableOfContents($html) {
         $attributes = $match[2];
         $headingHtml = $match[3];
         $label = trim(preg_replace('/\s+/u', ' ', strip_tags($headingHtml)));
+        $label = html_entity_decode($label, ENT_QUOTES, 'UTF-8');
         if ($label === '') {
             return $match[0];
         }
