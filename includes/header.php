@@ -14,27 +14,15 @@ $static_meta_descriptions = [
     '/contact' => 'Liên hệ Bright Education để được tư vấn lộ trình, chi phí, trường học và học bổng du học Nhật Bản.',
 ];
 if (isset($post) && is_array($post)) {
-    // Độ dài Title tốt nhất là từ 50-60 ký tự
-    $page_title = $post['title'];
-    
-    // Nếu tiêu đề bài viết chưa chứa tên thương hiệu, tự động nối thêm
-    if (strpos(strtolower($page_title), 'bright education') === false) {
-        $page_title .= " | Bright Education";
-    }
-    
-    // Độ dài Meta Description tốt nhất là từ 120-155 ký tự
-    if (!empty($post['meta_description'])) {
-        $page_description = $post['meta_description'];
-    } else {
-        // Fallback nếu bài viết chưa có meta description: Lấy 150 ký tự đầu của nội dung
-        $page_description = mb_substr(strip_tags($post['content']), 0, 150) . "...";
-    }
+    // Sử dụng helper để chuẩn hóa độ dài, hậu tố thương hiệu và giải mã HTML entities
+    $page_title = seoTitle($post['title']);
+    $page_description = seoDescription($post['meta_description'] ?? '', $post['content']);
 } else {
     if (empty($page_description) && isset($static_meta_descriptions[$request_uri])) {
         $page_description = $static_meta_descriptions[$request_uri];
     }
     $page_description = seoDescription($page_description ?? '', DEFAULT_META_DESC);
-    $page_title = trim((string)($page_title ?? DEFAULT_META_TITLE));
+    $page_title = seoTitle($page_title ?? DEFAULT_META_TITLE);
 }
 $ga_id = trim((string)getSetting('ga_id', ''));
 $gsc_verification = trim((string)getSetting('gsc_verification', ''));

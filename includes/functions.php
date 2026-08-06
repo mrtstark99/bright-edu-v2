@@ -86,7 +86,8 @@ function getExcerpt($content, $length = 160) {
 
 // Build a search-result title that always stays within Google's common limit.
 function seoTitle($title, $brand = 'Bright Education', $maxLength = 60) {
-    $title = trim(strip_tags((string)$title));
+    $title = html_entity_decode((string)$title, ENT_QUOTES, 'UTF-8');
+    $title = trim(strip_tags($title));
     $title = preg_replace('/\s*[-|]\s*' . preg_quote($brand, '/') . '\s*$/iu', '', $title);
     $suffix = ' | ' . $brand;
     $available = max(20, $maxLength - mb_strlen($suffix, 'UTF-8'));
@@ -104,9 +105,11 @@ function seoTitle($title, $brand = 'Bright Education', $maxLength = 60) {
 
 // Normalize meta descriptions and cap them at 155 characters.
 function seoDescription($description, $fallback = '', $maxLength = 155) {
-    $description = trim(preg_replace('/\s+/u', ' ', strip_tags((string)$description)));
+    $description = html_entity_decode((string)$description, ENT_QUOTES, 'UTF-8');
+    $description = trim(preg_replace('/\s+/u', ' ', strip_tags($description)));
     if ($description === '') {
-        $description = trim(preg_replace('/\s+/u', ' ', strip_tags((string)$fallback)));
+        $fallback = html_entity_decode((string)$fallback, ENT_QUOTES, 'UTF-8');
+        $description = trim(preg_replace('/\s+/u', ' ', strip_tags($fallback)));
     }
     if (mb_strlen($description, 'UTF-8') <= $maxLength) {
         return $description;
