@@ -42,6 +42,7 @@ class Database {
             "SELECT COUNT(*) FROM sqlite_master WHERE type='table' AND name='users'"
         );
         $tableExists = (int)$stmt->fetchColumn();
+        $stmt->closeCursor();
 
         if (!$tableExists) {
             $schemaFile = dirname(dirname(__FILE__)) . '/database/schema_sqlite.sql';
@@ -236,12 +237,113 @@ class Database {
             CREATE INDEX IF NOT EXISTS idx_seo_keywords_month ON seo_keyword_map(planning_month);
             CREATE INDEX IF NOT EXISTS idx_seo_keywords_intent ON seo_keyword_map(intent);
             CREATE INDEX IF NOT EXISTS idx_seo_keywords_url ON seo_keyword_map(target_url);
-            CREATE INDEX IF NOT EXISTS idx_seo_keywords_cluster ON seo_keyword_map(cluster_id);
+            CREATE TABLE IF NOT EXISTS ai_agent_tokens (
+                id                INTEGER PRIMARY KEY AUTOINCREMENT,
+                token_name        TEXT NOT NULL,
+                token_hash        TEXT NOT NULL UNIQUE,
+                permissions       TEXT NOT NULL DEFAULT 'read_seo,read_analytics,manage_content',
+                default_author_id INTEGER,
+                last_used_at      TEXT,
+                created_at        TEXT NOT NULL DEFAULT (datetime('now','localtime')),
+                FOREIGN KEY (default_author_id) REFERENCES users(id) ON DELETE SET NULL
+            );
+            CREATE INDEX IF NOT EXISTS idx_ai_agent_tokens_hash ON ai_agent_tokens(token_hash);
         ");
         try { $this->conn->exec("ALTER TABLE community_groups ADD COLUMN image TEXT"); } catch (\Exception $e) {}
         try { $this->conn->exec("ALTER TABLE qa_questions ADD COLUMN image TEXT"); } catch (\Exception $e) {}
         try { $this->conn->exec("ALTER TABLE qa_questions ADD COLUMN tags TEXT"); } catch (\Exception $e) {}
         try { $this->conn->exec("ALTER TABLE qa_questions ADD COLUMN bg_style TEXT"); } catch (\Exception $e) {}
+
+        // --- Migration for AI Agent system upgrades ---
+        try { $this->conn->exec("ALTER TABLE ai_agent_tokens ADD COLUMN expires_at TEXT"); } catch (\Exception $e) {}
+        try { $this->conn->exec("ALTER TABLE ai_agent_tokens ADD COLUMN revoked_at TEXT"); } catch (\Exception $e) {}
+        try { $this->conn->exec("ALTER TABLE ai_agent_tokens ADD COLUMN last_ip TEXT"); } catch (\Exception $e) {}
+        try { $this->conn->exec("ALTER TABLE ai_agent_tokens ADD COLUMN last_user_agent TEXT"); } catch (\Exception $e) {}
+        try { $this->conn->exec("ALTER TABLE ai_agent_tokens ADD COLUMN request_count INTEGER DEFAULT 0"); } catch (\Exception $e) {}
+        try { $this->conn->exec("ALTER TABLE ai_agent_tokens ADD COLUMN allowed_ips TEXT"); } catch (\Exception $e) {}
+
+        $this->conn->exec("
+            CREATE TABLE IF NOT EXISTS post_revisions (
+                id          INTEGER PRIMARY KEY AUTOINCREMENT,
+                post_id     INTEGER NOT NULL,
+                title       TEXT NOT NULL,
+                slug        TEXT NOT NULL,
+                excerpt     TEXT,
+                content     TEXT,
+                meta_title  TEXT,
+                meta_description TEXT,
+                meta_keywords TEXT,
+                author_id   INTEGER,
+                action      TEXT, -- 'created', 'updated', 'restored'
+                changed_by  TEXT, -- token ID or username
+                created_at  TEXT NOT NULL DEFAULT (datetime('now','localtime')),
+                FOREIGN KEY (post_id) REFERENCES posts(id) ON DELETE CASCADE
+            );
+
+            CREATE TABLE IF NOT EXISTS ai_agent_rate_limits (
+                token_id      INTEGER NOT NULL,
+                minute_bucket TEXT NOT NULL,
+                request_count INTEGER NOT NULL DEFAULT 0,
+                PRIMARY KEY (token_id, minute_bucket)
+            );
+
+            CREATE TABLE IF NOT EXISTS api_idempotency_keys (
+                idempotency_key TEXT PRIMARY KEY,
+                response_payload TEXT NOT NULL,
+                created_at TEXT NOT NULL DEFAULT (datetime('now','localtime'))
+            );
+        ");
+
+        $stmtCheck = $this->conn->query("SELECT sql FROM sqlite_master WHERE type='table' AND name='posts'");
+        $postsSql = $stmtCheck->fetchColumn();
+        $stmtCheck->closeCursor();
+        if ($postsSql && strpos($postsSql, 'pending_review') === false) {
+            $this->conn->exec("
+                PRAGMA foreign_keys = OFF;
+                DROP TABLE IF EXISTS posts_new;
+                CREATE TABLE posts_new (
+                    id               INTEGER PRIMARY KEY AUTOINCREMENT,
+                    title            TEXT NOT NULL,
+                    slug             TEXT NOT NULL UNIQUE,
+                    excerpt          TEXT,
+                    content          TEXT,
+                    featured_image   TEXT,
+                    category_id      INTEGER,
+                    author_id        INTEGER NOT NULL,
+                    status           TEXT NOT NULL DEFAULT 'draft' CHECK(status IN ('draft','published','archived','ai_draft','pending_review','changes_requested','approved','scheduled')),
+                    featured         INTEGER NOT NULL DEFAULT 0,
+                    views            INTEGER NOT NULL DEFAULT 0,
+                    meta_title       TEXT,
+                    meta_description TEXT,
+                    meta_keywords    TEXT,
+                    published_at     TEXT,
+                    created_at       TEXT NOT NULL DEFAULT (datetime('now','localtime')),
+                    updated_at       TEXT NOT NULL DEFAULT (datetime('now','localtime')),
+                    FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE SET NULL,
+                    FOREIGN KEY (author_id) REFERENCES users(id) ON DELETE CASCADE
+                );
+                INSERT INTO posts_new (id, title, slug, excerpt, content, featured_image, category_id, author_id, status, featured, views, meta_title, meta_description, meta_keywords, published_at, created_at, updated_at)
+                SELECT id, title, slug, excerpt, content, featured_image, category_id, author_id, status, featured, views, meta_title, meta_description, meta_keywords, published_at, created_at, updated_at FROM posts;
+                DROP TABLE posts;
+                ALTER TABLE posts_new RENAME TO posts;
+                
+                CREATE INDEX IF NOT EXISTS idx_posts_slug       ON posts(slug);
+                CREATE INDEX IF NOT EXISTS idx_posts_status     ON posts(status);
+                CREATE INDEX IF NOT EXISTS idx_posts_category   ON posts(category_id);
+                CREATE INDEX IF NOT EXISTS idx_posts_author     ON posts(author_id);
+                CREATE INDEX IF NOT EXISTS idx_posts_featured   ON posts(featured);
+                CREATE INDEX IF NOT EXISTS idx_posts_published  ON posts(published_at);
+                
+                DROP TRIGGER IF EXISTS trg_posts_updated_at;
+                CREATE TRIGGER trg_posts_updated_at
+                AFTER UPDATE ON posts
+                FOR EACH ROW
+                BEGIN
+                    UPDATE posts SET updated_at = datetime('now','localtime') WHERE id = OLD.id;
+                END;
+                PRAGMA foreign_keys = ON;
+            ");
+        }
 
         // --- Migration for updating email and phone ---
         $this->conn->exec("UPDATE settings SET setting_value = 'contact@brighteducation.net' WHERE setting_key = 'site_email' AND setting_value = 'japan@brightconnect.vn'");

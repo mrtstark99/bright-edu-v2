@@ -59,6 +59,7 @@ $admin_routes = [
     'admin/analytics'           => 'admin/analytics.php',
     'admin/seo-strategy'        => 'admin/seo-strategy.php',
     'admin/settings'            => 'admin/settings.php',
+    'admin/agent'               => 'admin/agent.php',
     'admin/profile'             => 'admin/profile.php',
 ];
 

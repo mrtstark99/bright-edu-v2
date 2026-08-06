@@ -451,6 +451,9 @@
         <a class="sidebar-link <?php echo str_contains($_SERVER['REQUEST_URI'], '/admin/users') ? 'active' : ''; ?>" href="/admin/users">
             <i class="bi bi-person-badge"></i> Người dùng
         </a>
+        <a class="sidebar-link <?php echo str_contains($_SERVER['REQUEST_URI'], '/admin/agent') ? 'active' : ''; ?>" href="/admin/agent">
+            <i class="bi bi-robot"></i> AI Agent
+        </a>
         <a class="sidebar-link <?php echo str_contains($_SERVER['REQUEST_URI'], '/admin/settings') ? 'active' : ''; ?>" href="/admin/settings">
             <i class="bi bi-sliders"></i> Cài đặt
         </a>
