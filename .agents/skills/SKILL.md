@@ -59,6 +59,9 @@ Mỗi khóa Token được gán một danh sách các quyền hạn (Scopes) ng�
 | API Action (`?action=`) | Phương thức | Ý nghĩa chức năng | Quyền hạn yêu cầu (Scope) |
 | :--- | :--- | :--- | :--- |
 | **`seo`** | `GET` | Xem kế hoạch từ khóa, KPI chiến dịch và cụm chủ đề | `seo:read` hoặc `admin` |
+| **`create_keyword`** | `POST` | Thêm từ khóa mới vào kế hoạch SEO | `seo:write` hoặc `admin` |
+| **`update_keyword`** | `POST` | Cập nhật thông tin/trạng thái từ khóa trong kế hoạch | `seo:write` hoặc `admin` |
+| **`delete_keyword`** | `POST` | Xóa từ khóa ra khỏi danh sách kế hoạch | `seo:write` hoặc `admin` |
 | **`analytics`** | `GET` | Xem báo cáo đo lường tổng hợp GA4 và Search Console | `analytics:read` hoặc `admin` |
 | **`page_performance`** | `GET` | Xem dữ liệu hiệu suất trang gộp chi tiết theo từng URL | `analytics:read` hoặc `admin` |
 | **`opportunities`** | `GET` | Nhận danh sách các cơ hội SEO tự động (Opportunities Engine) | `analytics:read` or `admin` |

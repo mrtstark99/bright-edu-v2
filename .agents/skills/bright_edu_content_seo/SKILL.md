@@ -29,8 +29,13 @@ Khi chuẩn bị viết hoặc chỉnh sửa bài viết, AI Agent phải thực
   - Giữ các đoạn văn ngắn từ **2-3 câu** (dưới 50 từ mỗi đoạn).
   - Sử dụng danh sách liệt kê (bullet points, numbered lists) để phân tách ý.
   - Chèn 1 hình ảnh minh họa chất lượng sau mỗi **300 từ**.
-- **Mục lục (Table of Contents):** Hệ thống website đã có chức năng tự động tạo mục lục động ở đầu bài viết từ các thẻ H2, H3. AI Agent tuyệt đối **KHÔNG** tự tạo hoặc chèn phần mục lục bằng tay trong nội dung bài viết.
-- **Thẻ H1:** Hệ thống đã tự động hiển thị tiêu đề bài viết làm thẻ H1 duy nhất của trang. Trong nội dung bài viết do AI soạn thảo, tuyệt đối **KHÔNG** chèn thêm thẻ H1, hãy bắt đầu cấu trúc bằng các thẻ H2 và H3.
+- **Mục lục (Table of Contents):** Tự động tạo mục lục ở đầu bài cho các bài viết dài trên 500 từ.
+
+### B. Tối ưu Heading
+- **Thẻ H1:** Mỗi bài viết bắt buộc chỉ có **1 thẻ H1 duy nhất** (tiêu đề bài viết), chứa từ khóa chính.
+- **Thẻ H2, H3:** Phân cấp logic rõ ràng, chứa từ khóa LSI hoặc các câu hỏi phụ của người dùng.
+
+### C. Tối ưu Metadata
 - **Thẻ Title:** Độ dài từ **50 đến 60 ký tự**. Phải chứa từ khóa chính ở đầu và tên thương hiệu ở cuối.
 - **Thẻ Meta Description:** Độ dài từ **120 đến 155 ký tự**, tóm tắt cuốn hút và kết thúc bằng một lời kêu gọi hành động (CTA).
 - **Cấu trúc URL (Slug):** Độ dài dưới **75 ký tự**, chữ thường, không dấu, ngăn cách bằng gạch ngang `-`, không chứa ký tự đặc biệt.
