@@ -13,25 +13,6 @@ $upsertSetting = static function (string $key, string $value, string $type = 'te
     $stmt->execute([$key, $value, $type]);
 };
 
-$normalizeLookerUrl = static function (string $url): string {
-    $url = trim($url);
-    if ($url === '') {
-        return '';
-    }
-    if (!filter_var($url, FILTER_VALIDATE_URL)) {
-        return '';
-    }
-    $parts = parse_url($url);
-    $host = strtolower($parts['host'] ?? '');
-    if (!in_array($host, ['lookerstudio.google.com', 'datastudio.google.com'], true)) {
-        return '';
-    }
-    if (str_contains($url, '/reporting/') && !str_contains($url, '/embed/reporting/')) {
-        $url = str_replace('/reporting/', '/embed/reporting/', $url);
-    }
-    return $url;
-};
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!isAdmin()) {
         http_response_code(403);
@@ -44,8 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $propertyId = preg_replace('/\D+/', '', (string)($_POST['ga_property_id'] ?? ''));
         $gscVerification = trim((string)($_POST['gsc_verification'] ?? ''));
         $gscSiteUrl = trim((string)($_POST['gsc_site_url'] ?? ''));
-        $lookerInput = trim((string)($_POST['looker_embed_url'] ?? ''));
-        $lookerUrl = $normalizeLookerUrl($lookerInput);
 
         if ($gaId !== '' && !preg_match('/^G-[A-Z0-9]+$/', $gaId)) {
             $errors[] = 'Measurement ID phải có dạng G-XXXXXXXXXX.';
@@ -58,10 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             && !filter_var($gscSiteUrl, FILTER_VALIDATE_URL)) {
             $errors[] = 'Search Console property phải là sc-domain:domain.com hoặc URL đầy đủ.';
         }
-        if ($lookerInput !== '' && $lookerUrl === '') {
-            $errors[] = 'Looker Studio URL không hợp lệ hoặc không thuộc tên miền Google.';
-        }
-
         $credentialJson = trim((string)($_POST['service_account_json'] ?? ''));
         if (!empty($_FILES['service_account_file']['tmp_name'])) {
             if ((int)($_FILES['service_account_file']['size'] ?? 0) > 65536) {
@@ -93,7 +68,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $upsertSetting('ga_property_id', $propertyId);
             $upsertSetting('gsc_verification', $gscVerification);
             $upsertSetting('gsc_site_url', $gscSiteUrl);
-            $upsertSetting('looker_embed_url', $lookerUrl);
 
             $numericKeys = [
                 'seo_monthly_cost', 'organic_lead_value',
@@ -131,7 +105,6 @@ $gsc = $report['gsc']['summary'] ?? [];
 $events = $report['ga']['events'] ?? [];
 $keywords = $report['gsc']['keywords'] ?? [];
 $credentials = analyticsGetCredentials();
-$lookerUrl = trim((string)getSetting('looker_embed_url', ''));
 
 $organicSessions = (int)round($ga['sessions'] ?? 0);
 $impressions = (int)($gsc['impressions'] ?? 0);
@@ -187,7 +160,6 @@ include dirname(__DIR__) . '/includes/admin/header.php';
   .metric-icon { width: 42px; height: 42px; border-radius: 14px; display:flex; align-items:center; justify-content:center; }
   .metric-value { font-size: 27px; line-height: 1; font-weight: 800; color:#0d243e; letter-spacing:-.03em; }
   .status-dot { width:9px; height:9px; border-radius:999px; display:inline-block; }
-  .looker-frame { width:100%; min-height:760px; border:0; background:#f8fafc; }
   .setup-step { display:flex; gap:12px; align-items:flex-start; }
   .setup-step-num { flex:0 0 auto; width:26px; height:26px; border-radius:9px; background:#0d243e; color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; }
 </style>
@@ -292,22 +264,6 @@ include dirname(__DIR__) . '/includes/admin/header.php';
   </div>
 </div>
 
-<div class="a-card mb-5">
-  <div class="a-card-header">
-    <h2>Looker Studio Dashboard</h2>
-    <?php if ($lookerUrl): ?><a href="<?php echo htmlspecialchars(str_replace('/embed/reporting/', '/reporting/', $lookerUrl)); ?>" target="_blank" rel="noopener" class="text-xs font-semibold text-sky-600">Mở toàn màn hình <i class="bi bi-box-arrow-up-right"></i></a><?php endif; ?>
-  </div>
-  <?php if ($lookerUrl): ?>
-    <iframe class="looker-frame" src="<?php echo htmlspecialchars($lookerUrl); ?>" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Bright Education Looker Studio report"></iframe>
-  <?php else: ?>
-    <div class="a-card-body text-center py-12">
-      <div class="w-14 h-14 rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl mx-auto mb-4"><i class="bi bi-bar-chart-line"></i></div>
-      <div class="font-bold text-midnight">Chưa gắn báo cáo Looker Studio</div>
-      <p class="text-sm text-slate-500 mt-2 max-w-xl mx-auto">Tạo báo cáo từ nguồn GA4 và Search Console, bật “Embed report”, sau đó dán URL vào cấu hình bên dưới.</p>
-    </div>
-  <?php endif; ?>
-</div>
-
 <?php if (isAdmin()): ?>
 <div class="a-card mb-5" id="analytics-config">
   <div class="a-card-header">
@@ -330,7 +286,6 @@ include dirname(__DIR__) . '/includes/admin/header.php';
           <div class="a-field"><label class="a-label">GA4 Property ID</label><input class="a-input" name="ga_property_id" value="<?php echo htmlspecialchars((string)getSetting('ga_property_id', '')); ?>" inputmode="numeric" placeholder="123456789"></div>
           <div class="a-field sm:col-span-2"><label class="a-label">Search Console property</label><input class="a-input" name="gsc_site_url" value="<?php echo htmlspecialchars((string)getSetting('gsc_site_url', '')); ?>" placeholder="sc-domain:brighteducation.net"></div>
           <div class="a-field sm:col-span-2"><label class="a-label">Search Console verification content</label><input class="a-input" name="gsc_verification" value="<?php echo htmlspecialchars((string)getSetting('gsc_verification', '')); ?>" placeholder="Mã content của thẻ google-site-verification"></div>
-          <div class="a-field sm:col-span-2"><label class="a-label">Looker Studio embed URL</label><input class="a-input" type="url" name="looker_embed_url" value="<?php echo htmlspecialchars($lookerUrl); ?>" placeholder="https://lookerstudio.google.com/embed/reporting/..."></div>
           <div class="a-field sm:col-span-2">
             <label class="a-label">Service Account JSON</label>
             <input class="a-input" type="file" name="service_account_file" accept="application/json,.json">
