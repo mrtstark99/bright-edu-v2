@@ -252,7 +252,9 @@ include 'includes/header.php';
           </ul>
         </div>
       </aside>
-  
+    </div>
+  </div>
+
   <?php if (!empty($related_posts)): ?>
   <section class="bg-slate-50 py-12">
     <div class="mx-auto max-w-7xl px-4 sm:px-5">
