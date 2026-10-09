@@ -28,8 +28,8 @@ include 'includes/header.php';
       <div class="mb-10 rounded-2xl border border-slate-200 bg-white px-5 py-7 shadow-[0_16px_45px_rgba(13,36,62,.08)] sm:px-8 sm:py-9">
         <h2 class="text-2xl font-bold text-primary font-display">Giới thiệu</h2>
         <div class="mt-5 space-y-4 text-sm leading-7 text-slate-600 sm:text-[15px]">
-          <p>Bright Education is developing a platform for language centers and training providers. We plan to use Claude to help teachers prepare lessons, provide learners with scenario-based communication practice and personalized feedback, automate routine learner support, and analyze learning progress. Our goal is to reduce administrative work and help educators adapt training to each learner’s needs.</p>
-          <p>We are seeking API credits to test our education platform and technical guidance on curriculum-based responses, multilingual conversation quality, and API cost optimization. We would also value Applied AI office hours to help us evaluate tutoring quality and prepare for deployment.</p>
+          <p>Bright Education JSC. is developing an AI-powered platform for language centers and training providers. The platform is designed to automate lesson preparation, routine learner support, and progress tracking, giving educators more time to focus on teaching and individual guidance.</p>
+          <p>By applying AI to scenario-based communication practice, personalized feedback, and learning progress analysis, we aim to improve the quality and consistency of training. Our goal is to help educators adapt each learning experience to the needs of individual learners while reducing administrative work across the entire training process.</p>
         </div>
       </div>
       <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_16px_45px_rgba(13,36,62,.08)]">
