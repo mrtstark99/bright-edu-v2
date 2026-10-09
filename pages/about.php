@@ -30,7 +30,7 @@ include 'includes/header.php';
           <tbody class="divide-y divide-slate-200">
             <tr>
               <th scope="row" class="w-[31%] min-w-[118px] bg-slate-100 px-4 py-5 align-top font-bold text-primary sm:px-7 sm:py-6">Tên đơn vị</th>
-              <td class="px-4 py-5 font-semibold text-slate-800 sm:px-7 sm:py-6">Bright Education</td>
+              <td class="px-4 py-5 font-semibold text-slate-800 sm:px-7 sm:py-6">Bright Education JSC.</td>
             </tr>
 
             <tr>
