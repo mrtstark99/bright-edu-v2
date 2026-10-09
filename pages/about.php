@@ -115,11 +115,6 @@ include 'includes/header.php';
             </tr>
 
             <tr>
-              <th scope="row" class="bg-slate-100 px-4 py-5 align-top font-bold text-primary sm:px-7 sm:py-6">Địa chỉ</th>
-              <td class="px-4 py-5 leading-7 text-slate-600 sm:px-7 sm:py-6"><?php echo htmlspecialchars(getSetting('site_address', 'Số 45 ngõ 207 Quang Trung, Phường Thành Đông, TP Hải Phòng, Việt Nam')); ?></td>
-            </tr>
-
-            <tr>
               <th scope="row" class="bg-slate-100 px-4 py-5 align-top font-bold text-primary sm:px-7 sm:py-6">Liên hệ</th>
               <td class="px-4 py-5 sm:px-7 sm:py-6">
                 <div class="space-y-2 text-slate-600">
