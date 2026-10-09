@@ -28,8 +28,8 @@ include 'includes/header.php';
       <div class="mb-10 rounded-2xl border border-slate-200 bg-white px-5 py-7 shadow-[0_16px_45px_rgba(13,36,62,.08)] sm:px-8 sm:py-9">
         <h2 class="text-2xl font-bold text-primary font-display">Giới thiệu</h2>
         <div class="mt-5 space-y-4 text-sm leading-7 text-slate-600 sm:text-[15px]">
-          <p>Bright Education JSC. is developing an AI-powered platform for language centers and training providers. The platform is designed to automate lesson preparation, routine learner support, and progress tracking, giving educators more time to focus on teaching and individual guidance.</p>
-          <p>By applying AI to scenario-based communication practice, personalized feedback, and learning progress analysis, we aim to improve the quality and consistency of training. Our goal is to help educators adapt each learning experience to the needs of individual learners while reducing administrative work across the entire training process.</p>
+          <p>Bright Education JSC. đang phát triển nền tảng ứng dụng AI dành cho các trung tâm ngoại ngữ và đơn vị đào tạo. Nền tảng hướng tới tự động hóa việc chuẩn bị bài giảng, hỗ trợ học viên trong các công việc thường ngày và theo dõi tiến độ học tập, giúp giáo viên có thêm thời gian tập trung giảng dạy và hướng dẫn từng học viên.</p>
+          <p>Thông qua việc ứng dụng AI vào luyện giao tiếp theo tình huống, đưa ra phản hồi cá nhân hóa và phân tích kết quả học tập, chúng tôi mong muốn nâng cao chất lượng và tính nhất quán của hoạt động đào tạo. Mục tiêu của Bright Education là giúp giáo viên điều chỉnh phương pháp học theo nhu cầu của từng học viên, đồng thời giảm bớt công việc hành chính trong toàn bộ quá trình đào tạo.</p>
         </div>
       </div>
       <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_16px_45px_rgba(13,36,62,.08)]">
@@ -38,6 +38,11 @@ include 'includes/header.php';
             <tr>
               <th scope="row" class="w-[31%] min-w-[118px] bg-slate-100 px-4 py-5 align-top font-bold text-primary sm:px-7 sm:py-6">Tên đơn vị</th>
               <td class="px-4 py-5 font-semibold text-slate-800 sm:px-7 sm:py-6">Bright Education JSC.</td>
+            </tr>
+
+            <tr>
+              <th scope="row" class="bg-slate-100 px-4 py-5 align-top font-bold text-primary sm:px-7 sm:py-6">Thành lập</th>
+              <td class="px-4 py-5 font-semibold text-slate-800 sm:px-7 sm:py-6">Tháng 3 năm 2026</td>
             </tr>
 
             <tr>
