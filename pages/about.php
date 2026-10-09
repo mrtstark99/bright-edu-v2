@@ -2,7 +2,7 @@
 require_once 'config/config.php';
 
 $page_title = 'Về Bright Education - Hồ sơ năng lực';
-$page_description = 'Thông tin, kinh nghiệm và phạm vi hỗ trợ du học Nhật Bản của Bright Education.';
+$page_description = 'Bright Education phát triển nền tảng hỗ trợ trung tâm ngoại ngữ và đơn vị đào tạo bằng AI.';
 include 'includes/header.php';
 ?>
 
@@ -22,20 +22,22 @@ include 'includes/header.php';
     </div>
   </section>
 
-  <!-- Single profile table -->
+  <!-- Introduction and company profile -->
   <section class="py-14 sm:py-20 lg:py-24">
     <div class="mx-auto max-w-7xl px-5 lg:px-8">
+      <div class="mb-10 rounded-2xl border border-slate-200 bg-white px-5 py-7 shadow-[0_16px_45px_rgba(13,36,62,.08)] sm:px-8 sm:py-9">
+        <h2 class="text-2xl font-bold text-primary font-display">Giới thiệu</h2>
+        <div class="mt-5 space-y-4 text-sm leading-7 text-slate-600 sm:text-[15px]">
+          <p>Bright Education is developing a platform for language centers and training providers. We plan to use Claude to help teachers prepare lessons, provide learners with scenario-based communication practice and personalized feedback, automate routine learner support, and analyze learning progress. Our goal is to reduce administrative work and help educators adapt training to each learner’s needs.</p>
+          <p>We are seeking API credits to test our education platform and technical guidance on curriculum-based responses, multilingual conversation quality, and API cost optimization. We would also value Applied AI office hours to help us evaluate tutoring quality and prepare for deployment.</p>
+        </div>
+      </div>
       <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_16px_45px_rgba(13,36,62,.08)]">
         <table class="w-full border-collapse text-left text-sm sm:text-[15px]">
           <tbody class="divide-y divide-slate-200">
             <tr>
               <th scope="row" class="w-[31%] min-w-[118px] bg-slate-100 px-4 py-5 align-top font-bold text-primary sm:px-7 sm:py-6">Tên đơn vị</th>
               <td class="px-4 py-5 font-semibold text-slate-800 sm:px-7 sm:py-6">Bright Education JSC.</td>
-            </tr>
-
-            <tr>
-              <th scope="row" class="bg-slate-100 px-4 py-5 align-top font-bold text-primary sm:px-7 sm:py-6">Tên pháp nhân hoạt động</th>
-              <td class="px-4 py-5 font-semibold text-slate-800 sm:px-7 sm:py-6"><?php echo htmlspecialchars(getSetting('legal_entity_name', 'VICTORIA UNIVERSAL CO.,LTD')); ?></td>
             </tr>
 
             <tr>
